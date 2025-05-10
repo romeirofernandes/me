@@ -7,6 +7,8 @@ import Projects from "./components/Projects";
 import Experience from "./components/Experience";
 import QuoteBox from "./components/QuoteBox";
 import Underline from "./components/Underline";
+import ContactSection from "./components/ContactSection";
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
@@ -40,39 +42,11 @@ export default function App() {
 
         <Projects />
         <Experience />
-        <section id="contact" className="w-full max-w-2xl">
-          <motion.h2
-            className="text-2xl font-semibold mb-2"
-            whileHover={{ scale: 1.03 }}
-          >
-            Contact
-          </motion.h2>
-          <form className="flex flex-col gap-3 mt-2">
-            <input
-              className="bg-[#18181b] rounded px-3 py-2 text-white focus:outline-none"
-              type="email"
-              placeholder="Your email"
-              required
-            />
-            <textarea
-              className="bg-[#18181b] rounded px-3 py-2 text-white focus:outline-none"
-              placeholder="Your message"
-              rows={4}
-              required
-            />
-            <motion.button
-              type="submit"
-              className="bg-[#f5f5f7] text-[#080808] rounded px-4 py-2 font-semibold mt-2"
-              whileTap={{ scale: 0.97 }}
-              whileHover={{ scale: 1.03 }}
-            >
-              Send
-            </motion.button>
-          </form>
-        </section>
+        <ContactSection />
         <QuoteBox>
           "The master has failed more times than the beginner has ever tried."
         </QuoteBox>
+        <Footer />
       </main>
     </div>
   );

@@ -1,0 +1,69 @@
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+
+export default function ContactSection() {
+  const [status, setStatus] = useState(null);
+
+  // Dummy handler, replace with Firebase logic
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("loading");
+    // TODO: Replace with Firebase logic
+    setTimeout(() => setStatus("sent"), 1200);
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-center border border-dashed border-[#3c3b3b] rounded-xl p-8 mt-12 mb-4 w-full max-w-2xl mx-auto">
+      <section
+        id="contact"
+        className="w-full flex flex-col md:flex-row items-start justify-between gap-8"
+      >
+        {/* Message on the left */}
+        <div className="flex-1 flex flex-col justify-center mb-6 md:mb-0">
+          <h2 className="text-xl font-semibold mb-2 text-gray-200">
+            Let's Connect
+          </h2>
+          <p className="text-gray-400 text-sm">
+            Have an idea or want to collaborate? <br />
+            Drop a message and I’ll get back to you soon.
+          </p>
+        </div>
+        {/* Form and email on the right */}
+        <div className="flex-1 flex flex-col items-end">
+          <form
+            className="flex flex-col gap-3 w-full max-w-xs"
+            onSubmit={handleSubmit}
+          >
+            <input
+              className="bg-[#18181b] rounded px-3 py-2 text-white focus:outline-none text-sm"
+              type="email"
+              placeholder="Your email"
+              required
+            />
+            <textarea
+              className="bg-[#18181b] rounded px-3 py-2 text-white focus:outline-none text-sm"
+              placeholder="Your message"
+              rows={4}
+              required
+            />
+            <motion.button
+              type="submit"
+              className="bg-[#f5f5f7] text-[#080808] rounded px-4 py-2 font-semibold mt-2 text-sm"
+              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: 1.03 }}
+              disabled={status === "loading"}
+            >
+              {status === "loading" ? "Sending..." : "Send"}
+            </motion.button>
+            {status === "sent" && (
+              <span className="text-green-400 text-xs mt-1">Message sent!</span>
+            )}
+          </form>
+          <span className="text-xs text-gray-400 mt-4">
+            theromeirofernandes@gmail.com
+          </span>
+        </div>
+      </section>
+    </div>
+  );
+}
