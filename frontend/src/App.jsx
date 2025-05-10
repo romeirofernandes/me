@@ -8,6 +8,7 @@ import Experience from "./components/Experience";
 import QuoteBox from "./components/QuoteBox";
 import Underline from "./components/Underline";
 import ContactSection from "./components/ContactSection";
+import TechMarquee from "./components/TechMarquee";
 import Footer from "./components/Footer";
 
 export default function App() {
@@ -39,6 +40,8 @@ export default function App() {
         <section id="github" className="mb-32 w-full max-w-2xl">
           <GithubGraph username="romeirofernandes" />
         </section>
+
+        <TechMarquee />
 
         <Projects />
         <Experience />
