@@ -5,9 +5,7 @@ import GithubGraph from "./components/GithubGraph";
 import ProfileCard from "./components/ProfileCard";
 import Projects from "./components/Projects";
 import Experience from "./components/Experience";
-
-const quote =
-  "The master has failed more times than the beginner has ever tried.";
+import QuoteBox from "./components/QuoteBox";
 
 export default function App() {
   return (
@@ -15,14 +13,7 @@ export default function App() {
       <Sidebar />
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-8 max-w-5xl mx-auto">
         <ProfileCard />
-        <motion.p
-          className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl text-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          {quote}
-        </motion.p>
+       
         <section id="about" className="mb-12 w-full max-w-2xl">
           <motion.h2
             className="text-2xl font-semibold mb-2"
@@ -76,6 +67,9 @@ export default function App() {
             </motion.button>
           </form>
         </section>
+        <QuoteBox>
+          "The master has failed more times than the beginner has ever tried."
+        </QuoteBox>
       </main>
     </div>
   );
