@@ -18,7 +18,7 @@ export default function App() {
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-8 max-w-5xl mx-auto mt-10">
         <ProfileCard />
 
-        <section id="about" className="mt-16 mb-32 w-full max-w-2xl">
+        <section id="about" className="mt-16 mb-20 w-full max-w-2xl">
           <p
             className="text-gray-300 font-extralight text-md leading-relaxed"
             style={{ fontWeight: 200 }}
@@ -37,7 +37,7 @@ export default function App() {
           </p>
         </section>
 
-        <section id="github" className="mb-32 w-full max-w-2xl">
+        <section id="github" className="mb-20 w-full max-w-2xl">
           <GithubGraph username="romeirofernandes" />
         </section>
 

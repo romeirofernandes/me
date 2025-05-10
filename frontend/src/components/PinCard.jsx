@@ -3,6 +3,101 @@ import { motion } from "framer-motion";
 import { FiExternalLink } from "react-icons/fi";
 import { FaGithub } from "react-icons/fa";
 
+const techs = [
+  {
+    name: "React",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  },
+  {
+    name: "JavaScript",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  },
+  {
+    name: "Node.js",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+  },
+  {
+    name: "Express",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+  },
+  {
+    name: "Firebase",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
+  },
+  {
+    name: "TailwindCSS",
+    logo: "https://www.svgrepo.com/show/374118/tailwind.svg",
+  },
+  {
+    name: "HTML",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+  },
+  {
+    name: "CSS",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+  },
+  {
+    name: "Python",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+  },
+  {
+    name: "C++",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
+  },
+  {
+    name: "MongoDB",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+  },
+  {
+    name: "PostgreSQL",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+  },
+  {
+    name: "Figma",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+  },
+  {
+    name: "Flask",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg",
+  },
+  {
+    name: "Java",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+  },
+  {
+    name: "Socket.io",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg",
+  },
+  {
+    name: "Git",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+  },
+  {
+    name: "Vite",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vite/vite-original.svg",
+  },
+  {
+    name: "C",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
+  },
+  {
+    name: "Spline",
+    logo: "/spline.png",
+  },
+  {
+    name: "Framer Motion",
+    logo: "/framer.svg",
+  },
+  {
+    name: "Next.js",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+  },
+  {
+    name: "Supabase",
+    logo: "https://raw.githubusercontent.com/supabase/supabase/master/packages/common/assets/images/supabase-logo-icon.svg",
+  },
+];
+
 export function PinContainer({
   name,
   description,
@@ -64,7 +159,7 @@ export function PinContainer({
             <img
               src={image}
               alt={name}
-              className="object-cover w-full h-40 rounded-lg"
+              className="object-cover w-full h-36 rounded-lg"
               loading="lazy"
               style={{ boxShadow: "0 2px 8px 0 rgba(0,0,0,0.10)" }}
             />
@@ -94,15 +189,27 @@ export function PinContainer({
             >
               {description}
             </motion.span>
-            <div className="flex flex-wrap gap-1">
-              {tech.map((t) => (
-                <span
-                  key={t}
-                  className="text-[10px] px-2 py-0.5 rounded bg-zinc-800 text-zinc-300"
-                >
-                  {t}
-                </span>
-              ))}
+            <div className="flex flex-wrap gap-2 items-center mt-2">
+              {tech.map((t) => {
+                const found = techs.find(
+                  (techObj) => techObj.name.toLowerCase() === t.toLowerCase()
+                );
+                return (
+                  found && (
+                    <span
+                      key={t}
+                      className="w-7 h-7 flex items-center justify-center rounded-full bg-zinc-800"
+                    >
+                      <img
+                        src={found.logo}
+                        alt={t}
+                        className="w-4 h-4 object-contain"
+                        loading="lazy"
+                      />
+                    </span>
+                  )
+                );
+              })}
             </div>
             {/* Buttons at the bottom, full width and side by side */}
             <div className="flex flex-row gap-2 mt-auto w-full">
