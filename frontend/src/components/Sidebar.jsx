@@ -4,7 +4,7 @@ import {
   FaHome,
   FaUser,
   FaEnvelope,
-  FaBriefcase,
+  FaTrophy,
   FaFolderOpen,
 } from "react-icons/fa";
 
@@ -12,7 +12,7 @@ const navLinks = [
   { href: "#home", label: "Home", icon: <FaHome /> },
   { href: "#about", label: "About", icon: <FaUser /> },
   { href: "#projects", label: "Projects", icon: <FaFolderOpen /> },
-  { href: "#experience", label: "Experience", icon: <FaBriefcase /> },
+  { href: "#achievements", label: "Achievements", icon: <FaTrophy /> },
   { href: "#contact", label: "Contact", icon: <FaEnvelope /> },
 ];
 

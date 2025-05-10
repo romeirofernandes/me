@@ -21,6 +21,7 @@
     "react-github-calendar": "^4.5.7",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.6.0",
+    "swiper": "^11.2.6",
     "tailwindcss": "^4.1.6"
   },
   "devDependencies": {

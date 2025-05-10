@@ -1,6 +1,7 @@
 import React from "react";
 import { PinContainer } from "./PinCard";
 import { motion } from "framer-motion";
+import Underline from "./Underline";
 
 const projects = [
   {
@@ -67,7 +68,7 @@ export default function Projects() {
         className="text-3xl font-bold mb-8 text-left text-white tracking-tight"
         whileHover={{ scale: 1.03 }}
       >
-        Projects I have worked on
+        <Underline classname="pb-2">Projects I have worked on</Underline>
       </motion.h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {projects.map((project) => (

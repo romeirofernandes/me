@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const Underline = ({ children }) => (
-  <span className="relative inline-block">
+const Underline = ({ children, classname="" }) => (
+  <span className={`relative inline-block ${classname}`}>
     <span className="relative z-10">{children}</span>
     <motion.svg
       initial={{ pathLength: 0 }}

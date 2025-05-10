@@ -4,7 +4,7 @@ import Sidebar from "./components/Sidebar";
 import GithubGraph from "./components/GithubGraph";
 import ProfileCard from "./components/ProfileCard";
 import Projects from "./components/Projects";
-import Experience from "./components/Experience";
+import Achievements from "./components/Achievements";
 import QuoteBox from "./components/QuoteBox";
 import Underline from "./components/Underline";
 import ContactSection from "./components/ContactSection";
@@ -44,7 +44,7 @@ export default function App() {
         <TechMarquee />
 
         <Projects />
-        <Experience />
+        <Achievements />
         <ContactSection />
         <QuoteBox>
           "The master has failed more times than the beginner has ever tried."
