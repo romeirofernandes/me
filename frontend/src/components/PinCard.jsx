@@ -218,13 +218,12 @@ export function PinContainer({
                   href={preview}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 px-4 py-2 rounded-lg bg-zinc-800 text-sm text-white font-semibold hover:bg-zinc-700 transition text-center shadow flex items-center justify-center gap-2"
+                  className="flex-1 px-4 py-2 rounded-lg bg-zinc-800 text-sm text-white font-light hover:bg-zinc-700 transition text-center shadow flex items-center justify-center gap-2"
                 >
-                  <FiExternalLink className="inline-block" />
                   Live Preview
                 </a>
               ) : (
-                <span className="flex-1 px-4 py-2 rounded-lg bg-zinc-800 text-sm text-zinc-500 font-semibold cursor-not-allowed select-none text-center shadow flex items-center justify-center gap-2">
+                <span className="flex-1 px-4 py-2 rounded-lg bg-zinc-800 text-sm text-zinc-500 font-light cursor-not-allowed select-none text-center shadow flex items-center justify-center gap-2">
                   No Preview
                 </span>
               )}

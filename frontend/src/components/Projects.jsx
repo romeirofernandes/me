@@ -4,38 +4,65 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
-    name: "Minimal Portfolio",
-    description: "A minimal, animated portfolio built with React and Tailwind.",
-    tech: ["React", "TailwindCSS", "Framer Motion"],
-    image: "/images/portfolio.png",
-    href: "https://github.com/romeirofernandes/minimal-portfolio",
+    name: "Habitz",
+    description: "Ultimate Digital Habit Builder",
+    tech: [
+      "React",
+      "MongoDB",
+      "Express",
+      "Node.js",
+      "TailwindCSS",
+      "Framer Motion",
+    ],
+    image: "/habitz.png",
+    href: "https://github.com/Hike-12/HackHazard",
+    preview: "https://habitz-three.vercel.app",
   },
   {
-    name: "Cool UI Kit",
-    description: "A crazy UI kit with subtle 3D effects.",
-    tech: ["Next.js", "TailwindCSS", "Framer Motion"],
-    image: "/images/uikit.png",
-    href: "https://github.com/romeirofernandes/cool-project",
+    name: "ClarityAI",
+    description: "AI Powered Learning Companion",
+    tech: [
+      "React",
+      "MongoDB",
+      "Express",
+      "Node.js",
+      "TailwindCSS",
+      "Framer Motion",
+    ],
+    image: "/clarityai.png",
+    href: "https://github.com/romeirofernandes/ClarityAI",
+    preview: "https://clarity-ai-virid.vercel.app",
   },
   {
-    name: "Blog Platform",
-    description: "A markdown-powered blog with custom themes and animations.",
-    tech: ["Next.js", "MDX", "Prisma"],
-    image: "/images/blog.png",
-    href: "https://github.com/romeirofernandes/blog-platform",
+    name: "InfluenceIQ",
+    description: "AI Powered Influencer Analytics",
+    tech: ["React", "MongoDB", "Express", "Node.js", "TailwindCSS", "Python"],
+    image: "/influenceiq.png",
+    href: "https://github.com/Hike-12/Auraflix",
+    preview: "https://influenceiq-nine.vercel.app",
   },
   {
-    name: "Realtime Chat",
-    description: "A realtime chat app with websockets and beautiful UI.",
-    tech: ["React", "Socket.io", "Node.js"],
-    image: "/images/chat.png",
-    href: "https://github.com/romeirofernandes/realtime-chat",
+    name: "QuickChat",
+    description: "Real-time chat rooms",
+    tech: [
+      "React",
+      "MongoDB",
+      "Express",
+      "Node.js",
+      "TailwindCSS",
+      "Socket.io",
+    ],
+    image: "/quickchat.png",
+    href: "https://github.com/romeirofernandes/QuickChat",
   },
 ];
 
 export default function Projects() {
   return (
-    <section id="projects" className="w-full max-w-2xl mx-auto mb-20 px-4 py-12">
+    <section
+      id="projects"
+      className="w-full max-w-2xl mx-auto mb-20 px-4 py-12"
+    >
       <motion.h2
         className="text-3xl font-bold mb-8 text-left text-white tracking-tight"
         whileHover={{ scale: 1.03 }}

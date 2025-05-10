@@ -21,7 +21,7 @@ export default function ProfileCard() {
           <FaGithub className="text-2xl text-gray-400 hover:text-[#f5f5f7] transition" />
         </a>
         <a
-          href="https://x.com/romeirofernandes"
+          href="https://x.com/theromeirofern"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="X"
