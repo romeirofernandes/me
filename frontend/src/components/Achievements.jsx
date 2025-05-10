@@ -1,6 +1,6 @@
 import React from "react";
-import { motion } from "framer-motion"; 
-import Underline from "./Underline"; 
+import { motion } from "framer-motion";
+import Underline from "./Underline";
 
 const hackathons = [
   {
@@ -35,9 +35,12 @@ Hosted by: VCET (24-hour offline)`,
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="mb-12 w-full max-w-2xl">
+    <section
+      id="achievements"
+      className="mb-10 w-full max-w-xs sm:max-w-sm md:max-w-2xl mx-auto"
+    >
       <motion.h2
-        className="text-3xl font-bold mb-8 text-left text-white tracking-tight"
+        className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight"
         whileHover={{ scale: 1.03 }}
       >
         <Underline classname="pb-2">Some Achievements</Underline>
@@ -45,35 +48,32 @@ export default function Achievements() {
       <div className="space-y-0 relative">
         {hackathons.map((hack, idx) => (
           <div key={hack.id} className="relative flex">
-            <div
-              className={`bg-[#16181c] border border-[#232323] rounded-xl p-6 shadow-lg w-full mb-8 z-10`}
-            >
+            <div className="bg-[#16181c] border border-[#232323] rounded-xl p-3 sm:p-4 md:p-6 shadow-lg w-full max-w-full mb-8 z-10 text-left">
               <div className="flex items-center mb-3">
                 <img
                   src="/profile.jpg"
                   alt="Romeiro Fernandes"
-                  className="w-12 h-12 rounded-full border border-gray-700 mr-3"
+                  className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full border border-gray-700 mr-3"
                 />
                 <div>
-                  <span className="font-bold text-white">
+                  <span className="font-bold text-white text-sm sm:text-base md:text-lg">
                     Romeiro Fernandes
                   </span>
-                  <span className="ml-2 text-gray-400">
+                  <span className="ml-2 text-gray-400 text-xs sm:text-sm md:text-base">
                     @theromeirofern · {hack.year}
                   </span>
                 </div>
               </div>
               <div className="mb-3">
-                <span className="whitespace-pre-line text-gray-100">
+                <span className="whitespace-pre-line text-gray-100 text-xs sm:text-sm md:text-base">
                   {hack.text}
                 </span>
               </div>
               <img
                 src={hack.image}
                 alt={hack.name}
-                className="w-full rounded-lg border border-gray-700 mb-3 max-h-64 object-cover"
+                className="w-full rounded-lg border border-gray-700 mb-3 max-h-28 sm:max-h-40 md:max-h-64 object-cover"
               />
-              {/* All action buttons removed as requested */}
             </div>
           </div>
         ))}

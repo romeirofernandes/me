@@ -62,15 +62,15 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="w-full max-w-2xl mx-auto mb-20 px-4 py-12"
+      className="w-full max-w-xs sm:max-w-sm md:max-w-2xl mx-auto mb-16 px-0 sm:px-2 md:px-4 py-8 md:py-12"
     >
       <motion.h2
-        className="text-3xl font-bold mb-8 text-left text-white tracking-tight"
+        className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight"
         whileHover={{ scale: 1.03 }}
       >
         <Underline classname="pb-2">Projects I have worked on</Underline>
       </motion.h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
         {projects.map((project) => (
           <PinContainer key={project.name} {...project} />
         ))}
