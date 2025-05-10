@@ -1,15 +1,50 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { initializeApp } from "firebase/app";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp,
+} from "firebase/firestore";
+
+// Firebase config from .env
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+};
+
+// Initialize Firebase (safe for client-side)
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 export default function ContactSection() {
   const [status, setStatus] = useState(null);
+  const [form, setForm] = useState({ email: "", message: "" });
 
-  // Dummy handler, replace with Firebase logic
+  const handleChange = (e) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("loading");
-    // TODO: Replace with Firebase logic
-    setTimeout(() => setStatus("sent"), 1200);
+    try {
+      await addDoc(collection(db, "messages"), {
+        email: form.email,
+        message: form.message,
+        created: serverTimestamp(),
+      });
+      setStatus("sent");
+      setForm({ email: "", message: "" });
+    } catch (err) {
+      setStatus("error");
+    }
   };
 
   return (
@@ -37,13 +72,19 @@ export default function ContactSection() {
             <input
               className="bg-[#18181b] rounded px-3 py-2 text-white focus:outline-none text-sm"
               type="email"
+              name="email"
               placeholder="Your email"
+              value={form.email}
+              onChange={handleChange}
               required
             />
             <textarea
               className="bg-[#18181b] rounded px-3 py-2 text-white focus:outline-none text-sm"
+              name="message"
               placeholder="Your message"
               rows={4}
+              value={form.message}
+              onChange={handleChange}
               required
             />
             <motion.button
@@ -53,7 +94,11 @@ export default function ContactSection() {
               whileHover={{ scale: 1.03 }}
               disabled={status === "loading"}
             >
-              {status === "loading" ? "Sending..." : "Send"}
+              {status === "loading"
+                ? "Sending..."
+                : status === "error"
+                ? "Error! Try again"
+                : "Send"}
             </motion.button>
             {status === "sent" && (
               <span className="text-green-400 text-xs mt-1">Message sent!</span>
