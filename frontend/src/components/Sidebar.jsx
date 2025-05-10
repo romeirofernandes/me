@@ -18,6 +18,14 @@ const navLinks = [
 
 function getActiveSection() {
   if (typeof window === "undefined") return "";
+  const scrollY = window.scrollY;
+  const scrollBottom = window.innerHeight + scrollY;
+  const docHeight = document.documentElement.scrollHeight;
+
+  if (scrollY == 0) return "#home";
+
+  if (docHeight - scrollBottom < 2) return "#contact";
+
   const offsets = navLinks.map((link) => {
     const el = document.querySelector(link.href);
     return el ? Math.abs(el.getBoundingClientRect().top) : Infinity;
@@ -40,6 +48,10 @@ export default function Sidebar() {
   // Smooth scroll handler
   const handleNavClick = (e, href) => {
     e.preventDefault();
+    if (href === "#home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
     const el = document.querySelector(href);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
