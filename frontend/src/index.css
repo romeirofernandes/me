@@ -20,3 +20,7 @@ h6 {
 button {
   cursor: pointer;
 }
+
+html {
+  scroll-behavior: smooth;
+}
