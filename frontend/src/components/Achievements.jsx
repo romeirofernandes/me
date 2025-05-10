@@ -1,4 +1,6 @@
 import React from "react";
+import { motion } from "framer-motion"; 
+import Underline from "./Underline"; 
 
 const hackathons = [
   {
@@ -33,8 +35,13 @@ Hosted by: VCET (24-hour offline)`,
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="mb-12 w-full max-w-xl">
-      <h2 className="text-2xl font-semibold mb-6">Achievements</h2>
+    <section id="achievements" className="mb-12 w-full max-w-2xl">
+      <motion.h2
+        className="text-3xl font-bold mb-8 text-left text-white tracking-tight"
+        whileHover={{ scale: 1.03 }}
+      >
+        <Underline classname="pb-2">Some Achievements</Underline>
+      </motion.h2>
       <div className="space-y-0 relative">
         {hackathons.map((hack, idx) => (
           <div key={hack.id} className="relative flex">

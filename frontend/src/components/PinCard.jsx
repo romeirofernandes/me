@@ -120,11 +120,13 @@ export function PinContainer({
 
   const handleMouseLeave = () => setMouse({ x: 0, y: 0 });
 
+  // Make the whole card clickable (optional)
+  const handleCardClick = () => {
+    if (href) window.open(href, "_blank", "noopener,noreferrer");
+  };
+
   return (
-    <motion.a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+    <motion.div
       className={`group relative z-10 cursor-pointer ${
         containerClassName || ""
       }`}
@@ -132,6 +134,9 @@ export function PinContainer({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       tabIndex={-1}
+      onClick={handleCardClick}
+      role="button"
+      aria-label={`Open ${name} GitHub`}
     >
       <motion.div
         className="flex items-center justify-center w-full h-full"
@@ -219,6 +224,7 @@ export function PinContainer({
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 px-4 py-2 rounded-lg bg-zinc-800 text-sm text-white font-light hover:bg-zinc-700 transition text-center shadow flex items-center justify-center gap-2"
+                  onClick={(e) => e.stopPropagation()}
                 >
                   Live Preview
                 </a>
@@ -232,6 +238,7 @@ export function PinContainer({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 px-4 py-2 rounded-lg bg-zinc-700 text-sm text-white font-light hover:bg-zinc-600 transition text-center shadow flex items-center justify-center gap-2"
+                onClick={(e) => e.stopPropagation()}
               >
                 <FaGithub className="inline-block" />
                 GitHub
@@ -240,6 +247,6 @@ export function PinContainer({
           </div>
         </motion.div>
       </motion.div>
-    </motion.a>
+    </motion.div>
   );
 }
