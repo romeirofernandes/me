@@ -1,24 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import GitHubCalendar from "react-github-calendar";
 
 export default function GithubGraph({ username }) {
-  // Show only the last 12 weeks
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const transformData = (contributions) => {
-    const weeksToShow = 280;
+    const weeksToShow = isMobile ? 222 : 280;
     return contributions.slice(-weeksToShow);
   };
 
   return (
-    <div className="bg-[#18181b] rounded-lg p-4 overflow-x-auto">
-      <GitHubCalendar
-        username={username}
-        colorScheme="dark"
-        blockSize={12}
-        blockMargin={4}
-        fontSize={14}
-        transformData={transformData}
-        hideTotalCount
-      />
+    <div className="flex w-full justify-center">
+      <div className="bg-[#18181b] rounded-lg p-4 w-[fit-content] flex justify-end ">
+        <GitHubCalendar
+          username={username}
+          colorScheme="dark"
+          blockSize={isMobile ? 10 : 12}
+          blockMargin={isMobile ? 3 : 4}
+          fontSize={12}
+          transformData={transformData}
+          hideTotalCount
+        />
+      </div>
     </div>
   );
 }
