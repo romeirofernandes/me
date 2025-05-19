@@ -20,15 +20,15 @@ export default function App() {
 
         <section
           id="about"
-          className="mt-8 md:mt-16 mb-10 md:mb-20 w-full max-w-[98vw] md:max-w-2xl"
+          className="mt-4 md:mt-12 mb-10 md:mb-20 w-full max-w-[98vw] md:max-w-2xl"
         >
           <p
             className="text-gray-300 font-extralight text-sm md:text-md leading-relaxed text-left"
             style={{ fontWeight: 200 }}
           >
-            I’m a developer passionate about building{" "}
-            <Underline>minimal</Underline>, delightful web experiences. I’m
-            currently in Sem 4 at Fr. CRCE, Bandra.
+            I'm a full-stack developer with a focus on the{" "}
+            <Underline>MERN stack</Underline> and a deep interest in AI/ML.
+            Currently pursuing Computer Engineering at Fr. CRCE, Bandra.
           </p>
           <p
             className="text-gray-300 mt-6 md:mt-10 font-extralight leading-relaxed text-left text-sm md:text-md"
