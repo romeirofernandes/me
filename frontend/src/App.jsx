@@ -42,7 +42,7 @@ export default function App() {
 
         <section
           id="github"
-          className="mb-10 md:mb-20 w-full max-w-[98vw] md:max-w-2xl"
+          className="mb-10 md:mb-20 max-w-[98vw] md:w-2xl"
         >
           <GithubGraph username="romeirofernandes" />
         </section>

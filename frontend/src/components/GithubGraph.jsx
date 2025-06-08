@@ -14,12 +14,12 @@ export default function GithubGraph({ username }) {
   }, []);
 
   const transformData = (contributions) => {
-    const weeksToShow = isMobile ? 222 : 280;
+    const weeksToShow = isMobile ? 170 : 280;
     return contributions.slice(-weeksToShow);
   };
 
   return (
-    <div className="flex w-full justify-center">
+    <div className="flex justify-center">
       <div className="bg-[#18181b] rounded-lg p-4 w-[fit-content] flex justify-end ">
         <GitHubCalendar
           username={username}
