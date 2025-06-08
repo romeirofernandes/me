@@ -34,9 +34,10 @@ export default function App() {
             className="text-gray-300 mt-6 md:mt-10 font-extralight leading-relaxed text-left text-sm md:text-md"
             style={{ fontWeight: 200 }}
           >
-            I love exploring new technologies and turning ideas into reality.
-            Always striving to learn, grow, and{" "}
-            <Underline>collaborate with others</Underline>.
+            From hackathon projects to experimental web apps, I enjoy{" "}
+            <Underline>turning ideas into reality</Underline>. My approach combines
+            clean code principles with a keen eye for user experience, whether I'm
+            building AI-powered features or crafting responsive interfaces.
           </p>
         </section>
 

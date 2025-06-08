@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="w-full mt-8">
+    <footer className="w-full mt-8 mb-12 md:mb-0">
       <div className="relative w-full max-w-2xl mx-auto">
         {/* Fading border */}
         <div className="absolute left-0 right-0 top-0 h-px w-full pointer-events-none">
