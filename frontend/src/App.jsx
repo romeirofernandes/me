@@ -27,14 +27,14 @@ export default function App() {
           <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
             <ProfileCard />
           </div>
-
+          
+          
           <SectionDivider className="my-2"/>
           <SectionDivider className="mt-2"/>
 
 
           <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
             <section
-              id="about"
               className="mt-4 md:mt-12 mb-10 md:mb-20 w-full"
             >
               <p

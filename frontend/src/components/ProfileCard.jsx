@@ -9,7 +9,23 @@ import {
 
 export default function ProfileCard() {
   return (
-    <div className="w-full max-w-full md:max-w-2xl mx-auto bg-[#18181b] rounded-xl shadow-lg p-4 sm:p-6 md:p-7 mb-8 flex flex-col gap-3 md:gap-4 border border-[#232323] relative text-left">
+    <div
+      className="w-full max-w-full md:max-w-2xl mx-auto rounded-xl shadow-lg p-4 sm:p-6 md:p-7 mb-8 flex flex-col gap-3 md:gap-4 border border-[#232323] relative text-left"
+      style={{
+        background: `linear-gradient(135deg, 
+             #1a1a1d 0%, 
+             #18181b 15%, 
+             #16161a 50%, 
+             #141418 85%, 
+             #121216 100%
+           )`,
+        boxShadow: `
+             0 4px 6px -1px rgba(0, 0, 0, 0.3),
+             0 2px 4px -1px rgba(0, 0, 0, 0.2),
+             inset 0 1px 0 rgba(255, 255, 255, 0.05)
+           `,
+      }}
+    >
       <div className="flex flex-col gap-2 md:gap-4">
         <div className="flex flex-col gap-1 md:gap-2 relative">
           <div className="text-lg sm:text-xl md:text-2xl font-bold text-[#f5f5f7]">
