@@ -6,7 +6,6 @@ import ProfileCard from "./components/ProfileCard";
 import Projects from "./components/Projects";
 import Achievements from "./components/Achievements";
 import QuoteBox from "./components/QuoteBox";
-import Underline from "./components/Underline";
 import ContactSection from "./components/ContactSection";
 import TechMarquee from "./components/TechMarquee";
 import Footer from "./components/Footer";
@@ -28,19 +27,18 @@ export default function App() {
               className="text-gray-300 font-extralight text-sm md:text-md leading-relaxed text-left"
               style={{ fontWeight: 200 }}
             >
-              I'm a full-stack developer with a focus on the{" "}
-              <Underline>MERN stack</Underline> and a deep interest in AI/ML.
-              Currently pursuing Computer Engineering at Fr. CRCE, Bandra.
+              I'm a full-stack developer with a focus on the MERN stack and a
+              deep interest in AI/ML. Currently pursuing Computer Engineering at
+              Fr. CRCE, Bandra.
             </p>
             <p
               className="text-gray-300 mt-6 md:mt-10 font-extralight leading-relaxed text-left text-sm md:text-md"
               style={{ fontWeight: 200 }}
             >
-              From hackathon projects to experimental web apps, I enjoy{" "}
-              <Underline>turning ideas into reality</Underline>. My approach
-              combines clean code principles with a keen eye for user
-              experience, whether I'm building AI-powered features or crafting
-              responsive interfaces.
+              From hackathon projects to experimental web apps, I enjoy turning
+              ideas into reality. My approach combines clean code principles
+              with a keen eye for user experience, whether I'm building
+              AI-powered features or crafting responsive interfaces.
             </p>
           </section>
 

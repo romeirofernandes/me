@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Underline from "./Underline";
 
 const hackathons = [
   {
@@ -41,9 +40,8 @@ export default function Achievements() {
     >
       <motion.h2
         className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight"
-        whileHover={{ scale: 1.03 }}
       >
-        <Underline classname="pb-2">Some Achievements</Underline>
+        Some Achievements
       </motion.h2>
       <div className="space-y-0 relative">
         {hackathons.map((hack, idx) => (
