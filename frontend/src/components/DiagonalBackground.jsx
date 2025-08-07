@@ -9,8 +9,8 @@ export default function DiagonalBackground({ children, className = "" }) {
         style={{
           background: `repeating-linear-gradient(
             315deg,
-            rgba(65, 65, 65, 0.8) 0,
-            rgba(65, 65, 65, 0.8) 1px,
+            rgba(120, 120, 120, 0.8) 0,
+            rgba(120, 120, 120, 0.8) 1px,
             transparent 0,
             transparent 10px
           )`,

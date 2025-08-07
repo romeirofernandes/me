@@ -22,7 +22,7 @@ export default function GridLines() {
       <div
         className="absolute top-0 h-full w-[0.1px]"
         style={{
-          left: "calc(50% + 24rem + 20px)", // 5px spacing from first right line
+          left: "calc(50% + 24rem + 16px)", 
           background: "white",
         }}
       />
