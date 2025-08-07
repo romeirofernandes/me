@@ -10,54 +10,55 @@ import Underline from "./components/Underline";
 import ContactSection from "./components/ContactSection";
 import TechMarquee from "./components/TechMarquee";
 import Footer from "./components/Footer";
+import DiagonalBackground from "./components/DiagonalBackground";
 
 export default function App() {
   return (
-    <div className="flex flex-col md:flex-row min-h-screen bg-[#080808] text-[#f5f5f7] overflow-x-hidden">
-      <Sidebar />
-      <main className="flex-1 flex flex-col items-start md:items-center justify-center px-2 sm:px-4 md:px-8 py-6 md:py-12 max-w-[98vw] md:max-w-5xl mx-auto mt-4 md:mt-10">
-        <ProfileCard />
+    <DiagonalBackground className="min-h-screen">
+      <div className="flex flex-col md:flex-row min-h-screen bg-[#080808]/95 text-[#f5f5f7] overflow-x-hidden">
+        <Sidebar />
+        <main className="flex-1 flex flex-col items-start md:items-center justify-center px-2 sm:px-4 md:px-8 py-6 md:py-12 max-w-[98vw] md:max-w-5xl mx-auto mt-4 md:mt-10">
+          <ProfileCard />
 
-        <section
-          id="about"
-          className="mt-4 md:mt-12 mb-10 md:mb-20 w-full max-w-[98vw] md:max-w-2xl"
-        >
-          <p
-            className="text-gray-300 font-extralight text-sm md:text-md leading-relaxed text-left"
-            style={{ fontWeight: 200 }}
+          <section
+            id="about"
+            className="mt-4 md:mt-12 mb-10 md:mb-20 w-full max-w-[98vw] md:max-w-2xl"
           >
-            I'm a full-stack developer with a focus on the{" "}
-            <Underline>MERN stack</Underline> and a deep interest in AI/ML.
-            Currently pursuing Computer Engineering at Fr. CRCE, Bandra.
-          </p>
-          <p
-            className="text-gray-300 mt-6 md:mt-10 font-extralight leading-relaxed text-left text-sm md:text-md"
-            style={{ fontWeight: 200 }}
-          >
-            From hackathon projects to experimental web apps, I enjoy{" "}
-            <Underline>turning ideas into reality</Underline>. My approach combines
-            clean code principles with a keen eye for user experience, whether I'm
-            building AI-powered features or crafting responsive interfaces.
-          </p>
-        </section>
+            <p
+              className="text-gray-300 font-extralight text-sm md:text-md leading-relaxed text-left"
+              style={{ fontWeight: 200 }}
+            >
+              I'm a full-stack developer with a focus on the{" "}
+              <Underline>MERN stack</Underline> and a deep interest in AI/ML.
+              Currently pursuing Computer Engineering at Fr. CRCE, Bandra.
+            </p>
+            <p
+              className="text-gray-300 mt-6 md:mt-10 font-extralight leading-relaxed text-left text-sm md:text-md"
+              style={{ fontWeight: 200 }}
+            >
+              From hackathon projects to experimental web apps, I enjoy{" "}
+              <Underline>turning ideas into reality</Underline>. My approach
+              combines clean code principles with a keen eye for user
+              experience, whether I'm building AI-powered features or crafting
+              responsive interfaces.
+            </p>
+          </section>
 
-        <section
-          id="github"
-          className="mb-10 md:mb-20 max-w-[98vw] md:w-2xl"
-        >
-          <GithubGraph username="romeirofernandes" />
-        </section>
+          <section id="github" className="mb-10 md:mb-20 max-w-[98vw] md:w-2xl">
+            <GithubGraph username="romeirofernandes" />
+          </section>
 
-        <TechMarquee />
+          <TechMarquee />
 
-        <Projects />
-        <Achievements />
-        <ContactSection />
-        <QuoteBox>
-          "The master has failed more times than the beginner has ever tried."
-        </QuoteBox>
-        <Footer />
-      </main>
-    </div>
+          <Projects />
+          <Achievements />
+          <ContactSection />
+          <QuoteBox>
+            "The master has failed more times than the beginner has ever tried."
+          </QuoteBox>
+          <Footer />
+        </main>
+      </div>
+    </DiagonalBackground>
   );
 }
