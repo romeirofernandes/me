@@ -22,13 +22,14 @@ export default function App() {
         {/* Remove max-w constraint from main container */}
         <main className="flex-1 flex flex-col items-center justify-center px-0 py-6 md:py-12 mt-4 md:mt-10 w-full">
           {/* Content wrapper for sections that need max-width */}
+          <SectionDivider className="mb-11"/>
+
           <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
             <ProfileCard />
           </div>
 
-          <SectionDivider />
-          <SectionDivider />
-          <SectionDivider />
+          <SectionDivider className="my-2"/>
+          <SectionDivider className="my-2"/>
 
 
           <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
@@ -40,7 +41,7 @@ export default function App() {
                 className="text-gray-300 font-extralight text-sm md:text-md leading-relaxed text-left"
                 style={{ fontWeight: 200 }}
               >
-                I'm a full-stack developer with a focus on the MERN stack and a
+                I'm a full-stack developer with MERN as my go to stack and a
                 deep interest in AI/ML. Currently pursuing Computer Engineering at
                 Fr. CRCE, Bandra.
               </p>
@@ -48,10 +49,8 @@ export default function App() {
                 className="text-gray-300 mt-6 md:mt-10 font-extralight leading-relaxed text-left text-sm md:text-md"
                 style={{ fontWeight: 200 }}
               >
-                From hackathon projects to experimental web apps, I enjoy turning
-                ideas into reality. My approach combines clean code principles
-                with a keen eye for user experience, whether I'm building
-                AI-powered features or crafting responsive interfaces.
+                I love exploring new technologies and turning ideas into reality.
+            Always striving to learn, grow, and collaborate with others.
               </p>
             </section>
           </div>
@@ -78,13 +77,13 @@ export default function App() {
 
           <SectionDivider />
 
-          <div className="w-full max-w-[98vw] md:max-w-2xl px-2 sm:px-4 md:px-8">
+          <div className="w-full max-w-[98vw] md:max-w-2xl px-2">
             <ContactSection />
           </div>
 
           <SectionDivider />
 
-          <div className="w-full max-w-[98vw] md:max-w-2xl px-2 sm:px-4 md:px-8">
+          <div className="w-full max-w-[98vw] md:max-w-2xl px-2 ">
             <QuoteBox>
               "The master has failed more times than the beginner has ever tried."
             </QuoteBox>
