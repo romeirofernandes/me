@@ -29,7 +29,7 @@ export default function App() {
           </div>
 
           <SectionDivider className="my-2"/>
-          <SectionDivider className="my-2"/>
+          <SectionDivider className="mt-2"/>
 
 
           <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
@@ -55,33 +55,35 @@ export default function App() {
             </section>
           </div>
 
-          <SectionDivider />
+          <SectionDivider className="mt-[-2rem] mb-14"/>
 
-          <div className="w-full max-w-[98vw] md:max-w-2xl px-2 sm:px-4 md:px-8">
+          <div className="w-full max-w-[98vw] md:max-w-2xl px-2 sm:px-4">
             <section id="github" className="mb-10 md:mb-20">
               <GithubGraph username="romeirofernandes" />
             </section>
           </div>
 
-          <SectionDivider />
+          <SectionDivider className="mt-[-1.5rem]"/>
+          <SectionDivider className="mt-2"/>
+
 
           <TechMarquee />
 
-          <SectionDivider />
+          <SectionDivider className="mt-[-0.75rem]"/>
 
           <Projects />
 
-          <SectionDivider />
+          <SectionDivider className="mt-[-3.5rem] mb-12" />
 
           <Achievements />
 
-          <SectionDivider />
+          <SectionDivider className="mt-[-1.2rem]" />
 
           <div className="w-full max-w-[98vw] md:max-w-2xl px-2">
             <ContactSection />
           </div>
 
-          <SectionDivider />
+          <SectionDivider className="mt-8"/>
 
           <div className="w-full max-w-[98vw] md:max-w-2xl px-2 ">
             <QuoteBox>
@@ -89,7 +91,7 @@ export default function App() {
             </QuoteBox>
           </div>
 
-          <SectionDivider />
+          <SectionDivider className="mt-8"/>
 
           <Footer />
         </main>

@@ -3,8 +3,6 @@ import React from "react";
 export default function GridLines() {
   return (
     <div className="fixed inset-0 pointer-events-none -z-10">
-      {/* Vertical lines - asymmetric layout */}
-      {/* Single line on the left side */}
       <div
         className="absolute top-0 h-full w-[0.1px]"
         style={{
