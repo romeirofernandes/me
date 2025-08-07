@@ -77,7 +77,7 @@ export default function App() {
 
           <Achievements />
 
-          <SectionDivider className="mt-[-1.2rem]" />
+          <SectionDivider className="mt-3" />
 
           <div className="w-full max-w-[98vw] md:max-w-2xl px-2">
             <ContactSection />

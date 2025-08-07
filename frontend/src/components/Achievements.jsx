@@ -1,5 +1,12 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
 
 const hackathons = [
   {
@@ -33,49 +40,80 @@ Hosted by: VCET (24-hour offline)`,
 ];
 
 export default function Achievements() {
+  const [openImg, setOpenImg] = useState(null);
+
   return (
     <section
       id="achievements"
       className="mb-10 w-full max-w-xs sm:max-w-sm md:max-w-2xl mx-auto"
     >
-      <motion.h2
-        className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight"
-      >
+      <motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight">
         Some Achievements
       </motion.h2>
-      <div className="space-y-0 relative">
-        {hackathons.map((hack, idx) => (
-          <div key={hack.id} className="relative flex">
-            <div className="bg-[#16181c] border border-[#232323] rounded-xl p-3 sm:p-4 md:p-6 shadow-lg w-full max-w-full mb-8 z-10 text-left">
-              <div className="flex items-center mb-3">
-                <img
-                  src="/profile.jpg"
-                  alt="Romeiro Fernandes"
-                  className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full border border-gray-700 mr-3"
-                />
-                <div>
-                  <span className="font-bold text-white text-sm sm:text-base md:text-lg">
-                    Romeiro Fernandes
-                  </span>
-                  <span className="ml-2 text-gray-400 text-xs sm:text-sm md:text-base">
-                    @theromeirofern · {hack.year}
+      <Carousel className="w-full">
+        <CarouselContent>
+          {hackathons.map((hack) => (
+            <CarouselItem key={hack.id}>
+              <div className="relative flex flex-col gap-2 overflow-hidden rounded-xl border border-[#232323] bg-[#16181c]/80 p-4 sm:p-6 backdrop-blur-md shadow-lg w-full max-w-[90vw] sm:max-w-md md:max-w-xl lg:max-w-2xl mx-auto z-10 text-left">
+                <div className="flex items-center mb-3">
+                  <img
+                    src="/profile.jpg"
+                    alt="Romeiro Fernandes"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-700 mr-3"
+                  />
+                  <div>
+                    <span className="font-bold text-white text-sm sm:text-base md:text-lg">
+                      Romeiro Fernandes
+                    </span>
+                    <span className="ml-2 text-gray-400 text-xs sm:text-sm md:text-base">
+                      @theromeirofern · {hack.year}
+                    </span>
+                  </div>
+                </div>
+                <div className="mb-3">
+                  <span className="whitespace-pre-line text-gray-100 text-xs sm:text-sm md:text-base">
+                    {hack.text}
                   </span>
                 </div>
+                <img
+                  src={hack.image}
+                  alt={hack.name}
+                  className="w-full rounded-lg border border-gray-700 mb-3 max-h-28 sm:max-h-40 md:max-h-64 object-cover cursor-zoom-in"
+                  onClick={() => setOpenImg(hack.image)}
+                />
               </div>
-              <div className="mb-3">
-                <span className="whitespace-pre-line text-gray-100 text-xs sm:text-sm md:text-base">
-                  {hack.text}
-                </span>
-              </div>
-              <img
-                src={hack.image}
-                alt={hack.name}
-                className="w-full rounded-lg border border-gray-700 mb-3 max-h-28 sm:max-h-40 md:max-h-64 object-cover"
-              />
-            </div>
-          </div>
-        ))}
-      </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious variant="default" />
+        <CarouselNext variant="default" />
+      </Carousel>
+
+      {/* Animated Modal for zoomed image */}
+      <AnimatePresence>
+        {openImg && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.22 }}
+            onClick={() => setOpenImg(null)}
+          >
+            <motion.img
+              src={openImg}
+              alt="Zoomed"
+              className="max-h-[90vh] max-w-[90vw] rounded-xl shadow-2xl object-contain cursor-zoom-out"
+              style={{ touchAction: "pinch-zoom" }}
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.22 }}
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
