@@ -37,6 +37,48 @@ Teammates: Liza, Russel, Gavin
 
 Hosted by: VCET (24-hour offline)`,
   },
+  {
+    id: 3,
+    name: "HackHazards '25",
+    place: "Top 100 / 17k",
+    year: "Apr 27",
+    image: "/hackhazards.png",
+    text: `Top 100 teams at HackHazards '25 ✨
+
+Built Habitz: Gamified, social, AI-powered habit tracker with 3D streaks, habit forest, AI coach, QR progress, analytics, and challenges.
+
+Teammates: Aliqyaan, Liza, Gavin
+
+Hosted by: The Namespace Community`,
+  },
+  {
+    id: 4,
+    name: "HackMern.AI",
+    place: "3rd Place",
+    year: "Jun 7",
+    image: "/hackmern.png",
+    text: `3rd Place at HackMern.AI 🥉
+
+Built Trippeer: AI-powered travel planner for destinations & itineraries based on mood, budget, and time. Features reverse planner, AI itineraries, dashboard, and real-time data.
+
+Teammates: Aliqyaan, Russel, Aditya Dabreo
+
+Hosted by: Certifiyo`,
+  },
+  {
+    id: 5,
+    name: "Bucketstudy",
+    place: "Winner",
+    year: "Jul 15",
+    image: "/bucketstudy.png",
+    text: `1st Place at Bucketstudy 🏆
+
+Built vHack: Full-stack virtual hackathon platform for online competitions, team/project management, real-time judging, and AI analytics.
+
+Teammates: Aliqyaan, Aditya Dabreo
+
+Hosted by: BucketStudy`,
+  },
 ];
 
 export default function Achievements() {
@@ -48,7 +90,7 @@ export default function Achievements() {
       className="mb-10 w-full max-w-xs sm:max-w-sm md:max-w-2xl mx-auto"
     >
       <motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight">
-        Some Achievements
+        4x Hackathon Winner.
       </motion.h2>
       <Carousel className="w-full">
         <CarouselContent>
