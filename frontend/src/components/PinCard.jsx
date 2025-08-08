@@ -111,7 +111,7 @@ export function PinContainer({
     <MagicCard
       className={`dark w-[320px] h-[340px] rounded-xl overflow-hidden flex flex-col gap-3 p-4 ${
         containerClassName || ""
-      } w-full max-w-[320px] sm:w-[320px] mx-2`}
+      }`}
       gradientFrom="#232323"
       gradientTo="#18181b" 
       gradientColor="#f5f5f7" 
@@ -155,13 +155,13 @@ export function PinContainer({
           })}
         </div>
         {/* Buttons at the bottom, full width and side by side */}
-        <div className="flex flex-row gap-2 mt-2 w-full">
+        <div className="flex flex-row gap-4 mt-2 w-full">
           {preview ? (
             <a
               href={preview}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 px-4 py-2 rounded-lg border border-[#232323] bg-white/10 text-sm text-white font-medium transition text-center shadow focus:outline-none focus:ring-2 focus:ring-[#f5f5f7] focus:ring-offset-2 hover:bg-gradient-to-br hover:from-[#232323] hover:via-[#18181b] hover:to-[#232323]"
+              className="flex-1 px-4 py-2 rounded-lg border border-[#232323] bg-white/10 text-sm text-white font-medium transition text-center shadow focus:outline-none focus:ring-2 focus:ring-[#f5f5f7] focus:ring-offset-2"
               onClick={(e) => e.stopPropagation()}
               style={{
                 boxShadow: "0 2px 8px 0 rgba(0,0,0,0.10)",
@@ -178,7 +178,7 @@ export function PinContainer({
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 px-4 py-2 rounded-lg border border-[#232323] bg-white/10 text-sm text-white font-medium transition text-center shadow flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#f5f5f7] focus:ring-offset-2 hover:bg-gradient-to-br hover:from-[#232323] hover:via-[#18181b] hover:to-[#232323]"
+            className="flex-1 px-4 py-2 rounded-lg border border-[#232323] bg-white/10 text-sm text-white font-medium transition text-center shadow flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#f5f5f7] focus:ring-offset-2"
             onClick={(e) => e.stopPropagation()}
             style={{
               boxShadow: "0 2px 8px 0 rgba(0,0,0,0.10)",
