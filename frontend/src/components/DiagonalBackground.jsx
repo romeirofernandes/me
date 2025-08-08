@@ -3,14 +3,13 @@ import React from "react";
 export default function DiagonalBackground({ children, className = "" }) {
   return (
     <div className={`relative ${className}`}>
-      {/* Diagonal stripe pattern background */}
       <div
         className="absolute inset-0 -z-10"
         style={{
           background: `repeating-linear-gradient(
             315deg,
-            rgba(120, 120, 120, 0.8) 0,
-            rgba(120, 120, 120, 0.8) 1px,
+            rgba(255, 255, 255, 1) 0,
+            rgba(255, 255, 255, 1) 1px,
             transparent 0,
             transparent 10px
           )`,

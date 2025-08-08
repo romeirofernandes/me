@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { FiExternalLink } from "react-icons/fi";
+import React from "react";
 import { FaGithub } from "react-icons/fa";
+import { MagicCard } from "./MagicCard"; // Adjust the import path as needed
 
 const techs = [
   {
@@ -108,145 +107,88 @@ export function PinContainer({
   className,
   containerClassName,
 }) {
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e) => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    setMouse({ x, y });
-  };
-
-  const handleMouseLeave = () => setMouse({ x: 0, y: 0 });
-
-  // Make the whole card clickable (optional)
-  const handleCardClick = () => {
-    if (href) window.open(href, "_blank", "noopener,noreferrer");
-  };
-
   return (
-    <motion.div
-      className={`group relative z-10 cursor-pointer ${
+    <MagicCard
+      className={`dark w-[320px] h-[340px] rounded-xl overflow-hidden flex flex-col gap-3 p-4 ${
         containerClassName || ""
-      }`}
-      style={{ outline: "none" }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      tabIndex={-1}
-      onClick={handleCardClick}
-      role="button"
-      aria-label={`Open ${name} GitHub`}
+      } w-full max-w-[320px] sm:w-[320px] mx-2`}
+      gradientFrom="#232323"
+      gradientTo="#18181b" 
+      gradientColor="#f5f5f7" 
+      gradientOpacity={0.15} 
+      gradientSize={180}
     >
-      <motion.div
-        className="flex items-center justify-center w-full h-full"
-        style={{
-          perspective: "1200px",
-          transformStyle: "preserve-3d",
-        }}
-      >
-        <motion.div
-          animate={{
-            rotateX: mouse.y * 0.07,
-            rotateY: -mouse.x * 0.07,
-            boxShadow:
-              mouse.x !== 0 || mouse.y !== 0
-                ? "0 8px 32px 0 rgba(0,0,0,0.35)"
-                : "0 2px 8px 0 rgba(0,0,0,0.15)",
-          }}
-          transition={{ type: "spring", stiffness: 400, damping: 30 }}
-          className="flex flex-col w-[320px] h-[320px] rounded-xl bg-zinc-900 border border-zinc-800 overflow-hidden"
-          style={{
-            transformStyle: "preserve-3d",
-          }}
-        >
-          <div className="w-full flex items-center justify-center p-4 pb-0">
-            <img
-              src={image}
-              alt={name}
-              className="object-cover w-full h-36 rounded-lg"
-              loading="lazy"
-              style={{ boxShadow: "0 2px 8px 0 rgba(0,0,0,0.10)" }}
-            />
-          </div>
-          <div className="flex flex-col gap-1 px-4 py-3 w-full flex-1">
-            <motion.span
-              className="text-base font-semibold text-white truncate"
-              style={{
-                transform:
-                  mouse.x !== 0 || mouse.y !== 0
-                    ? "translateZ(18px)"
-                    : "translateZ(0px)",
-                transition: "transform 0.2s cubic-bezier(.4,0,.2,1)",
-              }}
-            >
-              {name}
-            </motion.span>
-            <motion.span
-              className="text-zinc-400 text-xs truncate"
-              style={{
-                transform:
-                  mouse.x !== 0 || mouse.y !== 0
-                    ? "translateZ(12px)"
-                    : "translateZ(0px)",
-                transition: "transform 0.2s cubic-bezier(.4,0,.2,1)",
-              }}
-            >
-              {description}
-            </motion.span>
-            <div className="flex flex-wrap gap-2 items-center mt-2">
-              {tech.map((t) => {
-                const found = techs.find(
-                  (techObj) => techObj.name.toLowerCase() === t.toLowerCase()
-                );
-                return (
-                  found && (
-                    <span
-                      key={t}
-                      className="w-7 h-7 flex items-center justify-center rounded-full bg-zinc-800"
-                    >
-                      <img
-                        src={found.logo}
-                        alt={t}
-                        className="w-4 h-4 object-contain"
-                        loading="lazy"
-                      />
-                    </span>
-                  )
-                );
-              })}
-            </div>
-            {/* Buttons at the bottom, full width and side by side */}
-            <div className="flex flex-row gap-2 mt-auto w-full">
-              {preview ? (
-                <a
-                  href={preview}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 px-4 py-2 rounded-lg bg-zinc-800 text-sm text-white font-light hover:bg-zinc-700 transition text-center shadow flex items-center justify-center gap-2"
-                  onClick={(e) => e.stopPropagation()}
+      <div className="w-full flex items-center justify-center">
+        <img
+          src={image}
+          alt={name}
+          className="object-cover w-full h-36 rounded-lg"
+          loading="lazy"
+          style={{ boxShadow: "0 2px 8px 0 rgba(0,0,0,0.10)" }}
+        />
+      </div>
+      <div className="flex flex-col gap-2 px-1 py-1 w-full flex-1">
+        <span className="text-base font-semibold text-white truncate">
+          {name}
+        </span>
+        <span className="text-zinc-400 text-xs truncate">{description}</span>
+        <div className="flex flex-wrap gap-2 items-center mt-2">
+          {tech.map((t) => {
+            const found = techs.find(
+              (techObj) => techObj.name.toLowerCase() === t.toLowerCase()
+            );
+            return (
+              found && (
+                <span
+                  key={t}
+                  className="w-7 h-7 flex items-center justify-center rounded-full bg-zinc-800"
                 >
-                  Live Preview
-                </a>
-              ) : (
-                <span className="flex-1 px-4 py-2 rounded-lg bg-zinc-800 text-sm text-zinc-500 font-light cursor-not-allowed select-none text-center shadow flex items-center justify-center gap-2">
-                  No Preview
+                  <img
+                    src={found.logo}
+                    alt={t}
+                    className="w-4 h-4 object-contain"
+                    loading="lazy"
+                  />
                 </span>
-              )}
-              <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 px-4 py-2 rounded-lg bg-zinc-700 text-sm text-white font-light hover:bg-zinc-600 transition text-center shadow flex items-center justify-center gap-2"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <FaGithub className="inline-block" />
-                GitHub
-              </a>
-            </div>
-          </div>
-        </motion.div>
-      </motion.div>
-    </motion.div>
+              )
+            );
+          })}
+        </div>
+        {/* Buttons at the bottom, full width and side by side */}
+        <div className="flex flex-row gap-2 mt-2 w-full">
+          {preview ? (
+            <a
+              href={preview}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 px-4 py-2 rounded-lg border border-[#232323] bg-white/10 text-sm text-white font-medium transition text-center shadow focus:outline-none focus:ring-2 focus:ring-[#f5f5f7] focus:ring-offset-2 hover:bg-gradient-to-br hover:from-[#232323] hover:via-[#18181b] hover:to-[#232323]"
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                boxShadow: "0 2px 8px 0 rgba(0,0,0,0.10)",
+              }}
+            >
+              Live Preview
+            </a>
+          ) : (
+            <span className="flex-1 px-4 py-2 rounded-lg bg-zinc-800 text-sm text-zinc-500 font-light cursor-not-allowed select-none text-center shadow flex items-center justify-center gap-2">
+              No Preview
+            </span>
+          )}
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 px-4 py-2 rounded-lg border border-[#232323] bg-white/10 text-sm text-white font-medium transition text-center shadow flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#f5f5f7] focus:ring-offset-2 hover:bg-gradient-to-br hover:from-[#232323] hover:via-[#18181b] hover:to-[#232323]"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              boxShadow: "0 2px 8px 0 rgba(0,0,0,0.10)",
+            }}
+          >
+            <FaGithub className="inline-block" />
+            GitHub
+          </a>
+        </div>
+      </div>
+    </MagicCard>
   );
 }
