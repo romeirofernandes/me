@@ -71,7 +71,6 @@ export function MagicCard({
       <motion.div
         className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-100"
         style={{
-          // Only the hovered area gets a border color, rest is transparent
           background: useMotionTemplate`
             radial-gradient(
               ${gradientSize}px circle at ${mouseX}px ${mouseY}px,
@@ -80,14 +79,12 @@ export function MagicCard({
               transparent 100%
             )
           `,
-          // Animate opacity for smoothness
           opacity: gradientOpacity,
           transition: "opacity 0.3s",
         }}
       />
       {/* Card background */}
       <div className="absolute inset-[2px] rounded-[inherit] bg-[#18181b]" />
-      {/* Optional: gradient accent on hover */}
       <motion.div
         className="pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{

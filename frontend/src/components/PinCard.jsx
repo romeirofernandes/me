@@ -1,6 +1,12 @@
 import React from "react";
 import { FaGithub } from "react-icons/fa";
 import { MagicCard } from "./MagicCard"; // Adjust the import path as needed
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const techs = [
   {
@@ -113,9 +119,9 @@ export function PinContainer({
         containerClassName || ""
       }`}
       gradientFrom="#232323"
-      gradientTo="#18181b" 
-      gradientColor="#f5f5f7" 
-      gradientOpacity={0.15} 
+      gradientTo="#18181b"
+      gradientColor="#f5f5f7"
+      gradientOpacity={0.15}
       gradientSize={180}
     >
       <div className="w-full flex items-center justify-center">
@@ -133,26 +139,32 @@ export function PinContainer({
         </span>
         <span className="text-zinc-400 text-xs truncate">{description}</span>
         <div className="flex flex-wrap gap-2 items-center mt-2">
-          {tech.map((t) => {
-            const found = techs.find(
-              (techObj) => techObj.name.toLowerCase() === t.toLowerCase()
-            );
-            return (
-              found && (
-                <span
-                  key={t}
-                  className="w-7 h-7 flex items-center justify-center rounded-full bg-zinc-800"
-                >
-                  <img
-                    src={found.logo}
-                    alt={t}
-                    className="w-4 h-4 object-contain"
-                    loading="lazy"
-                  />
-                </span>
-              )
-            );
-          })}
+          <TooltipProvider>
+            {tech.map((t) => {
+              const found = techs.find(
+                (techObj) => techObj.name.toLowerCase() === t.toLowerCase()
+              );
+              return (
+                found && (
+                  <Tooltip key={t}>
+                    <TooltipTrigger asChild>
+                      <span className="w-7 h-7 flex items-center justify-center rounded-full bg-zinc-800">
+                        <img
+                          src={found.logo}
+                          alt={t}
+                          className="w-4 h-4 object-contain"
+                          loading="lazy"
+                        />
+                      </span>
+                    </TooltipTrigger>
+                    <TooltipContent side="top" align="center">
+                      {found.name}
+                    </TooltipContent>
+                  </Tooltip>
+                )
+              );
+            })}
+          </TooltipProvider>
         </div>
         {/* Buttons at the bottom, full width and side by side */}
         <div className="flex flex-row gap-4 mt-2 w-full">
