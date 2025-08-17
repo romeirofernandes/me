@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/tooltip";
 
 function getScheduleMessage(date) {
-  const day = date.getDay(); 
+  const day = date.getDay();
   const hour = date.getHours();
   const minute = date.getMinutes();
   const timeNum = hour * 100 + minute;
@@ -33,6 +33,7 @@ function getScheduleMessage(date) {
 
 export default function Clock() {
   const [time, setTime] = useState(() => new Date());
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => setTime(new Date()), 1000);
@@ -46,15 +47,33 @@ export default function Clock() {
 
   const message = getScheduleMessage(time);
 
+  // Detect mobile device
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
   return (
     <TooltipProvider>
-      <Tooltip>
+      <Tooltip
+        open={isMobile ? open : undefined}
+        onOpenChange={isMobile ? setOpen : undefined}
+      >
         <TooltipTrigger asChild>
-          <div className="text-white text-lg font-mono px-4 py-2 bg-[#18181b]/80 rounded-sm shadow-lg border border-white/10 select-none cursor-pointer">
+          <div
+            className={`
+              text-white font-mono bg-[#18181b]/80 rounded-sm shadow-lg border border-white/10 select-none cursor-pointer
+              px-4 py-2 text-lg
+              transition-all
+              ${isMobile ? "text-base px-3 py-1.5 mt-2" : ""}
+            `}
+            onClick={isMobile ? () => setOpen((prev) => !prev) : undefined}
+          >
             {hours}:{minutes}:{seconds}
           </div>
         </TooltipTrigger>
-        <TooltipContent side="top" align="end">
+        <TooltipContent
+          side="top"
+          align="end"
+          className={isMobile ? "text-sm max-w-[180px]" : ""}
+        >
           <span>This is my time. {message}</span>
         </TooltipContent>
       </Tooltip>
