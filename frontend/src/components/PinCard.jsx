@@ -1,6 +1,6 @@
 import React from "react";
 import { FaGithub } from "react-icons/fa";
-import { MagicCard } from "./MagicCard"; // Adjust the import path as needed
+import { MagicCard } from "./MagicCard"; 
 import {
   Tooltip,
   TooltipContent,
