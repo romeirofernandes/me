@@ -8,7 +8,6 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 
-// Firebase config from .env
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -19,7 +18,6 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase (safe for client-side)
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
@@ -53,7 +51,6 @@ export default function ContactSection() {
         id="contact"
         className="w-full flex flex-col md:flex-row items-start justify-between gap-8"
       >
-        {/* Message on the left */}
         <div className="flex-1 flex flex-col justify-center mb-6 md:mb-0 text-left">
           <h2 className="text-lg sm:text-xl font-semibold mb-2 text-gray-200">
             Let's Connect
@@ -63,7 +60,6 @@ export default function ContactSection() {
             Drop a message and I’ll get back to you soon.
           </p>
         </div>
-        {/* Form and email on the right */}
         <div className="flex-1 flex flex-col items-start md:items-end w-full">
           <form
             className="flex flex-col gap-3 w-full max-w-full sm:max-w-xs"

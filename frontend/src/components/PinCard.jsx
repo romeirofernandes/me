@@ -124,16 +124,16 @@ export function PinContainer({
       gradientOpacity={0.15}
       gradientSize={180}
     >
-      <div className="w-full flex items-center justify-center">
+      <div className="w-full flex items-center justify-center mb-1">
         <img
           src={image}
           alt={name}
-          className="object-cover w-full h-36 rounded-lg"
+          className="object-cover w-full h-40 rounded-lg"
           loading="lazy"
           style={{ boxShadow: "0 2px 8px 0 rgba(0,0,0,0.10)" }}
         />
       </div>
-      <div className="flex flex-col gap-2 px-1 py-1 w-full flex-1">
+      <div className="flex flex-col gap-1 px-1 py-1 w-full flex-1">
         <span className="text-base font-semibold text-white truncate">
           {name}
         </span>
@@ -166,8 +166,8 @@ export function PinContainer({
             })}
           </TooltipProvider>
         </div>
-        {/* Buttons at the bottom, full width and side by side */}
-        <div className="flex flex-row gap-4 mt-2 w-full">
+        
+        <div className="flex flex-row gap-2 mt-2 w-full">
           {preview ? (
             <a
               href={preview}
