@@ -8,6 +8,8 @@ export default function GridLines() {
         style={{
           left: "calc(50% - 24rem)", // Left side of max-w-3xl (384px / 2)
           background: "white",
+          border: "white",
+          opacity: "100%",
         }}
       />
 
