@@ -5,6 +5,22 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 const projects = [
   {
+    name: "Unified",
+    description:
+      "One-stop platform for setting up feedback forms in your projects.",
+    tech: [
+      "React",
+      "Express",
+      "MongoDB",
+      "Node.js",
+      "TailwindCSS",
+      "Framer Motion",
+    ],
+    image: "/unified.png",
+    href: "https://github.com/romeirofernandes/unified",
+    preview: "https://unified-chi.vercel.app",
+  },
+  {
     name: "Habitz",
     description: "Ultimate Digital Habit Builder",
     tech: [
@@ -16,12 +32,52 @@ const projects = [
       "Framer Motion",
     ],
     image: "/habitz.png",
-    href: "https://github.com/Hike-12/HackHazard",
+    href: "https://github.com/romeirofernandes/Habitz",
     preview: "https://habitz-three.vercel.app",
   },
   {
+    name: "Explain",
+    description: "scribbl.io but with text instead of drawing.",
+    tech: ["Next.js", "Firebase", "TailwindCSS", "Framer Motion"],
+    image: "/explain.png",
+    href: "https://github.com/romeirofernandes/explain",
+    preview: "https://explain-ruby.vercel.app",
+  },
+  {
+    name: "CodeStorm",
+    description: "For my college council, crazy things coming...",
+    tech: ["React", "Firebase", "TailwindCSS", "Framer Motion"],
+    image: "/codestorm.png",
+    href: "", // No GitHub button
+    preview: "https://codestorm-crce.vercel.app",
+  },
+  {
+    name: "Typiks",
+    description: "Matiks but with text. Play with a friend.",
+    tech: ["React", "TailwindCSS", "Hono.js"],
+    image: "/typiks.png",
+    href: "https://github.com/romeirofernandes/typiks",
+    preview: "https://typiks.vercel.app",
+  },
+  {
+    name: "Infinite Sticker Grid",
+    description: "An infinite grid of stickers, click to copy.",
+    tech: ["React", "TailwindCSS"],
+    image: "/infinite-grid.png",
+    href: "https://github.com/romeirofernandes/infinite-grid",
+    preview: "https://infinite-grid-cyan.vercel.app",
+  },
+  {
+    name: "LogIt",
+    description: "Simpler habit tracker compared to Habitz.",
+    tech: ["React", "Firebase", "TailwindCSS", "Framer Motion"],
+    image: "/log-it.png",
+    href: "https://github.com/romeirofernandes/LogIt",
+    preview: "https://log-it-ecru.vercel.app",
+  },
+  {
     name: "ClarityAI",
-    description: "AI Powered Learning Companion",
+    description: "AI Powered Learning platform.",
     tech: [
       "React",
       "MongoDB",
@@ -33,61 +89,6 @@ const projects = [
     image: "/clarityai.png",
     href: "https://github.com/romeirofernandes/ClarityAI",
     preview: "https://clarity-ai-virid.vercel.app",
-  },
-  {
-    name: "InfluenceIQ",
-    description: "AI Powered Influencer Analytics",
-    tech: ["React", "MongoDB", "Express", "Node.js", "TailwindCSS", "Python"],
-    image: "/influenceiq.png",
-    href: "https://github.com/Hike-12/Auraflix",
-    preview: "https://influenceiq-nine.vercel.app",
-  },
-  {
-    name: "QuickChat",
-    description: "Real-time chat rooms",
-    tech: [
-      "React",
-      "MongoDB",
-      "Express",
-      "Node.js",
-      "TailwindCSS",
-      "Socket.io",
-    ],
-    image: "/quickchat.png",
-    href: "https://github.com/romeirofernandes/QuickChat",
-  },
-  // Dummy projects below
-  {
-    name: "TaskFlow",
-    description: "Collaborative task management app",
-    tech: ["React", "Node.js", "MongoDB", "TailwindCSS"],
-    image: "/taskflow.png",
-    href: "https://github.com/romeirofernandes/TaskFlow",
-    preview: "https://taskflow-demo.vercel.app",
-  },
-  {
-    name: "Weatherly",
-    description: "Minimal weather dashboard",
-    tech: ["React", "Express", "TailwindCSS", "Vite"],
-    image: "/weatherly.png",
-    href: "https://github.com/romeirofernandes/Weatherly",
-    preview: "https://weatherly-demo.vercel.app",
-  },
-  {
-    name: "NoteNest",
-    description: "Simple note-taking web app",
-    tech: ["React", "Firebase", "TailwindCSS"],
-    image: "/notenest.png",
-    href: "https://github.com/romeirofernandes/NoteNest",
-    preview: "https://notenest-demo.vercel.app",
-  },
-  {
-    name: "PortfolioX",
-    description: "Personal portfolio template",
-    tech: ["React", "Next.js", "TailwindCSS", "Framer Motion"],
-    image: "/portfoliox.png",
-    href: "https://github.com/romeirofernandes/PortfolioX",
-    preview: "https://portfoliox-demo.vercel.app",
   },
 ];
 

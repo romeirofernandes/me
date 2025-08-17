@@ -1,6 +1,6 @@
 import React from "react";
 import { FaGithub } from "react-icons/fa";
-import { MagicCard } from "./MagicCard"; 
+import { MagicCard } from "./MagicCard";
 import {
   Tooltip,
   TooltipContent,
@@ -101,6 +101,10 @@ const techs = [
     name: "Supabase",
     logo: "https://raw.githubusercontent.com/supabase/supabase/master/packages/common/assets/images/supabase-logo-icon.svg",
   },
+  {
+    name: "Hono.js",
+    logo: "https://hono.dev/images/logo.svg",
+  },
 ];
 
 export function PinContainer({
@@ -166,7 +170,7 @@ export function PinContainer({
             })}
           </TooltipProvider>
         </div>
-        
+
         <div className="flex flex-row gap-2 mt-2 w-full">
           {preview ? (
             <a
@@ -186,19 +190,21 @@ export function PinContainer({
               No Preview
             </span>
           )}
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 px-4 py-2 rounded-lg border border-[#232323] bg-white/10 text-sm text-white font-medium transition text-center shadow flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#f5f5f7] focus:ring-offset-2"
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              boxShadow: "0 2px 8px 0 rgba(0,0,0,0.10)",
-            }}
-          >
-            <FaGithub className="inline-block" />
-            GitHub
-          </a>
+          {href ? (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 px-4 py-2 rounded-lg border border-[#232323] bg-white/10 text-sm text-white font-medium transition text-center shadow flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#f5f5f7] focus:ring-offset-2"
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                boxShadow: "0 2px 8px 0 rgba(0,0,0,0.10)",
+              }}
+            >
+              <FaGithub className="inline-block" />
+              GitHub
+            </a>
+          ) : null}
         </div>
       </div>
     </MagicCard>
