@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaChevronLeft } from "react-icons/fa";
 import Background from "../../components/Background";
+import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
+import { db } from "../../firebase";
 
 const BLOG_ID = "why-start-blog";
 
@@ -10,13 +12,27 @@ export default function WhyStartBlog() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!localStorage.getItem(`views_${BLOG_ID}`)) {
-      localStorage.setItem(`views_${BLOG_ID}`, "1");
-      setViews(1);
-    } else {
-      const current = parseInt(localStorage.getItem(`views_${BLOG_ID}`), 10);
-      setViews(current);
+    async function updateViews() {
+      const ref = doc(db, "blogViews", BLOG_ID);
+      const snap = await getDoc(ref);
+
+      const localKey = `viewed_${BLOG_ID}`;
+      if (!localStorage.getItem(localKey)) {
+        if (snap.exists()) {
+          await updateDoc(ref, { views: increment(1) });
+          const updated = await getDoc(ref);
+          setViews(updated.data().views);
+        } else {
+          await setDoc(ref, { views: 1 });
+          setViews(1);
+        }
+        localStorage.setItem(localKey, "true");
+      } else {
+        // Just fetch the current count
+        setViews(snap.exists() ? snap.data().views : 0);
+      }
     }
+    updateViews();
   }, []);
 
   return (
@@ -141,8 +157,8 @@ export default function WhyStartBlog() {
             university’s sunhacks on 21st august in nashik.
           </p>
           <p className="text-zinc-400 mb-6">
-            what else - i love watching the Premier League and i'm an fpl addict to say
-            the least. i spend a lot more time than i should on making
+            what else - i love watching the Premier League and i'm an fpl addict
+            to say the least. i spend a lot more time than i should on making
             transfers.
           </p>
           <p className="text-zinc-400 mb-6 italic">
