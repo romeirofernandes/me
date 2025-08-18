@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "@fontsource-variable/dm-sans";
 @import "@fontsource/inter";
+@import "@fontsource-variable/lora"; /* <-- Add this import */
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -17,7 +18,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Lora Variable", "Lora", serif; 
 }
 
 button {
