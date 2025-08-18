@@ -5,6 +5,7 @@ import {
   FaEnvelope,
   FaMapMarkerAlt,
   FaTwitter,
+  FaGlobe,
 } from "react-icons/fa";
 
 export default function ProfileCard() {
@@ -72,6 +73,15 @@ export default function ProfileCard() {
           >
             <FaLinkedin />
             romeirofernandes
+          </a>
+          <a
+            href="https://blog.romeirofernandes.tech"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 md:gap-2 text-xs md:text-sm text-gray-400 hover:text-[#38bdf8] transition"
+          >
+            <FaGlobe />
+            blog.romeirofernandes.tech
           </a>
         </div>
       </div>
