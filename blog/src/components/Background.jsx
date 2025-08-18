@@ -9,7 +9,7 @@ export default function Background({ children, className = "" }) {
         style={{
           width: "calc(50% - 24rem)",
           background: `repeating-linear-gradient(
-            120deg,
+            140deg,
             rgba(255,255,255,0.1) 0px,
             rgba(255,255,255,0.1) 1px,
             transparent 0.1px,
@@ -24,7 +24,7 @@ export default function Background({ children, className = "" }) {
           left: "calc(50% + 24rem)",
           width: "calc(50% - 24rem)",
           background: `repeating-linear-gradient(
-            120deg,
+            140deg,
             rgba(255,255,255,0.1) 0px,
             rgba(255,255,255,0.1) 1px,
             transparent 0.1px,
