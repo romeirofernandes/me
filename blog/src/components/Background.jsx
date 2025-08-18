@@ -10,8 +10,8 @@ export default function Background({ children, className = "" }) {
           width: "calc(50% - 24rem)",
           background: `repeating-linear-gradient(
             140deg,
-            rgba(255,255,255,0.1) 0px,
-            rgba(255,255,255,0.1) 1px,
+            rgba(255,255,255,0.05) 0px,
+            rgba(255,255,255,0.05) 1px,
             transparent 0.1px,
             transparent 12px
           )`,
@@ -25,8 +25,8 @@ export default function Background({ children, className = "" }) {
           width: "calc(50% - 24rem)",
           background: `repeating-linear-gradient(
             140deg,
-            rgba(255,255,255,0.1) 0px,
-            rgba(255,255,255,0.1) 1px,
+            rgba(255,255,255,0.05) 0px,
+            rgba(255,255,255,0.05) 1px,
             transparent 0.1px,
             transparent 12px
           )`,
