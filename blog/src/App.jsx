@@ -1,33 +1,19 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Background from "./components/Background";
 import { Input } from "@/components/ui/input";
 import { FaSearch } from "react-icons/fa";
+import FunFacts from "./components/FunFacts";
+import Resources from "./components/Resources";
+import BlogList from "./components/BlogList";
 
 // Utility for debouncing
 function useDebouncedValue(value, delay = 300) {
   const [debounced, setDebounced] = useState(value);
-  useEffect(() => {
+  React.useEffect(() => {
     const handler = setTimeout(() => setDebounced(value), delay);
     return () => clearTimeout(handler);
   }, [value, delay]);
   return debounced;
-}
-
-// Calculate age in years (with decimals)
-function useLiveAge(birthDate) {
-  const [age, setAge] = useState("");
-  useEffect(() => {
-    const updateAge = () => {
-      const now = new Date();
-      const diff = now - birthDate;
-      const years = diff / (365.25 * 24 * 60 * 60 * 1000);
-      setAge(years.toFixed(8));
-    };
-    updateAge();
-    const interval = setInterval(updateAge, 100);
-    return () => clearInterval(interval);
-  }, [birthDate]);
-  return age;
 }
 
 const funFacts = [
@@ -77,54 +63,14 @@ export default function App() {
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebouncedValue(search, 300);
   const birthDate = useRef(new Date("2005-10-11T02:37:00Z"));
-  const age = useLiveAge(birthDate.current);
-
-  const filteredBlogs = blogs.filter(
-    (blog) =>
-      blog.title.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
-      blog.description.toLowerCase().includes(debouncedSearch.toLowerCase())
-  );
 
   return (
     <Background>
       <div className="mx-auto w-full max-w-3xl px-2 sm:px-4 py-8 font-sans">
         {/* Top columns */}
         <div className="flex flex-col sm:flex-row justify-between gap-8 mb-8">
-          {/* Fun Facts */}
-          <div>
-            <h2 className="font-serif text-lg font-bold mb-3 text-white">
-              Fun Facts
-            </h2>
-            <ul className="text-sm text-zinc-400 space-y-2">
-              <li>
-                - I am <span className="font-mono text-[#38bdf8]">{age}</span>{" "}
-                years old
-              </li>
-              {funFacts.map((fact) => (
-                <li key={fact}>{fact}</li>
-              ))}
-            </ul>
-          </div>
-          {/* Resources */}
-          <div className="text-right">
-            <h2 className="font-serif text-lg font-bold mb-3 text-white">
-              Links
-            </h2>
-            <ul className="text-sm text-zinc-400 space-y-2">
-              {resources.map((r) => (
-                <li key={r.name}>
-                  <a
-                    href={r.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[#38bdf8] transition"
-                  >
-                    {r.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <FunFacts birthDate={birthDate.current} facts={funFacts} />
+          <Resources resources={resources} />
         </div>
         {/* Search Bar */}
         <div className="flex items-center gap-2 mb-8 border border-[#232323] px-3 py-2 rounded-none bg-transparent">
@@ -138,33 +84,7 @@ export default function App() {
           />
         </div>
         {/* Blog List */}
-        <div className="flex flex-col gap-0">
-          {filteredBlogs.length === 0 && (
-            <div className="text-zinc-500 text-center py-8">
-              No results found.
-            </div>
-          )}
-          {filteredBlogs.map((blog, idx) => (
-            <React.Fragment key={blog.title}>
-              <div className="px-1 py-4 mb-0 flex flex-col gap-2">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                  <h3 className="font-serif text-lg font-bold text-white">
-                    {blog.title}
-                  </h3>
-                  <div className="flex gap-4 text-xs text-zinc-500 font-mono">
-                    <span>{blog.views} views</span>
-                    <span>{blog.read}-min read</span>
-                  </div>
-                </div>
-                <p className="text-sm text-zinc-400">{blog.description}</p>
-              </div>
-              {/* Horizontal line except after last blog */}
-              {idx < filteredBlogs.length - 1 && (
-                <hr className="border-t border-[#232323] my-6" />
-              )}
-            </React.Fragment>
-          ))}
-        </div>
+        <BlogList blogs={blogs} search={debouncedSearch} />
       </div>
     </Background>
   );
