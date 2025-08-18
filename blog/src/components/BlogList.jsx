@@ -10,9 +10,7 @@ export default function BlogList({ blogs, search }) {
   return (
     <div className="flex flex-col gap-0">
       {filteredBlogs.length === 0 && (
-        <div className="text-zinc-500 text-center py-8">
-          No results found.
-        </div>
+        <div className="text-zinc-500 text-center py-8">No results found.</div>
       )}
       {filteredBlogs.map((blog, idx) => (
         <React.Fragment key={blog.title}>

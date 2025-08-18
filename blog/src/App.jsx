@@ -66,11 +66,13 @@ export default function App() {
 
   return (
     <Background>
-      <div className="mx-auto w-full max-w-3xl px-2 sm:px-4 py-8 font-sans">
+      <div className="mx-auto w-full max-w-3xl px-2 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
         {/* Top columns */}
         <div className="flex flex-col sm:flex-row justify-between gap-8 mb-8">
           <FunFacts birthDate={birthDate.current} facts={funFacts} />
-          <Resources resources={resources} />
+          <div className="hidden sm:block">
+            <Resources resources={resources} highlight="Writings" />
+          </div>
         </div>
         {/* Search Bar */}
         <div className="flex items-center gap-2 mb-8 border border-[#232323] px-3 py-2 rounded-none bg-transparent">
@@ -83,8 +85,10 @@ export default function App() {
             className="bg-transparent border-none text-white placeholder:text-zinc-500 focus:ring-0 focus:outline-none flex-1 rounded-none"
           />
         </div>
-        {/* Blog List */}
         <BlogList blogs={blogs} search={debouncedSearch} />
+        <div className="mt-8 block sm:hidden">
+          <Resources resources={resources} highlight="Writings" />
+        </div>
       </div>
     </Background>
   );
