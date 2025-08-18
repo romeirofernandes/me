@@ -29,36 +29,6 @@ const resources = [
   { name: "LinkedIn", url: "https://linkedin.com/in/romeirofernandes" },
 ];
 
-const blogs = [
-  {
-    title: "How I built my link blog",
-    description:
-      "A breakdown of my tech stack, design choices, and deployment for this blog.",
-    views: 1234,
-    read: 4,
-  },
-  {
-    title: "Why I love Hono.js",
-    description:
-      "Exploring the simplicity and power of Hono.js for modern web APIs.",
-    views: 876,
-    read: 3,
-  },
-  {
-    title: "FPL: Overthinking and Winning",
-    description:
-      "How overthinking in Fantasy Premier League sometimes pays off.",
-    views: 542,
-    read: 2,
-  },
-  {
-    title: "Guitar: My Creative Escape",
-    description: "Why picking up the guitar helps me reset and recharge.",
-    views: 321,
-    read: 2,
-  },
-];
-
 export default function Landing() {
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebouncedValue(search, 300);
@@ -85,7 +55,7 @@ export default function Landing() {
             className="bg-transparent border-none text-white placeholder:text-zinc-500 focus:ring-0 focus:outline-none flex-1 rounded-none"
           />
         </div>
-        <BlogList blogs={blogs} search={debouncedSearch} />
+        <BlogList search={debouncedSearch} />
         <div className="mt-8 block sm:hidden">
           <Resources resources={resources} highlight="Writings" />
         </div>
