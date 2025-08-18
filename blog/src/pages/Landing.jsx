@@ -36,7 +36,7 @@ export default function Landing() {
 
   return (
     <Background>
-      <div className="mx-auto w-full max-w-3xl px-2 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
+      <div className="mx-auto w-full max-w-3xl px-4 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
         {/* Top columns */}
         <div className="flex flex-col sm:flex-row justify-between gap-8 mb-8">
           <FunFacts birthDate={birthDate.current} facts={funFacts} />

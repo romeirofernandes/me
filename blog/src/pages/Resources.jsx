@@ -457,6 +457,10 @@ export default function ResourcesPage() {
             </table>
           </div>
         </div>
+        
+        <div className="mt-8 block sm:hidden">
+          <Resources resources={resources} highlight="Resources" />
+        </div>
       </div>
     </Background>
   );

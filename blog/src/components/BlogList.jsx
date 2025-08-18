@@ -5,7 +5,7 @@ const blogs = [
   {
     title: "Why am I starting a blog?",
     description: "What this blog is about and what you can expect.",
-    date: "2025-08-18",
+    date: "18-08-2025",
     slug: "why-start-blog",
     read: 2,
   },

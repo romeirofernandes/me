@@ -21,7 +21,7 @@ export default function WhyStartBlog() {
 
   return (
     <Background>
-      <div className="mx-auto w-full max-w-3xl px-2 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
+      <div className="mx-auto w-full max-w-3xl px-4 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
         {/* Back Button */}
         <button
           onClick={() => navigate(-1)}
