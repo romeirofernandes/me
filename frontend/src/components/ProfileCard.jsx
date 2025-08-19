@@ -32,7 +32,7 @@ export default function ProfileCard() {
           <div className="text-lg sm:text-xl md:text-2xl font-bold text-[#f5f5f7]">
             Romeiro Fernandes
           </div>
-          <div className="text-xs md:text-sm text-gray-400">
+          <div id="about" className="text-xs md:text-sm text-gray-400">
             19, Computer Engineer
           </div>
           {/* Socials: always top-right */}
