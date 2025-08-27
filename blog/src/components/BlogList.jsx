@@ -11,6 +11,13 @@ const blogs = [
     slug: "why-start-blog",
     read: 2,
   },
+  {
+    title: "5x hackathon winner",
+    description: "Won domain prize at SUNHACKS 2025 with 550+ teams. Here's what I learned...",
+    date: "24-08-2025",
+    slug: "5x-hackathon-winner",
+    read: 5,
+  },
 ];
 
 function useViewCount(slug) {
