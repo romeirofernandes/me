@@ -141,15 +141,13 @@ export default function FiveXHackathonWinner() {
           <h2 className="font-serif text-xl font-bold mb-2 text-white">
             the project
           </h2>
-
           <p className="text-zinc-400 mb-6">
             now the project, we had 3 judging rounds and 1 final round. from the
-            21 zones that were there present, 2 were selected from each for the finals. we
-            took StudyGenie as our problem statement because we had made
-            something similar for another hackathon.
+            21 zones that were there present, 2 were selected from each for the
+            finals. we took StudyGenie as our problem statement because we had
+            made something similar for another hackathon.
           </p>
-
-          {/* Problem Statement Image */}
+          /* Problem Statement Image */
           <div className="mb-6">
             <img
               src="/sunhacks_ps.png"
@@ -160,7 +158,6 @@ export default function FiveXHackathonWinner() {
               The problem statement we chose at SUNHACKS 2025
             </p>
           </div>
-
           <p className="text-zinc-400 mb-6">
             we took a feature idea from that and started building upon it. we
             had loads of features and presented decently throughout the rounds i
@@ -173,22 +170,58 @@ export default function FiveXHackathonWinner() {
             >
               studyaid-sunhacks.vercel.app
             </a>{" "}
-            (hosted using vercel and render, wait 50 secs for the server to wake up).
+            (hosted using vercel and render, wait 50 secs for the server to wake
+            up).
           </p>
-
           <p className="text-zinc-400 mb-6">
             i enjoyed this entire hackathon only because of my friends who were
             also there. in all, 3 teams from our college won -
           </p>
-
           <ul className="list-disc list-inside text-zinc-400 mb-6">
-            <li>1st Place, Team 4i - very cracked, same year as us</li>
-            <li>Team PONY - me, aliqyaan, reniyas, dylan</li>
+            <li>Team 4i - very cracked, same year as us, 1st Place</li>
+            <li>
+              Team PONY -{" "}
+              <a
+                href="https://romeirofernandes.tech"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#38bdf8] underline"
+              >
+                me
+              </a>
+              ,{" "}
+              <a
+                href="https://aliqyaan-mahimwala.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#38bdf8] underline"
+              >
+                aliqyaan
+              </a>
+              ,{" "}
+              <a
+                href="https://www.linkedin.com/in/reniyas-kanagaraj"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#38bdf8] underline"
+              >
+                reniyas
+              </a>
+              ,{" "}
+              <a
+                href="https://www.linkedin.com/in/dylan-mascarenhas-b33851323/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#38bdf8] underline"
+              >
+                dylan
+              </a>
+              , Domain Winners/Consolation
+            </li>
             <li>
               Team EnigmaTrio - seniors from be, Domain Winners/Consolation
             </li>
           </ul>
-
           {/* Team Photo */}
           <div className="mb-6">
             <img
