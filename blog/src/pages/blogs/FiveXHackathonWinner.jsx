@@ -147,7 +147,6 @@ export default function FiveXHackathonWinner() {
             finals. we took StudyGenie as our problem statement because we had
             made something similar for another hackathon.
           </p>
-          /* Problem Statement Image */
           <div className="mb-6">
             <img
               src="/sunhacks_ps.png"
