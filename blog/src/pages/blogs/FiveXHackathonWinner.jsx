@@ -144,7 +144,7 @@ export default function FiveXHackathonWinner() {
 
           <p className="text-zinc-400 mb-6">
             now the project, we had 3 judging rounds and 1 final round. from the
-            21 zones that were there present, 2 were selected for the finals. we
+            21 zones that were there present, 2 were selected from each for the finals. we
             took StudyGenie as our problem statement because we had made
             something similar for another hackathon.
           </p>
@@ -185,7 +185,7 @@ export default function FiveXHackathonWinner() {
             <li>1st Place, Team 4i - very cracked, same year as us</li>
             <li>Team PONY - me, aliqyaan, reniyas, dylan</li>
             <li>
-              Domain Winners/Consolation, Team EnigmaTrio - seniors from be
+              Team EnigmaTrio - seniors from be, Domain Winners/Consolation
             </li>
           </ul>
 
