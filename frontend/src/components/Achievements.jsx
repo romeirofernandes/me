@@ -90,7 +90,7 @@ export default function Achievements() {
       className="mb-10 w-full max-w-xs sm:max-w-sm md:max-w-2xl mx-auto"
     >
       <motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight">
-        4x Hackathon Winner.
+        5x Hackathon Winner.
       </motion.h2>
       <Carousel className="w-full">
         <CarouselContent>
