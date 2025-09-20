@@ -23,8 +23,8 @@ const funFacts = [
 ];
 
 const resources = [
-  { name: "Writings", url: "/" },
   { name: "Resources", url: "/resources" },
+  { name: "Hackathons", url: "/hackathons" },
   { name: "Twitter", url: "https://twitter.com/whotookromeiro" },
   { name: "LinkedIn", url: "https://linkedin.com/in/romeirofernandes" },
 ];
