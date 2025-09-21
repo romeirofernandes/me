@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaChevronLeft } from "react-icons/fa";
 import Background from "../../components/Background";
+import ImageModal from "../../components/ImageModal";
 import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase";
 
@@ -112,16 +113,11 @@ export default function MacbookExamsAndMore() {
             on my macbook, yet here i am.
           </p>
 
-          <div className="mb-6">
-            <img
-              src="/dia-browser.jpeg"
-              alt="Dia Browser on macOS"
-              className="w-full rounded-lg border border-[#232323]"
-            />
-            <p className="text-xs text-zinc-500 mt-2 text-center italic">
-              The dia browser interface on macOS
-            </p>
-          </div>
+          <ImageModal
+            src="/dia-browser.jpeg"
+            alt="Dia Browser on macOS"
+            caption="The dia browser interface on macOS"
+          />
 
           <p className="text-zinc-400 mb-6">
             the dia browser is hands down the best browser ive ever used - for
@@ -141,14 +137,11 @@ export default function MacbookExamsAndMore() {
           </p>
 
           <div className="mb-6">
-            <img
+            <ImageModal
               src="/github-contri.png"
               alt="GitHub contributions graph showing break during exams"
-              className="w-full rounded-lg border border-[#232323]"
+              caption="A whole week of no contributions because of exams :("
             />
-            <p className="text-xs text-zinc-500 mt-2 text-center italic">
-              A whole week of no contributions because of exams :(
-            </p>
           </div>
 
           <p className="text-zinc-400 mb-6">

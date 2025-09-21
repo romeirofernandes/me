@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaChevronLeft } from "react-icons/fa";
 import Background from "../../components/Background";
+import ImageModal from "../../components/ImageModal";
 import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase";
 
@@ -147,16 +148,13 @@ export default function FiveXHackathonWinner() {
             finals. we took StudyGenie as our problem statement because we had
             made something similar for another hackathon.
           </p>
-          <div className="mb-6">
-            <img
-              src="/sunhacks_ps.png"
-              alt="SUNHACKS Problem Statement"
-              className="w-full rounded-lg border border-[#232323]"
-            />
-            <p className="text-xs text-zinc-500 mt-2 text-center italic">
-              The problem statement we chose at SUNHACKS 2025
-            </p>
-          </div>
+
+          <ImageModal
+            src="/sunhacks_ps.png"
+            alt="SUNHACKS Problem Statement"
+            caption="The problem statement we chose at SUNHACKS 2025"
+          />
+
           <p className="text-zinc-400 mb-6">
             we took a feature idea from that and started building upon it. we
             had loads of features and presented decently throughout the rounds i
@@ -221,17 +219,12 @@ export default function FiveXHackathonWinner() {
               Team EnigmaTrio - seniors from be, Domain Winners/Consolation
             </li>
           </ul>
-          {/* Team Photo */}
-          <div className="mb-6">
-            <img
-              src="/team_pony.jpeg"
-              alt="Team PONY with award at SUNHACKS 2025"
-              className="w-full rounded-lg border border-[#232323]"
-            />
-            <p className="text-xs text-zinc-500 mt-2 text-center italic">
-              Team PONY with our domain winner award at SUNHACKS 2025
-            </p>
-          </div>
+
+          <ImageModal
+            src="/team_pony.jpeg"
+            alt="Team PONY with award at SUNHACKS 2025"
+            caption="Team PONY with our domain winner award at SUNHACKS 2025"
+          />
         </section>
 
         <section className="mb-8">
