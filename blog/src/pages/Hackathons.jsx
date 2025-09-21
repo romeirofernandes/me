@@ -105,15 +105,15 @@ export default function HackathonsPage() {
         {/* Statistics */}
         <div className="mt-12">
           <div className="grid grid-cols-3 gap-4 mx-2">
-            <div className="bg-[#18181b] border border-[#232323] rounded-lg p-4 text-center">
+            <div className="bg-[#18181b] border border-[#232323] rounded-sm p-4 text-center">
               <div className="text-2xl font-bold text-[#f5f5f7]">{totalHackathons}</div>
               <div className="text-sm text-zinc-400">Total Hackathons</div>
             </div>
-            <div className="bg-[#18181b] border border-[#232323] rounded-lg p-4 text-center">
+            <div className="bg-[#18181b] border border-[#232323] rounded-sm p-4 text-center">
               <div className="text-2xl font-bold text-yellow-400">5</div>
               <div className="text-sm text-zinc-400">Wins</div>
             </div>
-            <div className="bg-[#18181b] border border-[#232323] rounded-lg p-4 text-center">
+            <div className="bg-[#18181b] border border-[#232323] rounded-sm p-4 text-center">
               <div className="text-2xl font-bold text-[#38bdf8]">{(5 / totalHackathons).toFixed(2)}</div>
               <div className="text-sm text-zinc-400">Success Rate</div>
             </div>

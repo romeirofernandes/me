@@ -2,6 +2,7 @@
 @import "@fontsource-variable/dm-sans";
 @import "@fontsource/inter";
 @import "@fontsource-variable/lora"; /* <-- Add this import */
+@import "@fontsource/instrument-serif";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -18,7 +19,9 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Lora Variable", "Lora", serif; 
+  font-family: "Instrument Serif", "Lora Variable", "Lora", serif; 
+  letter-spacing: 0.072em; 
+  font-weight: 800;
 }
 
 button {
