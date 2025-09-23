@@ -37,7 +37,7 @@ export default function Landing() {
 
   useEffect(() => {
     const today = new Date();
-    const isOctober11 = today.getMonth() === 8 && today.getDate() === 23;
+    const isOctober11 = today.getMonth() === 9 && today.getDate() === 11;
     
     if (isOctober11 && balloonsRef.current) {
       const timer = setTimeout(() => {
