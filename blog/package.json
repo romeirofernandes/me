@@ -25,6 +25,7 @@
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.539.0",
     "motion": "^12.23.12",
+    "balloons-js": "0.0.3",
     "qss": "^3.0.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
