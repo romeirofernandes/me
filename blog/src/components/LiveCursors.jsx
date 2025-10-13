@@ -229,24 +229,20 @@ export default function LiveCursors({ isEnabled, onToggle }) {
 
 function Cursor({ cursor, userLocation }) {
   let distanceText = "";
-  if (
-    userLocation &&
-    cursor.location &&
-    typeof userLocation.lat === "number" &&
-    typeof userLocation.lon === "number" &&
-    typeof cursor.location.lat === "number" &&
-    typeof cursor.location.lon === "number" &&
-    userLocation.lat !== 0 &&
-    userLocation.lon !== 0 &&
-    cursor.location.lat !== 0 &&
-    cursor.location.lon !== 0
-  ) {
-    const distance = calculateDistance(
-      userLocation.lat,
-      userLocation.lon,
-      cursor.location.lat,
-      cursor.location.lon
-    );
+
+  // Parse coordinates as numbers
+  const myLat = Number(userLocation?.lat);
+  const myLon = Number(userLocation?.lon);
+  const otherLat = Number(cursor.location?.lat);
+  const otherLon = Number(cursor.location?.lon);
+
+  // Check for valid coordinates (not NaN, not zero, not undefined)
+  const validCoords =
+    !isNaN(myLat) && !isNaN(myLon) && !isNaN(otherLat) && !isNaN(otherLon) &&
+    myLat !== 0 && myLon !== 0 && otherLat !== 0 && otherLon !== 0;
+
+  if (validCoords) {
+    const distance = calculateDistance(myLat, myLon, otherLat, otherLon);
     distanceText = `${distance}km away • `;
   }
 
