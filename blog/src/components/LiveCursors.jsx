@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { ref, set, onValue, remove, onDisconnect } from 'firebase/database';
+import { ref, set, onValue, remove, onDisconnect, get } from 'firebase/database';
 import { database } from '../firebase';
 import { Eye, EyeOff } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
@@ -236,6 +236,28 @@ export default function LiveCursors({ isEnabled, onToggle }) {
       }
     }
   }, [isEnabled]);
+
+  useEffect(() => {
+    if (!isEnabled) return;
+
+    const interval = setInterval(async () => {
+      const cursorsRef = ref(database, `cursors/${currentPath.replace(/\//g, '_')}`);
+      const snapshot = await get(cursorsRef);
+      const now = Date.now();
+
+      if (snapshot.exists()) {
+        const data = snapshot.val();
+        Object.entries(data).forEach(([id, cursor]) => {
+          if (cursor.timestamp && now - cursor.timestamp > 60000) {
+            // Remove inactive cursor from database
+            remove(ref(database, `cursors/${currentPath.replace(/\//g, '_')}/${id}`));
+          }
+        });
+      }
+    }, 30000); // every 30 seconds
+
+    return () => clearInterval(interval);
+  }, [isEnabled, currentPath]);
 
   return (
     <>
