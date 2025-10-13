@@ -110,12 +110,15 @@ export default function LiveCursors({ isEnabled, onToggle }) {
     if (!isEnabled) return;
 
     const cursorsRef = ref(database, `cursors/${currentPath.replace(/\//g, '_')}`);
-    
+
     const unsubscribe = onValue(cursorsRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
+        const now = Date.now();
         const filteredCursors = Object.entries(data)
-          .filter(([id]) => id !== userId)
+          .filter(([id, cursor]) => 
+            id !== userId && cursor.timestamp && now - cursor.timestamp < 60000 // 1 minute
+          )
           .reduce((acc, [id, cursor]) => ({ ...acc, [id]: cursor }), {});
         setCursors(filteredCursors);
       } else {
