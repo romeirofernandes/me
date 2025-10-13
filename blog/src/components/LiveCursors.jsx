@@ -177,19 +177,31 @@ export default function LiveCursors({ isEnabled, onToggle }) {
   };
 
   const handleLocationAllow = async (coords) => {
+    let lat, lon, city, country;
+
+    // Get coordinates from browser geolocation
     if (coords && typeof coords.lat === 'number' && typeof coords.lon === 'number') {
-      // Use browser geolocation
-      setLocation({
-        city: 'Your Location',
-        country: 'Unknown',
-        lat: coords.lat,
-        lon: coords.lon
-      });
+      lat = coords.lat;
+      lon = coords.lon;
     } else {
-      // Fallback to IP-based location
-      const loc = await fetchLocationFromIP();
-      setLocation(loc);
+      // Fallback to IP coordinates
+      const ipData = await fetchLocationFromIP();
+      lat = ipData.lat;
+      lon = ipData.lon;
     }
+
+    // Always get city/country from IP API
+    try {
+      const response = await fetch('https://ipinfo.io/json?token=66b09d2d289b40');
+      const data = await response.json();
+      city = data.city || 'Unknown';
+      country = COUNTRY_MAP[data.country] || data.country || 'Unknown';
+    } catch {
+      city = 'Unknown';
+      country = 'Location';
+    }
+
+    setLocation({ city, country, lat, lon });
   };
 
   const handleLocationDeny = () => {
@@ -200,7 +212,22 @@ export default function LiveCursors({ isEnabled, onToggle }) {
     if (isEnabled) {
       const permission = localStorage.getItem('cursor-location-permission');
       if (permission === 'allowed') {
-        fetchLocation();
+        // Request browser geolocation first
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            (pos) => {
+              const { latitude, longitude } = pos.coords;
+              handleLocationAllow({ lat: latitude, lon: longitude });
+            },
+            () => {
+              // Fallback to IP if browser geolocation fails
+              fetchLocationFromIP().then(loc => setLocation(loc));
+            }
+          );
+        } else {
+          // Fallback to IP if geolocation not supported
+          fetchLocationFromIP().then(loc => setLocation(loc));
+        }
       } else if (permission === 'denied') {
         setLocation({ city: 'Anonymous', country: 'User', lat: 0, lon: 0 });
       }
@@ -317,7 +344,22 @@ function LocationPermission({ onAllow, onDeny }) {
   const handleAllow = () => {
     localStorage.setItem('cursor-location-permission', 'allowed');
     setIsVisible(false);
-    onAllow();
+
+    // Use browser geolocation
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const { latitude, longitude } = pos.coords;
+          onAllow({ lat: latitude, lon: longitude });
+        },
+        () => {
+          // If denied or failed, fallback to IP
+          onAllow(null);
+        }
+      );
+    } else {
+      onAllow(null);
+    }
   };
 
   const handleDeny = () => {
@@ -346,7 +388,7 @@ function LocationPermission({ onAllow, onDeny }) {
         </div>
         
         <p className="text-[#a1a1aa] mb-6 text-sm leading-relaxed">
-          See where other visitors are from! Your city and country will be displayed when others hover over your cursor. No precise coordinates are stored.
+          See where other visitors are from and how far away they are! Your precise location is used only for distance calculation.
         </p>
         
         <div className="flex gap-3">
