@@ -15,7 +15,23 @@ export default function LocationPermission({ onAllow, onDeny }) {
   const handleAllow = () => {
     localStorage.setItem('cursor-location-permission', 'allowed');
     setIsVisible(false);
-    onAllow();
+
+    // Use browser geolocation
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const { latitude, longitude } = pos.coords;
+          // Pass coordinates to parent
+          onAllow({ lat: latitude, lon: longitude });
+        },
+        () => {
+          // If denied or failed, fallback to IP
+          onAllow(null);
+        }
+      );
+    } else {
+      onAllow(null);
+    }
   };
 
   const handleDeny = () => {

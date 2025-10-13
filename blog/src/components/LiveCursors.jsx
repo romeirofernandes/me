@@ -160,25 +160,36 @@ export default function LiveCursors({ isEnabled, onToggle }) {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [userId, location, isEnabled, currentPath]);
 
-  const fetchLocation = async () => {
+  const fetchLocationFromIP = async () => {
     try {
       const response = await fetch('https://ipinfo.io/json?token=66b09d2d289b40');
       const data = await response.json();
       const [lat, lon] = data.loc.split(',').map(Number);
-      setLocation({
+      return {
         city: data.city || 'Unknown',
         country: COUNTRY_MAP[data.country] || data.country || 'Unknown',
         lat,
         lon
-      });
-    } catch (error) {
-      console.error('Failed to fetch location:', error);
-      setLocation({ city: 'Unknown', country: 'Location', lat: 0, lon: 0 });
+      };
+    } catch {
+      return { city: 'Unknown', country: 'Location', lat: 0, lon: 0 };
     }
   };
 
-  const handleLocationAllow = () => {
-    fetchLocation();
+  const handleLocationAllow = async (coords) => {
+    if (coords && typeof coords.lat === 'number' && typeof coords.lon === 'number') {
+      // Use browser geolocation
+      setLocation({
+        city: 'Your Location',
+        country: 'Unknown',
+        lat: coords.lat,
+        lon: coords.lon
+      });
+    } else {
+      // Fallback to IP-based location
+      const loc = await fetchLocationFromIP();
+      setLocation(loc);
+    }
   };
 
   const handleLocationDeny = () => {
