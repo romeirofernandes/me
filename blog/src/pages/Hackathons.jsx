@@ -30,6 +30,7 @@ const hackathons = [
   { name: "KLEOS 3.0", result: "Lost", status: "lost" },
   { name: "Sunhacks", result: "Domain Winner", status: "first" },
   { name: "SIH 2025", result: "Lost", status: "lost" },
+  { name: "BNB 25", result: "Finalists", status: "success" },
 ];
 
 const getStatusColor = (status) => {
