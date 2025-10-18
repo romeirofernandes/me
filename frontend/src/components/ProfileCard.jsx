@@ -33,7 +33,7 @@ export default function ProfileCard() {
             Romeiro Fernandes
           </div>
           <div id="about" className="text-xs md:text-sm text-gray-400">
-            19, Computer Engineer
+            20, Computer Engineer
           </div>
           {/* Socials: always top-right */}
           <div className="flex gap-3 md:gap-6 absolute right-0 top-0">
