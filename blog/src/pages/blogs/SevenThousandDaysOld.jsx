@@ -93,7 +93,7 @@ export default function SevenThousandDaysOld() {
           <ImageModal
             src="/finalists.png"
             alt="BNB 2025 Finalists"
-            caption="The finalists list for BNB 2025 - three teams from our college qualified"
+            caption="The gc made it to the finals :)"
           />
 
           <p className="text-zinc-400 mb-6">
