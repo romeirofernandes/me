@@ -3,6 +3,7 @@
 @import "@fontsource/inter";
 @import "@fontsource-variable/lora"; /* <-- Add this import */
 @import "@fontsource/instrument-serif";
+@import "@fontsource-variable/geist";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -10,7 +11,7 @@
 body {
   background-color: #080808;
   color: #f5f5f7;
-  font-family: "Inter", sans-serif;
+  font-family: "Geist Variable", sans-serif;
 }
 
 h1,

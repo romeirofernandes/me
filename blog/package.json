@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@fontsource-variable/dm-sans": "^5.2.6",
+    "@fontsource-variable/geist": "^5.2.8",
     "@fontsource-variable/lora": "^5.2.6",
     "@fontsource/dm-sans": "^5.2.6",
     "@fontsource/instrument-serif": "^5.2.8",

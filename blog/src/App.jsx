@@ -6,6 +6,7 @@ import HackathonsPage from "./pages/Hackathons";
 import WhyStartBlog from "./pages/blogs/WhyStartBlog";
 import FiveXHackathonWinner from "./pages/blogs/FiveXHackathonWinner";
 import MacbookExamsAndMore from "./pages/blogs/MacbookExamsAndMore";
+import SevenThousandDaysOld from "./pages/blogs/SevenThousandDaysOld";
 import { Analytics } from "@vercel/analytics/react";
 import LiveCursors from "./components/LiveCursors";
 
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/blogs/why-start-blog" element={<WhyStartBlog />} />
         <Route path="/blogs/5x-hackathon-winner" element={<FiveXHackathonWinner />} />
         <Route path="/blogs/macbook-exams-and-more" element={<MacbookExamsAndMore />} />
+        <Route path="/blogs/7305-days-old-now" element={<SevenThousandDaysOld />} />
       </Routes>
     </>
   );

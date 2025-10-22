@@ -27,6 +27,14 @@ const blogs = [
 		slug: "macbook-exams-and-more",
 		read: 6,
 	},
+	{
+		title: "7305 days old now :)",
+		description:
+			"Turned 20, qualified for BNB 25 finals, lost but got 2nd in college...",
+		date: "22-10-2025",
+		slug: "7305-days-old-now",
+		read: 5,
+	},
 ];
 
 function useViewCount(slug) {
