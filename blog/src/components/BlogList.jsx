@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
-const blogs = [
+export const blogs = [
 	{
 		title: "Why am I starting a blog?",
 		description: "What this blog is about and what you can expect.",

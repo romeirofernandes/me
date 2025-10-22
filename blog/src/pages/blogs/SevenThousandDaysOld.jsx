@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Background from "../../components/Background";
 import ImageModal from "../../components/ImageModal";
 import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase";
+import { blogs } from "../../components/BlogList";
+
+const currentSlug = "7305-days-old-now";
+const nextBlog = blogs[blogs.findIndex((b) => b.slug === currentSlug) + 1] || null;
 
 const BLOG_ID = "7305-days-old-now";
 
@@ -34,6 +38,10 @@ export default function SevenThousandDaysOld() {
     }
     updateViews();
   }, []);
+
+  const handleNext = () => {
+    if (nextBlog) navigate(`/blogs/${nextBlog.slug}`);
+  };
 
   return (
     <Background>
@@ -204,6 +212,26 @@ export default function SevenThousandDaysOld() {
             that’s it for this one — a very happy diwali to each one of you :)
           </p>
         </section>
+
+         {/* Navigation Buttons */}
+        <div className="flex justify-between">
+          <button
+            onClick={() => navigate(-1)}
+            className="flex items-center gap-2 text-zinc-400 hover:text-[#38bdf8] transition"
+          >
+            <FaChevronLeft />
+            <span className="font-medium">Previous</span>
+          </button>
+          {nextBlog && (
+            <button
+              onClick={handleNext}
+              className="flex items-center gap-2 text-zinc-400 hover:text-[#38bdf8] transition"
+            >
+              <span className="font-medium">Next</span>
+              <FaChevronRight />
+            </button>
+          )}
+        </div>
 
         <hr className="border-t border-[#232323] my-6" />
 

@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Background from "../../components/Background";
 import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase";
+import { blogs } from "../../components/BlogList"; // adjust path if needed
 
 const BLOG_ID = "why-start-blog";
+
+// Utility to get next blog
+function getNextBlog(currentSlug) {
+  const idx = blogs.findIndex((b) => b.slug === currentSlug);
+  return idx >= 0 && idx < blogs.length - 1 ? blogs[idx + 1] : null;
+}
 
 export default function WhyStartBlog() {
   const [views, setViews] = useState(0);
   const navigate = useNavigate();
+  const currentSlug = "why-start-blog";
+  const nextBlog = blogs[blogs.findIndex((b) => b.slug === currentSlug) + 1] || null;
 
   useEffect(() => {
     async function updateViews() {
@@ -35,17 +44,24 @@ export default function WhyStartBlog() {
     updateViews();
   }, []);
 
+  const handleNext = () => {
+    if (nextBlog) navigate(`/blogs/${nextBlog.slug}`);
+  };
+
   return (
     <Background>
       <div className="mx-auto w-full max-w-3xl px-4 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
-        {/* Back Button */}
-        <button
-          onClick={() => navigate(-1)}
-          className="flex items-center gap-2 text-zinc-400 hover:text-[#38bdf8] mb-6 transition"
-        >
-          <FaChevronLeft />
-          <span className="font-medium">back</span>
-        </button>
+        {/* Navigation Buttons */}
+        <div className="flex items-center justify-between mb-6">
+          <button
+            onClick={() => navigate(-1)}
+            className="flex items-center gap-2 text-zinc-400 hover:text-[#38bdf8] transition"
+          >
+            <FaChevronLeft />
+            <span className="font-medium">back</span>
+          </button>
+          
+        </div>
 
         <h1 className="font-serif text-3xl font-bold mb-4 text-white">
           why am i starting a blog?
@@ -154,7 +170,7 @@ export default function WhyStartBlog() {
             i participate in hackathons like my life depends on it. i have won 4
             hackathons so far and have built countless projects during the same.
             there are too many hackathons upcoming; next one is sandip
-            university’s sunhacks on 21st august in nashik.
+           
           </p>
           <p className="text-zinc-400 mb-6">
             what else - i love watching the Premier League and i'm an fpl addict
@@ -173,6 +189,18 @@ export default function WhyStartBlog() {
             there’s one).
           </p>
         </section>
+
+        {nextBlog && (
+          <div className="flex justify-end mt-8">
+            <button
+              onClick={handleNext}
+              className="flex items-center gap-2 text-zinc-400 hover:text-[#38bdf8] transition"
+            >
+              <span className="font-medium">next</span>
+              <FaChevronRight />
+            </button>
+          </div>
+        )}
 
         <hr className="border-t border-[#232323] my-6" />
 
