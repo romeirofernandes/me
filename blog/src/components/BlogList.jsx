@@ -37,26 +37,29 @@ export const blogs = [
 	},
 ];
 
-function useViewCount(slug) {
-	const [views, setViews] = useState(0);
-	useEffect(() => {
-		async function fetchViews() {
-			const ref = doc(db, "blogViews", slug);
-			const snap = await getDoc(ref);
-			setViews(snap.exists() ? snap.data().views : 0);
-		}
-		fetchViews();
-	}, [slug]);
-	return views;
-}
-
 export default function BlogList({ search }) {
 	const navigate = useNavigate();
-	const filteredBlogs = blogs.filter(
-		(blog) =>
-			blog.title.toLowerCase().includes(search.toLowerCase()) ||
-			blog.description.toLowerCase().includes(search.toLowerCase())
-	);
+	const [viewCounts, setViewCounts] = useState({});
+	const filteredBlogs = [...blogs]
+		.filter(
+			(blog) =>
+				blog.title.toLowerCase().includes(search.toLowerCase()) ||
+				blog.description.toLowerCase().includes(search.toLowerCase())
+		)
+		.reverse(); // newest blogs on top
+
+	useEffect(() => {
+		async function fetchAllViews() {
+			const counts = {};
+			for (const blog of blogs) {
+				const ref = doc(db, "blogViews", blog.slug);
+				const snap = await getDoc(ref);
+				counts[blog.slug] = snap.exists() ? snap.data().views : 0;
+			}
+			setViewCounts(counts);
+		}
+		fetchAllViews();
+	}, []);
 
 	return (
 		<div className="flex flex-col gap-0">
@@ -65,34 +68,29 @@ export default function BlogList({ search }) {
 					No results found.
 				</div>
 			)}
-			{filteredBlogs.map((blog, idx) => {
-				const views = useViewCount(blog.slug);
-				return (
-					<React.Fragment key={blog.slug}>
-						<div
-							className="px-1 py-4 mb-0 flex flex-col gap-2 cursor-pointer"
-							onClick={() => navigate(`/blogs/${blog.slug}`)}
-						>
-							<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-								<h3 className="font-serif text-lg font-bold text-white">
-									{blog.title}
-								</h3>
-								<div className="flex gap-4 text-xs text-zinc-500 font-mono">
-									<span>{blog.date}</span>
-									<span>{blog.read}-min read</span>
-									<span>{views} views</span>
-								</div>
+			{filteredBlogs.map((blog, idx) => (
+				<React.Fragment key={blog.slug}>
+					<div
+						className="px-1 py-4 mb-0 flex flex-col gap-2 cursor-pointer"
+						onClick={() => navigate(`/blogs/${blog.slug}`)}
+					>
+						<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+							<h3 className="font-serif text-lg font-bold text-white">
+								{blog.title}
+							</h3>
+							<div className="flex gap-4 text-xs text-zinc-500 font-mono">
+								<span>{blog.date}</span>
+								<span>{blog.read}-min read</span>
+								<span>{viewCounts[blog.slug] || 0} views</span>
 							</div>
-							<p className="text-sm text-zinc-400">
-								{blog.description}
-							</p>
 						</div>
-						{idx < filteredBlogs.length - 1 && (
-							<hr className="border-t border-[#232323] my-6" />
-						)}
-					</React.Fragment>
-				);
-			})}
+						<p className="text-sm text-zinc-400">{blog.description}</p>
+					</div>
+					{idx < filteredBlogs.length - 1 && (
+						<hr className="border-t border-[#232323] my-6" />
+					)}
+				</React.Fragment>
+			))}
 		</div>
 	);
 }
