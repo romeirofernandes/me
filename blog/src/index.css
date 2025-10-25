@@ -176,3 +176,13 @@ html {
 .animate-scale-in {
   animation: scale-in 0.3s ease-out;
 }
+
+::selection {
+  background: #f5f5f7;
+  color: #080808;        /* dark text */
+}
+
+::-moz-selection {
+  background: #f5f5f7;
+  color: #080808;
+}
