@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { ref, set, onValue, remove, onDisconnect, get } from 'firebase/database';
 import { database } from '../firebase';
-import { Eye, EyeOff } from 'lucide-react';
+import { MousePointer } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
+import { Tooltip, TooltipTrigger, TooltipContent } from "../components/ui/tooltip";
 
 const COLORS = [
   '#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8',
@@ -268,18 +269,40 @@ export default function LiveCursors({ isEnabled, onToggle }) {
         />
       )}
 
-      {/* Always show the toggle button */}
-      <button
-        onClick={onToggle}
-        className="fixed bottom-6 right-6 z-40 bg-[#18181b] border border-[#232323] rounded-full p-3 shadow-lg hover:bg-[#232323] transition-all duration-200"
-        title={isEnabled ? "Hide cursors" : "Show cursors"}
-      >
-        {isEnabled ? (
-          <Eye className="w-5 h-5 text-[#f5f5f7]" />
-        ) : (
-          <EyeOff className="w-5 h-5 text-[#71717a]" />
-        )}
-      </button>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <button
+            onClick={onToggle}
+            className="fixed bottom-6 right-6 z-40 bg-[#18181b] border border-[#232323] rounded-full p-0 shadow-lg hover:bg-[#232323] transition-all duration-200"
+            style={{ width: "56px", height: "56px", minWidth: "56px", minHeight: "56px", display: "flex", alignItems: "center", justifyContent: "center" }}
+            aria-label={isEnabled ? "Hide cursors" : "Show cursors"}
+          >
+            <span className="relative inline-block w-5 h-5">
+              <MousePointer className="w-5 h-5 text-[#f5f5f7]" />
+              {!isEnabled && (
+                <svg
+                  className="absolute left-0 top-0 w-5 h-5 pointer-events-none"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                >
+                  <line
+                    x1="3"
+                    y1="17"
+                    x2="17"
+                    y2="3"
+                    stroke="#f87171"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              )}
+            </span>
+          </button>
+        </TooltipTrigger>
+        <TooltipContent side="left" className="bg-[#232323] text-[#f5f5f7]">
+          {isEnabled ? "Hide cursors" : "Show cursors"}
+        </TooltipContent>
+      </Tooltip>
 
       {/* Only show cursors if enabled AND location is set */}
       {isEnabled && location &&
