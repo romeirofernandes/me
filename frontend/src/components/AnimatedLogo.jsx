@@ -25,7 +25,7 @@ export default function AnimatedLogo({ fadeOut = false, onAnimationEnd }) {
         width="90vw"
         height="30vh"
         viewBox={viewBox}
-        className="max-w-full"
+        className={`max-w-full${isMobile ? " mb-20" : ""}`}
       >
         <defs>
           <style>

@@ -112,11 +112,13 @@ export default function Projects() {
     <section
       ref={sectionRef}
       id="projects"
-      className="w-full max-w-xs sm:max-w-sm md:max-w-2xl mx-auto mb-16 px-0 py-8 md:py-12"
+      className="w-full max-w-full sm:max-w-sm md:max-w-2xl mx-auto mb-16 px-0 py-8 md:py-12 justify-items-center"
     >
-      <motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight">
-        Projects I have worked on
-      </motion.h2>
+      <div className="w-full flex justify-start px-5 md:px-0">
+        <motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight">
+          Projects I have worked on
+        </motion.h2>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
         <AnimatePresence initial={false}>
           {visibleProjects.map((project, idx) => (
