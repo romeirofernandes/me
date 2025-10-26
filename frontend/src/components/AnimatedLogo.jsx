@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 export default function AnimatedLogo({ fadeOut = false, onAnimationEnd }) {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const logoText = isMobile ? "romeiro" : "romeiro fernandes";
-  const fontSize = isMobile ? 60 : 70;
+  const fontSize = isMobile ? 100 : 80;
   const viewBox = isMobile ? "0 0 600 200" : "0 0 1200 200";
 
   return (
