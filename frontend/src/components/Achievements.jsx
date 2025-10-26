@@ -10,46 +10,32 @@ import {
 
 const hackathons = [
   {
-    id: 1,
-    name: "Auraflix Hackathon",
+    id: 6,
+    name: "SUNHACKS International 2025",
+    place: "Domain Winner",
+    year: "Aug 25",
+    image: "/team_pony.jpeg",
+    text: `Domain Winner at SUNHACKS International 2025 🏆
+
+Built StudyAid, a full-stack AI-powered study platform featuring automated course generation, AI tutoring, PDF parsing with OCR, slide and video creation, and analytics using Node.js, React, MongoDB, and multiple LLM APIs.
+
+Teammates: Aliqyaan, Reniyas, Dylan
+
+SUNHACKS had 550+ teams on campus and was part of the Asia Book of Records.`,
+  },
+  {
+    id: 5,
+    name: "Bucketstudy",
     place: "Winner",
-    year: "Mar 23",
-    image: "/auraflix.png",
-    text: `1st Place at Auraflix Hackathon 🏆
+    year: "Jul 15",
+    image: "/bucketstudy.png",
+    text: `1st Place at Bucketstudy 🏆
 
-Built InfluenceIQ: A data-driven platform for authentic influencer marketing, with a Credibility Score, LLM-based matching, and ML-powered trend prediction.
+Built vHack: Full-stack virtual hackathon platform for online competitions, team/project management, real-time judging, and AI analytics.
 
-Teammates: Aliqyaan, Liza, Gavin
+Teammates: Aliqyaan, Aditya Dabreo
 
-Hosted by: Auraverse (3-day online)`,
-  },
-  {
-    id: 2,
-    name: "Coherence Hackathon",
-    place: "2nd Place",
-    year: "Mar 29",
-    image: "/coherence.jpg",
-    text: `2nd Place at Coherence Hackathon (AIML Track) 🥈
-
-Built ScreenSmart: An AI hiring assistant for resume screening, bias-free ranking, and predictive analytics.
-
-Teammates: Liza, Russel, Gavin
-
-Hosted by: VCET (24-hour offline)`,
-  },
-  {
-    id: 3,
-    name: "HackHazards '25",
-    place: "Top 100 / 17k",
-    year: "Apr 27",
-    image: "/hackhazards.png",
-    text: `Top 100 teams at HackHazards '25 ✨
-
-Built Habitz: Gamified, social, AI-powered habit tracker with 3D streaks, habit forest, AI coach, QR progress, analytics, and challenges.
-
-Teammates: Aliqyaan, Liza, Gavin
-
-Hosted by: The Namespace Community`,
+Hosted by: BucketStudy`,
   },
   {
     id: 4,
@@ -66,18 +52,46 @@ Teammates: Aliqyaan, Russel, Aditya Dabreo
 Hosted by: Certifiyo`,
   },
   {
-    id: 5,
-    name: "Bucketstudy",
+    id: 3,
+    name: "HackHazards '25",
+    place: "Top 100 / 17k",
+    year: "Apr 27",
+    image: "/hackhazards.png",
+    text: `Top 100 teams at HackHazards '25 ✨
+
+Built Habitz: Gamified, social, AI-powered habit tracker with 3D streaks, habit forest, AI coach, QR progress, analytics, and challenges.
+
+Teammates: Aliqyaan, Liza, Gavin
+
+Hosted by: The Namespace Community`,
+  },
+  {
+    id: 2,
+    name: "Coherence Hackathon",
+    place: "2nd Place",
+    year: "Mar 29",
+    image: "/coherence.jpg",
+    text: `2nd Place at Coherence Hackathon (AIML Track) 🥈
+
+Built ScreenSmart: An AI hiring assistant for resume screening, bias-free ranking, and predictive analytics.
+
+Teammates: Liza, Russel, Gavin
+
+Hosted by: VCET (24-hour offline)`,
+  },
+  {
+    id: 1,
+    name: "Auraflix Hackathon",
     place: "Winner",
-    year: "Jul 15",
-    image: "/bucketstudy.png",
-    text: `1st Place at Bucketstudy 🏆
+    year: "Mar 23",
+    image: "/auraflix.png",
+    text: `1st Place at Auraflix Hackathon 🏆
 
-Built vHack: Full-stack virtual hackathon platform for online competitions, team/project management, real-time judging, and AI analytics.
+Built InfluenceIQ: A data-driven platform for authentic influencer marketing, with a Credibility Score, LLM-based matching, and ML-powered trend prediction.
 
-Teammates: Aliqyaan, Aditya Dabreo
+Teammates: Aliqyaan, Liza, Gavin
 
-Hosted by: BucketStudy`,
+Hosted by: Auraverse (3-day online)`,
   },
 ];
 
