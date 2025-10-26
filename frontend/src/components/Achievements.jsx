@@ -17,7 +17,7 @@ const hackathons = [
     image: "/team_pony.jpeg",
     text: `Domain Winner at SUNHACKS International 2025 🏆
 
-Built StudyAid, a full-stack AI-powered study platform featuring automated course generation, AI tutoring, PDF parsing with OCR, slide and video creation, and analytics using Node.js, React, MongoDB, and multiple LLM APIs.
+Built StudyAid, a full-stack AI-powered study platform using MERN and multiple LLM APIs.
 
 Teammates: Aliqyaan, Reniyas, Dylan
 
@@ -119,7 +119,7 @@ export default function Achievements() {
   return (
     <section
       id="achievements"
-      className="w-full max-w-[98vw] md:max-w-2xl mx-auto mb-10"
+      className="w-full max-w-[98vw] md:max-w-2xl mx-auto mb-10 px-0 md:px-2"
     >
       <div className="w-full flex justify-start px-6 md:px-0">
         <motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight">
@@ -131,7 +131,7 @@ export default function Achievements() {
           {hackathons.map((hack, idx) => (
             <CarouselItem key={hack.id}>
               <div
-                className="relative flex flex-col gap-2 overflow-hidden rounded-xl border border-[#232323] bg-[#16181c]/80 p-4 sm:p-6 backdrop-blur-md shadow-lg w-full max-w-[90vw] sm:max-w-md md:max-w-xl lg:max-w-2xl mx-auto z-10 text-left min-h-[420px]"
+                className="relative flex flex-col gap-2 overflow-hidden rounded-xl border border-[#232323] bg-[#16181c]/80 p-4 sm:p-6 backdrop-blur-md shadow-lg w-full max-w-[90vw] sm:max-w-md md:max-w-xl lg:max-w-2xl mx-auto z-10 text-left h-[470px] md:h-[620px]"
                 onTouchStart={handleTouchStart}
                 onTouchEnd={handleTouchEnd}
               >
