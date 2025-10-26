@@ -119,7 +119,7 @@ export function PinContainer({
 }) {
   return (
     <MagicCard
-      className={`dark w-[93vw] md:w-full h-[340px] rounded-xl overflow-hidden flex flex-col gap-3 p-4 ${
+      className={`dark w-[92vw] md:w-full h-[340px] rounded-xl overflow-hidden flex flex-col gap-3 p-4 ${
         containerClassName || ""
       }`}
       gradientFrom="#232323"

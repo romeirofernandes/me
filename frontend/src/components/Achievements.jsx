@@ -97,52 +97,140 @@ Hosted by: Auraverse (3-day online)`,
 
 export default function Achievements() {
   const [openImg, setOpenImg] = useState(null);
+  const [hasSwiped, setHasSwiped] = useState(false);
+  const [touchStartX, setTouchStartX] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Improved swipe detection
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+  const handleTouchEnd = (e) => {
+    if (touchStartX !== null) {
+      const touchEndX = e.changedTouches[0].clientX;
+      if (touchStartX - touchEndX > 30) {
+        // User swiped left, move to next card
+        if (currentIndex < hackathons.length - 1) {
+          setCurrentIndex(currentIndex + 1);
+          setHasSwiped(true);
+        }
+      } else if (touchEndX - touchStartX > 30) {
+        // User swiped right, move to previous card
+        if (currentIndex > 0) {
+          setCurrentIndex(currentIndex - 1);
+          // Reset arrow if back to first card
+          if (currentIndex - 1 === 0) setHasSwiped(false);
+        }
+      }
+      setTouchStartX(null);
+    }
+  };
 
   return (
     <section
       id="achievements"
-      className="mb-10 w-full max-w-xs sm:max-w-sm md:max-w-2xl mx-auto"
+      className="w-full max-w-[98vw] md:max-w-2xl mx-auto mb-10"
     >
-      <motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight">
-        5x Hackathon Winner.
-      </motion.h2>
+      <div className="w-full flex justify-start px-6 md:px-0">
+        <motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight">
+          5x Hackathon Winner.
+        </motion.h2>
+      </div>
       <Carousel className="w-full">
         <CarouselContent>
-          {hackathons.map((hack) => (
+          {hackathons.map((hack, idx) => (
             <CarouselItem key={hack.id}>
-              <div className="relative flex flex-col gap-2 overflow-hidden rounded-xl border border-[#232323] bg-[#16181c]/80 p-4 sm:p-6 backdrop-blur-md shadow-lg w-full max-w-[90vw] sm:max-w-md md:max-w-xl lg:max-w-2xl mx-auto z-10 text-left">
-                <div className="flex items-center mb-3">
-                  <img
-                    src="/profile.jpg"
-                    alt="Romeiro Fernandes"
-                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-700 mr-3"
-                  />
-                  <div>
-                    <span className="font-bold text-white text-sm sm:text-base md:text-lg">
-                      Romeiro Fernandes
-                    </span>
-                    <span className="ml-2 text-gray-400 text-xs sm:text-sm md:text-base">
-                      @theromeirofern · {hack.year}
+              {idx === currentIndex && (
+                <div
+                  className="relative flex flex-col gap-2 overflow-hidden rounded-xl border border-[#232323] bg-[#16181c]/80 p-4 sm:p-6 backdrop-blur-md shadow-lg w-full max-w-[90vw] sm:max-w-md md:max-w-xl lg:max-w-2xl mx-auto z-10 text-left"
+                  onTouchStart={handleTouchStart}
+                  onTouchEnd={handleTouchEnd}
+                >
+                  {/* Animated Arrow (mobile only, right side, only on first card and before swipe) */}
+                  <AnimatePresence>
+                    {currentIndex === 0 && !hasSwiped && (
+                      <motion.div
+                        className="absolute right-2 top-1/2 -translate-y-1/2 z-30 sm:hidden"
+                        initial={{ x: 0, opacity: 1 }}
+                        animate={{ x: 16, opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{
+                          repeat: Infinity,
+                          repeatType: "reverse",
+                          duration: 0.7,
+                          ease: "easeInOut",
+                        }}
+                      >
+                        <svg
+                          width="28"
+                          height="28"
+                          viewBox="0 0 28 28"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M10 14H18M18 14L14 10M18 14L14 18"
+                            stroke="#fff"
+                            strokeWidth="2.2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                  <div className="flex items-center mb-3">
+                    <img
+                      src="/profile.jpg"
+                      alt="Romeiro Fernandes"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-700 mr-3"
+                    />
+                    <div>
+                      <span className="font-bold text-white text-sm sm:text-base md:text-lg">
+                        Romeiro Fernandes
+                      </span>
+                      <span className="ml-2 text-gray-400 text-xs sm:text-sm md:text-base">
+                        @theromeirofern
+                      </span>
+                      <span className="text-gray-400 text-xs sm:text-sm md:text-base block sm:inline ml-0 md:ml-2">
+                        {hack.year}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="mb-3">
+                    <span className="whitespace-pre-line text-gray-100 text-xs sm:text-sm md:text-base">
+                      {hack.text}
                     </span>
                   </div>
+                  <img
+                    src={hack.image}
+                    alt={hack.name}
+                    className="w-full rounded-lg border border-gray-700 mb-3 max-h-28 sm:max-h-40 md:max-h-64 object-cover cursor-zoom-in"
+                    onClick={() => setOpenImg(hack.image)}
+                  />
                 </div>
-                <div className="mb-3">
-                  <span className="whitespace-pre-line text-gray-100 text-xs sm:text-sm md:text-base">
-                    {hack.text}
-                  </span>
-                </div>
-                <img
-                  src={hack.image}
-                  alt={hack.name}
-                  className="w-full rounded-lg border border-gray-700 mb-3 max-h-28 sm:max-h-40 md:max-h-64 object-cover cursor-zoom-in"
-                  onClick={() => setOpenImg(hack.image)}
-                />
-              </div>
+              )}
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious variant="default" />
-        <CarouselNext variant="default" />
+        <CarouselPrevious
+          variant="default"
+          onClick={() => {
+            if (currentIndex > 0) {
+              setCurrentIndex((i) => i - 1);
+              if (currentIndex - 1 === 0) setHasSwiped(false);
+            }
+          }}
+        />
+        <CarouselNext
+          variant="default"
+          onClick={() => {
+            if (currentIndex < hackathons.length - 1) {
+              setCurrentIndex((i) => i + 1);
+              setHasSwiped(true);
+            }
+          }}
+        />
       </Carousel>
 
       {/* Animated Modal for zoomed image */}
