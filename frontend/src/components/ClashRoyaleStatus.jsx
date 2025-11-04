@@ -86,6 +86,10 @@ export default function ClashRoyaleStatus({ battlelog }) {
     });
   };
 
+  // Detect mobile device
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  const [openIdx, setOpenIdx] = useState(null);
+
   return (
     <motion.div
       className="w-full max-w-[98vw] md:max-w-2xl mx-auto px-4 md:px-0 mb-10 mt-12"
@@ -128,8 +132,13 @@ export default function ClashRoyaleStatus({ battlelog }) {
                   const result = getGameResult(game, PLAYER_TAG);
                   const opponentName = getOpponentName(game);
                   const gameType = getGameType(game);
+
                   return (
-                    <Tooltip key={idx}>
+                    <Tooltip
+                      key={idx}
+                      open={isMobile ? openIdx === idx : undefined}
+                      onOpenChange={isMobile ? (open) => setOpenIdx(open ? idx : null) : undefined}
+                    >
                       <TooltipTrigger asChild>
                         <span
                           className={`w-7 h-7 rounded-lg flex items-center justify-center cursor-pointer
@@ -141,6 +150,11 @@ export default function ClashRoyaleStatus({ battlelog }) {
                             }
                           `}
                           tabIndex={0}
+                          onClick={
+                            isMobile
+                              ? () => setOpenIdx(openIdx === idx ? null : idx)
+                              : undefined
+                          }
                         >
                           {result === "win" ? (
                             <svg viewBox="0 0 20 20" className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" strokeWidth="2">
@@ -157,7 +171,10 @@ export default function ClashRoyaleStatus({ battlelog }) {
                           )}
                         </span>
                       </TooltipTrigger>
-                      <TooltipContent side="top" className="bg-[#18181b]/90 backdrop-blur-md border border-[#232323] rounded-sm px-3 py-1 text-xs text-gray-200 shadow-xl">
+                      <TooltipContent
+                        side="top"
+                        className="bg-[#18181b]/90 backdrop-blur-md border border-[#232323] rounded-sm px-3 py-1 text-xs text-gray-200 shadow-xl"
+                      >
                         {`${gameType} against ${opponentName}`}
                       </TooltipContent>
                     </Tooltip>
@@ -165,7 +182,7 @@ export default function ClashRoyaleStatus({ battlelog }) {
                 })}
                 {status === "online" && (
                   <motion.div
-                    className="ml-2 w-4 h-4 bg-green-500 rounded-full border-2 border-[#16181c]"
+                    className="ml-2 w-3 h-3 bg-green-500 rounded-full border-2 border-[#16181c]"
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ repeat: Infinity, duration: 2 }}
                   />
@@ -175,14 +192,7 @@ export default function ClashRoyaleStatus({ battlelog }) {
                 {status === "online"
                   ? (
                     <>
-                      <span className="text-green-400 font-semibold">Playing now</span>
-                      <motion.span
-                        className="text-xs text-gray-400 ml-1"
-                        animate={{ opacity: [0.5, 1, 0.5] }}
-                        transition={{ repeat: Infinity, duration: 2 }}
-                      >
-                        Live
-                      </motion.span>
+                      <span className="text-green-400 font-semibold">Playing now...</span>
                     </>
                   )
                   : `Last played ${formatTimeIST(lastPlayedTime)}`

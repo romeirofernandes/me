@@ -40,13 +40,22 @@ export default function Landing() {
   const [showLogo, setShowLogo] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
 
-  // Add state for API data
   const [battlelog, setBattlelog] = useState([]);
   const [githubData, setGithubData] = useState(null);
 
-  // Fetch APIs as soon as the page renders
+  // Poll Clash Royale API every 10 seconds
   React.useEffect(() => {
-    fetchClashRoyaleBattlelog(PLAYER_TAG).then(setBattlelog);
+    let interval;
+    const fetchAndSetBattlelog = () => {
+      fetchClashRoyaleBattlelog(PLAYER_TAG).then(setBattlelog);
+    };
+    fetchAndSetBattlelog(); // initial fetch
+    interval = setInterval(fetchAndSetBattlelog, 20000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // GitHub API only once
+  React.useEffect(() => {
     fetchGitHubContributions("romeirofernandes").then(setGithubData);
   }, []);
 
