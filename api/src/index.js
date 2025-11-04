@@ -9,6 +9,14 @@ const allowedOrigins = [
   "https://romeirofernandes.vercel.app"
 ];
 
+// Map origins to env variable names
+const originApiKeyMap = {
+  "http://localhost:5173": "CLASH_ROYALE_API_KEY_0",
+  "https://romeirofernandes.tech": "CLASH_ROYALE_API_KEY_1",
+  "https://www.romeirofernandes.tech": "CLASH_ROYALE_API_KEY_1",
+  "https://romeirofernandes.vercel.app": "CLASH_ROYALE_API_KEY_2"
+};
+
 app.use('*', async (c, next) => {
   const origin = c.req.header('Origin');
   if (allowedOrigins.includes(origin)) {
@@ -23,10 +31,12 @@ app.use('*', async (c, next) => {
 });
 
 app.get('/api/clash-royale/battlelog/:tag', async (c) => {
-  const tag = c.req.param('tag');
-  const apiKey = c.env.CLASH_ROYALE_API_KEY;
+  const origin = c.req.header('Origin');
+  const apiKeyEnvName = originApiKeyMap[origin];
+  const apiKey = c.env[apiKeyEnvName];
   if (!apiKey) return c.json({ error: 'API key missing' }, 500);
 
+  const tag = c.req.param('tag');
   const url = `https://api.clashroyale.com/v1/players/%23${tag}/battlelog`;
   const res = await fetch(url, {
     headers: {
