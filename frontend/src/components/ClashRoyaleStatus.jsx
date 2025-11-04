@@ -68,22 +68,27 @@ export default function ClashRoyaleStatus({ battlelog }) {
   const formatTimeIST = (date) => {
     if (!date) return "";
     const istDate = new Date(date.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
-    const now = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
-    const diffMs = now - istDate;
-    const diffMins = Math.floor(diffMs / (1000 * 60));
-    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
-    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
 
-    if (diffMins < 1) return "Just now";
-    if (diffMins < 60) return `${diffMins} min${diffMins !== 1 ? "s" : ""} ago`;
-    if (diffHours < 24) return `${diffHours} hour${diffHours !== 1 ? "s" : ""} ago`;
-    if (diffDays < 7) return `${diffDays} day${diffDays !== 1 ? "s" : ""} ago`;
+    // Day with ordinal suffix
+    const day = istDate.getDate();
+    const daySuffix =
+      day % 10 === 1 && day !== 11 ? "st" :
+      day % 10 === 2 && day !== 12 ? "nd" :
+      day % 10 === 3 && day !== 13 ? "rd" : "th";
 
-    return istDate.toLocaleDateString("en-IN", {
-      month: "short",
-      day: "numeric",
-      year: istDate.getFullYear() !== now.getFullYear() ? "numeric" : undefined,
-    });
+    // Month short name
+    const month = istDate.toLocaleString("en-US", { month: "short" });
+
+    // Year
+    const year = istDate.getFullYear();
+
+    // Time in 12-hour format
+    let hours = istDate.getHours();
+    const minutes = istDate.getMinutes().toString().padStart(2, "0");
+    const ampm = hours >= 12 ? "pm" : "am";
+    hours = hours % 12 || 12;
+
+    return `${day}${daySuffix} ${month}, ${year} at ${hours}:${minutes} ${ampm}`;
   };
 
   // Detect mobile device
@@ -98,7 +103,7 @@ export default function ClashRoyaleStatus({ battlelog }) {
       transition={{ duration: 0.5 }}
     >
       <div
-        className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 sm:p-6 rounded-xl border border-[#232323] bg-[#16181c]/80 backdrop-blur-md shadow-lg"
+        className="mx-0 md:mx-2 relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 sm:p-6 rounded-xl border border-[#232323] bg-[#16181c]/80 backdrop-blur-md shadow-lg"
         style={{
           background: `linear-gradient(135deg, 
             #1a1a1d 0%, 
