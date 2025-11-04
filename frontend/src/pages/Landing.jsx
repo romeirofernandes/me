@@ -19,7 +19,7 @@ import ClashRoyaleStatus from "../components/ClashRoyaleStatus";
 const PLAYER_TAG = "RJPRJ8LR0";
 
 async function fetchClashRoyaleBattlelog(tag) {
-  const response = await fetch(`http://localhost:8787/api/clash-royale/battlelog/${tag}`);
+  const response = await fetch(`https://y.theromeirofernandes.workers.dev/api/clash-royale/battlelog/${tag}`);
   if (!response.ok) return [];
   return await response.json();
 }
