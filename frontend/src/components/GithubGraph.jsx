@@ -38,9 +38,17 @@ const formatDate = dateStr => {
   return `${d.getDate().toString().padStart(2, "0")}-${(d.getMonth()+1).toString().padStart(2, "0")}-${d.getFullYear()}`;
 };
 
-export default function GithubGraph({ username }) {
-  const [data, setData] = useState(null);
+export default function GithubGraph({ username, data: propData }) {
+  const [data, setData] = useState(propData || null);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    if (propData) {
+      setData(propData);
+      return;
+    }
+    fetchGitHubContributions(username).then(setData);
+  }, [username, propData]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -49,10 +57,6 @@ export default function GithubGraph({ username }) {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  useEffect(() => {
-    fetchGitHubContributions(username).then(setData);
-  }, [username]);
 
   if (!data) {
     return (

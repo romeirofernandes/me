@@ -14,10 +14,41 @@ import GridLines from "../components/GridLines";
 import SectionDivider from "../components/SectionDivider";
 import Clock from "../components/Clock";
 import AnimatedLogo from "../components/AnimatedLogo";
+import ClashRoyaleStatus from "../components/ClashRoyaleStatus";
+
+const PLAYER_TAG = "RJPRJ8LR0";
+
+async function fetchClashRoyaleBattlelog(tag) {
+  const response = await fetch(`http://localhost:8787/api/clash-royale/battlelog/${tag}`);
+  if (!response.ok) return [];
+  return await response.json();
+}
+
+async function fetchGitHubContributions(username) {
+  const url = new URL(
+    `/v4/${username}`,
+    "https://github-contributions-api.jogruber.de"
+  );
+  const response = await fetch(url);
+  if (!response.ok) return null;
+  const data = await response.json();
+  const total = data.total[new Date().getFullYear()];
+  return { contributions: data.contributions, total };
+}
 
 export default function Landing() {
   const [showLogo, setShowLogo] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
+
+  // Add state for API data
+  const [battlelog, setBattlelog] = useState([]);
+  const [githubData, setGithubData] = useState(null);
+
+  // Fetch APIs as soon as the page renders
+  React.useEffect(() => {
+    fetchClashRoyaleBattlelog(PLAYER_TAG).then(setBattlelog);
+    fetchGitHubContributions("romeirofernandes").then(setGithubData);
+  }, []);
 
   React.useEffect(() => {
     const timer1 = setTimeout(() => setFadeOut(true), 2000); 
@@ -78,7 +109,7 @@ export default function Landing() {
 
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 sm:px-4">
                 <section id="github" className="mb-10 md:mb-20">
-                  <GithubGraph username="romeirofernandes" />
+                  <GithubGraph username="romeirofernandes" data={githubData} />
                 </section>
               </div>
 
@@ -109,6 +140,10 @@ export default function Landing() {
                   tried."
                 </QuoteBox>
               </div>
+
+              <SectionDivider className="mt-8" />
+
+              <ClashRoyaleStatus battlelog={battlelog} />
 
               <SectionDivider className="mt-8" />
 
