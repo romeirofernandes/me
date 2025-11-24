@@ -145,11 +145,7 @@ export default function Landing() {
 
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 ">
                 <QuoteBox>
-<<<<<<< HEAD
                   "Momentum is everything."
-=======
-                  "Do it for the love of the game."
->>>>>>> 4198e91029f4d97bcabbfe41b749ac3a7acd4361
                 </QuoteBox>
               </div>
 
