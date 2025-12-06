@@ -123,7 +123,7 @@ export default function Achievements() {
     >
       <div className="w-full flex justify-start px-6 md:px-0">
         <motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight">
-          5x Hackathon Winner.
+          6x Hackathon Winner.
         </motion.h2>
       </div>
       <Carousel className="w-full">
