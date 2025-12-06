@@ -15,6 +15,7 @@ import SectionDivider from "../components/SectionDivider";
 import Clock from "../components/Clock";
 import AnimatedLogo from "../components/AnimatedLogo";
 import ClashRoyaleStatus from "../components/ClashRoyaleStatus";
+import WorkExperience from "../components/WorkExperience";
 
 const PLAYER_TAG = "RJPRJ8LR0";
 
@@ -128,6 +129,10 @@ export default function Landing() {
               <TechMarquee />
 
               <SectionDivider className="mt-[-0.75rem]" />
+
+              <WorkExperience />
+
+              <SectionDivider className="mt-[-1rem]" />
 
               <Projects />
 
