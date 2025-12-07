@@ -31,6 +31,7 @@ const hackathons = [
   { name: "Sunhacks", result: "Domain Winner", status: "first" },
   { name: "SIH 2025", result: "Lost", status: "lost" },
   { name: "BNB 25", result: "Finalists", status: "success" },
+  { name: "Google GenAI Exchange", result: "2nd Place", status: "second" },
 ];
 
 const getStatusColor = (status) => {
@@ -88,16 +89,21 @@ export default function HackathonsPage() {
                 </tr>
               </thead>
               <tbody>
-                {hackathons.map((hackathon, index) => (
-                  <tr key={index}>
-                    <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
-                      {hackathon.name}
-                    </td>
-                    <td className={`py-2 px-3 border border-[#232323] font-medium ${getStatusColor(hackathon.status)}`}>
-                      {hackathon.result}
-                    </td>
-                  </tr>
-                ))}
+                {hackathons.map((hackathon, index) => {
+                  const isPodium = ["first", "second", "third"].includes(hackathon.status);
+                  const podiumBg = isPodium ? "bg-green-400/10" : "";
+
+                  return (
+                    <tr key={index} className={podiumBg}>
+                      <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                        {hackathon.name}
+                      </td>
+                      <td className={`py-2 px-3 border border-[#232323] font-medium ${getStatusColor(hackathon.status)}`}>
+                        {hackathon.result}
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -111,11 +117,11 @@ export default function HackathonsPage() {
               <div className="text-sm text-zinc-400">Total Hackathons</div>
             </div>
             <div className="bg-[#18181b] border border-[#232323] rounded-sm p-4 text-center">
-              <div className="text-2xl font-bold text-yellow-400">5</div>
+              <div className="text-2xl font-bold text-yellow-400">6</div>
               <div className="text-sm text-zinc-400">Wins</div>
             </div>
             <div className="bg-[#18181b] border border-[#232323] rounded-sm p-4 text-center">
-              <div className="text-2xl font-bold text-[#38bdf8]">{(5 / totalHackathons).toFixed(2)}</div>
+              <div className="text-2xl font-bold text-[#38bdf8]">{(6 / totalHackathons).toFixed(2)}</div>
               <div className="text-sm text-zinc-400">Success Rate</div>
             </div>
           </div>
