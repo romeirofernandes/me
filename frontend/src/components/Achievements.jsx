@@ -10,6 +10,20 @@ import {
 
 const hackathons = [
   {
+    id: 7,
+    name: "Google GenAI Exchange Hackathon 2025",
+    place: "1st Runner Up",
+    year: "Nov 30",
+    image: "/genai.jpg",
+    text: `1st Runner Up at Google GenAI Exchange Hackathon 2025 🏆
+
+Built MisIntel, a multimodal and multilingual platform that combats digital misinformation in all possible ways.
+
+Teammates: Aliqyaan, Arshdeep, Eeshani, Amrita
+
+Out of 270,000+ participants nationwide, we were among the top 40 teams who won prizes!`,
+  },
+  {
     id: 6,
     name: "SUNHACKS International 2025",
     place: "Domain Winner",
