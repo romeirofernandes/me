@@ -5,20 +5,18 @@ import { toast } from "sonner";
 export default function NewsletterSubscribe({ onSuccess }) {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-      setError("Enter a valid email.");
+      toast.error("Enter a valid email.");
       return;
     }
     setLoading(true);
     try {
       const alreadySubscribed = await isEmailSubscribed(email);
       if (alreadySubscribed) {
-        setError("This email is already subscribed.");
+        toast.success("You're already subscribed!");
         setLoading(false);
         return;
       }
@@ -28,7 +26,7 @@ export default function NewsletterSubscribe({ onSuccess }) {
       toast.success("Subscribed! You'll get blog updates.");
     } catch (err) {
       console.error("Subscription error:", err); 
-      setError("Something went wrong. Try again.");
+      toast.error("Something went wrong. Try again.");
     } finally {
       setLoading(false);
     }
@@ -58,7 +56,6 @@ export default function NewsletterSubscribe({ onSuccess }) {
       >
         {loading ? "..." : "Join"}
       </button>
-      {error && <span className="text-destructive text-xs ml-2">{error}</span>}
     </form>
   );
 }
