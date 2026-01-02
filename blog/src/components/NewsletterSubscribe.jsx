@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { subscribeToNewsletter, isEmailSubscribed } from "../lib/newsletter";
 import { toast } from "sonner";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function NewsletterSubscribe({ onSuccess }) {
   const [email, setEmail] = useState("");
@@ -15,17 +16,14 @@ export default function NewsletterSubscribe({ onSuccess }) {
     setLoading(true);
     try {
       const alreadySubscribed = await isEmailSubscribed(email);
-      if (alreadySubscribed) {
-        toast.success("You're already subscribed!");
-        setLoading(false);
-        return;
+      if (!alreadySubscribed) {
+        await subscribeToNewsletter(email);
+        if (onSuccess) onSuccess();
       }
-      await subscribeToNewsletter(email);
       setEmail("");
-      if (onSuccess) onSuccess();
       toast.success("Subscribed! You'll get blog updates.");
     } catch (err) {
-      console.error("Subscription error:", err); 
+      console.error("Subscription error:", err);
       toast.error("Something went wrong. Try again.");
     } finally {
       setLoading(false);
@@ -33,29 +31,43 @@ export default function NewsletterSubscribe({ onSuccess }) {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="w-full flex items-center gap-2 bg-card border border-border rounded-lg px-3 py-2 animate-fade-in"
-      style={{ boxShadow: "0 1px 4px 0 rgba(0,0,0,0.04)" }}
-    >
-      <input
-        type="email"
-        className="flex-1 bg-transparent border-none outline-none text-foreground placeholder:text-muted-foreground px-2 py-1 text-base"
-        placeholder="Get blog updates by email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        disabled={loading}
-        required
-        aria-label="Email address"
-      />
-      <button
-        type="submit"
-        className="button bg-primary text-primary-foreground font-medium px-2 py-1 rounded-md hover:bg-primary/90 transition disabled:opacity-60 text-md"
-        disabled={loading}
-        aria-label="Subscribe"
-      >
-        {loading ? "..." : "Join"}
-      </button>
-    </form>
+    <Card className="w-full max-w-3xl mx-auto">
+      <CardContent className="py-4 px-6">
+        <h2 className="text-xl font-semibold mb-2 text-left">
+          Subscribe to Blog Updates
+        </h2>
+        <p className="text-muted-foreground mb-4 text-left text-sm">
+          Get the latest posts delivered to your inbox.
+        </p>
+        <form
+          onSubmit={handleSubmit}
+          className="w-full flex bg-card border border-border rounded-lg shadow-sm overflow-hidden"
+          style={{ boxShadow: "0 2px 8px 0 rgba(0,0,0,0.06)" }}
+        >
+          <input
+            type="email"
+            className="flex-1 bg-transparent border-none outline-none text-foreground placeholder:text-muted-foreground px-4 py-3 text-base"
+            placeholder="Get blog updates by email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            disabled={loading}
+            required
+            aria-label="Email address"
+          />
+          <button
+            type="submit"
+            className="bg-primary text-primary-foreground font-semibold px-6 py-3 transition hover:bg-primary/90 disabled:opacity-60 text-base rounded-none"
+            disabled={loading}
+            aria-label="Subscribe"
+            style={{
+              borderLeft: "1px solid var(--border)",
+              borderRadius: 0,
+            }}
+          >
+            {loading ? "..." : "Join"}
+          </button>
+        </form>
+      </CardContent>
+    </Card>
   );
 }
