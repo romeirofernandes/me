@@ -9,6 +9,7 @@ import MacbookExamsAndMore from "./pages/blogs/MacbookExamsAndMore";
 import SevenThousandDaysOld from "./pages/blogs/SevenThousandDaysOld";
 import { Analytics } from "@vercel/analytics/react";
 import LiveCursors from "./components/LiveCursors";
+import AdminSendMail from "./pages/AdminSendMail";
 
 export default function App() {
   const [cursorsEnabled, setCursorsEnabled] = useState(true);
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/blogs/5x-hackathon-winner" element={<FiveXHackathonWinner />} />
         <Route path="/blogs/macbook-exams-and-more" element={<MacbookExamsAndMore />} />
         <Route path="/blogs/7305-days-old-now" element={<SevenThousandDaysOld />} />
+        <Route path="/send-mail" element={<AdminSendMail />} />
       </Routes>
     </>
   );

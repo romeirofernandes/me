@@ -6,6 +6,7 @@ import FunFacts from "../components/FunFacts";
 import Resources from "../components/Resources";
 import BlogList from "../components/BlogList";
 import { Balloons } from "../components/Balloons";
+import NewsletterSubscribe from "../components/NewsletterSubscribe";
 
 function useDebouncedValue(value, delay = 300) {
   const [debounced, setDebounced] = useState(value);
@@ -79,7 +80,12 @@ export default function Landing() {
         </div>
         
         <BlogList search={debouncedSearch} />
-        
+
+        {/* Newsletter Subscription */}
+        <div className="dark mt-10">
+          <NewsletterSubscribe />
+        </div>
+
         <div className="mt-8 block sm:hidden">
           <Resources resources={resources} highlight="Writings" />
         </div>
