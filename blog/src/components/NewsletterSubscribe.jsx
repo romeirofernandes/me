@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { subscribeToNewsletter, isEmailSubscribed } from "../lib/newsletter";
 import { toast } from "sonner";
 import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 export default function NewsletterSubscribe({ onSuccess }) {
   const [email, setEmail] = useState("");
@@ -41,12 +43,11 @@ export default function NewsletterSubscribe({ onSuccess }) {
         </p>
         <form
           onSubmit={handleSubmit}
-          className="w-full flex bg-card border border-border rounded-lg shadow-sm overflow-hidden"
-          style={{ boxShadow: "0 2px 8px 0 rgba(0,0,0,0.06)" }}
+          className="w-full flex flex-row gap-2"
         >
-          <input
+          <Input
             type="email"
-            className="flex-1 bg-transparent border-none outline-none text-foreground placeholder:text-muted-foreground px-4 py-3 text-base"
+            className="flex-1 text-sm"
             placeholder="Get blog updates by email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -54,18 +55,14 @@ export default function NewsletterSubscribe({ onSuccess }) {
             required
             aria-label="Email address"
           />
-          <button
+          <Button
             type="submit"
-            className="bg-primary text-primary-foreground font-semibold px-6 py-3 transition hover:bg-primary/90 disabled:opacity-60 text-base rounded-none"
+            className="font-medium text-sm"
             disabled={loading}
             aria-label="Subscribe"
-            style={{
-              borderLeft: "1px solid var(--border)",
-              borderRadius: 0,
-            }}
           >
             {loading ? "..." : "Join"}
-          </button>
+          </Button>
         </form>
       </CardContent>
     </Card>
