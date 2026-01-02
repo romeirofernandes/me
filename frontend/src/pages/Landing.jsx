@@ -150,7 +150,7 @@ export default function Landing() {
 
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 ">
                 <QuoteBox>
-                  "You can't connect the dots looking forward."
+                  "If people call you crazy for working hard, you're doing something right."
                 </QuoteBox>
               </div>
 
