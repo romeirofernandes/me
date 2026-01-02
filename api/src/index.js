@@ -68,7 +68,7 @@ app.post('/api/mail-blog-update', async (c) => {
 
   let sent = 0, failed = 0;
   for (const to of emails) {
-    const unsubscribeUrl = `http://localhost:5173/unsubscribe?email=${encodeURIComponent(to)}`;
+    const unsubscribeUrl = `https://blog.romeirofernandes.tech/unsubscribe?email=${encodeURIComponent(to)}`;
     const html = `
       <div style="font-family:sans-serif;max-width:480px;margin:auto;">
         <h2 style="margin-bottom:0.5em;">${blog.title}</h2>

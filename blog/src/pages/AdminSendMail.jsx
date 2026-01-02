@@ -54,7 +54,7 @@ export default function AdminSendMail() {
     setLoading(true);
     setMessage("");
     try {
-      const response = await fetch("http://localhost:8787/api/mail-blog-update", {
+      const response = await fetch("https://y.theromeirofernandes.workers.dev/api/mail-blog-update", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
