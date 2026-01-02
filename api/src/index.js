@@ -65,18 +65,20 @@ app.post('/api/mail-blog-update', async (c) => {
   });
 
   const subject = `New blog by Romeiro: ${blog.title}`;
-  const html = `
-    <div style="font-family:sans-serif;max-width:480px;margin:auto;">
-      <h2 style="margin-bottom:0.5em;">${blog.title}</h2>
-      <p style="color:#555;">${blog.excerpt || ''}</p>
-      <a href="${blog.url}" style="display:inline-block;margin:1em 0;padding:0.5em 1em;background:#222;color:#fff;text-decoration:none;border-radius:4px;">Read the full post</a>
-      <p style="font-size:12px;color:#888;margin-top:2em;">If you wish to unsubscribe, <a href="${blog.unsubscribeUrl || '#'}">click here</a>.</p>
-    </div>
-  `;
-  const text = `${blog.title}\n${blog.excerpt || ''}\nRead: ${blog.url}`;
 
   let sent = 0, failed = 0;
   for (const to of emails) {
+    const unsubscribeUrl = `http://localhost:5173/unsubscribe?email=${encodeURIComponent(to)}`;
+    const html = `
+      <div style="font-family:sans-serif;max-width:480px;margin:auto;">
+        <h2 style="margin-bottom:0.5em;">${blog.title}</h2>
+        <p style="color:#555;">${blog.excerpt || ''}</p>
+        <a href="${blog.url}" style="display:inline-block;margin:1em 0;padding:0.5em 1em;background:#222;color:#fff;text-decoration:none;border-radius:4px;">Read the full post</a>
+        <p style="font-size:12px;color:#888;margin-top:2em;">If you wish to unsubscribe, <a href="${unsubscribeUrl}">click here</a>.</p>
+      </div>
+    `;
+    const text = `${blog.title}\n${blog.excerpt || ''}\nRead: ${blog.url}\nUnsubscribe: ${unsubscribeUrl}`;
+
     try {
       await sendMail({ transporter, to, subject, html, text });
       sent++;

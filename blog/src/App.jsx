@@ -9,13 +9,16 @@ import MacbookExamsAndMore from "./pages/blogs/MacbookExamsAndMore";
 import SevenThousandDaysOld from "./pages/blogs/SevenThousandDaysOld";
 import { Analytics } from "@vercel/analytics/react";
 import LiveCursors from "./components/LiveCursors";
+import Unsubscribe from "./pages/Unsubscribe";
 import AdminSendMail from "./pages/AdminSendMail";
+import { Toaster } from "sonner";
 
 export default function App() {
   const [cursorsEnabled, setCursorsEnabled] = useState(true);
 
   return (
     <>
+      <Toaster position="top-right" richColors />
       <LiveCursors
         isEnabled={cursorsEnabled}
         onToggle={() => setCursorsEnabled(!cursorsEnabled)}
@@ -30,6 +33,7 @@ export default function App() {
         <Route path="/blogs/macbook-exams-and-more" element={<MacbookExamsAndMore />} />
         <Route path="/blogs/7305-days-old-now" element={<SevenThousandDaysOld />} />
         <Route path="/send-mail" element={<AdminSendMail />} />
+        <Route path="/unsubscribe" element={<Unsubscribe />} />
       </Routes>
     </>
   );

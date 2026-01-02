@@ -18,7 +18,6 @@ export default function AdminSendMail() {
     title: "",
     excerpt: "",
     url: "",
-    unsubscribeUrl: "",
   });
 
   useEffect(() => {
@@ -42,7 +41,6 @@ export default function AdminSendMail() {
         title: blog.title,
         excerpt: blog.description,
         url: `https://blog.romeirofernandes.tech/blogs/${blog.slug}`,
-        unsubscribeUrl: "https://blog.romeirofernandes.tech/unsubscribe",
       });
     }
   };
@@ -56,7 +54,7 @@ export default function AdminSendMail() {
     setLoading(true);
     setMessage("");
     try {
-      const response = await fetch("https://y.theromeirofernandes.workers.dev/api/mail-blog-update", {
+      const response = await fetch("http://localhost:8787/api/mail-blog-update", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -79,6 +77,8 @@ export default function AdminSendMail() {
   };
 
   const togglePreview = () => setShowPreview(!showPreview);
+
+  const unsubscribePreviewUrl = "https://blog.romeirofernandes.tech/unsubscribe?email=example@email.com";
 
   return (
     <div className="dark">
@@ -142,17 +142,6 @@ export default function AdminSendMail() {
                   />
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium mb-2">Unsubscribe URL:</label>
-                  <Input
-                    type="url"
-                    value={formData.unsubscribeUrl}
-                    onChange={(e) => handleInputChange("unsubscribeUrl", e.target.value)}
-                    placeholder="https://blog.romeirofernandes.tech/unsubscribe"
-                    className="w-full"
-                  />
-                </div>
-
                 <div className="flex gap-4">
                   <Button onClick={togglePreview} variant="outline" className="flex-1">
                     {showPreview ? "Hide Preview" : "Preview Email"}
@@ -193,7 +182,7 @@ export default function AdminSendMail() {
                       Read the full post
                     </a>
                     <p className="text-xs text-muted-foreground mt-4">
-                      If you wish to unsubscribe, <a href={formData.unsubscribeUrl} className="underline">click here</a>.
+                      If you wish to unsubscribe, <a href={unsubscribePreviewUrl} className="underline">click here</a>.
                     </p>
                   </div>
                 </CardContent>

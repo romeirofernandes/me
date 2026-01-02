@@ -1,26 +1,31 @@
 import React, { useState } from "react";
-import { subscribeToNewsletter } from "../lib/newsletter";
+import { subscribeToNewsletter, isEmailSubscribed } from "../lib/newsletter";
+import { toast } from "sonner";
 
 export default function NewsletterSubscribe({ onSuccess }) {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    setSuccess(false);
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
       setError("Enter a valid email.");
       return;
     }
     setLoading(true);
     try {
+      const alreadySubscribed = await isEmailSubscribed(email);
+      if (alreadySubscribed) {
+        setError("This email is already subscribed.");
+        setLoading(false);
+        return;
+      }
       await subscribeToNewsletter(email);
-      setSuccess(true);
       setEmail("");
       if (onSuccess) onSuccess();
+      toast.success("Subscribed! You'll get blog updates.");
     } catch (err) {
       console.error("Subscription error:", err); 
       setError("Something went wrong. Try again.");
@@ -47,14 +52,13 @@ export default function NewsletterSubscribe({ onSuccess }) {
       />
       <button
         type="submit"
-        className="button bg-primary text-primary-foreground font-semibold px-4 py-1.5 rounded-md hover:bg-primary/90 transition disabled:opacity-60 text-base"
+        className="button bg-primary text-primary-foreground font-medium px-2 py-1 rounded-md hover:bg-primary/90 transition disabled:opacity-60 text-md"
         disabled={loading}
         aria-label="Subscribe"
       >
         {loading ? "..." : "Join"}
       </button>
       {error && <span className="text-destructive text-xs ml-2">{error}</span>}
-      {success && <span className="text-green-600 text-xs ml-2">You're in! 🎉</span>}
     </form>
   );
 }
