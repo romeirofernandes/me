@@ -32,6 +32,7 @@ const hackathons = [
   { name: "SIH 2025", result: "Lost", status: "lost" },
   { name: "BNB 25", result: "Finalists", status: "success" },
   { name: "Google GenAI Exchange", result: "2nd Place", status: "second" },
+  { name: "HackCrypt", result: "Lost", status: "lost" },
 ];
 
 const getStatusColor = (status) => {
