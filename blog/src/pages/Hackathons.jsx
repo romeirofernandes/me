@@ -34,6 +34,8 @@ const hackathons = [
   { name: "Google GenAI Exchange", result: "2nd Place", status: "second" },
   { name: "HackCrypt", result: "Lost", status: "lost" },
   { name: "Hackquinox", result: "Lost", status: "lost" },
+  { name: "WiCS", result: "Lost", status: "lost" },
+  { name: "TechFiesta", result: "Lost", status: "lost" },
 ];
 
 const getStatusColor = (status) => {
