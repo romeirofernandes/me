@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@hugeicons/core-free-icons";
 import Background from "../../components/Background";
+import GradualBlur from "../../components/GradualBlur";
 import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase";
-import { blogs } from "../../components/BlogList"; // adjust path if needed
+import { blogs } from "../../components/BlogList";
 
 const BLOG_ID = "why-start-blog";
 
@@ -51,12 +52,13 @@ export default function WhyStartBlog() {
 
   return (
     <Background>
-      <div className="blog-article mx-auto w-full max-w-3xl px-4 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
+      <div className="blog-article relative mx-auto w-full max-w-3xl px-4 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
+        <GradualBlur strength={1.5} divCount={2} opacity={1} />
         {/* Navigation Buttons */}
         <div className="flex items-center justify-between mb-6">
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-zinc-400 hover:text-[#38bdf8] transition"
+            className="flex items-center gap-2 text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] transition"
           >
             <HugeiconsIcon icon={ArrowLeftIcon} size={18} />
             <span className="font-medium">back</span>
@@ -64,27 +66,27 @@ export default function WhyStartBlog() {
           
         </div>
 
-        <h1 className="text-white">
+        <h1 className="text-white light:text-zinc-900">
           why am i starting a blog?
         </h1>
-        <div className="text-zinc-500 mb-4">
+        <div className="text-zinc-500 light:text-zinc-400 mb-4">
           published: <span className="italic">18-08-2025</span> &middot; {views}{" "}
           views &middot; 2-min read
         </div>
-        <hr className="border-t border-[#232323] my-6" />
+        <hr className="border-t border-[#232323] light:border-zinc-300 my-6" />
 
         <section className="mb-8">
-          <p className="text-zinc-400">
+          <p className="text-zinc-400 light:text-zinc-500">
             well, i thought of doing something like this for quite a while now
             but finally got some time today so here we are.
           </p>
-          <p className="text-zinc-400">
+          <p className="text-zinc-400 light:text-zinc-500">
             tldr; i'm{" "}
             <a
               href="https://romeirofernandes.tech"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#38bdf8]"
+              className="text-[#38bdf8] light:text-[#0369a1]"
             >
               romeiro
             </a>
@@ -92,31 +94,31 @@ export default function WhyStartBlog() {
             interesting, and learned. having a personal blog didn’t seem that
             bad of a decision to me so here we are :)
           </p>
-          <p className="text-zinc-400">
+          <p className="text-zinc-400 light:text-zinc-500">
             for anyone who is new here, hello! i'm{" "}
             <a
               href="https://romeirofernandes.tech"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#38bdf8]"
+              className="text-[#38bdf8] light:text-[#0369a1]"
             >
               romeiro
             </a>
             . i'm currently pursuing (sem 5) a bachelor’s in computer
             engineering from fr. crce, bandra.
           </p>
-          <p className="text-zinc-400">
+          <p className="text-zinc-400 light:text-zinc-500">
             i love building websites and have been at it since january 2025,
             around 8 months now. i'm sort of infamous for making websites
             unnecessarily.
           </p>
-          <p className="text-zinc-400">
+          <p className="text-zinc-400 light:text-zinc-500">
             i read some tech blogs every now and then (
             <a
               href="https://simonwillison.net"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#38bdf8]"
+              className="text-[#38bdf8] light:text-[#0369a1]"
             >
               simon willison
             </a>
@@ -125,7 +127,7 @@ export default function WhyStartBlog() {
               href="https://www.youtube.com/@t3dotgg"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#38bdf8]"
+              className="text-[#38bdf8] light:text-[#0369a1]"
             >
               theo
             </a>
@@ -133,7 +135,7 @@ export default function WhyStartBlog() {
             check up on any new updates in the tech side (well, i stalk some
             people for fpl news too but that story is for another day).
           </p>
-          <p className="text-zinc-400">
+          <p className="text-zinc-400 light:text-zinc-500">
             so why start a blog? i need a place to share updates about myself
             and anything new that i experiment with. why do i need to share?{" "}
             <span className="italic">
@@ -146,10 +148,10 @@ export default function WhyStartBlog() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-white">
+          <h2 className="text-white light:text-zinc-900">
             what will this blog have?
           </h2>
-          <ul className="list-disc list-inside text-zinc-400">
+          <ul className="list-disc list-inside text-zinc-400 light:text-zinc-500">
             <li>things i learned</li>
             <li>things i found interesting</li>
             <li>things i built</li>
@@ -158,22 +160,22 @@ export default function WhyStartBlog() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-white">
+          <h2 className="text-white light:text-zinc-900">
             what am i doing currently?
           </h2>
-          <p className="text-zinc-400">
+          <p className="text-zinc-400 light:text-zinc-500">
             slightly focused towards dsa because i will have placements in a few
             months. i'm working in an internship for a startup (ends oct 3rd).
             i'm also the tech lead of codestorm crce, where we promote dsa &amp;
             problem solving and host events related to the same.
           </p>
-          <p className="text-zinc-400">
+          <p className="text-zinc-400 light:text-zinc-500">
             i participate in hackathons like my life depends on it. i have won 4
             hackathons so far and have built countless projects during the same.
             there are too many hackathons upcoming; next one is sandip
            
           </p>
-          <p className="text-zinc-400">
+          <p className="text-zinc-400 light:text-zinc-500">
             what else - i love watching the Premier League and i'm an fpl addict
             to say the least. i spend a lot more time than i should on making
             transfers.
@@ -185,7 +187,7 @@ export default function WhyStartBlog() {
         </section>
 
         <section className="mb-8">
-          <p className="text-zinc-400">
+          <p className="text-zinc-400 light:text-zinc-500">
             go dm me on twitter or something and see you in the next blog (if
             there’s one).
           </p>
@@ -195,7 +197,7 @@ export default function WhyStartBlog() {
           <div className="flex justify-end mt-8">
             <button
               onClick={handleNext}
-              className="flex items-center gap-2 text-zinc-400 hover:text-[#38bdf8] transition"
+              className="flex items-center gap-2 text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] transition"
             >
               <span className="font-medium">next</span>
               <HugeiconsIcon icon={ArrowRightIcon} size={18} />
@@ -203,20 +205,20 @@ export default function WhyStartBlog() {
           </div>
         )}
 
-        <hr className="border-t border-[#232323] my-6" />
+        <hr className="border-t border-[#232323] light:border-zinc-300 my-6" />
 
         <section className="mb-8">
-          <h2 className="text-white">
+          <h2 className="text-white light:text-zinc-900">
             links
           </h2>
-          <ul className="list-none text-zinc-400">
+          <ul className="list-none text-zinc-400 light:text-zinc-500">
             <li className="mb-2">
               twitter:{" "}
               <a
                 href="https://twitter.com/whotookromeiro"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#38bdf8] underline"
+                className="text-[#38bdf8] light:text-[#0369a1] underline"
               >
                 @whotookromeiro
               </a>
@@ -227,7 +229,7 @@ export default function WhyStartBlog() {
                 href="https://linkedin.com/in/romeirofernandes"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#38bdf8] underline"
+                className="text-[#38bdf8] light:text-[#0369a1] underline"
               >
                 romeirofernandes
               </a>
@@ -238,7 +240,7 @@ export default function WhyStartBlog() {
                 href="https://github.com/romeirofernandes"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#38bdf8] underline"
+                className="text-[#38bdf8] light:text-[#0369a1] underline"
               >
                 romeirofernandes
               </a>
@@ -249,7 +251,7 @@ export default function WhyStartBlog() {
                 href="https://romeirofernandes.tech"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#38bdf8] underline"
+                className="text-[#38bdf8] light:text-[#0369a1] underline"
               >
                 romeirofernandes.tech
               </a>

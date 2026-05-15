@@ -69,14 +69,14 @@ export default function Landing() {
         </div>
         
         {/* Search Bar */}
-        <div className="flex items-center gap-2 mb-8 border border-[#232323] px-3 py-2 rounded-none bg-transparent">
-          <FaSearch className="text-zinc-500 text-base" />
+        <div className="flex items-center gap-2 mb-8 border border-[#232323] light:border-zinc-300 px-3 py-2 rounded-none bg-transparent">
+          <FaSearch className="text-zinc-500 light:text-zinc-400 text-base" />
           <Input
             type="search"
             placeholder="Search blog posts…"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="bg-transparent border-none text-white placeholder:text-zinc-500 focus:ring-0 focus:outline-none flex-1 rounded-none"
+            className="bg-transparent border-none text-white light:text-zinc-900 placeholder:text-zinc-500 light:placeholder:text-zinc-400 focus:ring-0 focus:outline-none flex-1 rounded-none"
           />
         </div>
         

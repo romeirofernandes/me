@@ -64,7 +64,7 @@ export default function BlogList({ search }) {
 	return (
 		<div className="flex flex-col gap-0">
 			{filteredBlogs.length === 0 && (
-				<div className="text-zinc-500 text-center py-8">
+				<div className="text-zinc-500 light:text-zinc-400 text-center py-8">
 					No results found.
 				</div>
 			)}
@@ -75,19 +75,19 @@ export default function BlogList({ search }) {
 						onClick={() => navigate(`/blogs/${blog.slug}`)}
 					>
 						<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-							<h3 className="font-serif text-lg text-white">
+							<h3 className="font-serif text-lg text-white light:text-zinc-900">
 								{blog.title}
 							</h3>
-							<div className="flex gap-4 text-xs text-zinc-500 font-mono">
+							<div className="flex gap-4 text-xs text-zinc-500 light:text-zinc-400 font-mono">
 								<span>{blog.date}</span>
 								<span>{blog.read}-min read</span>
 								<span>{viewCounts[blog.slug] || 0} views</span>
 							</div>
 						</div>
-						<p className="text-sm text-zinc-400">{blog.description}</p>
+						<p className="text-sm text-zinc-400 light:text-zinc-500">{blog.description}</p>
 					</div>
 					{idx < filteredBlogs.length - 1 && (
-						<hr className="border-t border-[#232323] my-6" />
+						<hr className="border-t border-[#232323] light:border-zinc-300 my-6" />
 					)}
 				</React.Fragment>
 			))}

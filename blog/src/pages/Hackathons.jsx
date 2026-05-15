@@ -76,18 +76,18 @@ export default function HackathonsPage() {
           </div>
         </div>
         {/* Separator */}
-        <hr className="border-t border-[#232323] my-6" />
+        <hr className="border-t border-[#232323] light:border-zinc-300 my-6" />
         {/* Hackathon results */}
-        <div className="text-[#f5f5f7] text-md mx-2">
+        <div className="text-[#f5f5f7] light:text-zinc-900 text-md mx-2">
           My hackathon journey - the wins, losses, and everything in between:
           <div className="overflow-x-auto mt-6">
-            <table className="w-full text-left border-collapse text-base sm:text-sm border border-[#232323]">
+            <table className="w-full text-left border-collapse text-base sm:text-sm border border-[#232323] light:border-zinc-300">
               <thead>
                 <tr>
-                  <th className="py-2 px-3 font-semibold text-zinc-400 border border-[#232323] bg-[#18181b]">
+                  <th className="py-2 px-3 font-semibold text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300 bg-[#18181b] light:bg-zinc-100">
                     Hackathon
                   </th>
-                  <th className="py-2 px-3 font-semibold text-zinc-400 border border-[#232323] bg-[#18181b]">
+                  <th className="py-2 px-3 font-semibold text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300 bg-[#18181b] light:bg-zinc-100">
                     Result
                   </th>
                 </tr>
@@ -99,10 +99,10 @@ export default function HackathonsPage() {
 
                   return (
                     <tr key={index} className={podiumBg}>
-                      <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                      <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                         {hackathon.name}
                       </td>
-                      <td className={`py-2 px-3 border border-[#232323] font-medium ${getStatusColor(hackathon.status)}`}>
+                      <td className={`py-2 px-3 border border-[#232323] light:border-zinc-300 font-medium ${getStatusColor(hackathon.status)}`}>
                         {hackathon.result}
                       </td>
                     </tr>
@@ -116,17 +116,17 @@ export default function HackathonsPage() {
         {/* Statistics */}
         <div className="mt-12">
           <div className="grid grid-cols-3 gap-4 mx-2">
-            <div className="bg-[#18181b] border border-[#232323] rounded-sm p-4 text-center">
-              <div className="text-2xl font-bold text-[#f5f5f7]">{totalHackathons}</div>
-              <div className="text-sm text-zinc-400">Total Hackathons</div>
+            <div className="bg-[#18181b] light:bg-zinc-100 border border-[#232323] light:border-zinc-300 rounded-sm p-4 text-center">
+              <div className="text-2xl font-bold text-[#f5f5f7] light:text-zinc-900">{totalHackathons}</div>
+              <div className="text-sm text-zinc-400 light:text-zinc-500">Total Hackathons</div>
             </div>
-            <div className="bg-[#18181b] border border-[#232323] rounded-sm p-4 text-center">
+            <div className="bg-[#18181b] light:bg-zinc-100 border border-[#232323] light:border-zinc-300 rounded-sm p-4 text-center">
               <div className="text-2xl font-bold text-yellow-400">6</div>
-              <div className="text-sm text-zinc-400">Wins</div>
+              <div className="text-sm text-zinc-400 light:text-zinc-500">Wins</div>
             </div>
-            <div className="bg-[#18181b] border border-[#232323] rounded-sm p-4 text-center">
-              <div className="text-2xl font-bold text-[#38bdf8]">{(6 / totalHackathons).toFixed(2)}</div>
-              <div className="text-sm text-zinc-400">Success Rate</div>
+            <div className="bg-[#18181b] light:bg-zinc-100 border border-[#232323] light:border-zinc-300 rounded-sm p-4 text-center">
+              <div className="text-2xl font-bold text-[#38bdf8] light:text-sky-600">{(6 / totalHackathons).toFixed(2)}</div>
+              <div className="text-sm text-zinc-400 light:text-zinc-500">Success Rate</div>
             </div>
           </div>
         </div>

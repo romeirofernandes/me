@@ -35,12 +35,12 @@ export default function NewsletterSubscribe({ onSuccess }) {
 
   return (
     <Border1>
-      <Card className="w-full max-w-3xl mx-auto border-0 shadow-none rounded-none bg-transparent">
+      <Card className="w-full max-w-3xl mx-auto border-0 shadow-none rounded-none bg-transparent light:bg-white light:border light:border-zinc-300 light:rounded-none">
         <CardContent className="py-4 px-6">
-          <h2 className="text-lg font-semibold mb-1 text-left">
+          <h2 className="text-lg font-semibold mb-1 text-left light:text-zinc-900">
             If you want, I can email you when I post something new
           </h2>
-          <p className="text-muted-foreground mb-4 text-left text-sm">
+          <p className="text-muted-foreground mb-4 text-left text-sm light:text-zinc-500">
             No spam, no noise. Just occasional updates.
           </p>
           <form
@@ -49,7 +49,7 @@ export default function NewsletterSubscribe({ onSuccess }) {
           >
             <Input
               type="email"
-              className="flex-1 text-sm"
+              className="flex-1 text-sm light:bg-zinc-50 light:text-zinc-900 light:caret-zinc-900 light:placeholder:text-zinc-400 light:border-zinc-300"
               placeholder="your@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}

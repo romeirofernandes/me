@@ -30,424 +30,424 @@ export default function ResourcesPage() {
           </div>
         </div>
         {/* Separator */}
-        <hr className="border-t border-[#232323] my-6" />
+        <hr className="border-t border-[#232323] light:border-zinc-300 my-6" />
         {/* Resource links */}
-        <div className="text-[#f5f5f7] text-md mx-2">
+        <div className="text-[#f5f5f7] light:text-zinc-900 text-md mx-2">
           Over the span of 8 months where I've built countless websites, these
           are some cool resources I refer to sometimes:
           <div className="overflow-x-auto mt-6">
-            <table className="w-full text-left border-collapse text-base sm:text-sm border border-[#232323]">
+            <table className="w-full text-left border-collapse text-base sm:text-sm border border-[#232323] light:border-zinc-300">
               <thead>
                 <tr>
-                  <th className="py-2 px-3 font-semibold text-zinc-400 border border-[#232323] bg-[#18181b]">
+                  <th className="py-2 px-3 font-semibold text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300 bg-[#18181b] light:bg-zinc-100">
                     What it is
                   </th>
-                  <th className="py-2 px-3 font-semibold text-zinc-400 border border-[#232323] bg-[#18181b]">
+                  <th className="py-2 px-3 font-semibold text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300 bg-[#18181b] light:bg-zinc-100">
                     Link
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Inspiring Websites
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://supercreative.design/1000-inspiring-websites"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       supercreative.design/1000-inspiring-websites
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Device Mockups
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://shots.so/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       shots.so
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Avatar Generator
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://getavataaars.com/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       getavataaars.com
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Background Remover
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://www.experte.com/background-remover"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       experte.com/background-remover
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Color Gradients
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://hypercolor.dev"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       hypercolor.dev
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Design Resources
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://undesign.learn.uno/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       undesign.learn.uno
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Code Screenshot Tool
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://ray.so/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       ray.so
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Neumorphism Generator
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://neumorphism.io/#e0e0e0"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       neumorphism.io
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Free Illustrations
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://storyset.com/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       storyset.com
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Color Palettes
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://www.happyhues.co/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       happyhues.co
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     SVG Wave Generator
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://getwaves.io/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       getwaves.io
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Hero Inspirations
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://www.supahero.io/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       supahero.io
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Cool components
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://21st.dev/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       21st.dev
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     AI UI Builder
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://v0.dev/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       v0.dev
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     React UI Components
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://ui.shadcn.com/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       ui.shadcn.com
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Lowkey better than ShadCN
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://originui.com/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       originui.com
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Similar to Origin UI
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://hextaui.com/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       hextaui.com
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     UI Library
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://hextaui.com/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       magicui.design
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     UI Library
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://ui.aceternity.com/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       ui.aceternity.com
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Themes for ShadCN
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://tweakcn.com/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       tweakcn.com
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Font Library
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://fontsource.com/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       fontsource.com
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Design Inspiration
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://sprrrint.com/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       sprrrint.com
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Cool patterns and backgrounds
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://patterncraft.fun/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       patterncraft.fun
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Design Inspiration
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://mobbin.com/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       mobbin.com
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Design Showcase
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://dribbble.com/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       dribbble.com
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Design Inspiration
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://behance.net/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       behance.net
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 px-3 text-zinc-400 border border-[#232323]">
+                  <td className="py-2 px-3 text-zinc-400 light:text-zinc-500 border border-[#232323] light:border-zinc-300">
                     Design Inspiration
                   </td>
-                  <td className="py-2 px-3 border border-[#232323]">
+                  <td className="py-2 px-3 border border-[#232323] light:border-zinc-300">
                     <a
                       href="https://pinterest.com/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-zinc-400 hover:text-[#38bdf8] underline"
+                      className="text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] underline"
                     >
                       pinterest.com
                     </a>

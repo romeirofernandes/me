@@ -8,7 +8,6 @@ export default function ThemeToggle() {
     }
     return false;
   });
-  const [showFlash, setShowFlash] = useState(false);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const isDragging = useRef(false);
@@ -31,8 +30,6 @@ export default function ThemeToggle() {
       localStorage.setItem("theme", next ? "light" : "dark");
       return next;
     });
-    setShowFlash(true);
-    setTimeout(() => setShowFlash(false), 400);
   }, []);
 
   const cordStroke = isOn ? "stroke-zinc-900" : "stroke-zinc-400";
@@ -44,7 +41,6 @@ export default function ThemeToggle() {
   const bulbFill = isOn ? "fill-yellow-100/50" : "fill-cyan-100/10";
   const shine = isOn ? "stroke-white/25" : "stroke-white/75";
   const handleFill = isOn ? "fill-zinc-900" : "fill-zinc-400";
-  const flashStroke = isOn ? "stroke-yellow-300/60" : "stroke-cyan-300/40";
 
   const cordX2 = useTransform(x, (v) => 98.7255 + v);
   const cordY2 = useTransform(y, (v) => 380.5405 + v);
@@ -115,19 +111,6 @@ export default function ThemeToggle() {
             strokeLinecap="round"
             strokeWidth="5"
             d="M-783.192 803.855c5.251 8.815 5.295 21.32 13.272 27.774 12.299 8.045 36.46 8.115 49.127 0 7.976-6.454 8.022-18.96 13.273-27.774 3.992-6.7 14.408-19.811 14.408-19.811 8.276-11.539 12.769-24.594 12.769-38.699 0-35.898-29.102-65-65-65-35.899 0-65 29.102-65 65 0 13.667 4.217 26.348 12.405 38.2 0 0 10.754 13.61 14.746 20.31z"
-          />
-          <motion.circle
-            className={`${flashStroke} fill-none`}
-            cx="-745.343"
-            cy="743.939"
-            r="83.725"
-            strokeDasharray="10,30"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="10"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={showFlash ? { opacity: [0, 1, 0], scale: [0.8, 1.2, 1] } : { opacity: 0 }}
-            transition={{ duration: 0.4 }}
           />
           <path
             className={`${shine} fill-none transition-all duration-300`}

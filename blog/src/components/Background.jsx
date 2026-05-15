@@ -33,9 +33,39 @@ export default function Background({ children, className = "" }) {
           zIndex: -10,
         }}
       />
+      {/* Light mode background patterns */}
+      <div
+        className="absolute top-0 left-0 h-full hidden md:block light:block"
+        style={{
+          width: "calc(50% - 24rem)",
+          background: `repeating-linear-gradient(
+            140deg,
+            rgba(0,0,0,0.04) 0px,
+            rgba(0,0,0,0.04) 1px,
+            transparent 0.1px,
+            transparent 12px
+          )`,
+          zIndex: -10,
+        }}
+      />
+      <div
+        className="absolute top-0 h-full hidden md:block light:block"
+        style={{
+          left: "calc(50% + 24rem)",
+          width: "calc(50% - 24rem)",
+          background: `repeating-linear-gradient(
+            140deg,
+            rgba(0,0,0,0.04) 0px,
+            rgba(0,0,0,0.04) 1px,
+            transparent 0.1px,
+            transparent 12px
+          )`,
+          zIndex: -10,
+        }}
+      />
       {/* Vertical separators */}
-      <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-[24rem] h-full w-[0.1px] bg-white/15 hidden md:block" />
-      <div className="pointer-events-none absolute top-0 left-1/2 translate-x-[24rem] h-full w-[0.1px] bg-white/15 hidden md:block" />
+      <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-[24rem] h-full w-[0.1px] bg-white/15 light:bg-black/15 hidden md:block" />
+      <div className="pointer-events-none absolute top-0 left-1/2 translate-x-[24rem] h-full w-[0.1px] bg-white/15 light:bg-black/15 hidden md:block" />
       {/* Main content */}
       <div className="relative flex justify-center">
         <div className="w-full max-w-3xl">{children}</div>

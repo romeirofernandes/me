@@ -21,12 +21,12 @@ export default function FunFacts({ birthDate, facts }) {
 
   return (
     <div>
-      <h2 className="font-serif text-lg mb-3 text-white">
+      <h2 className="font-serif text-lg mb-3 text-white light:text-zinc-900">
         Fun Facts
       </h2>
-      <ul className="text-sm text-zinc-400 space-y-2">
+      <ul className="text-sm text-zinc-400 light:text-zinc-500 space-y-2">
         <li>
-          - I am <span className="font-mono text-[#38bdf8]">{age}</span> years
+          - I am <span className="font-mono text-[#38bdf8] light:text-[#0369a1]">{age}</span> years
           old
         </li>
         {facts.map((fact) => (
