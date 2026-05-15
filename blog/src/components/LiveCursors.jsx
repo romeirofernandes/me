@@ -180,61 +180,9 @@ export default function LiveCursors({ isEnabled, onToggle }) {
     }
   };
 
-  const handleLocationAllow = async (coords) => {
-    let lat, lon, city, country;
-
-    // Get coordinates from browser geolocation
-    if (coords && typeof coords.lat === 'number' && typeof coords.lon === 'number') {
-      lat = coords.lat;
-      lon = coords.lon;
-    } else {
-      // Fallback to IP coordinates
-      const ipData = await fetchLocationFromIP();
-      lat = ipData.lat;
-      lon = ipData.lon;
-    }
-
-    // Always get city/country from IP API
-    try {
-      const response = await fetch('https://ipinfo.io/json?token=66b09d2d289b40');
-      const data = await response.json();
-      city = data.city || 'Unknown';
-      country = COUNTRY_MAP[data.country] || data.country || 'Unknown';
-    } catch {
-      city = 'Unknown';
-      country = 'Location';
-    }
-
-    setLocation({ city, country, lat, lon });
-  };
-
-  const handleLocationDeny = () => {
-    setLocation({ city: 'Anonymous', country: 'User', lat: 0, lon: 0 });
-  };
-
   useEffect(() => {
     if (isEnabled) {
-      const permission = localStorage.getItem('cursor-location-permission');
-      if (permission === 'allowed') {
-        // Request browser geolocation first
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            (pos) => {
-              const { latitude, longitude } = pos.coords;
-              handleLocationAllow({ lat: latitude, lon: longitude });
-            },
-            () => {
-              // Fallback to IP if browser geolocation fails
-              fetchLocationFromIP().then(loc => setLocation(loc));
-            }
-          );
-        } else {
-          // Fallback to IP if geolocation not supported
-          fetchLocationFromIP().then(loc => setLocation(loc));
-        }
-      } else if (permission === 'denied') {
-        setLocation({ city: 'Anonymous', country: 'User', lat: 0, lon: 0 });
-      }
+      fetchLocationFromIP().then(loc => setLocation(loc));
     }
   }, [isEnabled]);
 
@@ -262,13 +210,6 @@ export default function LiveCursors({ isEnabled, onToggle }) {
 
   return (
     <>
-      {!location && isEnabled && (
-        <LocationPermission
-          onAllow={handleLocationAllow}
-          onDeny={handleLocationDeny}
-        />
-      )}
-
       <Tooltip className="z-[9999]">
         <TooltipTrigger asChild>
           <button
@@ -375,85 +316,6 @@ function Cursor({ cursor, userLocation }) {
           </div>
         </div>
       )}
-    </div>
-  );
-}
-
-function LocationPermission({ onAllow, onDeny }) {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const hasResponded = localStorage.getItem('cursor-location-permission');
-    if (!hasResponded) {
-      setIsVisible(true);
-    }
-  }, []);
-
-  const handleAllow = () => {
-    localStorage.setItem('cursor-location-permission', 'allowed');
-    setIsVisible(false);
-
-    // Use browser geolocation
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          const { latitude, longitude } = pos.coords;
-          onAllow({ lat: latitude, lon: longitude });
-        },
-        () => {
-          // If denied or failed, fallback to IP
-          onAllow(null);
-        }
-      );
-    } else {
-      onAllow(null);
-    }
-  };
-
-  const handleDeny = () => {
-    localStorage.setItem('cursor-location-permission', 'denied');
-    setIsVisible(false);
-    onDeny();
-  };
-
-  if (!isVisible) return null;
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fade-in">
-      <div className="relative w-full max-w-md mx-4 bg-[#18181b] border border-[#232323] rounded-xl shadow-2xl p-6 animate-scale-in">
-        <button
-          onClick={handleDeny}
-          className="absolute top-4 right-4 text-[#71717a] hover:text-[#f5f5f7] transition-colors"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-        </button>
-        
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-12 h-12 rounded-full bg-[#38bdf8]/10 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#38bdf8]"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <h2 className="text-xl font-semibold text-[#f5f5f7]">Share Your Location</h2>
-        </div>
-        
-        <p className="text-[#a1a1aa] mb-6 text-sm leading-relaxed">
-          See where other visitors are from and how far away they are! Your precise location is used only for distance calculation.
-        </p>
-        
-        <div className="flex gap-3">
-          <button
-            onClick={handleAllow}
-            className="flex-1 bg-[#38bdf8] text-white hover:bg-[#38bdf8]/90 rounded-lg px-4 py-2 font-medium transition-colors"
-          >
-            Allow Location
-          </button>
-          <button
-            onClick={handleDeny}
-            className="flex-1 border border-[#232323] hover:bg-[#232323] text-[#f5f5f7] rounded-lg px-4 py-2 font-medium transition-colors"
-          >
-            Maybe Later
-          </button>
-        </div>
-      </div>
     </div>
   );
 }

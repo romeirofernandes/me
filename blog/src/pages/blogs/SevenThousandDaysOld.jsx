@@ -62,7 +62,7 @@ export default function SevenThousandDaysOld() {
         <h1 className="text-white light:text-zinc-900">
           7305 days old now :)
         </h1>
-        <div className="text-zinc-500 light:text-zinc-400 mb-4">
+        <div className="text-neutral-300 light:text-neutral-600 mb-4">
           published: <span className="italic">22-10-2025</span> &middot; {views}{" "}
           views &middot; 5-min read
         </div>
@@ -70,7 +70,7 @@ export default function SevenThousandDaysOld() {
 
         <section className="mb-8">
           <TldrCard>
-            <p className="text-zinc-400 light:text-zinc-500">
+            <p className="text-neutral-300 light:text-neutral-600">
               tldr; turned 20, qualified for bnb 25 finals, lost bnb 25 but got 2nd
               in college - (the 1st place team from college got 3rd place overall),
               on a hunt for the next internship and exploring web3.
@@ -79,7 +79,7 @@ export default function SevenThousandDaysOld() {
         </section>
 
         <section className="mb-8">
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
               call this blog lazarus because it has risen from the dead. a whole
               month later, here i am with hackathon lore - it's the only action in
               my life atp :(
@@ -88,7 +88,7 @@ export default function SevenThousandDaysOld() {
             bit n build 2025
           </h2>
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             i’ll start with the only bad thing about bnb - the internal rounds.
             it’s a hackathon to get into the final hackathon. it was pretty
             tiring, but it was all worth it when i saw that 3 teams (team cotton -
@@ -102,7 +102,7 @@ export default function SevenThousandDaysOld() {
             caption="The gc made it to the finals :)"
           />
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             the problem statements of bnb 2025 were arguably the hardest and
             weirdest ones i’ve seen in a hackathon so far. only one problem
             statement was readable and doable from the web and aiml domain
@@ -115,7 +115,7 @@ export default function SevenThousandDaysOld() {
             caption="The problem statement that we chose."
           />
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             we honestly went with this one because we knew that there wouldn’t be
             many who would go for it (there was no prize ps-wise, but we figured
             that everyone would take the same ps - i.e., the web/app one - and
@@ -128,7 +128,7 @@ export default function SevenThousandDaysOld() {
             caption="The most chosen ps in the hackathon - team pony and team allstar xi both took this one along with 13 other teams out of 60."
           />
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             the hackathon started at 16:00 sharp, and let’s just say we didn’t
             have the best start. i still thank god for no early judging rounds;
             otherwise, we would’ve been cooked. i was writing the entire idea down
@@ -136,14 +136,14 @@ export default function SevenThousandDaysOld() {
             auth.
           </p>
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             we were very confused about what exactly the ps meant for a while. we
             tried searching for multiple libraries and tools we could use but
             didn’t find anything decent. i still remember, i tried locking in for
             an hour straight, and nothing was working. we almost gave up.
           </p>
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             we were fooling around with our seniors (team bluecore - who won 3rd
             place overall and 1st in college) who were sitting behind us. they
             chose aiml ps 1, which had something to do with recognizing parkinson’s
@@ -157,13 +157,13 @@ export default function SevenThousandDaysOld() {
             caption="The AIML problem statement Team Bluecore chose"
           />
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             we picked up our broken project at night and somehow got everything
             done by 09:00 - i.e., the first judging round. we explained our
             project to the judge, and it went pretty well.
           </p>
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             for round 2, we just added more features, and i made a smart contract
             (fully ai-generated) for both users taking part in the experiments and
             the researchers. basically, it was an incentive for users and a system
@@ -171,20 +171,20 @@ export default function SevenThousandDaysOld() {
             amount.
           </p>
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             we thought that would be enough - judging round 2 went 10x better than
             round 1. the judge asked us to get an ip for it and whatnot. we lost.
           </p>
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             congratulations to team bluecore - they made the night bearable.
           </p>
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             top 4 teams from college were also chosen for crescendo points -
           </p>
 
-          <ul className="list-disc list-inside text-zinc-400 light:text-zinc-500">
+          <ul className="list-disc list-inside text-neutral-300 light:text-neutral-600">
             <li>team bluecore + team cotton (300 points)</li>
             <li>team pony + team 4i (180 points)</li>
           </ul>
@@ -195,26 +195,26 @@ export default function SevenThousandDaysOld() {
             what next?
           </h2>
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             looking for an internship, so if any of the readers want to hire me
             :) please reach out via mail. there was an internship expo by tedx in
             our college, but the companies there were just not good. adding the
             drive link below with the job descriptions and stipends.
           </p>
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             i’m exploring web3 a bit because why not - there are 4 days left for
             my diwali vacation to end. let’s just hope i learn/build something
             decent during that time.
           </p>
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             updated the hackathons page with the loss :(
           </p>
 
-          <p className="text-zinc-400 light:text-zinc-500">at a 35% win rate now lol.</p>
+          <p className="text-neutral-300 light:text-neutral-600">at a 35% win rate now lol.</p>
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             that’s it for this one - a very happy diwali to each one of you :)
           </p>
         </section>
@@ -245,7 +245,7 @@ export default function SevenThousandDaysOld() {
           <h2 className="text-white light:text-zinc-900">
             links
           </h2>
-          <ul className="list-none text-zinc-400 light:text-zinc-500">
+          <ul className="list-none text-neutral-300 light:text-neutral-600">
             <li className="mb-2">
               twitter:{" "}
               <a

@@ -70,12 +70,12 @@ export default function WhyStartBlog() {
         <h1 className="text-white light:text-zinc-900">
           why am i starting a blog?
         </h1>
-        <div className="text-zinc-500 light:text-zinc-400 mb-4">
+        <div className="text-neutral-300 light:text-neutral-600 mb-4">
           published: <span className="italic">18-08-2025</span> &middot; {views}{" "}
           views &middot; 2-min read
         </div>
         <hr className="border-t border-[#232323] light:border-zinc-300 my-6" />
-        <p className="text-zinc-400 light:text-zinc-500">
+        <p className="text-neutral-300 light:text-neutral-600">
               well, i thought of doing something like this for quite a while now
               but finally got some time today so here we are.
         </p>
@@ -83,7 +83,7 @@ export default function WhyStartBlog() {
         <section className="mb-8">
           <TldrCard>
             
-            <p className="text-zinc-400 light:text-zinc-500">
+            <p className="text-neutral-300 light:text-neutral-600">
               tldr; i'm{" "}
               <a
                 href="https://romeirofernandes.tech"
@@ -102,7 +102,7 @@ export default function WhyStartBlog() {
         </section>
 
         <section className="mb-8">
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
               for anyone who is new here, hello! i'm{" "}
               <a
                 href="https://romeirofernandes.tech"
@@ -115,12 +115,12 @@ export default function WhyStartBlog() {
               . i'm currently pursuing (sem 5) a bachelor's in computer
               engineering from fr. crce, bandra.
             </p>
-            <p className="text-zinc-400 light:text-zinc-500">
+            <p className="text-neutral-300 light:text-neutral-600">
               i love building websites and have been at it since january 2025,
               around 8 months now. i'm sort of infamous for making websites
               unnecessarily.
             </p>
-            <p className="text-zinc-400 light:text-zinc-500">
+            <p className="text-neutral-300 light:text-neutral-600">
               i read some tech blogs every now and then (
               <a
                 href="https://simonwillison.net"
@@ -143,7 +143,7 @@ export default function WhyStartBlog() {
               check up on any new updates in the tech side (well, i stalk some
               people for fpl news too but that story is for another day).
             </p>
-            <p className="text-zinc-400 light:text-zinc-500">
+            <p className="text-neutral-300 light:text-neutral-600">
               so why start a blog? i need a place to share updates about myself
               and anything new that i experiment with. why do i need to share?{" "}
               <span className="italic">
@@ -156,7 +156,7 @@ export default function WhyStartBlog() {
           <h2 className="text-white light:text-zinc-900">
             what will this blog have?
           </h2>
-          <ul className="list-disc list-inside text-zinc-400 light:text-zinc-500">
+          <ul className="list-disc list-inside text-neutral-300 light:text-neutral-600">
             <li>things i learned</li>
             <li>things i found interesting</li>
             <li>things i built</li>
@@ -168,31 +168,31 @@ export default function WhyStartBlog() {
           <h2 className="text-white light:text-zinc-900">
             what am i doing currently?
           </h2>
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             slightly focused towards dsa because i will have placements in a few
             months. i'm working in an internship for a startup (ends oct 3rd).
             i'm also the tech lead of codestorm crce, where we promote dsa &amp;
             problem solving and host events related to the same.
           </p>
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             i participate in hackathons like my life depends on it. i have won 4
             hackathons so far and have built countless projects during the same.
             there are too many hackathons upcoming; next one is sandip
            
           </p>
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             what else - i love watching the Premier League and i'm an fpl addict
             to say the least. i spend a lot more time than i should on making
             transfers.
           </p>
-          <p className="text-zinc-400 italic">
+          <p className="text-neutral-300 light:text-neutral-600 italic">
             ps: got my sem 4 sgpa while writing (9.46) - highest out of all the
             sems so far, wooohooo!!
           </p>
         </section>
 
         <section className="mb-8">
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             go dm me on twitter or something and see you in the next blog (if
             there’s one).
           </p>
@@ -216,7 +216,7 @@ export default function WhyStartBlog() {
           <h2 className="text-white light:text-zinc-900">
             links
           </h2>
-          <ul className="list-none text-zinc-400 light:text-zinc-500">
+          <ul className="list-none text-neutral-300 light:text-neutral-600">
             <li className="mb-2">
               twitter:{" "}
               <a

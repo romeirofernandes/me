@@ -69,7 +69,7 @@ export default function FiveXHackathonWinner() {
         <h1 className="text-white light:text-zinc-900">
           5x hackathon winner
         </h1>
-        <div className="text-zinc-500 light:text-zinc-400 mb-4">
+        <div className="text-neutral-300 light:text-neutral-600 mb-4">
           published: <span className="italic">24-08-2025</span> &middot; {views}{" "}
           views &middot; 5-min read
         </div>
@@ -77,7 +77,7 @@ export default function FiveXHackathonWinner() {
 
         <section className="mb-8">
           <TldrCard>
-            <p className="text-zinc-400 light:text-zinc-500">
+            <p className="text-neutral-300 light:text-neutral-600">
               <strong>tldr;</strong> we got the domain winner/consolation prize
               (10k INR + award thing) - basically we were in the top 8 teams, at
               the SUNHACKS 2025 hackathon where over 550 teams were present on
@@ -91,7 +91,7 @@ export default function FiveXHackathonWinner() {
               i did not expect to get a win in this hackathon. i wasn't interested
               in this hackathon because of three reasons -
           </p>
-          <ol className="list-decimal list-inside text-zinc-400 light:text-zinc-500">
+          <ol className="list-decimal list-inside text-neutral-300 light:text-neutral-600">
             <li>
               the number of participants (a lot more got filtered out too to
               make into the top 600 teams)
@@ -99,7 +99,7 @@ export default function FiveXHackathonWinner() {
             <li>location (it was in another city, longer travel than usual)</li>
             <li>36 hours (3 days tbh)</li>
           </ol>
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             but i still went for it because half my class had been selected and
             we all decided to go together, it was more of a trip than a
             hackathon to begin with.
@@ -109,46 +109,46 @@ export default function FiveXHackathonWinner() {
             the experience
           </h2>
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             everything that could've gone wrong with the management of an
             hackathon, went wrong. we reached there at around 1930 IST (after
             around 9 hours of travel) and then were registered in and given
             rooms and zones.
           </p>
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             the rooms were packed and there were people everywhere, even on the
             ground floor in the open area where it was raining right beside them
             with nashik winds. we somehow got settled in a room up and sat to
             pick a problem statement from 8 that they had given.
           </p>
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             here comes the main problem of the hackathon in my opinion -{" "}
             <strong>THERE WAS NO PROPER WIFI CONNECTION.</strong>
           </p>
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             the committee members were adamant that it will be fixed in 30 mins
             but im already home now and we had to buy unlimited data packs for
             the 2 nights. we weren't even getting proper connection in the room
             we were in.
           </p>
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             now this literally sent me spiraling, 2 chums came in randomly at
             around 12 am on the first day and said that no using chatgpt and
             github. it was then when i realized that there are no hopes of help
             from the volunteers.
           </p>
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             food queues were pretty long (there were great places nearby to buy
             food from so that saved us) but i guess this should've been obvious
             considering there were around 2000 people on campus.
           </p>
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             the best thing about this hackathon was, <strong>THE CAMPUS</strong>
             . it was top notch from the outside but on the inside, washroom
             doors were broken (2/3 in all floor washrooms, in the building which
@@ -161,7 +161,7 @@ export default function FiveXHackathonWinner() {
           <h2 className="text-white light:text-zinc-900">
             the project
           </h2>
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             now the project, we had 3 judging rounds and 1 final round. from the
             21 zones that were there present, 2 were selected from each for the
             finals. we took StudyGenie as our problem statement because we had
@@ -174,7 +174,7 @@ export default function FiveXHackathonWinner() {
             caption="The problem statement we chose at SUNHACKS 2025"
           />
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             we took a feature idea from that and started building upon it. we
             had loads of features and presented decently throughout the rounds i
             guess. check out our project:{" "}
@@ -189,11 +189,11 @@ export default function FiveXHackathonWinner() {
             (hosted using vercel and render, wait 50 secs for the server to wake
             up).
           </p>
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             i enjoyed this entire hackathon only because of my friends who were
             also there. in all, 3 teams from our college won -
           </p>
-          <ul className="list-disc list-inside text-zinc-400 light:text-zinc-500">
+          <ul className="list-disc list-inside text-neutral-300 light:text-neutral-600">
             <li>Team 4i - very cracked, same year as us, 1st Place</li>
             <li>
               Team PONY -{" "}
@@ -251,12 +251,12 @@ export default function FiveXHackathonWinner() {
             lessons learned
           </h2>
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             every hackathon teaches me something new, below is the list of
             things ive learnt from all the hackathons ive participated in -
           </p>
 
-          <ol className="list-decimal list-inside text-zinc-400 light:text-zinc-500">
+          <ol className="list-decimal list-inside text-neutral-300 light:text-neutral-600">
             <li>have a good team.</li>
             <li>get a phone with unlimited data.</li>
             <li>carry hoodies/anything else to save yourselves from cold.</li>
@@ -288,12 +288,12 @@ export default function FiveXHackathonWinner() {
         </section>
 
         <section className="mb-8">
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             planning to add a page like resources for all the hackathons ive
             been a part of and the results of the same.
           </p>
 
-          <p className="text-zinc-400 light:text-zinc-500">
+          <p className="text-neutral-300 light:text-neutral-600">
             anyways, see y'all in the next blog (yeah there's gonna be more of
             these, i hope).
           </p>
@@ -318,7 +318,7 @@ export default function FiveXHackathonWinner() {
           <h2 className="text-white light:text-zinc-900">
             links
           </h2>
-          <ul className="list-none text-zinc-400 light:text-zinc-500">
+          <ul className="list-none text-neutral-300 light:text-neutral-600">
             <li className="mb-2">
               twitter:{" "}
               <a
