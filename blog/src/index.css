@@ -285,10 +285,11 @@ html.light .placeholder\:text-zinc-500::placeholder {
   color: #a1a1aa;
 }
 
-/* Light mode — newsletter card */
+/* Light mode — newsletter card sharp borders */
 html.light [data-slot="card"] {
   background-color: #ffffff;
   border-color: #d4d4d8;
+  border-radius: 0 !important;
 }
 
 html.light [data-slot="card"] h2 {
@@ -306,9 +307,46 @@ html.light .bg-gradient-to-l {
 }
 
 html.light [style*="repeating-linear-gradient"] {
-  display: none !important;
+  display: block !important;
+  background-image: repeating-linear-gradient(
+    140deg,
+    rgba(0,0,0,0.04) 0px,
+    rgba(0,0,0,0.04) 1px,
+    transparent 0.1px,
+    transparent 12px
+  ) !important;
 }
 
 html.light .pointer-events-none.absolute.top-0 {
-  display: none !important;
+  background-color: rgba(0,0,0,0.08) !important;
+}
+
+/* Light mode — inputs */
+html.light [data-slot="input"] {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border-color: #d4d4d8 !important;
+  color: #080808 !important;
+  caret-color: #080808 !important;
+}
+
+html.light [data-slot="input"]:focus {
+  box-shadow: none !important;
+}
+
+html.light [data-slot="input"]::placeholder {
+  color: #a1a1aa !important;
+}
+
+/* Light mode — newsletter input */
+html.light [data-slot="card"] [data-slot="input"] {
+  background-color: oklch(0.97 0.001 286.375) !important;
+  color: #080808 !important;
+  caret-color: #080808 !important;
+}
+
+/* Light mode — search wrapper input */
+html.light .border-\\[\\#232323\\] input {
+  color: #080808 !important;
+  caret-color: #080808 !important;
 }

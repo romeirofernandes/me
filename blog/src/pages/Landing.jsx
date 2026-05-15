@@ -7,6 +7,7 @@ import Resources from "../components/Resources";
 import BlogList from "../components/BlogList";
 import { Balloons } from "../components/Balloons";
 import NewsletterSubscribe from "../components/NewsletterSubscribe";
+import Border1 from "../components/Border1";
 
 function useDebouncedValue(value, delay = 300) {
   const [debounced, setDebounced] = useState(value);
