@@ -32,6 +32,7 @@
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.539.0",
     "motion": "^12.23.12",
+    "punycode": "^2.3.1",
     "qss": "^3.0.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
