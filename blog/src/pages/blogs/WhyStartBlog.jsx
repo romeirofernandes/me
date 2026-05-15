@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ArrowLeftIcon, ArrowRightIcon } from "@hugeicons/core-free-icons";
 import Background from "../../components/Background";
 import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase";
@@ -50,20 +51,20 @@ export default function WhyStartBlog() {
 
   return (
     <Background>
-      <div className="mx-auto w-full max-w-3xl px-4 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
+      <div className="blog-article mx-auto w-full max-w-3xl px-4 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
         {/* Navigation Buttons */}
         <div className="flex items-center justify-between mb-6">
           <button
             onClick={() => navigate(-1)}
             className="flex items-center gap-2 text-zinc-400 hover:text-[#38bdf8] transition"
           >
-            <FaChevronLeft />
+            <HugeiconsIcon icon={ArrowLeftIcon} size={18} />
             <span className="font-medium">back</span>
           </button>
           
         </div>
 
-        <h1 className="font-serif text-3xl font-bold mb-4 text-white">
+        <h1 className="font-bold text-white">
           why am i starting a blog?
         </h1>
         <div className="text-zinc-500 mb-4">
@@ -73,11 +74,11 @@ export default function WhyStartBlog() {
         <hr className="border-t border-[#232323] my-6" />
 
         <section className="mb-8">
-          <p className="text-zinc-400 mb-6">
+          <p className="text-zinc-400">
             well, i thought of doing something like this for quite a while now
             but finally got some time today so here we are.
           </p>
-          <p className="text-zinc-400 mb-6">
+          <p className="text-zinc-400">
             tldr; i'm{" "}
             <a
               href="https://romeirofernandes.tech"
@@ -91,7 +92,7 @@ export default function WhyStartBlog() {
             interesting, and learned. having a personal blog didn’t seem that
             bad of a decision to me so here we are :)
           </p>
-          <p className="text-zinc-400 mb-6">
+          <p className="text-zinc-400">
             for anyone who is new here, hello! i'm{" "}
             <a
               href="https://romeirofernandes.tech"
@@ -104,12 +105,12 @@ export default function WhyStartBlog() {
             . i'm currently pursuing (sem 5) a bachelor’s in computer
             engineering from fr. crce, bandra.
           </p>
-          <p className="text-zinc-400 mb-6">
+          <p className="text-zinc-400">
             i love building websites and have been at it since january 2025,
             around 8 months now. i'm sort of infamous for making websites
             unnecessarily.
           </p>
-          <p className="text-zinc-400 mb-6">
+          <p className="text-zinc-400">
             i read some tech blogs every now and then (
             <a
               href="https://simonwillison.net"
@@ -132,7 +133,7 @@ export default function WhyStartBlog() {
             check up on any new updates in the tech side (well, i stalk some
             people for fpl news too but that story is for another day).
           </p>
-          <p className="text-zinc-400 mb-6">
+          <p className="text-zinc-400">
             so why start a blog? i need a place to share updates about myself
             and anything new that i experiment with. why do i need to share?{" "}
             <span className="italic">
@@ -145,10 +146,10 @@ export default function WhyStartBlog() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-serif text-xl font-bold mb-2 text-white">
+          <h2 className="font-bold text-white">
             what will this blog have?
           </h2>
-          <ul className="list-disc list-inside text-zinc-400 mb-4">
+          <ul className="list-disc list-inside text-zinc-400">
             <li>things i learned</li>
             <li>things i found interesting</li>
             <li>things i built</li>
@@ -157,34 +158,34 @@ export default function WhyStartBlog() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-serif text-xl font-bold mb-2 text-white">
+          <h2 className="font-bold text-white">
             what am i doing currently?
           </h2>
-          <p className="text-zinc-400 mb-6">
+          <p className="text-zinc-400">
             slightly focused towards dsa because i will have placements in a few
             months. i'm working in an internship for a startup (ends oct 3rd).
             i'm also the tech lead of codestorm crce, where we promote dsa &amp;
             problem solving and host events related to the same.
           </p>
-          <p className="text-zinc-400 mb-6">
+          <p className="text-zinc-400">
             i participate in hackathons like my life depends on it. i have won 4
             hackathons so far and have built countless projects during the same.
             there are too many hackathons upcoming; next one is sandip
            
           </p>
-          <p className="text-zinc-400 mb-6">
+          <p className="text-zinc-400">
             what else - i love watching the Premier League and i'm an fpl addict
             to say the least. i spend a lot more time than i should on making
             transfers.
           </p>
-          <p className="text-zinc-400 mb-6 italic">
+          <p className="text-zinc-400 italic">
             ps: got my sem 4 sgpa while writing (9.46) - highest out of all the
             sems so far, wooohooo!!
           </p>
         </section>
 
         <section className="mb-8">
-          <p className="text-zinc-400 mb-6">
+          <p className="text-zinc-400">
             go dm me on twitter or something and see you in the next blog (if
             there’s one).
           </p>
@@ -197,7 +198,7 @@ export default function WhyStartBlog() {
               className="flex items-center gap-2 text-zinc-400 hover:text-[#38bdf8] transition"
             >
               <span className="font-medium">next</span>
-              <FaChevronRight />
+              <HugeiconsIcon icon={ArrowRightIcon} size={18} />
             </button>
           </div>
         )}
@@ -205,7 +206,7 @@ export default function WhyStartBlog() {
         <hr className="border-t border-[#232323] my-6" />
 
         <section className="mb-8">
-          <h2 className="font-serif text-xl font-bold mb-2 text-white">
+          <h2 className="font-bold text-white">
             links
           </h2>
           <ul className="list-none text-zinc-400">

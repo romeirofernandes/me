@@ -7,7 +7,7 @@ export default function ImageModal({ src, alt, caption, className = "" }) {
   return (
     <>
       {/* Thumbnail Image */}
-      <div className="mb-6">
+      <div className="mb-8">
         <img
           src={src}
           alt={alt}
