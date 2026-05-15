@@ -5,6 +5,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@hugeicons/core-free-icons";
 import Background from "../../components/Background";
 import GradualBlur from "../../components/GradualBlur";
 import ImageModal from "../../components/ImageModal";
+import TldrCard from "../../components/TldrCard";
 import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase";
 import { blogs } from "../../components/BlogList";
@@ -57,7 +58,7 @@ export default function MacbookExamsAndMore() {
         <div className="flex items-center justify-between mb-6">
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] transition"
+            className="flex items-center gap-2 text-sky-400 hover:text-sky-300 transition"
           >
             <HugeiconsIcon icon={ArrowLeftIcon} size={18} />
             <span className="font-medium">back</span>
@@ -74,27 +75,28 @@ export default function MacbookExamsAndMore() {
         <hr className="border-t border-[#232323] light:border-zinc-300 my-6" />
 
         <section className="mb-8">
-          <p className="text-zinc-400 light:text-zinc-500">
-            <strong>tldr;</strong> got the new macbook m4, mid sem exams done
-            with decent marks, didn't qualify internal round of sih and my
-            internship's ending in a week. added the hackathons page too at{" "}
-            <a
-              href="https://blog.romeirofernandes.tech/hackathons"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#38bdf8] light:text-[#0369a1] underline"
-            >
-              blog.romeirofernandes.tech/hackathons
-            </a>
-          </p>
-
-          <p className="text-zinc-400 light:text-zinc-500">
-            well this blog hasn't been sacked off yet. it has been around a
-            month since the last blog. the main reason was the mid sem exams.
-          </p>
+          <TldrCard>
+            <p className="text-zinc-400 light:text-zinc-500">
+              <strong>tldr;</strong> got the new macbook m4, mid sem exams done
+              with decent marks, didn't qualify internal round of sih and my
+              internship's ending in a week. added the hackathons page too at{" "}
+              <a
+                href="https://blog.romeirofernandes.tech/hackathons"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#38bdf8] light:text-[#0369a1] underline"
+              >
+                blog.romeirofernandes.tech/hackathons
+              </a>
+            </p>
+          </TldrCard>
         </section>
 
         <section className="mb-8">
+          <p className="text-zinc-400 light:text-zinc-500">
+              well this blog hasn't been sacked off yet. it has been around a
+              month since the last blog. the main reason was the mid sem exams.
+          </p>
           <h2 className="text-white light:text-zinc-900">
             the macbook
           </h2>
@@ -317,7 +319,7 @@ export default function MacbookExamsAndMore() {
           <div className="flex justify-end mt-8">
             <button
             onClick={handleNext}
-            className="flex items-center gap-2 text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] transition"
+            className="flex items-center gap-2 text-sky-400 hover:text-sky-300 transition"
             >
               <span className="font-medium">next</span>
               <HugeiconsIcon icon={ArrowRightIcon} size={18} />

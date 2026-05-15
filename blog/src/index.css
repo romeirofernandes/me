@@ -18,6 +18,7 @@ body {
   font-family: "New York", serif;
   text-align: justify;
   letter-spacing: 0.01em;
+  font-size: 0.875rem;
 }
 
 p, span, div, article, section, li, td, th {
@@ -52,7 +53,7 @@ p, span, div, article, section, li, td, th {
 .blog-article p a,
 .blog-article ul:not(.list-none) a,
 .blog-article ol a {
-  font-size: 0.75rem;
+  font-size: inherit;
 }
 
 h1,

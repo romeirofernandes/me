@@ -5,6 +5,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@hugeicons/core-free-icons";
 import Background from "../../components/Background";
 import GradualBlur from "../../components/GradualBlur";
 import ImageModal from "../../components/ImageModal";
+import TldrCard from "../../components/TldrCard";
 import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase";
 import { blogs } from "../../components/BlogList";
@@ -57,7 +58,7 @@ export default function FiveXHackathonWinner() {
         <div className="flex items-center justify-between mb-6">
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] transition"
+            className="flex items-center gap-2 text-sky-400 hover:text-sky-300 transition"
           >
             <HugeiconsIcon icon={ArrowLeftIcon} size={18} />
             <span className="font-medium">back</span>
@@ -75,18 +76,21 @@ export default function FiveXHackathonWinner() {
         <hr className="border-t border-[#232323] light:border-zinc-300 my-6" />
 
         <section className="mb-8">
-          <p className="text-zinc-400 light:text-zinc-500">
-            <strong>tldr;</strong> we got the domain winner/consolation prize
-            (10k INR + award thing) - basically we were in the top 8 teams, at
-            the SUNHACKS 2025 hackathon where over 550 teams were present on
-            sandip university's campus, nashik.
-          </p>
+          <TldrCard>
+            <p className="text-zinc-400 light:text-zinc-500">
+              <strong>tldr;</strong> we got the domain winner/consolation prize
+              (10k INR + award thing) - basically we were in the top 8 teams, at
+              the SUNHACKS 2025 hackathon where over 550 teams were present on
+              sandip university's campus, nashik.
+            </p>
+          </TldrCard>
+        </section>
 
-          <p className="text-zinc-400 light:text-zinc-500">
-            i did not expect to get a win in this hackathon. i wasn't interested
-            in this hackathon because of three reasons -
+        <section className="mb-8">
+          <p className="text-neutral-300 light:text-neutral-600">
+              i did not expect to get a win in this hackathon. i wasn't interested
+              in this hackathon because of three reasons -
           </p>
-
           <ol className="list-decimal list-inside text-zinc-400 light:text-zinc-500">
             <li>
               the number of participants (a lot more got filtered out too to
@@ -95,15 +99,12 @@ export default function FiveXHackathonWinner() {
             <li>location (it was in another city, longer travel than usual)</li>
             <li>36 hours (3 days tbh)</li>
           </ol>
-
           <p className="text-zinc-400 light:text-zinc-500">
             but i still went for it because half my class had been selected and
             we all decided to go together, it was more of a trip than a
             hackathon to begin with.
           </p>
-        </section>
-
-        <section className="mb-8">
+          
           <h2 className="text-white light:text-zinc-900">
             the experience
           </h2>
@@ -303,7 +304,7 @@ export default function FiveXHackathonWinner() {
           <div className="flex justify-end mt-8">
             <button
               onClick={handleNext}
-              className="flex items-center gap-2 text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] transition"
+            className="flex items-center gap-2 text-sky-400 hover:text-sky-300 transition"
             >
               <span className="font-medium">next</span>
               <HugeiconsIcon icon={ArrowRightIcon} size={18} />

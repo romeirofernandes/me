@@ -76,7 +76,7 @@ export default function Landing() {
             placeholder="Search blog posts…"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="bg-transparent border-none text-white light:text-zinc-900 placeholder:text-zinc-500 light:placeholder:text-zinc-400 focus:ring-0 focus:outline-none flex-1 rounded-none"
+            className="bg-transparent border-none text-white light:text-zinc-900 placeholder:text-zinc-500 light:placeholder:text-zinc-400 focus-visible:ring-0 focus-visible:border-transparent shadow-none flex-1 rounded-none"
           />
         </div>
         

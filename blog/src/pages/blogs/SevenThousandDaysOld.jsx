@@ -5,6 +5,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@hugeicons/core-free-icons";
 import Background from "../../components/Background";
 import GradualBlur from "../../components/GradualBlur";
 import ImageModal from "../../components/ImageModal";
+import TldrCard from "../../components/TldrCard";
 import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase";
 import { blogs } from "../../components/BlogList";
@@ -52,7 +53,7 @@ export default function SevenThousandDaysOld() {
         {/* Back Button */}
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center gap-2 text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] mb-6 transition"
+          className="flex items-center gap-2 text-sky-400 hover:text-sky-300 mb-6 transition"
         >
           <HugeiconsIcon icon={ArrowLeftIcon} size={18} />
           <span className="font-medium">back</span>
@@ -68,19 +69,21 @@ export default function SevenThousandDaysOld() {
         <hr className="border-t border-[#232323] light:border-zinc-300 my-6" />
 
         <section className="mb-8">
-          <p className="text-zinc-400 light:text-zinc-500">
-            tldr; turned 20, qualified for bnb 25 finals, lost bnb 25 but got 2nd
-            in college - (the 1st place team from college got 3rd place overall),
-            on a hunt for the next internship and exploring web3.
-          </p>
-          <p className="text-zinc-400 light:text-zinc-500">
-            call this blog lazarus because it has risen from the dead. a whole
-            month later, here i am with hackathon lore - it’s the only action in
-            my life atp :(
-          </p>
+          <TldrCard>
+            <p className="text-zinc-400 light:text-zinc-500">
+              tldr; turned 20, qualified for bnb 25 finals, lost bnb 25 but got 2nd
+              in college - (the 1st place team from college got 3rd place overall),
+              on a hunt for the next internship and exploring web3.
+            </p>
+          </TldrCard>
         </section>
 
         <section className="mb-8">
+          <p className="text-zinc-400 light:text-zinc-500">
+              call this blog lazarus because it has risen from the dead. a whole
+              month later, here i am with hackathon lore - it's the only action in
+              my life atp :(
+          </p>
           <h2 className="text-white light:text-zinc-900">
             bit n build 2025
           </h2>
@@ -220,7 +223,7 @@ export default function SevenThousandDaysOld() {
         <div className="flex justify-between">
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] transition"
+            className="flex items-center gap-2 text-sky-400 hover:text-sky-300 transition"
           >
             <HugeiconsIcon icon={ArrowLeftIcon} size={18} />
             <span className="font-medium">Previous</span>
@@ -228,7 +231,7 @@ export default function SevenThousandDaysOld() {
           {nextBlog && (
             <button
               onClick={handleNext}
-              className="flex items-center gap-2 text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] transition"
+              className="flex items-center gap-2 text-sky-400 hover:text-sky-300 transition"
             >
               <span className="font-medium">Next</span>
               <HugeiconsIcon icon={ArrowRightIcon} size={18} />

@@ -35,7 +35,7 @@ export default function NewsletterSubscribe({ onSuccess }) {
 
   return (
     <Border1>
-      <Card className="w-full max-w-3xl mx-auto border-0 shadow-none rounded-none bg-transparent light:bg-white light:border light:border-zinc-300 light:rounded-none">
+      <Card className="w-full max-w-3xl mx-auto border-0 shadow-none rounded-none light:bg-white dark:bg-zinc-900">
         <CardContent className="py-4 px-6">
           <h2 className="text-lg font-semibold mb-1 text-left light:text-zinc-900">
             If you want, I can email you when I post something new

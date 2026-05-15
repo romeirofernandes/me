@@ -4,6 +4,7 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@hugeicons/core-free-icons";
 import Background from "../../components/Background";
 import GradualBlur from "../../components/GradualBlur";
+import TldrCard from "../../components/TldrCard";
 import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase";
 import { blogs } from "../../components/BlogList";
@@ -58,7 +59,7 @@ export default function WhyStartBlog() {
         <div className="flex items-center justify-between mb-6">
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] transition"
+            className="flex items-center gap-2 text-sky-400 hover:text-sky-300 transition"
           >
             <HugeiconsIcon icon={ArrowLeftIcon} size={18} />
             <span className="font-medium">back</span>
@@ -74,80 +75,84 @@ export default function WhyStartBlog() {
           views &middot; 2-min read
         </div>
         <hr className="border-t border-[#232323] light:border-zinc-300 my-6" />
+        <p className="text-zinc-400 light:text-zinc-500">
+              well, i thought of doing something like this for quite a while now
+              but finally got some time today so here we are.
+        </p>
 
         <section className="mb-8">
-          <p className="text-zinc-400 light:text-zinc-500">
-            well, i thought of doing something like this for quite a while now
-            but finally got some time today so here we are.
-          </p>
-          <p className="text-zinc-400 light:text-zinc-500">
-            tldr; i'm{" "}
-            <a
-              href="https://romeirofernandes.tech"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#38bdf8] light:text-[#0369a1]"
-            >
-              romeiro
-            </a>
-            , i build websites. i needed a way to share things i build, found
-            interesting, and learned. having a personal blog didn’t seem that
-            bad of a decision to me so here we are :)
-          </p>
-          <p className="text-zinc-400 light:text-zinc-500">
-            for anyone who is new here, hello! i'm{" "}
-            <a
-              href="https://romeirofernandes.tech"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#38bdf8] light:text-[#0369a1]"
-            >
-              romeiro
-            </a>
-            . i'm currently pursuing (sem 5) a bachelor’s in computer
-            engineering from fr. crce, bandra.
-          </p>
-          <p className="text-zinc-400 light:text-zinc-500">
-            i love building websites and have been at it since january 2025,
-            around 8 months now. i'm sort of infamous for making websites
-            unnecessarily.
-          </p>
-          <p className="text-zinc-400 light:text-zinc-500">
-            i read some tech blogs every now and then (
-            <a
-              href="https://simonwillison.net"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#38bdf8] light:text-[#0369a1]"
-            >
-              simon willison
-            </a>
-            ), watch{" "}
-            <a
-              href="https://www.youtube.com/@t3dotgg"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#38bdf8] light:text-[#0369a1]"
-            >
-              theo
-            </a>
-            's videos if bored during college lectures, and scroll twitter to
-            check up on any new updates in the tech side (well, i stalk some
-            people for fpl news too but that story is for another day).
-          </p>
-          <p className="text-zinc-400 light:text-zinc-500">
-            so why start a blog? i need a place to share updates about myself
-            and anything new that i experiment with. why do i need to share?{" "}
-            <span className="italic">
-              well, it’ll be fun to read this a few years or months later, i'm
-              sure of it.
-            </span>{" "}
-            hell, if even one of y’all get something from this, it’ll be a win
-            for me.
-          </p>
+          <TldrCard>
+            
+            <p className="text-zinc-400 light:text-zinc-500">
+              tldr; i'm{" "}
+              <a
+                href="https://romeirofernandes.tech"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#38bdf8] light:text-[#0369a1]"
+              >
+                romeiro
+              </a>
+              , i build websites. i needed a way to share things i build, found
+              interesting, and learned. having a personal blog didn't seem that
+              bad of a decision to me so here we are :)
+            </p>
+            
+          </TldrCard>
         </section>
 
         <section className="mb-8">
+          <p className="text-zinc-400 light:text-zinc-500">
+              for anyone who is new here, hello! i'm{" "}
+              <a
+                href="https://romeirofernandes.tech"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#38bdf8] light:text-[#0369a1]"
+              >
+                romeiro
+              </a>
+              . i'm currently pursuing (sem 5) a bachelor's in computer
+              engineering from fr. crce, bandra.
+            </p>
+            <p className="text-zinc-400 light:text-zinc-500">
+              i love building websites and have been at it since january 2025,
+              around 8 months now. i'm sort of infamous for making websites
+              unnecessarily.
+            </p>
+            <p className="text-zinc-400 light:text-zinc-500">
+              i read some tech blogs every now and then (
+              <a
+                href="https://simonwillison.net"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#38bdf8] light:text-[#0369a1]"
+              >
+                simon willison
+              </a>
+              ), watch{" "}
+              <a
+                href="https://www.youtube.com/@t3dotgg"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#38bdf8] light:text-[#0369a1]"
+              >
+                theo
+              </a>
+              's videos if bored during college lectures, and scroll twitter to
+              check up on any new updates in the tech side (well, i stalk some
+              people for fpl news too but that story is for another day).
+            </p>
+            <p className="text-zinc-400 light:text-zinc-500">
+              so why start a blog? i need a place to share updates about myself
+              and anything new that i experiment with. why do i need to share?{" "}
+              <span className="italic">
+                well, it'll be fun to read this a few years or months later, i'm
+                sure of it.
+              </span>{" "}
+              hell, if even one of y'all get something from this, it'll be a win
+              for me.
+            </p>
           <h2 className="text-white light:text-zinc-900">
             what will this blog have?
           </h2>
@@ -197,7 +202,7 @@ export default function WhyStartBlog() {
           <div className="flex justify-end mt-8">
             <button
               onClick={handleNext}
-              className="flex items-center gap-2 text-zinc-400 light:text-zinc-500 hover:text-[#38bdf8] light:hover:text-[#0369a1] transition"
+            className="flex items-center gap-2 text-sky-400 hover:text-sky-300 transition"
             >
               <span className="font-medium">next</span>
               <HugeiconsIcon icon={ArrowRightIcon} size={18} />
