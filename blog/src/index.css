@@ -291,8 +291,24 @@ html.light [data-slot="card"] {
   border-color: #d4d4d8;
 }
 
+html.light [data-slot="card"] h2 {
+  color: #080808;
+}
+
+html.light [data-slot="card"] p {
+  color: #52525b;
+}
+
 /* Light mode — background gradients */
 html.light .bg-gradient-to-r,
 html.light .bg-gradient-to-l {
-  opacity: 0.03;
+  opacity: 0;
+}
+
+html.light [style*="repeating-linear-gradient"] {
+  display: none !important;
+}
+
+html.light .pointer-events-none.absolute.top-0 {
+  display: none !important;
 }

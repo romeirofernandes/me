@@ -23,7 +23,7 @@ export default function NewsletterSubscribe({ onSuccess }) {
         if (onSuccess) onSuccess();
       }
       setEmail("");
-      toast.success("Subscribed! You'll get blog updates.");
+      toast.success("You're in! I'll send updates when there's something worth reading.");
     } catch (err) {
       console.error("Subscription error:", err);
       toast.error("Something went wrong. Try again.");
@@ -33,13 +33,13 @@ export default function NewsletterSubscribe({ onSuccess }) {
   };
 
   return (
-    <Card className="w-full max-w-3xl mx-auto">
+    <Card className="w-full max-w-3xl mx-auto border-dashed">
       <CardContent className="py-4 px-6">
-        <h2 className="text-xl font-semibold mb-2 text-left">
-          Subscribe to Blog Updates
+        <h2 className="text-lg font-semibold mb-1 text-left">
+          If you want, I can email you when I post something new
         </h2>
         <p className="text-muted-foreground mb-4 text-left text-sm">
-          Get the latest posts delivered to your inbox.
+          No spam, no noise. Just occasional updates.
         </p>
         <form
           onSubmit={handleSubmit}
@@ -48,7 +48,7 @@ export default function NewsletterSubscribe({ onSuccess }) {
           <Input
             type="email"
             className="flex-1 text-sm"
-            placeholder="Get blog updates by email"
+            placeholder="your@email.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             disabled={loading}
@@ -61,7 +61,7 @@ export default function NewsletterSubscribe({ onSuccess }) {
             disabled={loading}
             aria-label="Subscribe"
           >
-            {loading ? "..." : "Join"}
+            {loading ? "..." : "Send me updates"}
           </Button>
         </form>
       </CardContent>

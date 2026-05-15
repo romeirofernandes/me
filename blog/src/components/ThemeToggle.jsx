@@ -1,10 +1,10 @@
-import { useRef, useState, useCallback } from "react";
-import { motion } from "framer-motion";
+import { useState, useCallback } from "react";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 
 export default function ThemeToggle() {
   const [isOn, setIsOn] = useState(false);
-  const [pullDist, setPullDist] = useState(0);
-  const startY = useRef(0);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
   const toggle = useCallback(() => {
     setIsOn((prev) => {
@@ -25,8 +25,11 @@ export default function ThemeToggle() {
   const shine = isOn ? "stroke-white/25" : "stroke-white/75";
   const handleFill = isOn ? "fill-zinc-900" : "fill-zinc-400";
 
+  const cordX2 = useTransform(x, (v) => 98.7255 + v * 0.3);
+  const cordY2 = useTransform(y, (v) => 380.5405 + v);
+
   return (
-    <div className="fixed top-4 right-4 z-50" style={{ width: "2.5rem" }}>
+    <div className="fixed top-6 right-8 z-50" style={{ width: "2.5rem" }}>
       <svg
         viewBox="0 0 197.451 481.081"
         className="h-28 w-auto overflow-visible"
@@ -89,7 +92,6 @@ export default function ThemeToggle() {
             strokeWidth="5"
             d="M-783.192 803.855c5.251 8.815 5.295 21.32 13.272 27.774 12.299 8.045 36.46 8.115 49.127 0 7.976-6.454 8.022-18.96 13.273-27.774 3.992-6.7 14.408-19.811 14.408-19.811 8.276-11.539 12.769-24.594 12.769-38.699 0-35.898-29.102-65-65-65-35.899 0-65 29.102-65 65 0 13.667 4.217 26.348 12.405 38.2 0 0 10.754 13.61 14.746 20.31z"
           />
-          {/* Dashed circle removed */}
           <path
             className={`${shine} fill-none transition-all duration-300`}
             strokeLinecap="round"
@@ -101,37 +103,49 @@ export default function ThemeToggle() {
 
         {/* Cord + drag handle */}
         <g>
+          {/* Invisible drag overlay */}
+          <motion.rect
+            x="80"
+            y="230"
+            width="40"
+            height="170"
+            fill="transparent"
+            drag
+            dragElastic={0.5}
+            dragMomentum={false}
+            dragConstraints={{ top: -80, left: -80, right: 80, bottom: 80 }}
+            onDrag={(_, info) => {
+              x.set(info.offset.x);
+              y.set(info.offset.y);
+            }}
+            onDragEnd={() => {
+              const dist = Math.sqrt(x.get() ** 2 + y.get() ** 2);
+              if (dist > 50) toggle();
+              x.set(0);
+              y.set(0);
+            }}
+            style={{ cursor: "grab" }}
+            onMouseDown={(e) => (e.currentTarget.style.cursor = "grabbing")}
+            onMouseUp={(e) => (e.currentTarget.style.cursor = "grab")}
+            onMouseLeave={(e) => (e.currentTarget.style.cursor = "grab")}
+          />
           <motion.line
             className={`${cordStroke} transition-all duration-300`}
             strokeLinecap="square"
             strokeWidth="6"
             markerEnd="url(#a)"
             x1="98.7255"
-            x2="98.7255"
+            x2={cordX2}
             y1="240.5405"
-            animate={{ y2: 380.5405 + pullDist }}
-            transition={{ type: "spring", stiffness: 500, damping: 40 }}
+            y2={cordY2}
+            style={{ pointerEvents: "none" }}
           />
           <motion.circle
             className={`${handleFill} transition-all duration-300`}
             cx="98.7255"
             cy="380.5405"
             r="8"
-            drag="y"
-            dragElastic={0}
-            dragMomentum={false}
-            dragSnapToOrigin
-            dragConstraints={{ top: 0, bottom: 150 }}
-            onDrag={(_, info) => {
-              setPullDist(info.offset.y);
-            }}
-            onDragStart={(_, info) => {
-              startY.current = info.point.y;
-            }}
-            onDragEnd={(_, info) => {
-              if (info.offset.y > 50) toggle();
-              setPullDist(0);
-            }}
+            style={{ x, y, pointerEvents: "none" }}
           />
         </g>
       </svg>
