@@ -1,17 +1,34 @@
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 
 export default function ThemeToggle() {
-  const [isOn, setIsOn] = useState(false);
+  const [isOn, setIsOn] = useState(() => {
+    if (typeof window !== "undefined") {
+      return document.documentElement.classList.contains("light");
+    }
+    return false;
+  });
   const [showFlash, setShowFlash] = useState(false);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const isDragging = useRef(false);
 
+  useEffect(() => {
+    const saved = localStorage.getItem("theme");
+    if (saved === "light") {
+      document.documentElement.classList.add("light");
+      setIsOn(true);
+    } else {
+      document.documentElement.classList.remove("light");
+      setIsOn(false);
+    }
+  }, []);
+
   const toggle = useCallback(() => {
     setIsOn((prev) => {
       const next = !prev;
       document.documentElement.classList.toggle("light", next);
+      localStorage.setItem("theme", next ? "light" : "dark");
       return next;
     });
     setShowFlash(true);
@@ -29,7 +46,6 @@ export default function ThemeToggle() {
   const handleFill = isOn ? "fill-zinc-900" : "fill-zinc-400";
   const flashStroke = isOn ? "stroke-yellow-300/60" : "stroke-cyan-300/40";
 
-  // Cord and handle use raw x/y so they stay locked together during drag
   const cordX2 = useTransform(x, (v) => 98.7255 + v);
   const cordY2 = useTransform(y, (v) => 380.5405 + v);
 
@@ -37,7 +53,6 @@ export default function ThemeToggle() {
     isDragging.current = false;
     const dist = Math.sqrt(x.get() ** 2 + y.get() ** 2);
 
-    // Elastic recoil animation
     animate(x, 0, { type: "spring", stiffness: 180, damping: 10, mass: 0.6 });
     animate(y, 0, { type: "spring", stiffness: 180, damping: 10, mass: 0.6 });
 
@@ -63,7 +78,6 @@ export default function ThemeToggle() {
           </clipPath>
         </defs>
 
-        {/* Static bulb */}
         <g transform="translate(844.069, -645.213)">
           <path
             className={`${capFill} transition-all duration-300`}
@@ -102,7 +116,6 @@ export default function ThemeToggle() {
             strokeWidth="5"
             d="M-783.192 803.855c5.251 8.815 5.295 21.32 13.272 27.774 12.299 8.045 36.46 8.115 49.127 0 7.976-6.454 8.022-18.96 13.273-27.774 3.992-6.7 14.408-19.811 14.408-19.811 8.276-11.539 12.769-24.594 12.769-38.699 0-35.898-29.102-65-65-65-35.899 0-65 29.102-65 65 0 13.667 4.217 26.348 12.405 38.2 0 0 10.754 13.61 14.746 20.31z"
           />
-          {/* Bulb flash */}
           <motion.circle
             className={`${flashStroke} fill-none`}
             cx="-745.343"
@@ -125,9 +138,7 @@ export default function ThemeToggle() {
           />
         </g>
 
-        {/* Cord + drag handle */}
         <g>
-          {/* Cord line from bulb to handle */}
           <motion.line
             className={`${cordStroke}`}
             strokeLinecap="round"
@@ -138,7 +149,6 @@ export default function ThemeToggle() {
             y2={cordY2}
             style={{ pointerEvents: "none" }}
           />
-          {/* Handle dot - locked to cord end */}
           <motion.circle
             className={`${handleFill}`}
             cx="98.7255"
@@ -146,12 +156,10 @@ export default function ThemeToggle() {
             r="8"
             style={{ x, y, pointerEvents: "none" }}
           />
-          {/* Transparent drag area */}
-          <motion.rect
-            x="38"
-            y="230"
-            width="120"
-            height="200"
+          <motion.circle
+            cx="98.7255"
+            cy="380.5405"
+            r="40"
             fill="transparent"
             drag
             dragElastic={0}
@@ -165,7 +173,7 @@ export default function ThemeToggle() {
               y.set(info.offset.y);
             }}
             onDragEnd={handleDragEnd}
-            style={{ cursor: "grab" }}
+            style={{ x, y, cursor: "grab" }}
             onMouseDown={(e) => (e.currentTarget.style.cursor = "grabbing")}
             onMouseUp={(e) => (e.currentTarget.style.cursor = "grab")}
             onMouseLeave={(e) => {
