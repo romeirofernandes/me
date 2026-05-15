@@ -62,7 +62,7 @@ export default function MacbookExamsAndMore() {
           </button>
         </div>
 
-        <h1 className="font-bold text-white">
+        <h1 className="text-white">
           macbook, exams and more…
         </h1>
         <div className="text-zinc-500 mb-4">
@@ -93,7 +93,7 @@ export default function MacbookExamsAndMore() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-bold text-white">
+          <h2 className="text-white">
             the macbook
           </h2>
 
@@ -142,7 +142,7 @@ export default function MacbookExamsAndMore() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-bold text-white">
+          <h2 className="text-white">
             the exams
           </h2>
 
@@ -174,7 +174,7 @@ export default function MacbookExamsAndMore() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-bold text-white">
+          <h2 className="text-white">
             the hackathon
           </h2>
 
@@ -250,7 +250,7 @@ export default function MacbookExamsAndMore() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-bold text-white">
+          <h2 className="text-white">
             things i learnt
           </h2>
 
@@ -276,7 +276,7 @@ export default function MacbookExamsAndMore() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-bold text-white">
+          <h2 className="text-white">
             what next
           </h2>
 
@@ -326,7 +326,7 @@ export default function MacbookExamsAndMore() {
         <hr className="border-t border-[#232323] my-6" />
 
         <section className="mb-8">
-          <h2 className="font-bold text-white">
+          <h2 className="text-white">
             links
           </h2>
           <ul className="list-none text-zinc-400">

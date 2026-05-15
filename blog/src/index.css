@@ -113,6 +113,7 @@ html {
 }
 
 :root {
+  --on: 0;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
@@ -226,4 +227,72 @@ html {
 ::-moz-selection {
   background: #f5f5f7;
   color: #080808;
+}
+
+html.light body {
+  background-color: #f5f5f7;
+  color: #080808;
+}
+
+/* Light mode — blog articles */
+html.light .blog-article p {
+  color: #52525b;
+}
+html.light .blog-article h1,
+html.light .blog-article h2 {
+  color: #080808;
+}
+html.light .blog-article a {
+  color: #0369a1;
+}
+html.light .blog-article .text-zinc-500 {
+  color: #71717a;
+}
+
+/* Light mode — landing page */
+html.light .font-serif.text-white,
+html.light h2.text-white,
+html.light h3.text-white {
+  color: #080808;
+}
+html.light .text-zinc-400 {
+  color: #52525b;
+}
+html.light .text-zinc-500 {
+  color: #71717a;
+}
+html.light .text-\[\#38bdf8\] {
+  color: #0369a1;
+}
+html.light .hover\:text-\[\#38bdf8\]:hover {
+  color: #0369a1;
+}
+html.light .border-\[\#232323\] {
+  border-color: #d4d4d8;
+}
+html.light .bg-\[\#080808\] {
+  background-color: transparent;
+}
+html.light .text-muted-foreground {
+  color: #71717a;
+}
+
+/* Light mode — search bar */
+html.light .border-\[\#232323\] {
+  border-color: #d4d4d8;
+}
+html.light .placeholder\:text-zinc-500::placeholder {
+  color: #a1a1aa;
+}
+
+/* Light mode — newsletter card */
+html.light [data-slot="card"] {
+  background-color: #ffffff;
+  border-color: #d4d4d8;
+}
+
+/* Light mode — background gradients */
+html.light .bg-gradient-to-r,
+html.light .bg-gradient-to-l {
+  opacity: 0.03;
 }

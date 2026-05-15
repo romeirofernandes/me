@@ -56,7 +56,7 @@ export default function SevenThousandDaysOld() {
           <span className="font-medium">back</span>
         </button>
 
-        <h1 className="font-bold text-white">
+        <h1 className="text-white">
           7305 days old now :)
         </h1>
         <div className="text-zinc-500 mb-4">
@@ -79,7 +79,7 @@ export default function SevenThousandDaysOld() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-bold text-white">
+          <h2 className="text-white">
             bit n build 2025
           </h2>
 
@@ -186,7 +186,7 @@ export default function SevenThousandDaysOld() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-bold text-white">
+          <h2 className="text-white">
             what next?
           </h2>
 
@@ -237,7 +237,7 @@ export default function SevenThousandDaysOld() {
         <hr className="border-t border-[#232323] my-6" />
 
         <section className="mb-8">
-          <h2 className="font-bold text-white">
+          <h2 className="text-white">
             links
           </h2>
           <ul className="list-none text-zinc-400">

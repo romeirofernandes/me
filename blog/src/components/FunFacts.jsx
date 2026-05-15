@@ -21,7 +21,7 @@ export default function FunFacts({ birthDate, facts }) {
 
   return (
     <div>
-      <h2 className="font-serif text-lg font-bold mb-3 text-white">
+      <h2 className="font-serif text-lg mb-3 text-white">
         Fun Facts
       </h2>
       <ul className="text-sm text-zinc-400 space-y-2">

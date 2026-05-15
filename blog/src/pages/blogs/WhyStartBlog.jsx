@@ -64,7 +64,7 @@ export default function WhyStartBlog() {
           
         </div>
 
-        <h1 className="font-bold text-white">
+        <h1 className="text-white">
           why am i starting a blog?
         </h1>
         <div className="text-zinc-500 mb-4">
@@ -146,7 +146,7 @@ export default function WhyStartBlog() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-bold text-white">
+          <h2 className="text-white">
             what will this blog have?
           </h2>
           <ul className="list-disc list-inside text-zinc-400">
@@ -158,7 +158,7 @@ export default function WhyStartBlog() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-bold text-white">
+          <h2 className="text-white">
             what am i doing currently?
           </h2>
           <p className="text-zinc-400">
@@ -206,7 +206,7 @@ export default function WhyStartBlog() {
         <hr className="border-t border-[#232323] my-6" />
 
         <section className="mb-8">
-          <h2 className="font-bold text-white">
+          <h2 className="text-white">
             links
           </h2>
           <ul className="list-none text-zinc-400">

@@ -63,7 +63,7 @@ export default function FiveXHackathonWinner() {
           
         </div>
 
-        <h1 className="font-bold text-white">
+        <h1 className="text-white">
           5x hackathon winner
         </h1>
         <div className="text-zinc-500 mb-4">
@@ -102,7 +102,7 @@ export default function FiveXHackathonWinner() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-bold text-white">
+          <h2 className="text-white">
             the experience
           </h2>
 
@@ -155,7 +155,7 @@ export default function FiveXHackathonWinner() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-bold text-white">
+          <h2 className="text-white">
             the project
           </h2>
           <p className="text-zinc-400">
@@ -244,7 +244,7 @@ export default function FiveXHackathonWinner() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-bold text-white">
+          <h2 className="text-white">
             lessons learned
           </h2>
 
@@ -312,7 +312,7 @@ export default function FiveXHackathonWinner() {
         <hr className="border-t border-[#232323] my-6" />
 
         <section className="mb-8">
-          <h2 className="font-bold text-white">
+          <h2 className="text-white">
             links
           </h2>
           <ul className="list-none text-zinc-400">

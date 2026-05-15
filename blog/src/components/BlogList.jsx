@@ -75,7 +75,7 @@ export default function BlogList({ search }) {
 						onClick={() => navigate(`/blogs/${blog.slug}`)}
 					>
 						<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-							<h3 className="font-serif text-lg font-bold text-white">
+							<h3 className="font-serif text-lg text-white">
 								{blog.title}
 							</h3>
 							<div className="flex gap-4 text-xs text-zinc-500 font-mono">

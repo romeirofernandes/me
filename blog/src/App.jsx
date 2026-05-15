@@ -9,6 +9,7 @@ import MacbookExamsAndMore from "./pages/blogs/MacbookExamsAndMore";
 import SevenThousandDaysOld from "./pages/blogs/SevenThousandDaysOld";
 import { Analytics } from "@vercel/analytics/react";
 import LiveCursors from "./components/LiveCursors";
+import ThemeToggle from "./components/ThemeToggle";
 import Unsubscribe from "./pages/Unsubscribe";
 import AdminSendMail from "./pages/AdminSendMail";
 import { Toaster } from "sonner";
@@ -18,6 +19,7 @@ export default function App() {
 
   return (
     <>
+      <ThemeToggle />
       <Toaster position="top-right" richColors />
       <LiveCursors
         isEnabled={cursorsEnabled}
