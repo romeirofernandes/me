@@ -50,7 +50,7 @@ export default function NewsletterSubscribe({ onSuccess }) {
           </p>
           <form
             onSubmit={handleSubmit}
-            className="w-full flex flex-row gap-2"
+            className="w-full flex flex-col sm:flex-row gap-2"
           >
             <Input
               type="email"
