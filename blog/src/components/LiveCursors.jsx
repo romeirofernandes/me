@@ -220,6 +220,26 @@ export default function LiveCursors({ isEnabled, onToggle }) {
           >
             <span className="relative inline-block w-5 h-5">
               <MousePointer className="w-5 h-5 text-[#f5f5f7] light:text-zinc-900" />
+              <svg
+                className="absolute -left-1 -top-1 w-7 h-7 pointer-events-none"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <line
+                  x1="2"
+                  y1="22"
+                  x2="22"
+                  y2="2"
+                  stroke="#f87171"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  className="transition-all duration-300 ease-out"
+                  style={{
+                    strokeDasharray: 35,
+                    strokeDashoffset: isEnabled ? 35 : 0,
+                  }}
+                />
+              </svg>
             </span>
           </button>
         </TooltipTrigger>

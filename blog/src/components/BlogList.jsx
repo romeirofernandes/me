@@ -3,6 +3,21 @@ import { useNavigate } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
+const noResultsQuotes = [
+  { text: "i spent 36 hours at a hackathon with no wifi and still found more than this search.", author: "romeiro, probably" },
+  { text: "this blog post doesn't exist. much like my sleep schedule during BNB 25.", author: "romeiro, definitely" },
+  { text: "you won't find that here. but you will find a 2nd place trophy from college and a lot of regret.", author: "romeiro, humbly" },
+  { text: "searching for something that isn't here? bold of you to assume i write consistently.", author: "romeiro, honestly" },
+  { text: "that post doesn't exist. neither does my motivation to write it, apparently.", author: "romeiro, transparently" },
+  { text: "i qualified for finals with 550 teams watching. you couldn't find one blog post.", author: "romeiro, competitively" },
+  { text: "no results. just like my FPL team every gameweek.", author: "romeiro, painfully" },
+  { text: "you searched for nothing and found nothing. at least the wifi at SUNHACKS was honest about being useless.", author: "romeiro, reflectively" },
+];
+
+function getRandomQuote() {
+  return noResultsQuotes[Math.floor(Math.random() * noResultsQuotes.length)];
+}
+
 export const blogs = [
 	{
 		title: "Why am I starting a blog?",
@@ -63,24 +78,8 @@ export default function BlogList({ search }) {
 
 	return (
 		<div className="flex flex-col gap-0">
-			{filteredBlogs.length === 0 && (
-				<div className="flex flex-col items-center justify-center py-16 text-center">
-					<svg
-						width="120"
-						height="120"
-						viewBox="0 0 120 120"
-						fill="none"
-						className="mb-4 opacity-60"
-					>
-						<circle cx="60" cy="60" r="50" stroke="currentColor" strokeWidth="2" className="text-zinc-600 light:text-zinc-300" strokeDasharray="4 4" />
-						<path d="M45 50 L75 50 M45 60 L70 60 M45 70 L65 70" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-zinc-500 light:text-zinc-400" />
-						<circle cx="82" cy="78" r="16" fill="currentColor" className="text-zinc-700 light:text-zinc-200" />
-						<path d="M76 78 L88 78 M82 72 L82 84" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="text-zinc-300 light:text-zinc-600" />
-					</svg>
-					<p className="text-zinc-500 light:text-zinc-400 text-sm font-mono">
-						no such post exists
-					</p>
-				</div>
+			{filteredBlogs.length === 0 && search && (
+				<NoResultsQuote />
 			)}
 			{filteredBlogs.map((blog, idx) => (
 				<React.Fragment key={blog.slug}>
@@ -107,4 +106,26 @@ export default function BlogList({ search }) {
 			))}
 		</div>
 	);
+}
+
+function NoResultsQuote() {
+  const [quote] = useState(() => getRandomQuote());
+
+  return (
+    <div className="py-16 px-4">
+      <div className="max-w-lg mx-auto text-center">
+        <div className="mb-6">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" className="mx-auto text-zinc-600 light:text-zinc-400">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" fill="currentColor" />
+          </svg>
+        </div>
+        <blockquote className="font-serif text-lg text-zinc-300 light:text-zinc-600 italic leading-relaxed mb-4">
+          "{quote.text}"
+        </blockquote>
+        <cite className="text-sm text-zinc-500 light:text-zinc-400 not-italic font-mono">
+          — {quote.author}
+        </cite>
+      </div>
+    </div>
+  );
 }

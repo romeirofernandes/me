@@ -236,6 +236,11 @@ html.light body {
   color: #080808;
 }
 
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  display: none;
+}
+
 [data-radix-popper-content-wrapper] polygon {
   fill: #232323;
 }
@@ -243,3 +248,10 @@ html.light body {
 html.light [data-radix-popper-content-wrapper] polygon {
   fill: #ffffff;
 }
+
+@media (min-width: 768px) {
+  html {
+    overscroll-behavior: none;
+  }
+}
+
