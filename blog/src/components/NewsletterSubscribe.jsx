@@ -49,7 +49,7 @@ export default function NewsletterSubscribe({ onSuccess }) {
           >
             <Input
               type="email"
-              className="flex-1 text-sm light:bg-zinc-50 light:text-zinc-900 light:caret-zinc-900 light:placeholder:text-zinc-400 light:border-zinc-300"
+              className="flex-1 text-sm rounded-none light:bg-zinc-50 light:text-zinc-900 light:caret-zinc-900 light:placeholder:text-zinc-400 light:border-zinc-300"
               placeholder="your@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -59,7 +59,7 @@ export default function NewsletterSubscribe({ onSuccess }) {
             />
             <Button
               type="submit"
-              className="font-medium text-sm"
+              className="font-medium text-sm rounded-none"
               disabled={loading}
               aria-label="Subscribe"
             >

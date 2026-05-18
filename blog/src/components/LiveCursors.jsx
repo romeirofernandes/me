@@ -214,33 +214,16 @@ export default function LiveCursors({ isEnabled, onToggle }) {
         <TooltipTrigger asChild>
           <button
             onClick={onToggle}
-            className="fixed bottom-6 right-6 z-[9999] bg-[#18181b] border border-[#232323] rounded-full p-0 shadow-lg hover:bg-[#232323] transition-all duration-200"
+            className="fixed bottom-6 right-6 z-[9999] bg-[#18181b] light:bg-white border border-[#232323] light:border-zinc-200 rounded-full p-0 shadow-lg hover:bg-[#232323] light:hover:bg-zinc-100 transition-all duration-200"
             style={{ width: "56px", height: "56px", minWidth: "56px", minHeight: "56px", display: "flex", alignItems: "center", justifyContent: "center" }}
             aria-label={isEnabled ? "Hide cursors" : "Show cursors"}
           >
             <span className="relative inline-block w-5 h-5">
-              <MousePointer className="w-5 h-5 text-[#f5f5f7]" />
-              {!isEnabled && (
-                <svg
-                  className="absolute left-0 top-0 w-5 h-5 pointer-events-none"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                >
-                  <line
-                    x1="3"
-                    y1="17"
-                    x2="17"
-                    y2="3"
-                    stroke="#f87171"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              )}
+              <MousePointer className="w-5 h-5 text-[#f5f5f7] light:text-zinc-900" />
             </span>
           </button>
         </TooltipTrigger>
-        <TooltipContent side="left" className="bg-[#232323] text-[#f5f5f7] z-[9999]">
+        <TooltipContent side="left" className="bg-[#232323] light:bg-white text-[#f5f5f7] light:text-zinc-900 z-[9999]">
           {isEnabled ? "Hide cursors" : "Show cursors"}
         </TooltipContent>
       </Tooltip>
@@ -294,12 +277,13 @@ function Cursor({ cursor, userLocation }) {
           fill={cursor.color}
           stroke="white"
           strokeWidth="1"
+          className="light:stroke-zinc-900"
         />
       </svg>
 
       {cursor.location && (
         <div
-          className="absolute top-6 left-6 bg-[#18181b] border rounded-lg px-3 py-2 shadow-xl whitespace-nowrap animate-fade-in"
+          className="absolute top-6 left-6 bg-[#18181b] light:bg-white border rounded-lg px-3 py-2 shadow-xl whitespace-nowrap animate-fade-in"
           style={{
             borderColor: cursor.color,
           }}
@@ -309,7 +293,7 @@ function Cursor({ cursor, userLocation }) {
               className="w-2 h-2 rounded-full"
               style={{ backgroundColor: cursor.color }}
             />
-            <span className="text-xs font-medium text-[#f5f5f7]">
+            <span className="text-xs font-medium text-[#f5f5f7] light:text-zinc-900">
               {distanceText}
               {cursor.location.city}, {cursor.location.country}
             </span>

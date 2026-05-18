@@ -64,8 +64,22 @@ export default function BlogList({ search }) {
 	return (
 		<div className="flex flex-col gap-0">
 			{filteredBlogs.length === 0 && (
-				<div className="text-zinc-500 light:text-zinc-400 text-center py-8">
-					No results found.
+				<div className="flex flex-col items-center justify-center py-16 text-center">
+					<svg
+						width="120"
+						height="120"
+						viewBox="0 0 120 120"
+						fill="none"
+						className="mb-4 opacity-60"
+					>
+						<circle cx="60" cy="60" r="50" stroke="currentColor" strokeWidth="2" className="text-zinc-600 light:text-zinc-300" strokeDasharray="4 4" />
+						<path d="M45 50 L75 50 M45 60 L70 60 M45 70 L65 70" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-zinc-500 light:text-zinc-400" />
+						<circle cx="82" cy="78" r="16" fill="currentColor" className="text-zinc-700 light:text-zinc-200" />
+						<path d="M76 78 L88 78 M82 72 L82 84" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="text-zinc-300 light:text-zinc-600" />
+					</svg>
+					<p className="text-zinc-500 light:text-zinc-400 text-sm font-mono">
+						no such post exists
+					</p>
 				</div>
 			)}
 			{filteredBlogs.map((blog, idx) => (

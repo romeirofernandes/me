@@ -156,12 +156,16 @@ export default function ThemeToggle() {
               y.set(info.offset.y);
             }}
             onDragEnd={handleDragEnd}
-            style={{ x, y, cursor: "grab" }}
-            onMouseDown={(e) => (e.currentTarget.style.cursor = "grabbing")}
+            style={{ x, y, cursor: "grab", touchAction: "none", userSelect: "none" }}
+            onMouseDown={(e) => {
+              e.currentTarget.style.cursor = "grabbing";
+              e.preventDefault();
+            }}
             onMouseUp={(e) => (e.currentTarget.style.cursor = "grab")}
             onMouseLeave={(e) => {
               if (!isDragging.current) e.currentTarget.style.cursor = "grab";
             }}
+            onTouchStart={(e) => e.stopPropagation()}
           />
         </g>
       </svg>

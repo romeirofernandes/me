@@ -235,3 +235,11 @@ html.light body {
   background-color: #f5f5f7;
   color: #080808;
 }
+
+[data-radix-popper-content-wrapper] polygon {
+  fill: #232323;
+}
+
+html.light [data-radix-popper-content-wrapper] polygon {
+  fill: #ffffff;
+}

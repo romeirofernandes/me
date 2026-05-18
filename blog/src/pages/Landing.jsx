@@ -60,7 +60,7 @@ export default function Landing() {
           className="fixed inset-0 pointer-events-none z-50"
         />
         
-        {/* Top columns */}
+        {/* Top columns - fixed at top */}
         <div className="flex flex-col sm:flex-row justify-between gap-8 mb-8">
           <FunFacts birthDate={birthDate.current} facts={funFacts} />
           <div className="hidden sm:block">
@@ -80,9 +80,12 @@ export default function Landing() {
           />
         </div>
         
-        <BlogList search={debouncedSearch} />
+        {/* Scrollable middle section */}
+        <div className="flex-1 overflow-y-auto">
+          <BlogList search={debouncedSearch} />
+        </div>
 
-        {/* Newsletter Subscription */}
+        {/* Newsletter Subscription - fixed at bottom */}
         <div className="dark mt-10">
           <NewsletterSubscribe />
         </div>
