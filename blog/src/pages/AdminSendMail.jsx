@@ -116,7 +116,7 @@ export default function AdminSendMail() {
                     value={formData.title}
                     onChange={(e) => handleInputChange("title", e.target.value)}
                     placeholder="Enter blog title"
-                    className="w-full"
+                    className="w-full rounded-none border-[#232323] light:border-zinc-300 focus-visible:ring-0"
                   />
                 </div>
 
@@ -127,7 +127,7 @@ export default function AdminSendMail() {
                     value={formData.excerpt}
                     onChange={(e) => handleInputChange("excerpt", e.target.value)}
                     placeholder="Enter a short excerpt"
-                    className="w-full"
+                    className="w-full rounded-none border-[#232323] light:border-zinc-300 focus-visible:ring-0"
                   />
                 </div>
 
@@ -138,7 +138,7 @@ export default function AdminSendMail() {
                     value={formData.url}
                     onChange={(e) => handleInputChange("url", e.target.value)}
                     placeholder="https://blog.romeirofernandes.tech/blogs/slug"
-                    className="w-full"
+                    className="w-full rounded-none border-[#232323] light:border-zinc-300 focus-visible:ring-0"
                   />
                 </div>
 

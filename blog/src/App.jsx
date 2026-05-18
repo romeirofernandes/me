@@ -12,15 +12,14 @@ import LiveCursors from "./components/LiveCursors";
 import ThemeToggle from "./components/ThemeToggle";
 import Unsubscribe from "./pages/Unsubscribe";
 import AdminSendMail from "./pages/AdminSendMail";
-import { Toaster } from "sonner";
+import { ToastProvider } from "./components/Toast";
 
 export default function App() {
   const [cursorsEnabled, setCursorsEnabled] = useState(true);
 
   return (
-    <>
+    <ToastProvider>
       <ThemeToggle />
-      <Toaster position="top-right" richColors />
       <LiveCursors
         isEnabled={cursorsEnabled}
         onToggle={() => setCursorsEnabled(!cursorsEnabled)}
@@ -34,9 +33,9 @@ export default function App() {
         <Route path="/blogs/5x-hackathon-winner" element={<FiveXHackathonWinner />} />
         <Route path="/blogs/macbook-exams-and-more" element={<MacbookExamsAndMore />} />
         <Route path="/blogs/7305-days-old-now" element={<SevenThousandDaysOld />} />
-        <Route path="/send-mail" element={<AdminSendMail />} />
+        <Route path="/send-email" element={<AdminSendMail />} />
         <Route path="/unsubscribe" element={<Unsubscribe />} />
       </Routes>
-    </>
+    </ToastProvider>
   );
 }

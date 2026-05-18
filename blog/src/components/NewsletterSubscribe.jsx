@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { subscribeToNewsletter, isEmailSubscribed } from "../lib/newsletter";
-import { toast } from "sonner";
+import { useToast } from "./Toast";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -9,11 +9,12 @@ import Border1 from "./Border1";
 export default function NewsletterSubscribe({ onSuccess }) {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  const { addToast } = useToast();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-      toast.error("Enter a valid email.");
+      addToast("Enter a valid email.", "error");
       return;
     }
     setLoading(true);
@@ -22,12 +23,14 @@ export default function NewsletterSubscribe({ onSuccess }) {
       if (!alreadySubscribed) {
         await subscribeToNewsletter(email);
         if (onSuccess) onSuccess();
+        addToast("You're in! I'll send updates when there's something worth reading.", "success");
+      } else {
+        addToast("You're already with us. You'll get your reminders regularly.", "success");
       }
       setEmail("");
-      toast.success("You're in! I'll send updates when there's something worth reading.");
     } catch (err) {
       console.error("Subscription error:", err);
-      toast.error("Something went wrong. Try again.");
+      addToast("Something went wrong. Try again.", "error");
     } finally {
       setLoading(false);
     }

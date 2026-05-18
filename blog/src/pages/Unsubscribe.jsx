@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { collection, query, where, getDocs, deleteDoc } from "firebase/firestore";
 import { db } from "../firebase";
-import { toast } from "sonner";
+import { useToast } from "../components/Toast";
 
 export default function Unsubscribe() {
   const [status, setStatus] = useState("loading"); 
+  const { addToast } = useToast();
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -27,10 +28,10 @@ export default function Unsubscribe() {
         }
         await Promise.all(snapshot.docs.map((docu) => deleteDoc(docu.ref)));
         setStatus("success");
-        toast.success("You have been unsubscribed.");
+        addToast("You have been unsubscribed.", "success");
       } catch (err) {
         setStatus("error");
-        toast.error("Error unsubscribing. Try again.");
+        addToast("Error unsubscribing. Try again.", "error");
       }
     };
 
