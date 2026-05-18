@@ -54,16 +54,30 @@ export const blogs = [
 
 export default function BlogList({ search }) {
 	const navigate = useNavigate();
-	const [viewCounts, setViewCounts] = useState({});
+	const [viewCounts, setViewCounts] = useState(() => {
+		try {
+			const cached = localStorage.getItem("blog-view-counts");
+			if (cached) {
+				const { data, timestamp } = JSON.parse(cached);
+				if (Date.now() - timestamp < 5 * 60 * 1000) {
+					return data;
+				}
+			}
+		} catch {}
+		return {};
+	});
+
 	const filteredBlogs = [...blogs]
 		.filter(
 			(blog) =>
 				blog.title.toLowerCase().includes(search.toLowerCase()) ||
 				blog.description.toLowerCase().includes(search.toLowerCase())
 		)
-		.reverse(); // newest blogs on top
+		.reverse();
 
 	useEffect(() => {
+		let cancelled = false;
+
 		async function fetchAllViews() {
 			const counts = {};
 			for (const blog of blogs) {
@@ -71,9 +85,17 @@ export default function BlogList({ search }) {
 				const snap = await getDoc(ref);
 				counts[blog.slug] = snap.exists() ? snap.data().views : 0;
 			}
-			setViewCounts(counts);
+			if (!cancelled) {
+				setViewCounts(counts);
+				localStorage.setItem("blog-view-counts", JSON.stringify({
+					data: counts,
+					timestamp: Date.now(),
+				}));
+			}
 		}
 		fetchAllViews();
+
+		return () => { cancelled = true; };
 	}, []);
 
 	return (
