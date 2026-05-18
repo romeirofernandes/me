@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { ref, set, onValue, remove, onDisconnect, get } from 'firebase/database';
 import { database } from '../firebase';
-import { MousePointer } from 'lucide-react';
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Cursor01Icon } from "@hugeicons/core-free-icons";
 import { useLocation } from 'react-router-dom';
 import { Tooltip, TooltipTrigger, TooltipContent } from "../components/ui/tooltip";
 
@@ -219,7 +220,7 @@ export default function LiveCursors({ isEnabled, onToggle }) {
             aria-label={isEnabled ? "Hide cursors" : "Show cursors"}
           >
             <span className="relative inline-block w-5 h-5">
-              <MousePointer className="w-5 h-5 text-[#f5f5f7] light:text-zinc-900" />
+              <HugeiconsIcon icon={Cursor01Icon} className="w-5 h-5 text-[#f5f5f7] light:text-zinc-900" />
               <svg
                 className="absolute -left-1 -top-1 w-7 h-7 pointer-events-none"
                 viewBox="0 0 24 24"

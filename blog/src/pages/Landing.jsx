@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import Background from "../components/Background";
 import { Input } from "@/components/ui/input";
-import { FaSearch } from "react-icons/fa";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Search01Icon } from "@hugeicons/core-free-icons";
 import FunFacts from "../components/FunFacts";
 import Resources from "../components/Resources";
 import BlogList from "../components/BlogList";
@@ -70,7 +71,7 @@ export default function Landing() {
         
         {/* Search Bar */}
         <div className="flex items-center gap-2 mb-8 border border-[#232323] light:border-zinc-300 px-3 py-2 rounded-none bg-transparent">
-          <FaSearch className="text-zinc-500 light:text-zinc-400 text-base" />
+          <HugeiconsIcon icon={Search01Icon} className="text-zinc-500 light:text-zinc-400 w-4 h-4" />
           <Input
             type="search"
             placeholder="Search blog posts…"

@@ -58,10 +58,11 @@ export default function ThemeToggle() {
   };
 
   return (
-    <div className="fixed top-6 right-8 z-50" style={{ width: "2.5rem" }}>
+    <div className="fixed top-6 right-8 z-50" style={{ width: "2.5rem", touchAction: "none" }}>
       <svg
         viewBox="0 0 197.451 481.081"
         className="h-28 w-auto overflow-visible"
+        style={{ touchAction: "none" }}
       >
         <defs>
           <clipPath id="g" clipPathUnits="userSpaceOnUse">
@@ -165,7 +166,12 @@ export default function ThemeToggle() {
             onMouseLeave={(e) => {
               if (!isDragging.current) e.currentTarget.style.cursor = "grab";
             }}
-            onTouchStart={(e) => e.stopPropagation()}
+            onTouchStart={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+            }}
+            onTouchMove={(e) => e.preventDefault()}
+            onTouchEnd={(e) => e.preventDefault()}
           />
         </g>
       </svg>

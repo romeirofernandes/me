@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { subscribeToNewsletter, isEmailSubscribed } from "../lib/newsletter";
 import { useToast } from "./Toast";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Mail01Icon } from "@hugeicons/core-free-icons";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -39,20 +41,20 @@ export default function NewsletterSubscribe({ onSuccess }) {
   return (
     <Border1>
       <Card className="w-full max-w-3xl mx-auto border-0 shadow-none rounded-none light:bg-white dark:bg-zinc-900">
-        <CardContent className="py-4 px-6">
-          <h2 className="text-lg font-semibold mb-1 text-left light:text-zinc-900">
+        <CardContent className="py-3 px-4 sm:py-4 sm:px-6">
+          <h2 className="text-sm sm:text-lg font-semibold mb-1 text-left text-white light:text-zinc-900">
             If you want, I can email you when I post something new
           </h2>
-          <p className="text-muted-foreground mb-4 text-left text-sm light:text-zinc-500">
+          <p className="text-muted-foreground mb-3 sm:mb-4 text-left text-xs sm:text-sm text-zinc-400 light:text-zinc-500">
             No spam, no noise. Just occasional updates.
           </p>
           <form
             onSubmit={handleSubmit}
-            className="w-full flex flex-row gap-2"
+            className="w-full flex flex-col sm:flex-row gap-2"
           >
             <Input
               type="email"
-              className="flex-1 text-sm rounded-none light:bg-zinc-50 light:text-zinc-900 light:caret-zinc-900 light:placeholder:text-zinc-400 light:border-zinc-300"
+              className="flex-1 text-xs sm:text-sm rounded-none border-[#232323] light:border-zinc-300 bg-transparent text-white light:text-zinc-900 placeholder:text-zinc-500 light:placeholder:text-zinc-400 focus-visible:ring-0 light:bg-zinc-50 light:text-zinc-900 light:caret-zinc-900"
               placeholder="your@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -62,11 +64,12 @@ export default function NewsletterSubscribe({ onSuccess }) {
             />
             <Button
               type="submit"
-              className="font-medium text-sm rounded-none"
+              className="font-medium text-xs sm:text-sm rounded-none flex items-center justify-center gap-2"
               disabled={loading}
               aria-label="Subscribe"
             >
-              {loading ? "..." : "Send me updates"}
+              <HugeiconsIcon icon={Mail01Icon} className="w-4 h-4" />
+              <span className="sm:inline">Send</span>
             </Button>
           </form>
         </CardContent>

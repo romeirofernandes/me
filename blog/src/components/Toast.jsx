@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Border1 from "./Border1";
 
 const ToastContext = createContext();
 
@@ -44,19 +45,21 @@ function ToastItem({ toast }) {
   const isError = toast.type === "error";
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: 10, scale: 0.95 }}
-      transition={{ duration: 0.2 }}
-      className="pointer-events-auto w-96 bg-[#18181b] light:bg-white border border-[#232323] light:border-zinc-300 shadow-lg"
-    >
-      <div className="p-4 flex items-start gap-3">
-        <div className={`mt-0.5 w-2 h-2 shrink-0 ${isSuccess ? "bg-[#38bdf8]" : isError ? "bg-red-500" : "bg-zinc-400"}`} />
-        <p className="text-sm text-[#f5f5f7] light:text-zinc-900 font-serif leading-snug">
-          {toast.message}
-        </p>
-      </div>
-    </motion.div>
+    <Border1>
+      <motion.div
+        initial={{ opacity: 0, y: 20, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 10, scale: 0.95 }}
+        transition={{ duration: 0.2 }}
+        className="pointer-events-auto w-96 bg-[#18181b] light:bg-white border border-[#232323] light:border-zinc-300 shadow-lg"
+      >
+        <div className="p-4 flex items-start gap-3">
+          <div className={`mt-0.5 w-2 h-2 shrink-0 ${isSuccess ? "bg-[#38bdf8]" : isError ? "bg-red-500" : "bg-zinc-400"}`} />
+          <p className="text-sm text-[#f5f5f7] light:text-zinc-900 font-serif leading-snug">
+            {toast.message}
+          </p>
+        </div>
+      </motion.div>
+    </Border1>
   );
 }
