@@ -10,8 +10,19 @@ import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase";
 import { blogs } from "../../components/BlogList";
 
+function getNextBlog(slug) {
+  const idx = blogs.findIndex((b) => b.slug === slug);
+  return idx >= 0 && idx < blogs.length - 1 ? blogs[idx + 1] : null;
+}
+
+function getPreviousBlog(slug) {
+  const idx = blogs.findIndex((b) => b.slug === slug);
+  return idx > 0 ? blogs[idx - 1] : null;
+}
+
 const currentSlug = "7305-days-old-now";
-const nextBlog = blogs[blogs.findIndex((b) => b.slug === currentSlug) + 1] || null;
+const nextBlog = getNextBlog(currentSlug);
+const previousBlog = getPreviousBlog(currentSlug);
 
 const BLOG_ID = "7305-days-old-now";
 
@@ -42,17 +53,16 @@ export default function SevenThousandDaysOld() {
     updateViews();
   }, []);
 
-  const handleNext = () => {
-    if (nextBlog) navigate(`/blogs/${nextBlog.slug}`);
+  const handleNav = (slug) => {
+    navigate(`/blogs/${slug}`);
   };
 
   return (
     <Background>
       <div className="blog-article relative mx-auto w-full max-w-3xl px-4 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
         <GradualBlur strength={1.5} divCount={2} opacity={1} />
-        {/* Back Button */}
         <button
-          onClick={() => navigate(-1)}
+          onClick={() => navigate('/')}
           className="flex items-center gap-2 text-sky-400 hover:text-sky-300 mb-6 transition"
         >
           <HugeiconsIcon icon={ArrowLeftIcon} size={18} />
@@ -219,21 +229,24 @@ export default function SevenThousandDaysOld() {
           </p>
         </section>
 
-         {/* Navigation Buttons */}
-        <div className="flex justify-between">
-          <button
-            onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-sky-400 hover:text-sky-300 transition"
-          >
-            <HugeiconsIcon icon={ArrowLeftIcon} size={18} />
-            <span className="font-medium">Previous</span>
-          </button>
-          {nextBlog && (
+        <div className="flex items-center justify-between mt-8">
+          {previousBlog ? (
             <button
-              onClick={handleNext}
+              onClick={() => handleNav(previousBlog.slug)}
               className="flex items-center gap-2 text-sky-400 hover:text-sky-300 transition"
             >
-              <span className="font-medium">Next</span>
+              <HugeiconsIcon icon={ArrowLeftIcon} size={18} />
+              <span className="font-medium">previous</span>
+            </button>
+          ) : (
+            <div />
+          )}
+          {nextBlog && (
+            <button
+              onClick={() => handleNav(nextBlog.slug)}
+              className="flex items-center gap-2 text-sky-400 hover:text-sky-300 transition"
+            >
+              <span className="font-medium">next</span>
               <HugeiconsIcon icon={ArrowRightIcon} size={18} />
             </button>
           )}

@@ -17,11 +17,17 @@ function getNextBlog(currentSlug) {
   return idx >= 0 && idx < blogs.length - 1 ? blogs[idx + 1] : null;
 }
 
+function getPreviousBlog(currentSlug) {
+  const idx = blogs.findIndex((b) => b.slug === currentSlug);
+  return idx > 0 ? blogs[idx - 1] : null;
+}
+
 export default function MacbookExamsAndMore() {
   const [views, setViews] = useState(0);
   const navigate = useNavigate();
   const currentSlug = "macbook-exams-and-more";
   const nextBlog = getNextBlog(currentSlug);
+  const previousBlog = getPreviousBlog(currentSlug);
 
   useEffect(() => {
     async function updateViews() {
@@ -46,18 +52,17 @@ export default function MacbookExamsAndMore() {
     updateViews();
   }, []);
 
-  const handleNext = () => {
-    if (nextBlog) navigate(`/blogs/${nextBlog.slug}`);
+  const handleNav = (slug) => {
+    navigate(`/blogs/${slug}`);
   };
 
   return (
     <Background>
       <div className="blog-article relative mx-auto w-full max-w-3xl px-4 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
         <GradualBlur strength={1.5} divCount={2} opacity={1} />
-        {/* Navigation Buttons */}
         <div className="flex items-center justify-between mb-6">
           <button
-            onClick={() => navigate(-1)}
+            onClick={() => navigate('/')}
             className="flex items-center gap-2 text-sky-400 hover:text-sky-300 transition"
           >
             <HugeiconsIcon icon={ArrowLeftIcon} size={18} />
@@ -314,18 +319,28 @@ export default function MacbookExamsAndMore() {
         </section>
 
 
-        {/* Bottom Navigation */}
-        {nextBlog && (
-          <div className="flex justify-end mt-8">
+        <div className="flex items-center justify-between mt-8">
+          {previousBlog ? (
             <button
-            onClick={handleNext}
-            className="flex items-center gap-2 text-sky-400 hover:text-sky-300 transition"
+              onClick={() => handleNav(previousBlog.slug)}
+              className="flex items-center gap-2 text-sky-400 hover:text-sky-300 transition"
+            >
+              <HugeiconsIcon icon={ArrowLeftIcon} size={18} />
+              <span className="font-medium">previous</span>
+            </button>
+          ) : (
+            <div />
+          )}
+          {nextBlog && (
+            <button
+              onClick={() => handleNav(nextBlog.slug)}
+              className="flex items-center gap-2 text-sky-400 hover:text-sky-300 transition"
             >
               <span className="font-medium">next</span>
               <HugeiconsIcon icon={ArrowRightIcon} size={18} />
             </button>
-          </div>
-        )}
+          )}
+        </div>
 
         <hr className="border-t border-[#232323] light:border-zinc-300 my-6" />
 

@@ -7,6 +7,7 @@ import WhyStartBlog from "./pages/blogs/WhyStartBlog";
 import FiveXHackathonWinner from "./pages/blogs/FiveXHackathonWinner";
 import MacbookExamsAndMore from "./pages/blogs/MacbookExamsAndMore";
 import SevenThousandDaysOld from "./pages/blogs/SevenThousandDaysOld";
+import ScrollToTop from "./components/ScrollToTop";
 import { Analytics } from "@vercel/analytics/react";
 import LiveCursors from "./components/LiveCursors";
 import ThemeToggle from "./components/ThemeToggle";
@@ -25,6 +26,7 @@ export default function App() {
         onToggle={() => setCursorsEnabled(!cursorsEnabled)}
       />
       <Analytics />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/resources" element={<ResourcesPage />} />
