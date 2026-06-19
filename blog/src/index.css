@@ -255,3 +255,11 @@ html.light [data-radix-popper-content-wrapper] polygon {
   }
 }
 
+::view-transition-old(root) {
+  animation: none;
+}
+
+::view-transition-new(root) {
+  animation: none;
+}
+

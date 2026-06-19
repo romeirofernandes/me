@@ -11,6 +11,7 @@ export default function ThemeToggle() {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const isDragging = useRef(false);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     const saved = localStorage.getItem("theme");
@@ -31,6 +32,39 @@ export default function ThemeToggle() {
       return next;
     });
   }, []);
+
+  const handleToggle = useCallback((e) => {
+    const el = e?.currentTarget || containerRef.current;
+    if (el && document.startViewTransition) {
+      const rect = el.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const endRadius = Math.hypot(Math.max(cx, innerWidth - cx), Math.max(cy, innerHeight - cy));
+
+      document.startViewTransition(() => {
+        const next = !document.documentElement.classList.contains("light");
+        document.documentElement.classList.toggle("light", next);
+        localStorage.setItem("theme", next ? "light" : "dark");
+        setIsOn(next);
+      }).ready.then(() => {
+        document.documentElement.animate(
+          {
+            clipPath: [
+              `circle(0px at ${cx}px ${cy}px)`,
+              `circle(${endRadius}px at ${cx}px ${cy}px)`,
+            ],
+          },
+          {
+            duration: 1200,
+            easing: "linear",
+            pseudoElement: "::view-transition-new(root)",
+          }
+        );
+      });
+    } else {
+      toggle();
+    }
+  }, [toggle]);
 
   const cordStroke = isOn ? "stroke-zinc-900" : "stroke-zinc-400";
   const capFill = isOn ? "fill-zinc-700" : "fill-zinc-500";
@@ -53,12 +87,12 @@ export default function ThemeToggle() {
     animate(y, 0, { type: "spring", stiffness: 180, damping: 10, mass: 0.6 });
 
     if (dist > 50) {
-      toggle();
+      handleToggle();
     }
   };
 
   return (
-    <div className="fixed top-6 right-8 z-50" style={{ width: "2.5rem", touchAction: "none" }}>
+    <div ref={containerRef} className="fixed top-6 right-8 z-50" style={{ width: "2.5rem", touchAction: "none" }}>
       <svg
         viewBox="0 0 197.451 481.081"
         className="h-28 w-auto overflow-visible"
@@ -112,7 +146,7 @@ export default function ThemeToggle() {
             strokeLinecap="round"
             strokeWidth="5"
             d="M-783.192 803.855c5.251 8.815 5.295 21.32 13.272 27.774 12.299 8.045 36.46 8.115 49.127 0 7.976-6.454 8.022-18.96 13.273-27.774 3.992-6.7 14.408-19.811 14.408-19.811 8.276-11.539 12.769-24.594 12.769-38.699 0-35.898-29.102-65-65-65-35.899 0-65 29.102-65 65 0 13.667 4.217 26.348 12.405 38.2 0 0 10.754 13.61 14.746 20.31z"
-            onClick={toggle}
+            onClick={handleToggle}
             style={{ cursor: "pointer" }}
           />
           <path
