@@ -13,7 +13,7 @@ import { RainbowTextEffect } from "../../components/ui/rainbow-text-effect";
 import VideoPlayer from "../../components/VideoPlayer";
 import ScrollProgress from "../../components/ScrollProgress";
 
-const BLOG_ID = "google-genai-exchange";
+const BLOG_ID = "genai-hackathon-25";
 
 function getNextBlog(currentSlug) {
   const idx = blogs.findIndex((b) => b.slug === currentSlug);
