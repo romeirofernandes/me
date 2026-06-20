@@ -51,11 +51,11 @@ export const blogs = [
 		read: 5,
 	},
 	{
-    title: "Google GenAI Hackathon '25",
+    title: "google genai exchange '25",
 		description:
-			"Won Google GenAI Hackathon 2025 finals against all odds.",
+			"Won Google GenAI Exchange 2025 finals against all odds.",
 		date: "7-06-2026",
-		slug: "google-genai-hackathon",
+		slug: "genai-hackathon-25",
 		read: 10,
 	},
 ];
