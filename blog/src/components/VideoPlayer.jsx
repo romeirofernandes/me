@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Play, Pause, Volume2, Volume1, VolumeX } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
@@ -34,6 +34,7 @@ const CustomSlider = ({ value, onChange, className }) => {
 
 export default function VideoPlayer({ src, caption, className = "" }) {
   const videoRef = useRef(null)
+  const containerRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [volume, setVolume] = useState(1)
   const [progress, setProgress] = useState(0)
@@ -42,6 +43,22 @@ export default function VideoPlayer({ src, caption, className = "" }) {
   const [showControls, setShowControls] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
+
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting && !videoRef.current?.paused) {
+          videoRef.current?.pause()
+          setIsPlaying(false)
+        }
+      },
+      { threshold: 0.3 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -104,12 +121,14 @@ export default function VideoPlayer({ src, caption, className = "" }) {
   }
 
   return (
-    <div className="mb-8">
-      <div
-        className={`relative w-full rounded-xl overflow-hidden bg-[#11111198] shadow-[0_0_20px_rgba(0,0,0,0.2)] backdrop-blur-sm ${className}`}
-        onMouseEnter={() => setShowControls(true)}
-        onMouseLeave={() => setShowControls(false)}
-      >
+    <div className="mb-8" ref={containerRef}>
+      <div className="rounded-2xl bg-neutral-800 backdrop-blur-xl shadow-lg p-2 light:bg-background/50">
+        <div className="rounded-lg bg-neutral-800 backdrop-blur-sm shadow-md overflow-hidden light:bg-card/70">
+          <div
+            className={`relative w-full`}
+            onMouseEnter={() => setShowControls(true)}
+            onMouseLeave={() => setShowControls(false)}
+          >
           <video
             ref={videoRef}
             className="w-full"
@@ -200,8 +219,8 @@ export default function VideoPlayer({ src, caption, className = "" }) {
                           variant="ghost"
                           size="icon"
                           className={cn(
-                            "text-white hover:bg-[#111111d1] hover:text-white",
-                            playbackSpeed === speed && "bg-[#111111d1]"
+                            "text-white hover:bg-white/20 hover:text-white",
+                            playbackSpeed === speed && "bg-white/20 text-white ring-1 ring-white/40"
                           )}
                         >
                           {speed}x
@@ -214,6 +233,8 @@ export default function VideoPlayer({ src, caption, className = "" }) {
             )}
           </AnimatePresence>
         </div>
+        </div>
+      </div>
       {caption && (
         <p className="text-xs text-zinc-500 mt-2 text-center italic">{caption}</p>
       )}

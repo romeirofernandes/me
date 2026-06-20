@@ -34,16 +34,24 @@ export default function ImageModal({ src, alt, caption, className = "", containe
   return (
     <>
       <div className={`mb-8 ${containerClassName}`}>
-        <img
-          src={src}
-          alt={alt}
-          loading="lazy"
-          className={`w-full rounded-lg border border-[#232323] cursor-zoom-in hover:opacity-90 transition-opacity ${className}`}
-          onClick={() => {
-            if (hasGallery) setActiveIndex(galleryIndex);
-            setIsOpen(true);
-          }}
-        />
+        <div
+          className="rounded-2xl p-2 h-full bg-neutral-800 backdrop-blur-xl shadow-lg light:bg-background/50"
+        >
+          <div
+            className="rounded-lg overflow-hidden h-full bg-neutral-800 backdrop-blur-sm shadow-md light:bg-card/70"
+          >
+            <img
+              src={src}
+              alt={alt}
+              loading="lazy"
+              className={`w-full cursor-zoom-in hover:opacity-90 transition-opacity ${className}`}
+              onClick={() => {
+                if (hasGallery) setActiveIndex(galleryIndex);
+                setIsOpen(true);
+              }}
+            />
+          </div>
+        </div>
         {caption && (
           <p className="text-xs text-zinc-500 mt-2 text-center italic">
             {caption}

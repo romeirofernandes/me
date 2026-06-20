@@ -282,7 +282,7 @@ export default function GoogleGenAIExchange() {
               src="/google-gen-ai-exchange/leela1.webp"
               alt="Leela Palace Bangalore"
               className="mb-0 h-full object-cover"
-              containerClassName="mb-0 flex-1 min-w-0"
+              containerClassName="mb-0 flex-1 min-w-0 flex flex-col"
               caption=""
               gallery={galleryImages}
               galleryIndex={2}
@@ -291,7 +291,7 @@ export default function GoogleGenAIExchange() {
               src="/google-gen-ai-exchange/leela2.webp"
               alt="Leela Palace Bangalore"
               className="mb-0 h-full object-cover"
-              containerClassName="mb-0 flex-1 min-w-0"
+              containerClassName="mb-0 flex-1 min-w-0 flex flex-col"
               caption=""
               gallery={galleryImages}
               galleryIndex={3}
@@ -448,16 +448,16 @@ export default function GoogleGenAIExchange() {
               src="/google-gen-ai-exchange/cheque2.webp"
               alt="Team T-Rex with the cheque at CRCE"
               className="mb-0 h-full object-cover"
-              containerClassName="mb-0 flex-1 min-w-0"
+              containerClassName="mb-0 flex-1 min-w-0 flex flex-col"
               caption=""
               gallery={galleryImages}
-              galleryIndex={8}
+              galleryIndex={6}
             />
             <ImageModal
               src="/google-gen-ai-exchange/crce.webp"
-              alt="CRCE college"
+              alt="CRCE"
               className="mb-0 h-full object-cover"
-              containerClassName="mb-0 flex-[2] min-w-0"
+              containerClassName="mb-0 flex-[2] min-w-0 flex flex-col"
               caption=""
               gallery={galleryImages}
               galleryIndex={9}
