@@ -54,7 +54,7 @@ export const blogs = [
     title: "google genai exchange '25",
 		description:
 			"Won Google GenAI Exchange 2025 finals against all odds.",
-		date: "7-06-2026",
+		date: "20-06-2026",
 		slug: "genai-hackathon-25",
 		read: 10,
 	},

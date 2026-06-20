@@ -28,7 +28,7 @@ function getPreviousBlog(currentSlug) {
 export default function GoogleGenAIExchange() {
   const [views, setViews] = useState(0);
   const navigate = useNavigate();
-  const currentSlug = "google-genai-exchange";
+  const currentSlug = "genai-hackathon-25";
   const nextBlog = getNextBlog(currentSlug);
   const previousBlog = getPreviousBlog(currentSlug);
 
