@@ -10,6 +10,7 @@ import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase";
 import { blogs } from "../../components/BlogList";
 import { RainbowTextEffect } from "../../components/ui/rainbow-text-effect";
+import VideoPlayer from "../../components/VideoPlayer";
 
 const BLOG_ID = "google-genai-exchange";
 
@@ -52,6 +53,20 @@ export default function GoogleGenAIExchange() {
     }
     updateViews();
   }, []);
+
+  const galleryImages = [
+    { src: "/google-gen-ai-exchange/email-ss.webp", alt: "Qualification email", caption: "the email that changed everything" },
+    { src: "/google-gen-ai-exchange/cute-tax.webp", alt: "Cute tax on flight tickets", caption: "the price of being cute" },
+    { src: "/google-gen-ai-exchange/leela1.webp", alt: "Leela Palace Bangalore", caption: "decorated entrance" },
+    { src: "/google-gen-ai-exchange/leela2.webp", alt: "Leela Palace Bangalore", caption: "leela palace lobby" },
+    { src: "/google-gen-ai-exchange/presentation-schedule.webp", alt: "Presentation schedule", caption: "the schedule" },
+    { src: "/google-gen-ai-exchange/cheque1.webp", alt: "Team T-Rex with cheque at Leela Palace", caption: "at leela palace" },
+    { src: "/google-gen-ai-exchange/stage.webp", alt: "On stage at Leela Palace", caption: "on stage at leela palace" },
+    { src: "/google-gen-ai-exchange/reactflow.webp", alt: "Reactflow pipeline", caption: "the reactflow pipeline" },
+    { src: "/google-gen-ai-exchange/cheque2.webp", alt: "Team T-Rex with cheque at CRCE", caption: "yeah we signed it" },
+    { src: "/google-gen-ai-exchange/crce.webp", alt: "CRCE college", caption: "back at crce" },
+    { src: "/google-gen-ai-exchange/certificate.webp", alt: "Winner certificate", caption: "the certificate" },
+  ];
 
   const handleNav = (slug) => {
     navigate(`/blogs/${slug}`);
@@ -113,6 +128,13 @@ export default function GoogleGenAIExchange() {
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             in the middle of our end sem exam prep.
           </p>
+          <ImageModal
+            src="/google-gen-ai-exchange/email-ss.webp"
+            alt="Qualification email from Google GenAI Exchange"
+            caption="the email that changed everything"
+            gallery={galleryImages}
+            galleryIndex={0}
+          />
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             the finals were on 29th november, the last day of exams.
           </p>
@@ -164,6 +186,14 @@ export default function GoogleGenAIExchange() {
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             now that we had the permissions, the next step was booking flights which took longer than it should&apos;ve. but once that was done, i left whatever i was pretending to study and booted up my laptop.
           </p>
+          <ImageModal
+            src="/google-gen-ai-exchange/cute-tax.webp"
+            alt="A weird cute tax added to the flight tickets"
+            caption="the price of being cute"
+            className="max-h-60 w-auto object-cover"
+            gallery={galleryImages}
+            galleryIndex={1}
+          />
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             made a few features:
           </p>
@@ -186,46 +216,37 @@ export default function GoogleGenAIExchange() {
             all the exams went properly except the second last day. now this is where the final reason comes in for why i thought we wouldn&apos;t win the hackathon.
           </p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
-            this girl, let&apos;s just call her V.
+            a few days before the finals, some confusion started around the postponed exams.
           </p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
-            now V was known in college because she was a CR and coordinated frequently with teachers on behalf of students. she put out a message saying that the last exam had been postponed for everyone because some students were going for a hackathon.
+            what we had discussed with the principal was pretty straightforward. only the students participating in hackathons would give their exams later.
           </p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
-            when we saw this message, i was equally surprised because what we had discussed with the principal was that only the students participating in the hackathons would give the exams later.
+            somewhere along the way, a notice got circulated saying that the last exam had been postponed for everyone because some students were going for a hackathon.
           </p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
-            but i didn&apos;t think much about it because we weren&apos;t the only ones going for hackathons that caused this postponement.
+            when i saw that message, i was equally surprised because that wasn&apos;t what had been discussed at all.
           </p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
-            everyone retaliated because trips had been planned and people wanted the exams to end on time. now all the pressure started coming on V asking questions ranging from which hackathon to who was responsible for this postponement because she was the one who sent the notice.
+            and as you can probably imagine, people were not happy.
           </p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
-            V was also participating in MumbaiHacks, but now if she told people that she was involved too then they would obviously get pissed at her as well.
+            trips had been planned, tickets had been booked and everyone wanted exams to end on time. within a few hours, the class gc had completely exploded. questions started flying around about which hackathons were involved, who was responsible and why the schedule had suddenly changed.
           </p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
-            so she just blamed our team, the one going to bangalore for GenAI.
+            our team somehow ended up taking most of the blame for it.
           </p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
-            and that message spread like wildfire.
+            eventually another clarification came out saying that the postponement only applied to the students who were actually participating in hackathons. but by then the damage had already been done.
           </p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
-            hell broke loose in the class gc.
+            what should have been a few quiet days before a national finals turned into complete chaos.
           </p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
-            i was fighting every other person and said a lot of things to V in the gc itself because i had tried texting her personally first and got left on read. if she had just replied saying &ldquo;i am looking into it&rdquo; or something that explained why she blamed us, i would&apos;ve just shut my phone off and slept.
+            so yeah, between the exams, the travelling and whatever was happening in the class gc, i was convinced this hackathon wasn&apos;t ending well.
           </p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
-            after a while she sent another notice saying that the exams were postponed only for the students going to hackathons. but she also added one line along the lines of &ldquo;don&apos;t worry guys, as long as i am there, i&apos;ll look out for everyone.&rdquo;
-          </p>
-          <p className="text-neutral-300 light:text-neutral-600 mb-4">
-            that fully tipped me off the edge.
-          </p>
-          <p className="text-neutral-300 light:text-neutral-600 mb-4">
-            so yeah, this was the final nail in the coffin where i thought that with all the shit i had spoken in the gc, karma was definitely hitting me back in the hackathon.
-          </p>
-          <p className="text-neutral-300 light:text-neutral-600 mb-4">
-            but the flights were booked so we went.
+            but the flights were booked, so we went.
           </p>
         </section>
 
@@ -255,11 +276,43 @@ export default function GoogleGenAIExchange() {
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             it was a literal palace.
           </p>
+
+          <div className="flex gap-3">
+            <ImageModal
+              src="/google-gen-ai-exchange/leela1.webp"
+              alt="Leela Palace Bangalore"
+              className="mb-0 h-full object-cover"
+              containerClassName="mb-0 flex-1 min-w-0"
+              caption=""
+              gallery={galleryImages}
+              galleryIndex={2}
+            />
+            <ImageModal
+              src="/google-gen-ai-exchange/leela2.webp"
+              alt="Leela Palace Bangalore"
+              className="mb-0 h-full object-cover"
+              containerClassName="mb-0 flex-1 min-w-0"
+              caption=""
+              gallery={galleryImages}
+              galleryIndex={3}
+            />
+          </div>
+          <p className="text-xs text-zinc-500 mt-1 mb-8 text-center italic">leela palace bangalore</p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             the decor was still being set up because we had reached too early. we freshened up a bit and started preparing our pitch. the only problem was that there were barely any sockets to plug our laptop chargers into.
           </p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
-            we got our goodies and the presentation schedule. we were the last team before lunch.
+            we got our goodies and the presentation schedule.
+          </p>
+          <ImageModal
+            src="/google-gen-ai-exchange/presentation-schedule.webp"
+            alt="Presentation schedule for the hackathon"
+            caption="the schedule"
+            gallery={galleryImages}
+            galleryIndex={4}
+          />
+          <p className="text-neutral-300 light:text-neutral-600 mb-4">
+            we were the last team before lunch.
           </p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             the event was filled with industry experts from massive companies. i genuinely don&apos;t think there was a single panel of judges without a CEO or CTO from some big company.
@@ -307,6 +360,10 @@ export default function GoogleGenAIExchange() {
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             thankfully aliqyaan had tested it before.
           </p>
+          <VideoPlayer
+            src="/google-gen-ai-exchange/misintelfinall.mp4"
+            caption="demo video - watch at 2x :)"
+          />
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             it worked.
           </p>
@@ -359,12 +416,54 @@ export default function GoogleGenAIExchange() {
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             we went up, got the cheque and trophy, clicked pictures and got back. the first thing i did was dap aliqyaan up. the second thing i did was call russel — yeah, before my mum i called him. then i called my mum, thanked her for her prayers and finally relaxed.
           </p>
+          <ImageModal
+            src="/google-gen-ai-exchange/cheque1.webp"
+            alt="Team T-Rex with the cheque at Leela Palace"
+            caption=""
+            gallery={galleryImages}
+            galleryIndex={5}
+          />
+          <ImageModal
+            src="/google-gen-ai-exchange/stage.webp"
+            alt="On stage at Leela Palace"
+            caption="on stage at leela palace"
+            gallery={galleryImages}
+            galleryIndex={6}
+          />
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             one of the judges later told aliqyaan something pretty funny. almost every team had done multimodal verification along with whatsapp, telegram, extensions and other integrations. the only thing that stood out about us was the reactflow pipeline which i had made in literally 1 prompt just so that it looked fancy. sometimes it&apos;s genuinely the smallest things that matter in the end.
           </p>
+          <ImageModal
+            src="/google-gen-ai-exchange/reactflow.webp"
+            alt="Reactflow pipeline visualization"
+            caption="the reactflow pipeline"
+            gallery={galleryImages}
+            galleryIndex={7}
+          />
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             against all odds, we had somehow done it. and to top it off, nobody from our college won anything at MumbaiHacks. so we were the only team coming back with something.
           </p>
+          <div className="flex gap-3">
+            <ImageModal
+              src="/google-gen-ai-exchange/cheque2.webp"
+              alt="Team T-Rex with the cheque at CRCE"
+              className="mb-0 h-full object-cover"
+              containerClassName="mb-0 flex-1 min-w-0"
+              caption=""
+              gallery={galleryImages}
+              galleryIndex={8}
+            />
+            <ImageModal
+              src="/google-gen-ai-exchange/crce.webp"
+              alt="CRCE college"
+              className="mb-0 h-full object-cover"
+              containerClassName="mb-0 flex-[2] min-w-0"
+              caption=""
+              gallery={galleryImages}
+              galleryIndex={9}
+            />
+          </div>
+          <p className="text-xs text-zinc-500 mt-1 mb-8 text-center italic">back at crce</p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             we got back to mumbai hiding the cheque upside down so that the amount doesn&apos;t get eyed. i am not very superstitious but after this hackathon i was genuinely ready to do whatever. we landed back home early in the morning and finally slept.
           </p>
@@ -377,6 +476,13 @@ export default function GoogleGenAIExchange() {
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             a very big thank you to everyone who prayed for us :)
           </p>
+          <ImageModal
+            src="/google-gen-ai-exchange/certificate.webp"
+            alt="Winner certificate from Google GenAI Exchange"
+            caption="the certificate"
+            gallery={galleryImages}
+            galleryIndex={10}
+          />
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             see you in the next one where i&apos;ll probably discuss how i got my new internship after this hackathon.
           </p>
