@@ -173,7 +173,7 @@ export default function GoogleGenAIExchange() {
           <p className="text-neutral-300 light:text-neutral-600 mb-4">1…</p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">MUMBAIHACKS 2025.</p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
-            they had registered without me for that one which honestly was fair because i hadn&apos;t really contributed much to the project at that point. now the project qualified for mumbaihacks too, so i was trying to convince everyone that we should just go for the mumbai one instead because no travelling, no exam drama, nothing.
+            they had registered without me for that one which honestly was fair because i hadn&apos;t really contributed much to the project at that point. now the project qualified for mumbaihacks too, so i was trying to convince everyone that they should just go for the mumbai one instead because no travelling, no exam drama, nothing.
           </p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             but they were adamant on going to bangalore.
