@@ -50,6 +50,14 @@ export const blogs = [
 		slug: "7305-days-old-now",
 		read: 5,
 	},
+	{
+		title: "google genai hackathon '25",
+		description:
+			"Won Google GenAI Exchange 2025 finals against all odds.",
+		date: "7-06-2026",
+		slug: "google-genai-exchange",
+		read: 10,
+	},
 ];
 
 export default function BlogList({ search }) {

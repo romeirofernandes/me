@@ -138,7 +138,7 @@ export default function MacbookExamsAndMore() {
           </p>
 
           <ImageModal
-            src="/dia-browser.jpeg"
+            src="/macbook-exams-and-more/dia-browser.jpeg"
             alt="Dia Browser on macOS"
             caption="The dia browser interface on macOS"
           />
@@ -162,7 +162,7 @@ export default function MacbookExamsAndMore() {
 
           <div className="mb-8">
             <ImageModal
-              src="/github-contri.png"
+              src="/macbook-exams-and-more/github-contri.png"
               alt="GitHub contributions graph showing break during exams"
               caption="A whole week of no contributions because of exams :("
             />

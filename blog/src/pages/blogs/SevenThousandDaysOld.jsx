@@ -107,7 +107,7 @@ export default function SevenThousandDaysOld() {
           </p>
 
           <ImageModal
-            src="/finalists.png"
+            src="/seven-thousand-days-old/finalists.png"
             alt="BNB 2025 Finalists"
             caption="The gc made it to the finals :)"
           />
@@ -120,7 +120,7 @@ export default function SevenThousandDaysOld() {
           </p>
 
           <ImageModal
-            src="/webps1.png"
+            src="/seven-thousand-days-old/webps1.png"
             alt="The problem statement we chose"
             caption="The problem statement that we chose."
           />
@@ -133,7 +133,7 @@ export default function SevenThousandDaysOld() {
           </p>
 
           <ImageModal
-            src="/webps3.png"
+            src="/seven-thousand-days-old/webps3.png"
             alt="The most chosen problem statement"
             caption="The most chosen ps in the hackathon - team pony and team allstar xi both took this one along with 13 other teams out of 60."
           />
@@ -162,7 +162,7 @@ export default function SevenThousandDaysOld() {
           </p>
 
           <ImageModal
-            src="/aimlps1.png"
+            src="/seven-thousand-days-old/aimlps1.png"
             alt="AIML Problem Statement"
             caption="The AIML problem statement Team Bluecore chose"
           />
