@@ -8,7 +8,13 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import Border1 from "../components/Border1";
 
+const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
+
 export default function AdminSendMail() {
+  const [authenticated, setAuthenticated] = useState(() => sessionStorage.getItem("admin_auth") === "true");
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [emails, setEmails] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -21,17 +27,34 @@ export default function AdminSendMail() {
   });
 
   useEffect(() => {
+    if (!authenticated) return;
     const fetchEmails = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, "newsletter_subscribers"));
-        const emailList = querySnapshot.docs.map(doc => doc.data().email);
+        const emailList = querySnapshot.docs.map(doc => ({ id: doc.id, email: doc.data().email }));
         setEmails(emailList);
       } catch (error) {
         console.error("Error fetching emails:", error);
       }
     };
     fetchEmails();
-  }, []);
+  }, [authenticated]);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (password === ADMIN_PASSWORD) {
+      setAuthenticated(true);
+      sessionStorage.setItem("admin_auth", "true");
+      setPasswordError("");
+    } else {
+      setPasswordError("wrong password");
+    }
+  };
+
+  const handleLogout = () => {
+    setAuthenticated(false);
+    sessionStorage.removeItem("admin_auth");
+  };
 
   const handleBlogSelect = (slug) => {
     const blog = blogs.find(b => b.slug === slug);
@@ -54,13 +77,13 @@ export default function AdminSendMail() {
     setLoading(true);
     setMessage("");
     try {
-      const response = await fetch("https://y.theromeirofernandes.workers.dev/api/mail-blog-update", {
+      const response = await fetch("https://y.theromeirofernandes.tech/api/mail-blog-update", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          emails,
+          emails: emails.map(e => e.email),
           blog: formData,
         }),
       });
@@ -80,19 +103,68 @@ export default function AdminSendMail() {
 
   const unsubscribePreviewUrl = "https://blog.romeirofernandes.tech/unsubscribe?email=example@email.com";
 
+  if (!authenticated) {
+    return (
+      <Background>
+        <div className="mx-auto w-full max-w-sm px-4 py-32 font-sans flex flex-col items-center justify-center min-h-screen">
+          <form onSubmit={handleLogin} className="w-full">
+            <h1 className="text-2xl font-bold text-white light:text-zinc-900 mb-6 text-center">admin</h1>
+            <Input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="enter password"
+              className="w-full rounded-none border-[#232323] light:border-zinc-300 bg-transparent text-white light:text-zinc-900 placeholder:text-zinc-500 mb-4 focus-visible:ring-0"
+              autoFocus
+            />
+            {passwordError && (
+              <p className="text-red-400 text-sm mb-4 text-center">{passwordError}</p>
+            )}
+            <Button type="submit" className="w-full rounded-none">
+              enter
+            </Button>
+          </form>
+        </div>
+      </Background>
+    );
+  }
+
   return (
     <Background>
       <div className="mx-auto w-full max-w-4xl px-4 py-8 font-sans flex flex-col min-h-screen">
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-white light:text-zinc-900 mb-2">Send Blog Update Emails</h1>
-          <p className="text-zinc-400 light:text-zinc-500 text-sm">Manage and send updates to {emails.length} subscribers.</p>
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-2xl font-bold text-white light:text-zinc-900 mb-1">admin</h1>
+            <p className="text-zinc-400 light:text-zinc-500 text-sm">{emails.length} subscribers</p>
+          </div>
+          <Button onClick={handleLogout} variant="outline" className="rounded-none border-[#232323] light:border-zinc-300 text-zinc-400 hover:text-white light:hover:text-zinc-900">
+            logout
+          </Button>
         </div>
 
         <div className="grid grid-cols-1 gap-8">
           <Border1>
             <div className="bg-[#18181b] light:bg-white border border-[#232323] light:border-zinc-300">
               <div className="p-6">
-                <h2 className="text-lg font-semibold text-white light:text-zinc-900 mb-6">Compose Email</h2>
+                <h2 className="text-lg font-semibold text-white light:text-zinc-900 mb-4">subscribers</h2>
+                <div className="max-h-60 overflow-y-auto space-y-1">
+                  {emails.map((sub) => (
+                    <div key={sub.id} className="text-sm text-zinc-300 light:text-zinc-600 font-mono px-2 py-1 hover:bg-[#232323] light:hover:bg-zinc-100">
+                      {sub.email}
+                    </div>
+                  ))}
+                  {emails.length === 0 && (
+                    <p className="text-sm text-zinc-500">no subscribers yet</p>
+                  )}
+                </div>
+              </div>
+            </div>
+          </Border1>
+
+          <Border1>
+            <div className="bg-[#18181b] light:bg-white border border-[#232323] light:border-zinc-300">
+              <div className="p-6">
+                <h2 className="text-lg font-semibold text-white light:text-zinc-900 mb-6">compose email</h2>
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm text-zinc-400 light:text-zinc-500 mb-2">Select Blog (optional, to pre-fill):</label>

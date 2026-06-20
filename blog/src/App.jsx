@@ -36,7 +36,7 @@ export default function App() {
         <Route path="/blogs/5x-hackathon-winner" element={<FiveXHackathonWinner />} />
         <Route path="/blogs/macbook-exams-and-more" element={<MacbookExamsAndMore />} />
         <Route path="/blogs/7305-days-old-now" element={<SevenThousandDaysOld />} />
-        <Route path="/blogs/google-genai-exchange" element={<GoogleGenAIExchange />} />
+        <Route path="/blogs/google-genai-hackathon" element={<GoogleGenAIExchange />} />
         <Route path="/send-email" element={<AdminSendMail />} />
         <Route path="/unsubscribe" element={<Unsubscribe />} />
       </Routes>

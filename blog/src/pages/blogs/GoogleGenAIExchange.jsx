@@ -98,7 +98,7 @@ export default function GoogleGenAIExchange() {
           </button>
         </div>
 
-        <h1 className="text-white light:text-zinc-900">google genai hackathon &apos;25</h1>
+        <h1 className="text-white light:text-zinc-900">Google GenAI Hackathon &apos;25</h1>
         <div className="text-neutral-300 light:text-neutral-600 mb-4">
           published: <span className="italic">7-06-2026</span> &middot; {views}{" "}
           views &middot; 10-min read
