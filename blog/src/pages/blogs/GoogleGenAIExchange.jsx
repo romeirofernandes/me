@@ -11,6 +11,7 @@ import { db } from "../../firebase";
 import { blogs } from "../../components/BlogList";
 import { RainbowTextEffect } from "../../components/ui/rainbow-text-effect";
 import VideoPlayer from "../../components/VideoPlayer";
+import ScrollProgress from "../../components/ScrollProgress";
 
 const BLOG_ID = "google-genai-exchange";
 
@@ -68,12 +69,22 @@ export default function GoogleGenAIExchange() {
     { src: "/google-gen-ai-exchange/certificate.webp", alt: "Winner certificate", caption: "the certificate" },
   ];
 
+  const sections = [
+    { id: "the-qualification", label: "the qualification" },
+    { id: "convincing-the-college", label: "convincing the college" },
+    { id: "the-class-gc-incident", label: "the class gc incident" },
+    { id: "bangalore", label: "bangalore" },
+    { id: "breakfast-and-presentation", label: "breakfast and presentation" },
+    { id: "the-results", label: "the results" },
+  ];
+
   const handleNav = (slug) => {
     navigate(`/blogs/${slug}`);
   };
 
   return (
     <Background>
+      <ScrollProgress sections={sections} />
       <div className="blog-article relative mx-auto w-full max-w-3xl px-4 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
         <GradualBlur strength={1.5} divCount={2} opacity={1} />
 
@@ -111,7 +122,7 @@ export default function GoogleGenAIExchange() {
           </p>
         </section>
 
-        <h2 className="text-neutral-300 light:text-neutral-600 mb-4">the qualification</h2>
+        <h2 id="the-qualification" className="text-neutral-300 light:text-neutral-600 mb-4">the qualification</h2>
         <section className="mb-8">
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             we had our end sem exams from 24th nov to 29th nov. no breaks and 2 exams on 29th itself (for people who had taken honors, so me too). i took part in this hackathon in like june or something, i don&apos;t even remember honestly but i am fairly certain it was before the sunhacks one.
@@ -169,7 +180,7 @@ export default function GoogleGenAIExchange() {
           </p>
         </section>
 
-        <h2 className="text-neutral-300 light:text-neutral-600 mb-4">convincing the college</h2>
+        <h2 id="convincing-the-college" className="text-neutral-300 light:text-neutral-600 mb-4">convincing the college</h2>
         <section className="mb-8">
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             so we came to the conclusion that we&apos;ll go for it and then started convincing teachers to allow us to go. we all got pointed in the same direction i.e the principal&apos;s office.
@@ -210,7 +221,7 @@ export default function GoogleGenAIExchange() {
           </p>
         </section>
 
-        <h2 className="text-neutral-300 light:text-neutral-600 mb-4">the class gc incident</h2>
+        <h2 id="the-class-gc-incident" className="text-neutral-300 light:text-neutral-600 mb-4">the class gc incident</h2>
         <section className="mb-8">
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             all the exams went properly except the second last day. now this is where the final reason comes in for why i thought we wouldn&apos;t win the hackathon.
@@ -250,7 +261,7 @@ export default function GoogleGenAIExchange() {
           </p>
         </section>
 
-        <h2 className="text-neutral-300 light:text-neutral-600 mb-4">bangalore</h2>
+        <h2 id="bangalore" className="text-neutral-300 light:text-neutral-600 mb-4">bangalore</h2>
         <section className="mb-8">
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             we landed in bangalore at around 3:30 and got out around 4:15 in the morning.
@@ -325,7 +336,7 @@ export default function GoogleGenAIExchange() {
           </p>
         </section>
 
-        <h2 className="text-neutral-300 light:text-neutral-600 mb-4">breakfast and presentation</h2>
+        <h2 id="breakfast-and-presentation" className="text-neutral-300 light:text-neutral-600 mb-4">breakfast and presentation</h2>
         <section className="mb-8">
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             we had some time so we went for the breakfast buffet and my god how do i explain this…
@@ -378,7 +389,7 @@ export default function GoogleGenAIExchange() {
           </p>
         </section>
 
-        <h2 className="text-neutral-300 light:text-neutral-600 mb-4">the results</h2>
+        <h2 id="the-results" className="text-neutral-300 light:text-neutral-600 mb-4">the results</h2>
         <section className="mb-8">
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             then we waited for the results which, as usual, were announced after a shit ton of speeches and random things. i slept during some of them.
