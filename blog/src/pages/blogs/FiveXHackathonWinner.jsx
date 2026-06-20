@@ -9,6 +9,7 @@ import TldrCard from "../../components/TldrCard";
 import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase";
 import { blogs } from "../../components/BlogList";
+import ScrollProgress from "../../components/ScrollProgress";
 
 const BLOG_ID = "5x-hackathon-winner";
 
@@ -56,8 +57,15 @@ export default function FiveXHackathonWinner() {
     navigate(`/blogs/${slug}`);
   };
 
+  const sections = [
+    { id: "the-experience", label: "the experience" },
+    { id: "the-project", label: "the project" },
+    { id: "lessons-learned", label: "lessons learned" },
+  ];
+
   return (
     <Background>
+      <ScrollProgress sections={sections} />
       <div className="blog-article relative mx-auto w-full max-w-3xl px-4 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
         <GradualBlur strength={1.5} divCount={2} opacity={1} />
         <div className="flex items-center justify-between mb-6">
@@ -109,7 +117,7 @@ export default function FiveXHackathonWinner() {
             hackathon to begin with.
           </p>
           
-          <h2 className="text-white light:text-zinc-900">
+          <h2 id="the-experience" className="text-white light:text-zinc-900">
             the experience
           </h2>
 
@@ -162,7 +170,7 @@ export default function FiveXHackathonWinner() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-white light:text-zinc-900">
+          <h2 id="the-project" className="text-white light:text-zinc-900">
             the project
           </h2>
           <p className="text-neutral-300 light:text-neutral-600">
@@ -251,7 +259,7 @@ export default function FiveXHackathonWinner() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-white light:text-zinc-900">
+          <h2 id="lessons-learned" className="text-white light:text-zinc-900">
             lessons learned
           </h2>
 

@@ -9,6 +9,7 @@ import TldrCard from "../../components/TldrCard";
 import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase";
 import { blogs } from "../../components/BlogList";
+import ScrollProgress from "../../components/ScrollProgress";
 
 function getNextBlog(slug) {
   const idx = blogs.findIndex((b) => b.slug === slug);
@@ -57,8 +58,14 @@ export default function SevenThousandDaysOld() {
     navigate(`/blogs/${slug}`);
   };
 
+  const sections = [
+    { id: "bit-n-build-2025", label: "bit n build 2025" },
+    { id: "what-next", label: "what next?" },
+  ];
+
   return (
     <Background>
+      <ScrollProgress sections={sections} />
       <div className="blog-article relative mx-auto w-full max-w-3xl px-4 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
         <GradualBlur strength={1.5} divCount={2} opacity={1} />
         <button
@@ -94,7 +101,7 @@ export default function SevenThousandDaysOld() {
               month later, here i am with hackathon lore - it's the only action in
               my life atp :(
           </p>
-          <h2 className="text-white light:text-zinc-900">
+          <h2 id="bit-n-build-2025" className="text-white light:text-zinc-900">
             bit n build 2025
           </h2>
 
@@ -201,7 +208,7 @@ export default function SevenThousandDaysOld() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-white light:text-zinc-900">
+          <h2 id="what-next" className="text-white light:text-zinc-900">
             what next?
           </h2>
 

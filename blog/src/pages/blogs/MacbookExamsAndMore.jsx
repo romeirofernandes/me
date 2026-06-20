@@ -9,6 +9,7 @@ import TldrCard from "../../components/TldrCard";
 import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase";
 import { blogs } from "../../components/BlogList";
+import ScrollProgress from "../../components/ScrollProgress";
 
 const BLOG_ID = "macbook-exams-and-more";
 
@@ -56,8 +57,17 @@ export default function MacbookExamsAndMore() {
     navigate(`/blogs/${slug}`);
   };
 
+  const sections = [
+    { id: "the-macbook", label: "the macbook" },
+    { id: "the-exams", label: "the exams" },
+    { id: "the-hackathon", label: "the hackathon" },
+    { id: "things-i-learnt", label: "things i learnt" },
+    { id: "what-next-macbook", label: "what next" },
+  ];
+
   return (
     <Background>
+      <ScrollProgress sections={sections} />
       <div className="blog-article relative mx-auto w-full max-w-3xl px-4 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
         <GradualBlur strength={1.5} divCount={2} opacity={1} />
         <div className="flex items-center justify-between mb-6">
@@ -102,7 +112,7 @@ export default function MacbookExamsAndMore() {
               well this blog hasn't been sacked off yet. it has been around a
               month since the last blog. the main reason was the mid sem exams.
           </p>
-          <h2 className="text-white light:text-zinc-900">
+          <h2 id="the-macbook" className="text-white light:text-zinc-900">
             the macbook
           </h2>
 
@@ -151,7 +161,7 @@ export default function MacbookExamsAndMore() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-white light:text-zinc-900">
+          <h2 id="the-exams" className="text-white light:text-zinc-900">
             the exams
           </h2>
 
@@ -183,7 +193,7 @@ export default function MacbookExamsAndMore() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-white light:text-zinc-900">
+          <h2 id="the-hackathon" className="text-white light:text-zinc-900">
             the hackathon
           </h2>
 
@@ -259,7 +269,7 @@ export default function MacbookExamsAndMore() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-white light:text-zinc-900">
+          <h2 id="things-i-learnt" className="text-white light:text-zinc-900">
             things i learnt
           </h2>
 
@@ -285,7 +295,7 @@ export default function MacbookExamsAndMore() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-white light:text-zinc-900">
+          <h2 id="what-next-macbook" className="text-white light:text-zinc-900">
             what next
           </h2>
 

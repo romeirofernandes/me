@@ -8,6 +8,7 @@ import TldrCard from "../../components/TldrCard";
 import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase";
 import { blogs } from "../../components/BlogList";
+import ScrollProgress from "../../components/ScrollProgress";
 
 const BLOG_ID = "why-start-blog";
 
@@ -55,8 +56,14 @@ export default function WhyStartBlog() {
     navigate(`/blogs/${slug}`);
   };
 
+  const sections = [
+    { id: "what-will-this-blog-have", label: "what will this blog have?" },
+    { id: "what-am-i-doing-currently", label: "what am i doing currently?" },
+  ];
+
   return (
     <Background>
+      <ScrollProgress sections={sections} />
       <div className="blog-article relative mx-auto w-full max-w-3xl px-4 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
         <GradualBlur strength={1.5} divCount={2} opacity={1} />
 
@@ -156,7 +163,7 @@ export default function WhyStartBlog() {
               hell, if even one of y'all get something from this, it'll be a win
               for me.
             </p>
-          <h2 className="text-white light:text-zinc-900">
+          <h2 id="what-will-this-blog-have" className="text-white light:text-zinc-900">
             what will this blog have?
           </h2>
           <ul className="list-disc list-inside text-neutral-300 light:text-neutral-600">
@@ -168,7 +175,7 @@ export default function WhyStartBlog() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-white light:text-zinc-900">
+          <h2 id="what-am-i-doing-currently" className="text-white light:text-zinc-900">
             what am i doing currently?
           </h2>
           <p className="text-neutral-300 light:text-neutral-600">
