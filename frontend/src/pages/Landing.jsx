@@ -14,16 +14,16 @@ import GridLines from "../components/GridLines";
 import SectionDivider from "../components/SectionDivider";
 import Clock from "../components/Clock";
 import AnimatedLogo from "../components/AnimatedLogo";
-import ClashRoyaleStatus from "../components/ClashRoyaleStatus";
+// import ClashRoyaleStatus from "../components/ClashRoyaleStatus";
 import WorkExperience from "../components/WorkExperience";
 
-const PLAYER_TAG = "RJPRJ8LR0";
+// const PLAYER_TAG = "RJPRJ8LR0";
 
-async function fetchClashRoyaleBattlelog(tag) {
-  const response = await fetch(`https://y.theromeirofernandes.workers.dev/api/clash-royale/battlelog/${tag}`);
-  if (!response.ok) return [];
-  return await response.json();
-}
+// async function fetchClashRoyaleBattlelog(tag) {
+//   const response = await fetch(`https://y.theromeirofernandes.workers.dev/api/clash-royale/battlelog/${tag}`);
+//   if (!response.ok) return [];
+//   return await response.json();
+// }
 
 async function fetchGitHubContributions(username) {
   const url = new URL(
@@ -41,19 +41,19 @@ export default function Landing() {
   const [showLogo, setShowLogo] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
 
-  const [battlelog, setBattlelog] = useState([]);
+  // const [battlelog, setBattlelog] = useState([]);
   const [githubData, setGithubData] = useState(null);
 
-  // Poll Clash Royale API every 10 seconds
-  React.useEffect(() => {
-    let interval;
-    const fetchAndSetBattlelog = () => {
-      fetchClashRoyaleBattlelog(PLAYER_TAG).then(setBattlelog);
-    };
-    fetchAndSetBattlelog(); // initial fetch
-    interval = setInterval(fetchAndSetBattlelog, 20000);
-    return () => clearInterval(interval);
-  }, []);
+  // // Poll Clash Royale API every 10 seconds
+  // React.useEffect(() => {
+  //   let interval;
+  //   const fetchAndSetBattlelog = () => {
+  //     fetchClashRoyaleBattlelog(PLAYER_TAG).then(setBattlelog);
+  //   };
+  //   fetchAndSetBattlelog(); // initial fetch
+  //   interval = setInterval(fetchAndSetBattlelog, 20000);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   // GitHub API only once
   React.useEffect(() => {
@@ -156,9 +156,9 @@ export default function Landing() {
 
               <SectionDivider className="mt-8" />
 
-              <ClashRoyaleStatus battlelog={battlelog} />
+              {/* <ClashRoyaleStatus battlelog={battlelog} />
 
-              <SectionDivider className="mt-8" />
+              <SectionDivider className="mt-8" /> */}
 
               <Footer />
             </main>

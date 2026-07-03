@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { HugeiconsIcon } from "@hugeicons/react";
 import {
-  FaHome,
-  FaUser,
-  FaTrophy,
-  FaFolderOpen,
-  FaBriefcase,
-  FaEnvelope,
-} from "react-icons/fa";
+  Home01Icon,
+  BriefcaseIcon,
+  Folder01Icon,
+  Award01Icon,
+  Mail01Icon,
+} from "@hugeicons/core-free-icons";
 
 const navLinks = [
-  { href: "#home", label: "Home", icon: <FaHome /> },
+  { href: "#home", label: "Home", icon: Home01Icon },
   // About removed per request
-  { href: "#experience", label: "Experience", icon: <FaBriefcase /> },
-  { href: "#projects", label: "Projects", icon: <FaFolderOpen /> },
-  { href: "#achievements", label: "Achievements", icon: <FaTrophy /> },
-  { href: "#contact", label: "Contact", icon: <FaEnvelope /> }, 
+  { href: "#experience", label: "Experience", icon: BriefcaseIcon },
+  { href: "#projects", label: "Projects", icon: Folder01Icon },
+  { href: "#achievements", label: "Achievements", icon: Award01Icon },
+  { href: "#contact", label: "Contact", icon: Mail01Icon }, 
 ];
 
 function getActiveSection() {
@@ -98,11 +98,13 @@ export default function Sidebar() {
                   aria-label={link.label}
                   style={{ position: "relative", zIndex: 10 }}
                 >
-                  {React.cloneElement(link.icon, {
-                    className: `text-xl transition-colors ${
+                  <HugeiconsIcon
+                    icon={link.icon}
+                    size={20}
+                    className={`transition-colors ${
                       isActive ? "text-[#f5f5f7]" : "text-gray-400"
-                    } group-hover:text-[#f5f5f7]`,
-                  })}
+                    } group-hover:text-[#f5f5f7]`}
+                  />
                 </motion.a>
                 <AnimatePresence>
                   {hoveredIdx === idx && (
@@ -147,14 +149,16 @@ export default function Sidebar() {
                  onClick={(e) => handleNavClick(e, link.href)}
                  aria-label={link.label}
                >
-                 {React.cloneElement(link.icon, {
-                   className: `text-xl transition-colors ${
-                     isActive ? "text-[#f5f5f7]" : "text-gray-400"
-                   } group-hover:text-[#f5f5f7]`,
-                 })}
-                 <span className="text-[10px] mt-1 text-gray-400">
-                   {link.label}
-                 </span>
+                  <HugeiconsIcon
+                    icon={link.icon}
+                    size={20}
+                    className={`transition-colors ${
+                      isActive ? "text-[#f5f5f7]" : "text-gray-400"
+                    } group-hover:text-[#f5f5f7]`}
+                  />
+                  <span className="text-[10px] mt-1 text-gray-400">
+                    {link.label}
+                  </span>
                </a>
              );
            })}
