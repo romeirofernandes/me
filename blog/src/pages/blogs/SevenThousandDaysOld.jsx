@@ -4,6 +4,7 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@hugeicons/core-free-icons";
 import Background from "../../components/Background";
 import GradualBlur from "../../components/GradualBlur";
+import ProgressiveBlur from "../../components/ProgressiveBlur";
 import ImageModal from "../../components/ImageModal";
 import TldrCard from "../../components/TldrCard";
 import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
@@ -68,6 +69,8 @@ export default function SevenThousandDaysOld() {
       <ScrollProgress sections={sections} />
       <div className="blog-article relative mx-auto w-full max-w-3xl px-4 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
         <GradualBlur strength={1.5} divCount={2} opacity={1} />
+        <ProgressiveBlur position="top" offset={150} />
+        <ProgressiveBlur position="bottom" />
         <button
           onClick={() => navigate('/')}
           className="flex items-center gap-2 text-sky-400 hover:text-sky-300 mb-6 transition"

@@ -4,6 +4,7 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@hugeicons/core-free-icons";
 import Background from "../../components/Background";
 import GradualBlur from "../../components/GradualBlur";
+import ProgressiveBlur from "../../components/ProgressiveBlur";
 import ImageModal from "../../components/ImageModal";
 import TldrCard from "../../components/TldrCard";
 import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
@@ -70,6 +71,8 @@ export default function MacbookExamsAndMore() {
       <ScrollProgress sections={sections} />
       <div className="blog-article relative mx-auto w-full max-w-3xl px-4 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
         <GradualBlur strength={1.5} divCount={2} opacity={1} />
+        <ProgressiveBlur position="top" offset={150} />
+        <ProgressiveBlur position="bottom" />
         <div className="flex items-center justify-between mb-6">
           <button
             onClick={() => navigate('/')}
