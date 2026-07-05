@@ -145,29 +145,14 @@ export default function Projects() {
           <button
             className="
               px-5 py-2 rounded-lg text-white text-sm font-medium
-              border border-[#232323]
-              shadow-md
-              bg-gradient-to-br from-[#1a1a1d] via-[#18181b] to-[#121216]
-              hover:from-[#232323] hover:via-[#222225] hover:to-[#18181b]
+              border border-white/10
+              bg-black/15 backdrop-blur-xl shadow-xl
+              hover:bg-black/25
               transition
               active:scale-95
               focus:outline-none focus:ring-2 focus:ring-[#f5f5f7] focus:ring-offset-2
               flex items-center gap-2
             "
-            style={{
-              background: `linear-gradient(135deg, 
-                #1a1a1d 0%, 
-                #18181b 15%, 
-                #16161a 50%, 
-                #141418 85%, 
-                #121216 100%
-              )`,
-              boxShadow: `
-                0 2px 6px -1px rgba(0, 0, 0, 0.25),
-                0 1px 2px -1px rgba(0, 0, 0, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.07)
-              `,
-            }}
             onClick={handleToggle}
           >
             {showAll ? (

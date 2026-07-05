@@ -145,7 +145,7 @@ export default function Achievements() {
           {hackathons.map((hack, idx) => (
             <CarouselItem key={hack.id}>
               <div
-                className="relative flex flex-col gap-2 overflow-hidden rounded-xl border border-[#232323] bg-[#16181c]/80 p-4 sm:p-6 backdrop-blur-md shadow-lg w-full max-w-[90vw] sm:max-w-md md:max-w-xl lg:max-w-2xl mx-auto z-10 text-left h-[470px] md:h-[620px]"
+                className="relative flex flex-col gap-2 overflow-hidden rounded-xl border border-white/10 bg-black/15 backdrop-blur-xl p-4 sm:p-6 shadow-xl w-full max-w-[90vw] sm:max-w-md md:max-w-xl lg:max-w-2xl mx-auto z-10 text-left h-[470px] md:h-[620px]"
                 onTouchStart={handleTouchStart}
                 onTouchEnd={handleTouchEnd}
               >
@@ -192,16 +192,16 @@ export default function Achievements() {
                     <span className="font-bold text-white text-sm sm:text-base md:text-lg">
                       Romeiro Fernandes
                     </span>
-                    <span className="ml-2 text-gray-400 text-xs sm:text-sm md:text-base">
+                    <span className="ml-2 text-white/60 text-xs sm:text-sm md:text-base">
                       @theromeirofern
                     </span>
-                    <span className="text-gray-400 text-xs sm:text-sm md:text-base block sm:inline ml-0 md:ml-2">
+                    <span className="text-white/60 text-xs sm:text-sm md:text-base block sm:inline ml-0 md:ml-2">
                       {hack.year}
                     </span>
                   </div>
                 </div>
                 <div className="mb-3">
-                  <span className="whitespace-pre-line text-gray-100 text-xs sm:text-sm md:text-base">
+                  <span className="whitespace-pre-line text-white/90 text-xs sm:text-sm md:text-base">
                     {hack.text}
                   </span>
                 </div>

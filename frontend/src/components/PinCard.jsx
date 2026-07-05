@@ -141,7 +141,7 @@ export function PinContainer({
         <span className="text-base font-semibold text-white truncate">
           {name}
         </span>
-        <span className="text-zinc-400 text-xs truncate">{description}</span>
+        <span className="text-white/60 text-xs truncate">{description}</span>
         <div className="flex flex-wrap gap-2 items-center mt-2">
           <TooltipProvider>
             {tech.map((t) => {
@@ -152,7 +152,7 @@ export function PinContainer({
                 found && (
                   <Tooltip key={t}>
                     <TooltipTrigger asChild>
-                      <span className="w-7 h-7 flex items-center justify-center rounded-full bg-zinc-800">
+                      <span className="w-7 h-7 flex items-center justify-center rounded-full bg-black/30 backdrop-blur-sm border border-white/10">
                         <img
                           src={found.logo}
                           alt={t}
@@ -161,7 +161,7 @@ export function PinContainer({
                         />
                       </span>
                     </TooltipTrigger>
-                    <TooltipContent side="top" align="center">
+                    <TooltipContent side="top" align="center" className="bg-black/80 backdrop-blur-xl border border-white/10 text-white">
                       {found.name}
                     </TooltipContent>
                   </Tooltip>
@@ -177,7 +177,7 @@ export function PinContainer({
               href={preview}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 px-4 py-2 rounded-lg border border-[#232323] bg-white/10 text-sm text-white font-medium transition text-center shadow focus:outline-none focus:ring-2 focus:ring-[#f5f5f7] focus:ring-offset-2"
+              className="flex-1 px-4 py-2 rounded-lg border border-white/10 bg-black/20 backdrop-blur-md text-sm text-white font-medium transition text-center shadow focus:outline-none focus:ring-2 focus:ring-[#f5f5f7] focus:ring-offset-2"
               onClick={(e) => e.stopPropagation()}
               style={{
                 boxShadow: "0 2px 8px 0 rgba(0,0,0,0.10)",
@@ -186,7 +186,7 @@ export function PinContainer({
               Live Preview
             </a>
           ) : (
-            <span className="flex-1 px-4 py-2 rounded-lg bg-zinc-800 text-sm text-zinc-500 font-light cursor-not-allowed select-none text-center shadow flex items-center justify-center gap-2">
+            <span className="flex-1 px-4 py-2 rounded-lg bg-black/20 backdrop-blur-md border border-white/10 text-sm text-white/50 font-light cursor-not-allowed select-none text-center shadow flex items-center justify-center gap-2">
               No Preview
             </span>
           )}
@@ -195,7 +195,7 @@ export function PinContainer({
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 px-4 py-2 rounded-lg border border-[#232323] bg-white/10 text-sm text-white font-medium transition text-center shadow flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#f5f5f7] focus:ring-offset-2"
+              className="flex-1 px-4 py-2 rounded-lg border border-white/10 bg-black/20 backdrop-blur-md text-sm text-white font-medium transition text-center shadow flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#f5f5f7] focus:ring-offset-2"
               onClick={(e) => e.stopPropagation()}
               style={{
                 boxShadow: "0 2px 8px 0 rgba(0,0,0,0.10)",

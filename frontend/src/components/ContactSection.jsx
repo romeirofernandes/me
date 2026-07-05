@@ -66,16 +66,16 @@ export default function ContactSection() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center border border-dashed border-[#3c3b3b] rounded-xl p-4 sm:p-6 md:p-8 mt-12 mb-4 w-full max-w-2xl mx-auto">
+    <div className="flex flex-col items-center justify-center border border-white/10 bg-black/15 backdrop-blur-xl rounded-xl p-4 sm:p-6 md:p-8 mt-12 mb-4 w-full max-w-2xl mx-auto shadow-xl">
       <section
         id="contact"
         className="w-full flex flex-col md:flex-row items-start justify-between gap-8"
       >
         <div className="flex-1 flex flex-col justify-center mb-6 md:mb-0 text-left">
-          <h2 className="text-lg sm:text-xl font-semibold mb-2 text-gray-200">
+          <h2 className="text-lg sm:text-xl font-semibold mb-2 text-white/90">
             Let's Connect
           </h2>
-          <p className="text-gray-400 text-sm">
+          <p className="text-white/60 text-sm">
             Have an idea or want to collaborate? <br />
             Drop a message and I’ll get back to you soon.
           </p>
@@ -86,7 +86,7 @@ export default function ContactSection() {
             onSubmit={handleSubmit}
           >
             <input
-              className="bg-[#18181b] rounded px-3 py-2 text-white focus:outline-none text-sm w-full"
+              className="bg-black/20 backdrop-blur-md border border-white/10 rounded px-3 py-2 text-white focus:outline-none text-sm w-full placeholder:text-white/40"
               type="email"
               name="email"
               placeholder="Your email"
@@ -95,7 +95,7 @@ export default function ContactSection() {
               required
             />
             <textarea
-              className="bg-[#18181b] rounded px-3 py-2 text-white focus:outline-none text-sm w-full"
+              className="bg-black/20 backdrop-blur-md border border-white/10 rounded px-3 py-2 text-white focus:outline-none text-sm w-full placeholder:text-white/40"
               name="message"
               placeholder="Your message"
               rows={4}
@@ -120,7 +120,7 @@ export default function ContactSection() {
               <span className="text-green-400 text-xs mt-1">Message sent!</span>
             )}
           </form>
-          <span className="text-xs text-gray-400 mt-4">
+          <span className="text-xs text-white/50 mt-4">
             theromeirofernandes@gmail.com
           </span>
         </div>
