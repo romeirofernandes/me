@@ -1,4 +1,5 @@
 import React, { useRef, useMemo, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useTexture, OrthographicCamera } from "@react-three/drei";
 import * as THREE from "three";
@@ -313,9 +314,9 @@ export default function DissolveOverlay({ imageFrom, imageTo, center: centerProp
     };
   }, [animate]);
 
-  return (
+  const overlay = (
     <div
-      className="fixed inset-0 z-[-9999] pointer-events-none"
+      className="fixed inset-0 z-0 pointer-events-none"
       style={{ backgroundImage: `url(${imageFrom})`, backgroundSize: "cover", backgroundPosition: "center" }}
     >
       <Canvas>
@@ -341,4 +342,10 @@ export default function DissolveOverlay({ imageFrom, imageTo, center: centerProp
       </Canvas>
     </div>
   );
+
+  if (typeof document === "undefined") {
+    return overlay;
+  }
+
+  return createPortal(overlay, document.body);
 }

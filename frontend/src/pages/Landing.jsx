@@ -15,7 +15,6 @@ import Clock from "../components/Clock";
 import ThemeToggle from "../components/ThemeToggle";
 import { Avatar, AvatarImage, AvatarFallback } from "../components/ui/avatar";
 import AnimatedLogo from "../components/AnimatedLogo";
-import BlurReveal from "../components/BlurReveal";
 import Signature from "../components/Signature";
 // import ClashRoyaleStatus from "../components/ClashRoyaleStatus";
 import WorkExperience from "../components/WorkExperience";
@@ -85,10 +84,6 @@ export default function Landing() {
           <div className="flex flex-col md:flex-row min-h-screen text-[#f5f5f7] overflow-x-hidden">
             <Sidebar />
             <main className="relative flex-1 flex flex-col items-center px-0 pb-2 md:pb-4 mt-0 md:mt-0 w-full">
-              <div
-                aria-hidden="true"
-                className="fixed inset-x-0 top-0 z-40 h-14 md:h-[4.5rem] pointer-events-none bg-[image:var(--page-bg-image)] bg-cover bg-center bg-no-repeat bg-fixed"
-              />
               <div className="fixed top-0 left-0 right-0 z-50 flex justify-center">
                 <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0 flex h-14 md:h-[4.5rem] justify-between items-start gap-3 pt-2">
                 <Avatar>
@@ -104,83 +99,62 @@ export default function Landing() {
               <div aria-hidden="true" className="h-14 md:h-[4.5rem] w-full shrink-0" />
 
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
-                <BlurReveal delay={0.04}>
-                  <ProfileCard />
-                </BlurReveal>
+                <ProfileCard />
               </div>
 
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
-                <BlurReveal delay={0.1}>
-                  <section className="relative isolate mt-4 md:mt-12 mb-10 md:mb-20 w-full rounded-xl p-4 sm:p-6 md:p-7 border border-white/10 bg-black/15 backdrop-blur-xl shadow-xl">
-                    <p
-                      className="text-white font-extralight text-sm md:text-md leading-relaxed text-left"
-                      style={{ fontWeight: 200 }}
-                    >
-                      I'm a full-stack developer with MERN as my go to stack and a
-                      deep interest in AI/ML. Currently pursuing Computer Engineering
-                      at Fr. CRCE, Bandra.
-                    </p>
-                    <p
-                      className="text-white mt-6 md:mt-10 font-extralight leading-relaxed text-left text-sm md:text-md"
-                      style={{ fontWeight: 200 }}
-                    >
-                      I love exploring new technologies and turning ideas into
-                      reality. Always striving to learn, grow, and collaborate with
-                      others.
-                    </p>
-                  </section>
-                </BlurReveal>
+                <section className="relative z-10 isolate mt-4 md:mt-12 mb-10 md:mb-20 w-full rounded-xl p-4 sm:p-6 md:p-7 border border-white/10 bg-black/15 backdrop-blur-xl shadow-xl">
+                  <p
+                    className="text-white font-extralight text-sm md:text-md leading-relaxed text-left"
+                    style={{ fontWeight: 200 }}
+                  >
+                    I'm a full-stack developer with MERN as my go to stack and a
+                    deep interest in AI/ML. Currently pursuing Computer Engineering
+                    at Fr. CRCE, Bandra.
+                  </p>
+                  <p
+                    className="text-white mt-6 md:mt-10 font-extralight leading-relaxed text-left text-sm md:text-md"
+                    style={{ fontWeight: 200 }}
+                  >
+                    I love exploring new technologies and turning ideas into
+                    reality. Always striving to learn, grow, and collaborate with
+                    others.
+                  </p>
+                </section>
               </div>
 
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 sm:px-4">
-                <BlurReveal delay={0.16}>
-                  <section id="github" className="mb-10 md:mb-20">
-                    <GithubGraph username="romeirofernandes" data={githubData} />
-                  </section>
-                </BlurReveal>
+                <section id="github" className="mb-10 md:mb-20">
+                  <GithubGraph username="romeirofernandes" data={githubData} />
+                </section>
               </div>
 
-              <BlurReveal delay={0.22}>
-                <TechMarquee />
-              </BlurReveal>
+              <TechMarquee />
 
-              <BlurReveal delay={0.28} className="w-full">
-                <WorkExperience />
-              </BlurReveal>
+              <WorkExperience />
 
-              <BlurReveal delay={0.34}>
-                <Projects />
-              </BlurReveal>
+              <Projects />
 
-              <BlurReveal delay={0.4}>
-                <Achievements />
-              </BlurReveal>
+              <Achievements />
 
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2">
-                <BlurReveal delay={0.46}>
-                  <ContactSection />
-                </BlurReveal>
+                <ContactSection />
               </div>
 
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 ">
-                <BlurReveal delay={0.52}>
-                  <QuoteBox>
-                    "If people call you crazy for working hard, you're doing something right."
-                  </QuoteBox>
-                </BlurReveal>
+                <QuoteBox>
+                  "If people call you crazy for working hard, you're doing something right."
+                </QuoteBox>
               </div>
 
-              <BlurReveal
-                delay={0.58}
-                className="mt-8 mb-4 flex w-full max-w-[98vw] justify-center px-2 md:max-w-2xl"
-              >
+              <div className="mt-8 mb-4 flex w-full max-w-[98vw] justify-center px-2 md:max-w-2xl">
                 <Signature
                   text="Romeiro Fernandes"
                   fontSize={28}
                   color="rgba(255,255,255,0.92)"
                   duration={1.8}
                 />
-              </BlurReveal>
+              </div>
 
               <Footer />
             </main>
