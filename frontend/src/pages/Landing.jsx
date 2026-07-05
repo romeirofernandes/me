@@ -11,7 +11,6 @@ import TechMarquee from "../components/TechMarquee";
 import Footer from "../components/Footer";
 import DiagonalBackground from "../components/DiagonalBackground";
 import GridLines from "../components/GridLines";
-import SectionDivider from "../components/SectionDivider";
 import Clock from "../components/Clock";
 import AnimatedLogo from "../components/AnimatedLogo";
 // import ClashRoyaleStatus from "../components/ClashRoyaleStatus";
@@ -79,20 +78,15 @@ export default function Landing() {
       {!showLogo && (
         <DiagonalBackground className="min-h-screen">
           <GridLines />
-          <div className="flex flex-col md:flex-row min-h-screen bg-[#080808]/95 text-[#f5f5f7] overflow-x-hidden">
+          <div className="flex flex-col md:flex-row min-h-screen text-[#f5f5f7] overflow-x-hidden">
             <Sidebar />
             <main className="flex-1 flex flex-col items-center justify-center px-0 py-2 md:py-4 mt-0 md:mt-0 w-full">
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0 flex justify-end mb-4">
                 <Clock />
               </div>
-              <SectionDivider className="mb-11" />
-
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
                 <ProfileCard />
               </div>
-
-              <SectionDivider className="my-2" />
-              <SectionDivider className="mt-2" />
 
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
                 <section className="mt-4 md:mt-12 mb-10 md:mb-20 w-full">
@@ -115,50 +109,29 @@ export default function Landing() {
                 </section>
               </div>
 
-              <SectionDivider className="mt-[-2rem] mb-14" />
-
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 sm:px-4">
                 <section id="github" className="mb-10 md:mb-20">
                   <GithubGraph username="romeirofernandes" data={githubData} />
                 </section>
               </div>
 
-              <SectionDivider className="mt-[-1.5rem]" />
-              <SectionDivider className="mt-2" />
-
               <TechMarquee />
-
-              <SectionDivider className="mt-[-0.75rem]" />
 
               <WorkExperience />
 
-              <SectionDivider className="mt-[-1rem]" />
-
               <Projects />
 
-              <SectionDivider className="mt-[-3.5rem] mb-12" />
-
               <Achievements />
-
-              <SectionDivider className="mt-3" />
 
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2">
                 <ContactSection />
               </div>
-
-              <SectionDivider className="mt-8" />
 
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 ">
                 <QuoteBox>
                   "If people call you crazy for working hard, you're doing something right."
                 </QuoteBox>
               </div>
-
-              <SectionDivider className="mt-8" />
-
-              {/* <ClashRoyaleStatus battlelog={battlelog} />
-
-              <SectionDivider className="mt-8" /> */}
 
               <Footer />
             </main>

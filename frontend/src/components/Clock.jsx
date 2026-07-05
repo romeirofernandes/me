@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import "slot-text/style.css";
+import { SlotText } from "slot-text/react";
 import {
   Tooltip,
   TooltipContent,
@@ -41,9 +43,9 @@ export default function Clock() {
   }, []);
 
   const pad = (n) => n.toString().padStart(2, "0");
-  const hours = pad(time.getHours());
-  const minutes = pad(time.getMinutes());
-  const seconds = pad(time.getSeconds());
+  const h = pad(time.getHours());
+  const m = pad(time.getMinutes());
+  const s = pad(time.getSeconds());
 
   const message = getScheduleMessage(time);
 
@@ -60,13 +62,20 @@ export default function Clock() {
           <div
             className={`
               text-white font-mono bg-[#18181b]/80 rounded-sm shadow-lg border border-white/10 select-none cursor-pointer
-              px-4 py-2 text-lg
+              px-4 py-2 text-lg tracking-[0.05em]
               transition-all
               ${isMobile ? "text-base px-3 py-1.5 mt-2" : ""}
             `}
             onClick={isMobile ? () => setOpen((prev) => !prev) : undefined}
           >
-            {hours}:{minutes}:{seconds}
+            <SlotText text={h[0]} options={{ direction: "up" }} />
+            <SlotText text={h[1]} options={{ direction: "up" }} />
+            <span className="opacity-40">:</span>
+            <SlotText text={m[0]} options={{ direction: "up" }} />
+            <SlotText text={m[1]} options={{ direction: "up" }} />
+            <span className="opacity-40">:</span>
+            <SlotText text={s[0]} options={{ direction: "up" }} />
+            <SlotText text={s[1]} options={{ direction: "up" }} />
           </div>
         </TooltipTrigger>
         <TooltipContent
