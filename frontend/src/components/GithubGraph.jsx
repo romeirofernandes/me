@@ -61,8 +61,8 @@ export default function GithubGraph({ username, data: propData }) {
   if (!data) {
     return (
       <div className="flex justify-center">
-        <div className="bg-[#18181b] rounded-lg p-4 w-fit animate-pulse">
-          <div className="h-[120px] w-[800px] bg-[#232323] rounded"></div>
+        <div className="rounded-lg p-4 w-fit animate-pulse bg-black/15 backdrop-blur-xl border border-white/10">
+          <div className="h-[120px] w-[800px] bg-[#ffffff]/10 rounded"></div>
         </div>
       </div>
     );
@@ -72,22 +72,22 @@ export default function GithubGraph({ username, data: propData }) {
   const recentContributions = filterRecentContributions(data.contributions, monthsToShow);
 
   const blockColors = [
-    "#232323", // level 0: empty
-    "#bbbbbb", // level 1: light gray
-    "#888888", // level 2: medium gray
-    "#444444", // level 3: dark gray
-    "#ffffff", // level 4: white (most active)
+    "#1a1a1a",  // level 0: empty
+    "#16a34a",  // level 1 (green-600)
+    "#22c55e",  // level 2 (green-500)
+    "#4ade80",  // level 3 (green-400)
+    "#86efac",  // level 4 (green-300 - most active)
   ];
 
   return (
     <div className="flex justify-center">
-      <div className="bg-[#18181b] rounded-lg p-4 w-fit">
+      <div className="rounded-lg p-4 w-fit bg-black/15 backdrop-blur-xl border border-white/10 shadow-xl">
         <ContributionGraph
           data={recentContributions}
           blockSize={isMobile ? 9 : 12}
           blockMargin={isMobile ? 3 : 4}
           blockRadius={2}
-          className="text-[#a1a1aa]"
+          className="text-white"
         >
           <ContributionGraphCalendar>
             {({ activity, dayIndex, weekIndex }) => (
@@ -97,13 +97,13 @@ export default function GithubGraph({ username, data: propData }) {
                     activity={activity}
                     dayIndex={dayIndex}
                     weekIndex={weekIndex}
-                    className="transition-all hover:ring-2 hover:ring-[#38bdf8] hover:ring-offset-1 hover:ring-offset-[#18181b]"
+                    className="transition-all hover:ring-2 hover:ring-[#38bdf8] hover:ring-offset-1 hover:ring-offset-transparent"
                     style={{
                       fill: blockColors[activity.level] || "#ffffff",
                     }}
                   />
                 </TooltipTrigger>
-                <TooltipContent side="top" className="bg-[#232323] text-[#f5f5f7] px-2 py-1 rounded shadow text-xs whitespace-nowrap">
+                <TooltipContent side="top" className="bg-black/40 backdrop-blur-md text-white px-2 py-1 rounded shadow text-xs whitespace-nowrap border border-white/10">
                   {activity.count > 0
                     ? `${activity.count} contributions on ${formatDate(activity.date)}`
                     : `No contributions on ${formatDate(activity.date)}`}
@@ -112,13 +112,13 @@ export default function GithubGraph({ username, data: propData }) {
             )}
           </ContributionGraphCalendar>
           <ContributionGraphFooter className="mt-4 text-xs">
-            <span className="font-medium text-[#f5f5f7]">
+            <span className="font-medium text-white">
               {data.total} contributions in {new Date().getFullYear()}
             </span>
             <ContributionGraphLegend>
               {({ level }) => (
                 <div
-                  className="w-3 h-3 rounded-sm border border-[#232323]"
+                  className="w-3 h-3 rounded-sm border border-white/10"
                   style={{
                     backgroundColor: blockColors[level] || "#ffffff",
                   }}

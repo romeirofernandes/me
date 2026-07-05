@@ -87,6 +87,7 @@ html {
   --glass-text: #2a2a2a;
   --glass-text-secondary: #4a4a4a;
   --glass-text-muted: #6b6b6b;
+
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.141 0.005 285.823);
   --popover: oklch(1 0 0);

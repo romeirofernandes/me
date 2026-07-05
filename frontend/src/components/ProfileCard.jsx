@@ -15,7 +15,7 @@ export default function ProfileCard() {
     >
       <div className="flex flex-col gap-2 md:gap-4">
         <div className="flex flex-col gap-1 md:gap-2 relative">
-          <div className="text-lg sm:text-xl md:text-2xl font-bold text-[var(--glass-text)]">
+          <div className="text-lg sm:text-xl md:text-2xl font-bold text-white">
             Romeiro Fernandes
           </div>
           <div id="about" className="text-xs md:text-sm text-[var(--glass-text-muted)]">
@@ -29,7 +29,7 @@ export default function ProfileCard() {
               rel="noopener noreferrer"
               aria-label="GitHub"
             >
-              <FaGithub className="text-lg sm:text-xl md:text-2xl text-[var(--glass-text-muted)] hover:text-[var(--glass-text)] transition" />
+              <FaGithub className="text-lg sm:text-xl md:text-2xl text-[var(--glass-text-muted)] hover:text-white transition" />
             </a>
             <a
               href="https://x.com/whotookromeiro"
@@ -37,7 +37,7 @@ export default function ProfileCard() {
               rel="noopener noreferrer"
               aria-label="X"
             >
-              <FaTwitter className="text-lg sm:text-xl md:text-2xl text-[var(--glass-text-muted)] hover:text-[var(--glass-text)] transition" />
+              <FaTwitter className="text-lg sm:text-xl md:text-2xl text-[var(--glass-text-muted)] hover:text-white transition" />
             </a>
           </div>
         </div>
@@ -47,7 +47,7 @@ export default function ProfileCard() {
           </div>
           <a
             href="mailto:theromeirofernandes@gmail.com"
-            className="flex items-center gap-1 md:gap-2 text-xs md:text-sm text-[var(--glass-text-muted)] hover:text-[var(--glass-text)] transition"
+            className="flex items-center gap-1 md:gap-2 text-xs md:text-sm text-[var(--glass-text-muted)] hover:text-white transition"
           >
             <FaEnvelope /> theromeirofernandes@gmail.com
           </a>
@@ -55,23 +55,23 @@ export default function ProfileCard() {
             href="https://linkedin.com/in/romeirofernandes"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 md:gap-2 text-xs md:text-sm text-[var(--glass-text-muted)] hover:text-[var(--glass-text)] transition"
+            className="flex items-center gap-1 md:gap-2 text-xs md:text-sm text-[var(--glass-text-muted)] hover:text-white transition"
           >
             <FaLinkedin />
             romeirofernandes
           </a>
           <a
-            href="https://blog.romeirofernandes.tech"
+            href="https://blog.romeiro.dev"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1 md:gap-2 text-xs md:text-sm text-[var(--glass-text-muted)] hover:text-[#38bdf8] transition"
           >
             <FaGlobe />
-            blog.romeirofernandes.tech
+            blog.romeiro.dev
           </a>
         </div>
       </div>
-      <div className="mt-2 md:mt-4 text-xs md:text-sm text-[var(--glass-text-secondary)]">
+      <div className="mt-2 md:mt-4 text-xs md:text-sm text-white">
         Persistent. Adaptive. Funny.
       </div>
     </div>

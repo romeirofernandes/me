@@ -61,7 +61,7 @@ export default function Clock() {
         <TooltipTrigger asChild>
           <div
             className={`
-              text-[var(--glass-text)] font-mono bg-black/20 backdrop-blur-md rounded-lg shadow-xl border border-white/10 select-none cursor-pointer
+              text-white font-mono bg-black/20 backdrop-blur-md rounded-lg shadow-xl border border-white/10 select-none cursor-pointer
               px-4 py-2 text-lg tracking-[0.05em]
               transition-all
               ${isMobile ? "text-base px-3 py-1.5 mt-2" : ""}
