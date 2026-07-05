@@ -59,7 +59,7 @@ export default function WorkExperience() {
     return (
         <section
             id="experience"
-            className="w-full max-w-[98vw] md:max-w-2xl mx-auto mb-16 mt-10 px-0 py-8 md:py-12"
+            className="relative z-10 w-full max-w-[98vw] md:max-w-2xl mx-auto mb-16 mt-10 px-0 py-8 md:py-12"
         >
             <div className="w-full flex justify-start px-6 md:px-0">
                 <motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight">
@@ -76,7 +76,7 @@ export default function WorkExperience() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.1 }}
-                            className="relative rounded-xl border border-white/10 bg-black/15 backdrop-blur-xl shadow-xl overflow-hidden"
+                            className="relative z-10 isolate rounded-xl border border-white/10 bg-black/15 backdrop-blur-xl shadow-xl overflow-hidden"
                         >
                             {/* Header - Always Visible */}
                             <div

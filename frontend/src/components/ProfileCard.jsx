@@ -11,7 +11,7 @@ import {
 export default function ProfileCard() {
   return (
     <div
-      className="w-full max-w-full md:max-w-2xl mx-auto rounded-xl p-4 sm:p-6 md:p-7 mb-8 flex flex-col gap-3 md:gap-4 border border-white/10 relative text-left bg-black/15 backdrop-blur-xl shadow-xl"
+      className="relative z-10 isolate w-full max-w-full md:max-w-2xl mx-auto rounded-xl p-4 sm:p-6 md:p-7 mb-8 flex flex-col gap-3 md:gap-4 border border-white/10 text-left bg-black/15 backdrop-blur-xl shadow-xl"
     >
       <div className="flex flex-col gap-2 md:gap-4">
         <div className="flex flex-col gap-1 md:gap-2 relative">

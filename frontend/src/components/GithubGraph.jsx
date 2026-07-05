@@ -81,7 +81,7 @@ export default function GithubGraph({ username, data: propData }) {
 
   return (
     <div className="flex justify-center">
-      <div className="rounded-lg p-4 w-fit bg-black/15 backdrop-blur-xl border border-white/10 shadow-xl">
+      <div className="relative z-10 isolate rounded-lg p-4 w-fit bg-black/15 backdrop-blur-xl border border-white/10 shadow-xl">
         <ContributionGraph
           data={recentContributions}
           blockSize={isMobile ? 9 : 12}

@@ -66,7 +66,7 @@ export default function ContactSection() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center border border-white/10 bg-black/15 backdrop-blur-xl rounded-xl p-4 sm:p-6 md:p-8 mt-12 mb-4 w-full max-w-2xl mx-auto shadow-xl">
+    <div className="relative z-10 isolate flex flex-col items-center justify-center border border-white/10 bg-black/15 backdrop-blur-xl rounded-xl p-4 sm:p-6 md:p-8 mt-12 mb-4 w-full max-w-2xl mx-auto shadow-xl">
       <section
         id="contact"
         className="w-full flex flex-col md:flex-row items-start justify-between gap-8"
