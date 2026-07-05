@@ -82,9 +82,13 @@ export default function Landing() {
 
           <div className="flex flex-col md:flex-row min-h-screen text-[#f5f5f7] overflow-x-hidden">
             <Sidebar />
-            <main className="relative z-10 flex-1 flex flex-col items-center justify-center px-0 pt-20 md:pt-20 pb-2 md:pb-4 mt-0 md:mt-0 w-full">
-              <div className="fixed top-0 left-0 right-0 z-10 flex justify-center">
-                <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0 flex justify-between items-center gap-3 pt-2">
+            <main className="relative flex-1 flex flex-col items-center px-0 pb-2 md:pb-4 mt-0 md:mt-0 w-full">
+              <div
+                aria-hidden="true"
+                className="fixed inset-x-0 top-0 z-40 h-14 md:h-[4.5rem] pointer-events-none bg-[image:var(--page-bg-image)] bg-cover bg-center bg-no-repeat bg-fixed"
+              />
+              <div className="fixed top-0 left-0 right-0 z-50 flex justify-center">
+                <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0 flex h-14 md:h-[4.5rem] justify-between items-start gap-3 pt-2">
                 <Avatar>
                   <AvatarImage src="https://github.com/romeirofernandes.png" alt="Romeiro Fernandes" />
                   <AvatarFallback>RF</AvatarFallback>
@@ -95,12 +99,14 @@ export default function Landing() {
                 </div>
               </div>
               </div>
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
+              <div aria-hidden="true" className="h-14 md:h-[4.5rem] w-full shrink-0" />
+
+              <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
                 <ProfileCard />
               </div>
 
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
-                <section className="relative z-10 isolate mt-4 md:mt-12 mb-10 md:mb-20 w-full rounded-xl p-4 sm:p-6 md:p-7 border border-white/10 bg-black/15 backdrop-blur-xl shadow-xl">
+              <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
+                <section className="relative isolate mt-4 md:mt-12 mb-10 md:mb-20 w-full rounded-xl p-4 sm:p-6 md:p-7 border border-white/10 bg-black/15 backdrop-blur-xl shadow-xl">
                   <p
                     className="text-white font-extralight text-sm md:text-md leading-relaxed text-left"
                     style={{ fontWeight: 200 }}
@@ -120,8 +126,8 @@ export default function Landing() {
                 </section>
               </div>
 
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 sm:px-4">
-                <section id="github" className="relative z-10 mb-10 md:mb-20">
+              <div className="w-full max-w-[98vw] md:max-w-2xl px-2 sm:px-4">
+                <section id="github" className="mb-10 md:mb-20">
                   <GithubGraph username="romeirofernandes" data={githubData} />
                 </section>
               </div>
@@ -134,11 +140,11 @@ export default function Landing() {
 
               <Achievements />
 
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2">
+              <div className="w-full max-w-[98vw] md:max-w-2xl px-2">
                 <ContactSection />
               </div>
 
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 ">
+              <div className="w-full max-w-[98vw] md:max-w-2xl px-2 ">
                 <QuoteBox>
                   "If people call you crazy for working hard, you're doing something right."
                 </QuoteBox>

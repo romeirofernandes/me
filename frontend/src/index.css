@@ -6,17 +6,18 @@
 @custom-variant dark (&:is(.dark *));
 
 body {
+  --page-bg-image: url('/dark-bg.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-image: url('/dark-bg.jpg');
+  background-image: var(--page-bg-image);
   color: #f5f5f7;
   font-family: "Inter", sans-serif;
 }
 
 html.light body {
-  background-image: url('/light-bg.jpg');
+  --page-bg-image: url('/light-bg.jpg');
 }
 
 h1,
@@ -188,3 +189,6 @@ html:not(.light) {
 ::view-transition-new(root) {
   animation: none;
 }
+
+scrollbar-width: thin;
+scrollbar-color: gray transparent;

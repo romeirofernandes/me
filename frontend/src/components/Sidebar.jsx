@@ -83,7 +83,7 @@ export default function Sidebar() {
   return (
     <>
       {/* Desktop sidebar */}
-      <div className="hidden md:block fixed left-4 top-1/2 -translate-y-1/2 z-50">
+      <div className="hidden md:flex fixed inset-y-0 left-4 z-40 items-center">
         <motion.aside
           className="flex flex-col items-center bg-black/15 rounded-2xl py-4 px-2 shadow-xl border border-white/10 backdrop-blur-xl"
           initial={{ opacity: 0, x: -20 }}
