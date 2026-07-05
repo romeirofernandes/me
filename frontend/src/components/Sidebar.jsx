@@ -121,8 +121,8 @@ export default function Sidebar() {
                         initial={{ opacity: 0, x: 0 }}
                         animate={{ opacity: 1, x: 16 }}
                         exit={{ opacity: 0, x: 0 }}
-                        className="absolute left-12 px-3 py-1 rounded-lg text-sm font-medium bg-black/40 backdrop-blur-md border border-white/10 text-[#f5f5f7] whitespace-nowrap"
-                        style={{ zIndex: 20 }}
+                        className="absolute left-12 px-3 py-1 rounded-lg text-sm font-medium backdrop-blur-xl border border-white/10 text-white whitespace-nowrap"
+                        style={{ backgroundColor: "var(--tooltip-bg)", zIndex: 20 }}
                       >
                         {link.label}
                       </motion.span>

@@ -87,6 +87,7 @@ html {
   --glass-text: #2a2a2a;
   --glass-text-secondary: #4a4a4a;
   --glass-text-muted: #6b6b6b;
+  --tooltip-bg: rgba(0, 0, 0, 0.8);
 
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.141 0.005 285.823);
@@ -124,6 +125,7 @@ html:not(.light) {
   --glass-text: #f5f5f7;
   --glass-text-secondary: #d4d4d4;
   --glass-text-muted: #9ca3af;
+  --tooltip-bg: rgba(0, 0, 0, 0.7);
 }
 
 .dark {

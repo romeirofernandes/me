@@ -76,21 +76,7 @@ export default function WorkExperience() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.1 }}
-                            className="relative rounded-xl border border-[#232323] bg-[#16181c]/80 backdrop-blur-md shadow-lg overflow-hidden"
-                            style={{
-                                background: `linear-gradient(135deg, 
-                  #1a1a1d 0%, 
-                  #18181b 15%, 
-                  #16161a 50%, 
-                  #141418 85%, 
-                  #121216 100%
-                )`,
-                                boxShadow: `
-                  0 4px 6px -1px rgba(0, 0, 0, 0.3),
-                  0 2px 4px -1px rgba(0, 0, 0, 0.2),
-                  inset 0 1px 0 rgba(255, 255, 255, 0.05)
-                `,
-                            }}
+                            className="relative rounded-xl border border-white/10 bg-black/15 backdrop-blur-xl shadow-xl overflow-hidden"
                         >
                             {/* Header - Always Visible */}
                             <div
@@ -116,25 +102,21 @@ export default function WorkExperience() {
                                                 <h3 className="text-base sm:text-lg font-semibold text-white truncate leading-tight">
                                                     {exp.company}
                                                 </h3>
-                                                {exp.current && (
-                                                    <span className="px-2 py-0.5 mb-0.5 text-xs font-medium bg-green-900/60 border border-green-700 text-green-400 rounded-full">
-                                                        Current
-                                                    </span>
-                                                )}
+
                                             </div>
-                                            <p className="text-sm sm:text-base text-gray-300 mt-1 leading-snug">
+                                            <p className="text-sm sm:text-base text-white/80 mt-1 leading-snug">
                                                 {exp.position}
                                             </p>
                                         </div>
                                     </div>
 
                                     {/* Metadata: separate row aligned with the image's left edge */}
-                                    <div className="mt-4 text-xs sm:text-sm text-gray-400 w-full">
+                                    <div className="mt-4 text-xs sm:text-sm text-white/60 w-full">
                                         <div className="flex flex-wrap items-center gap-2">
                                             <span className="whitespace-nowrap">{exp.type}</span>
-                                            <span className="text-gray-500">•</span>
+                                            <span className="text-white/30">•</span>
                                             <span className="whitespace-nowrap">{exp.period}</span>
-                                            <span className="text-gray-500">•</span>
+                                            <span className="text-white/30">•</span>
                                             <span className="whitespace-nowrap">{exp.location}</span>
                                         </div>
                                     </div>
@@ -143,7 +125,7 @@ export default function WorkExperience() {
                                 {/* Expand/Collapse Button */}
                                 <div className="ml-2 flex items-center">
                                     <motion.button
-                                        className="text-gray-400 hover:text-white transition-colors p-2"
+                                        className="text-white/60 hover:text-white transition-colors p-2"
                                         animate={{ rotate: isExpanded ? 180 : 0 }}
                                         transition={{ duration: 0.2 }}
                                     >
@@ -170,8 +152,8 @@ export default function WorkExperience() {
                                                         key={i}
                                                         className="flex items-start gap-2 mb-4"
                                                     >
-                                                        <span className="mt-2.5 mr-1 flex-shrink-0 w-1 h-1 bg-gray-400 rounded-full" />
-                                                        <span className="text-sm text-gray-200 leading-relaxed">
+                                                        <span className="mt-2.5 mr-1 flex-shrink-0 w-1 h-1 bg-white/40 rounded-full" />
+                                                        <span className="text-sm text-white/90 leading-relaxed">
                                                             {item}
                                                         </span>
                                                     </li>
@@ -183,7 +165,7 @@ export default function WorkExperience() {
                                                 {exp.skills.map((skill) => (
                                                     <span
                                                         key={skill}
-                                                        className="px-3 py-1 text-xs font-medium bg-[#18181b] border border-[#232323] text-gray-300 rounded-full"
+                                                        className="px-3 py-1 text-xs font-medium bg-black/20 backdrop-blur-md border border-white/10 text-white/80 rounded-full"
                                                     >
                                                         {skill}
                                                     </span>

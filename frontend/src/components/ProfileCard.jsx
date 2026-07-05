@@ -64,7 +64,7 @@ export default function ProfileCard() {
             href="https://blog.romeiro.dev"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 md:gap-2 text-xs md:text-sm text-[var(--glass-text-muted)] hover:text-[#38bdf8] transition"
+            className="flex items-center gap-1 md:gap-2 text-xs md:text-sm text-[var(--glass-text-muted)] hover:text-white transition"
           >
             <FaGlobe />
             blog.romeiro.dev

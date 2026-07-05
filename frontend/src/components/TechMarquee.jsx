@@ -129,7 +129,7 @@ function MarqueeRow({
         {[...items, ...items].map((tech, idx) => (
           <span
             key={idx}
-            className="flex items-center justify-center gap-2 bg-[#18181b] border border-[#27272a] rounded-full shadow text-sm font-medium text-white whitespace-nowrap"
+            className="flex items-center justify-center gap-2 bg-black/20 backdrop-blur-md border border-white/10 rounded-full text-sm font-medium text-white whitespace-nowrap"
             style={{
               paddingLeft: "24px",
               paddingRight: "24px",
