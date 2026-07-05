@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
@@ -44,12 +44,16 @@ function getActiveSection() {
 export default function Sidebar() {
   const [hoveredIdx, setHoveredIdx] = useState(null);
   const [active, setActive] = useState("#home");
+  const isManualRef = useRef(false);
+  const scrollTimeoutRef = useRef(null);
 
   useEffect(() => {
-    const onScroll = () => setActive(getActiveSection());
+    const onScroll = () => {
+      if (isManualRef.current) return;
+      setActive(getActiveSection());
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
-    // initialize active on mount
     onScroll();
     return () => {
       window.removeEventListener("scroll", onScroll);
@@ -57,20 +61,22 @@ export default function Sidebar() {
     };
   }, []);
 
-  // Smooth scroll handler
   const handleNavClick = (e, href) => {
     e.preventDefault();
+    isManualRef.current = true;
+    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+
+    setActive(href);
+
     if (href === "#home") {
       window.scrollTo({ top: 0, behavior: "smooth" });
-      setActive("#home");
+      scrollTimeoutRef.current = setTimeout(() => { isManualRef.current = false; }, 800);
       return;
     }
     const el = document.querySelector(href);
     if (el) {
-      // mark active immediately (prevents wrong highlight during smooth scroll)
-      setActive(href);
-      // align target to viewport center so getActiveSection's center heuristic matches
       el.scrollIntoView({ behavior: "smooth", block: "center" });
+      scrollTimeoutRef.current = setTimeout(() => { isManualRef.current = false; }, 1200);
     }
   };
 
@@ -79,62 +85,59 @@ export default function Sidebar() {
       {/* Desktop sidebar */}
       <div className="hidden md:block fixed left-4 top-1/2 -translate-y-1/2 z-50">
         <motion.aside
-          className="flex flex-col items-center bg-[#101014]/80 rounded-2xl py-4 px-2 shadow-lg border border-[#232323] backdrop-blur"
+          className="flex flex-col items-center bg-black/15 rounded-2xl py-4 px-2 shadow-xl border border-white/10 backdrop-blur-xl"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
         >
-          {navLinks.map((link, idx) => {
-            const isActive = active === link.href;
-            return (
-              <div key={link.href} className="relative my-2 flex items-center">
-                <motion.a
-                  href={link.href}
-                  className={`flex items-center justify-center w-10 h-10 rounded-lg group transition-colors
-                    ${isActive ? "bg-[#232323]" : ""}
-                  `}
-                  onMouseEnter={() => setHoveredIdx(idx)}
-                  onMouseLeave={() => setHoveredIdx(null)}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  aria-label={link.label}
-                  style={{ position: "relative", zIndex: 10 }}
-                >
-                  <HugeiconsIcon
-                    icon={link.icon}
-                    size={20}
-                    className={`transition-colors ${
-                      isActive ? "text-[#f5f5f7]" : "text-gray-400"
-                    } group-hover:text-[#f5f5f7]`}
-                  />
-                </motion.a>
-                <AnimatePresence>
-                  {hoveredIdx === idx && (
-                    <motion.span
-                      initial={{ opacity: 0, x: 0 }}
-                      animate={{ opacity: 1, x: 16 }}
-                      exit={{ opacity: 0, x: 0 }}
-                      className={`absolute left-12 px-3 py-1 rounded-lg text-sm font-medium bg-[#18181b] shadow
-                        ${
-                          isActive
-                            ? "text-[#f5f5f7] bg-[#232323]"
-                            : "text-gray-400"
-                        }
-                        whitespace-nowrap
-                      `}
-                      style={{ zIndex: 20 }}
-                    >
-                      {link.label}
-                    </motion.span>
-                  )}
-                </AnimatePresence>
-              </div>
-            );
-          })}
+          <motion.div layoutRoot className="flex flex-col items-center">
+            {navLinks.map((link, idx) => {
+              const isActive = active === link.href;
+              return (
+                <div key={link.href} className="relative my-2 flex items-center">
+                  <motion.a
+                    href={link.href}
+                    className="flex items-center justify-center w-10 h-10 rounded-lg relative"
+                    onMouseEnter={() => setHoveredIdx(idx)}
+                    onMouseLeave={() => setHoveredIdx(null)}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    aria-label={link.label}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="sidebar-pill"
+                        className="absolute inset-0 rounded-lg bg-white/15"
+                        transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                      />
+                    )}
+                    <HugeiconsIcon
+                      icon={link.icon}
+                      size={20}
+                      className="relative z-10 text-[#f5f5f7]"
+                    />
+                  </motion.a>
+                  <AnimatePresence>
+                    {hoveredIdx === idx && (
+                      <motion.span
+                        initial={{ opacity: 0, x: 0 }}
+                        animate={{ opacity: 1, x: 16 }}
+                        exit={{ opacity: 0, x: 0 }}
+                        className="absolute left-12 px-3 py-1 rounded-lg text-sm font-medium bg-black/40 backdrop-blur-md border border-white/10 text-[#f5f5f7] whitespace-nowrap"
+                        style={{ zIndex: 20 }}
+                      >
+                        {link.label}
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </motion.div>
         </motion.aside>
       </div>
       {/* Mobile dock */}
       <div className="md:hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[95vw] max-w-md">
         <motion.nav
-          className="flex flex-row items-center justify-between bg-[#101014]/90 rounded-2xl py-2 px-4 shadow-lg border border-[#232323] backdrop-blur"
+          className="flex flex-row items-center justify-between bg-black/20 rounded-2xl py-2 px-4 shadow-xl border border-white/10 backdrop-blur-xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
@@ -152,11 +155,9 @@ export default function Sidebar() {
                   <HugeiconsIcon
                     icon={link.icon}
                     size={20}
-                    className={`transition-colors ${
-                      isActive ? "text-[#f5f5f7]" : "text-gray-400"
-                    } group-hover:text-[#f5f5f7]`}
+                    className="transition-colors text-[#f5f5f7]"
                   />
-                  <span className="text-[10px] mt-1 text-gray-400">
+                  <span className="text-[10px] mt-1 text-[#f5f5f7]/70">
                     {link.label}
                   </span>
                </a>
