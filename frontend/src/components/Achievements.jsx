@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Carousel,
@@ -130,6 +131,17 @@ export default function Achievements() {
     }
   };
 
+  useEffect(() => {
+    if (!openImg) return;
+    const onKey = (e) => { if (e.key === "Escape") setOpenImg(null); };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [openImg]);
+
   return (
     <section
       id="achievements"
@@ -186,7 +198,7 @@ export default function Achievements() {
                   <img
                     src="/profile.jpg"
                     alt="Romeiro Fernandes"
-                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-700 mr-3"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-3"
                   />
                   <div>
                     <span className="font-bold text-white text-sm sm:text-base md:text-lg">
@@ -208,7 +220,7 @@ export default function Achievements() {
                 <img
                   src={hack.image}
                   alt={hack.name}
-                  className="w-full rounded-lg border border-gray-700 mb-3 max-h-28 sm:max-h-40 md:max-h-64 object-cover cursor-zoom-in"
+                  className="w-full rounded-lg mb-3 max-h-28 sm:max-h-40 md:max-h-64 object-cover cursor-zoom-in"
                   onClick={() => setOpenImg(hack.image)}
                 />
               </div>
@@ -220,30 +232,33 @@ export default function Achievements() {
       </Carousel>
 
       {/* Animated Modal for zoomed image */}
-      <AnimatePresence>
-        {openImg && (
-          <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.22 }}
-            onClick={() => setOpenImg(null)}
-          >
-            <motion.img
-              src={openImg}
-              alt="Zoomed"
-              className="max-h-[90vh] max-w-[90vw] rounded-xl shadow-2xl object-contain cursor-zoom-out"
-              style={{ touchAction: "pinch-zoom" }}
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
+      {createPortal(
+        <AnimatePresence>
+          {openImg && (
+            <motion.div
+              className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               transition={{ duration: 0.22 }}
-              onClick={(e) => e.stopPropagation()}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+              onClick={() => setOpenImg(null)}
+            >
+              <motion.img
+                src={openImg}
+                alt="Zoomed"
+                className="max-h-[90vh] max-w-[90vw] rounded-xl shadow-2xl object-contain cursor-zoom-out"
+                style={{ touchAction: "pinch-zoom" }}
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.95, opacity: 0 }}
+                transition={{ duration: 0.22 }}
+                onClick={(e) => e.stopPropagation()}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </section>
   );
 }
