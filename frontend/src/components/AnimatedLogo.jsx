@@ -11,21 +11,34 @@ export default function AnimatedLogo({ fadeOut = false, onAnimationEnd }) {
   return (
     <motion.div
       className="fixed inset-0 z-50 flex items-center justify-center"
-      style={{
-        background: "var(--foreground)",
-        color: "var(--background)",
-        minHeight: "100vh",
-        width: "100vw",
-      }}
       initial={{ opacity: 1 }}
       animate={{ opacity: fadeOut ? 0 : 1 }}
       transition={{ opacity: { duration: 0.7, ease: "easeInOut" } }}
     >
+      <div
+        aria-hidden="true"
+        className="absolute inset-[-24px]"
+        style={{
+          backgroundImage: "var(--page-bg-image)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          filter: "blur(18px)",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(6, 8, 18, 0.28), rgba(6, 8, 18, 0.4))",
+        }}
+      />
       <svg
+        className={`relative z-10 max-w-full${isMobile ? " mb-20" : ""}`}
         width="90vw"
         height="30vh"
         viewBox={viewBox}
-        className={`max-w-full${isMobile ? " mb-20" : ""}`}
       >
         <defs>
           <style>
@@ -46,7 +59,7 @@ export default function AnimatedLogo({ fadeOut = false, onAnimationEnd }) {
           fontSize={fontSize}
           fontWeight="400"
           fill="none"
-          stroke="var(--background)"
+          stroke="white"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -72,7 +85,7 @@ export default function AnimatedLogo({ fadeOut = false, onAnimationEnd }) {
           fontFamily="'Playwrite SK Variable', cursive"
           fontSize={fontSize}
           fontWeight="400"
-          fill="var(--background)"
+          fill="white"
           initial={{
             opacity: 0,
           }}

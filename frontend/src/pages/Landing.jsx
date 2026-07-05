@@ -15,6 +15,8 @@ import Clock from "../components/Clock";
 import ThemeToggle from "../components/ThemeToggle";
 import { Avatar, AvatarImage, AvatarFallback } from "../components/ui/avatar";
 import AnimatedLogo from "../components/AnimatedLogo";
+import BlurReveal from "../components/BlurReveal";
+import Signature from "../components/Signature";
 // import ClashRoyaleStatus from "../components/ClashRoyaleStatus";
 import WorkExperience from "../components/WorkExperience";
 
@@ -102,53 +104,83 @@ export default function Landing() {
               <div aria-hidden="true" className="h-14 md:h-[4.5rem] w-full shrink-0" />
 
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
-                <ProfileCard />
+                <BlurReveal delay={0.04}>
+                  <ProfileCard />
+                </BlurReveal>
               </div>
 
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
-                <section className="relative isolate mt-4 md:mt-12 mb-10 md:mb-20 w-full rounded-xl p-4 sm:p-6 md:p-7 border border-white/10 bg-black/15 backdrop-blur-xl shadow-xl">
-                  <p
-                    className="text-white font-extralight text-sm md:text-md leading-relaxed text-left"
-                    style={{ fontWeight: 200 }}
-                  >
-                    I'm a full-stack developer with MERN as my go to stack and a
-                    deep interest in AI/ML. Currently pursuing Computer Engineering
-                    at Fr. CRCE, Bandra.
-                  </p>
-                  <p
-                    className="text-white mt-6 md:mt-10 font-extralight leading-relaxed text-left text-sm md:text-md"
-                    style={{ fontWeight: 200 }}
-                  >
-                    I love exploring new technologies and turning ideas into
-                    reality. Always striving to learn, grow, and collaborate with
-                    others.
-                  </p>
-                </section>
+                <BlurReveal delay={0.1}>
+                  <section className="relative isolate mt-4 md:mt-12 mb-10 md:mb-20 w-full rounded-xl p-4 sm:p-6 md:p-7 border border-white/10 bg-black/15 backdrop-blur-xl shadow-xl">
+                    <p
+                      className="text-white font-extralight text-sm md:text-md leading-relaxed text-left"
+                      style={{ fontWeight: 200 }}
+                    >
+                      I'm a full-stack developer with MERN as my go to stack and a
+                      deep interest in AI/ML. Currently pursuing Computer Engineering
+                      at Fr. CRCE, Bandra.
+                    </p>
+                    <p
+                      className="text-white mt-6 md:mt-10 font-extralight leading-relaxed text-left text-sm md:text-md"
+                      style={{ fontWeight: 200 }}
+                    >
+                      I love exploring new technologies and turning ideas into
+                      reality. Always striving to learn, grow, and collaborate with
+                      others.
+                    </p>
+                  </section>
+                </BlurReveal>
               </div>
 
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 sm:px-4">
-                <section id="github" className="mb-10 md:mb-20">
-                  <GithubGraph username="romeirofernandes" data={githubData} />
-                </section>
+                <BlurReveal delay={0.16}>
+                  <section id="github" className="mb-10 md:mb-20">
+                    <GithubGraph username="romeirofernandes" data={githubData} />
+                  </section>
+                </BlurReveal>
               </div>
 
-              <TechMarquee />
+              <BlurReveal delay={0.22}>
+                <TechMarquee />
+              </BlurReveal>
 
-              <WorkExperience />
+              <BlurReveal delay={0.28} className="w-full">
+                <WorkExperience />
+              </BlurReveal>
 
-              <Projects />
+              <BlurReveal delay={0.34}>
+                <Projects />
+              </BlurReveal>
 
-              <Achievements />
+              <BlurReveal delay={0.4}>
+                <Achievements />
+              </BlurReveal>
 
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2">
-                <ContactSection />
+                <BlurReveal delay={0.46}>
+                  <ContactSection />
+                </BlurReveal>
               </div>
 
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 ">
-                <QuoteBox>
-                  "If people call you crazy for working hard, you're doing something right."
-                </QuoteBox>
+                <BlurReveal delay={0.52}>
+                  <QuoteBox>
+                    "If people call you crazy for working hard, you're doing something right."
+                  </QuoteBox>
+                </BlurReveal>
               </div>
+
+              <BlurReveal
+                delay={0.58}
+                className="mt-8 mb-4 flex w-full max-w-[98vw] justify-center px-2 md:max-w-2xl"
+              >
+                <Signature
+                  text="Romeiro Fernandes"
+                  fontSize={28}
+                  color="rgba(255,255,255,0.92)"
+                  duration={1.8}
+                />
+              </BlurReveal>
 
               <Footer />
             </main>

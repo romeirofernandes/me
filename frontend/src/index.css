@@ -3,6 +3,12 @@
 @import "@fontsource/inter";
 @import "tw-animate-css";
 
+@font-face {
+  font-family: "Lastoria Bold Regular";
+  src: url("/LastoriaBoldRegular.otf") format("opentype");
+  font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 body {
