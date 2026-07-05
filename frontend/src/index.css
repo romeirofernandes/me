@@ -196,5 +196,41 @@ html:not(.light) {
   animation: none;
 }
 
-scrollbar-width: thin;
-scrollbar-color: gray transparent;
+html {
+  background-color: #080808;
+  scrollbar-width: thin;
+  scrollbar-color: #555 #1a1a1a;
+}
+
+html.light {
+  background-color: #f5f5f7;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #e8e8e8;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #aaa;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
