@@ -6,9 +6,17 @@
 @custom-variant dark (&:is(.dark *));
 
 body {
-  background-color: #080808;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: url('/dark-bg.jpg');
   color: #f5f5f7;
   font-family: "Inter", sans-serif;
+}
+
+html.light body {
+  background-image: url('/light-bg.jpg');
 }
 
 h1,
@@ -158,4 +166,12 @@ html {
 ::-moz-selection {
   background: #f5f5f7;
   color: #080808;
+}
+
+::view-transition-old(root) {
+  animation: none;
+}
+
+::view-transition-new(root) {
+  animation: none;
 }

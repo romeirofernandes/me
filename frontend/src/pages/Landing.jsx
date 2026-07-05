@@ -10,8 +10,10 @@ import ContactSection from "../components/ContactSection";
 import TechMarquee from "../components/TechMarquee";
 import Footer from "../components/Footer";
 import DiagonalBackground from "../components/DiagonalBackground";
-import GridLines from "../components/GridLines";
+
 import Clock from "../components/Clock";
+import ThemeToggle from "../components/ThemeToggle";
+import { Avatar, AvatarImage, AvatarFallback } from "../components/ui/avatar";
 import AnimatedLogo from "../components/AnimatedLogo";
 // import ClashRoyaleStatus from "../components/ClashRoyaleStatus";
 import WorkExperience from "../components/WorkExperience";
@@ -77,12 +79,21 @@ export default function Landing() {
       </AnimatePresence>
       {!showLogo && (
         <DiagonalBackground className="min-h-screen">
-          <GridLines />
+
           <div className="flex flex-col md:flex-row min-h-screen text-[#f5f5f7] overflow-x-hidden">
             <Sidebar />
-            <main className="flex-1 flex flex-col items-center justify-center px-0 py-2 md:py-4 mt-0 md:mt-0 w-full">
-              <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0 flex justify-end mb-4">
-                <Clock />
+            <main className="flex-1 flex flex-col items-center justify-center px-0 pt-20 md:pt-20 pb-2 md:pb-4 mt-0 md:mt-0 w-full">
+              <div className="fixed top-0 left-0 right-0 z-10 flex justify-center">
+                <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0 flex justify-between items-center gap-3 pt-2">
+                <Avatar>
+                  <AvatarImage src="https://github.com/romeirofernandes.png" alt="Romeiro Fernandes" />
+                  <AvatarFallback>RF</AvatarFallback>
+                </Avatar>
+                <div className="flex items-center gap-3">
+                  <ThemeToggle />
+                  <Clock />
+                </div>
+              </div>
               </div>
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
                 <ProfileCard />
