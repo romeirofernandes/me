@@ -42,7 +42,7 @@ export default function ThemeToggle({ className = "" }) {
       <button
         type="button"
         onClick={toggle}
-        className={`rounded-full bg-black text-white transition-all duration-300 active:scale-95 size-10 flex items-center justify-center ${className}`}
+        className={`rounded-full bg-black/20 backdrop-blur-md border border-white/10 text-white transition-all duration-300 active:scale-95 size-10 flex items-center justify-center ${className}`}
       >
         <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
           <motion.g

@@ -100,9 +100,9 @@ export default function Landing() {
               </div>
 
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
-                <section className="mt-4 md:mt-12 mb-10 md:mb-20 w-full">
+                <section className="mt-4 md:mt-12 mb-10 md:mb-20 w-full rounded-xl p-4 sm:p-6 md:p-7 border border-white/10 bg-black/15 backdrop-blur-xl shadow-xl">
                   <p
-                    className="text-gray-300 font-extralight text-sm md:text-md leading-relaxed text-left"
+                    className="text-[var(--glass-text-secondary)] font-extralight text-sm md:text-md leading-relaxed text-left"
                     style={{ fontWeight: 200 }}
                   >
                     I'm a full-stack developer with MERN as my go to stack and a
@@ -110,7 +110,7 @@ export default function Landing() {
                     at Fr. CRCE, Bandra.
                   </p>
                   <p
-                    className="text-gray-300 mt-6 md:mt-10 font-extralight leading-relaxed text-left text-sm md:text-md"
+                    className="text-[var(--glass-text-secondary)] mt-6 md:mt-10 font-extralight leading-relaxed text-left text-sm md:text-md"
                     style={{ fontWeight: 200 }}
                   >
                     I love exploring new technologies and turning ideas into

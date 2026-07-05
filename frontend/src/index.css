@@ -84,6 +84,9 @@ html {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
+  --glass-text: #2a2a2a;
+  --glass-text-secondary: #4a4a4a;
+  --glass-text-muted: #6b6b6b;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.141 0.005 285.823);
   --popover: oklch(1 0 0);
@@ -113,6 +116,13 @@ html {
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
+}
+
+.dark,
+html:not(.light) {
+  --glass-text: #f5f5f7;
+  --glass-text-secondary: #d4d4d4;
+  --glass-text-muted: #9ca3af;
 }
 
 .dark {
