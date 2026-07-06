@@ -234,8 +234,8 @@ export default function Achievements() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious variant="default" />
-        <CarouselNext variant="default" />
+        <CarouselPrevious className="-left-3 md:-left-4 bg-white/10 border-white/10 text-white hover:bg-white/20 hover:text-white shadow-lg backdrop-blur-md" />
+        <CarouselNext className="-right-3 md:-right-4 bg-white/10 border-white/10 text-white hover:bg-white/20 hover:text-white shadow-lg backdrop-blur-md" />
       </Carousel>
 
       {/* Animated Modal for zoomed image */}
