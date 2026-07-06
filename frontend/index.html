@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link rel="preload" as="image" href="/morning.jpg" />
+    <link rel="preload" as="image" href="/afternoon.png" />
+    <link rel="preload" as="image" href="/evening.jpg" />
+    <link rel="preload" as="image" href="/night.png" />
     <script>
       (function() {
         var images = {
@@ -13,11 +17,12 @@
           night: '/night.png'
         };
         var period = localStorage.getItem('timePeriod');
-        if (!period || !images[period]) {
+        var manual = localStorage.getItem('timePeriodManual') === 'true';
+        if (!period || !images[period] || !manual) {
           var hour = new Date().getHours();
-          if (hour >= 5 && hour < 12) period = 'morning';
-          else if (hour >= 12 && hour < 17) period = 'afternoon';
-          else if (hour >= 17 && hour < 20) period = 'evening';
+          if (hour >= 6 && hour < 16) period = 'morning';
+          else if (hour >= 16 && hour < 19) period = 'afternoon';
+          else if (hour >= 19 && hour < 22) period = 'evening';
           else period = 'night';
         }
         var isLight = period === 'morning' || period === 'afternoon';
@@ -30,8 +35,17 @@
       })();
     </script>
     <style>
-      html { background-color: #080808; }
-      html.light { background-color: #f5f5f7; }
+      html {
+        background-color: #080808;
+        background-image: var(--page-bg-image, none);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+      html.light {
+        background-color: #f5f5f7;
+      }
     </style>
 
     <!-- Primary Meta Tags -->

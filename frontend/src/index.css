@@ -205,6 +205,11 @@ html:not(.light) {
 
 html {
   background-color: #080808;
+  background-image: var(--page-bg-image, none);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   scrollbar-width: thin;
   scrollbar-color: #555 #1a1a1a;
 }
