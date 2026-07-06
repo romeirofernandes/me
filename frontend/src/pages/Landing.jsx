@@ -184,15 +184,15 @@ export default function Landing() {
             <Sidebar />
             <main className="relative flex-1 flex flex-col items-center px-0 pb-2 md:pb-4 mt-0 md:mt-0 w-full">
               <div className="fixed top-0 left-0 right-0 z-50 flex justify-center">
-                <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0 flex h-14 md:h-[4.5rem] justify-between items-start gap-3 pt-2">
-                  <Avatar>
+                <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0 flex h-14 md:h-[4.5rem] justify-between items-center gap-1 md:gap-3">
+                  <Avatar className="size-8 md:size-10">
                     <AvatarImage
                       src="https://github.com/romeirofernandes.png"
                       alt="Romeiro Fernandes"
                     />
                     <AvatarFallback>RF</AvatarFallback>
                   </Avatar>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-1.5 md:gap-3">
                     <ThemeToggle
                       period={period}
                       onPeriodChange={handlePeriodChange}
@@ -203,7 +203,7 @@ export default function Landing() {
               </div>
               <div
                 aria-hidden="true"
-                className="h-14 md:h-[4.5rem] w-full shrink-0"
+                className="h-20 md:h-[4.5rem] w-full shrink-0"
               />
 
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
@@ -262,7 +262,7 @@ export default function Landing() {
               <div className="mt-8 mb-4 flex w-full max-w-[98vw] justify-center px-2 md:max-w-2xl">
                 <Signature
                   text="Romeiro Fernandes"
-                  fontSize={28}
+                  fontSize={window.innerWidth < 768 ? 18 : 28}
                   color="rgba(255,255,255,0.92)"
                   duration={1.8}
                 />

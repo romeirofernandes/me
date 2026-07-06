@@ -33,17 +33,17 @@ export default function ThemeToggle({ period, onPeriodChange, className = "" }) 
   }, [open]);
 
   return (
-    <div ref={rootRef} className={cn("relative size-9", className)}>
+    <div ref={rootRef} className={cn("relative size-8 md:size-9", className)}>
       <motion.button
         type="button"
         onClick={() => setOpen((p) => !p)}
-        className="size-9 rounded-full flex items-center justify-center text-white cursor-pointer"
+        className="size-8 md:size-9 rounded-full flex items-center justify-center text-white cursor-pointer"
       >
         <motion.svg
           viewBox="0 0 240 240"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="size-9"
+          className="size-8 md:size-9"
           animate={{ rotate: open ? -180 : 0 }}
           transition={{ ease: "easeInOut", duration: 1 }}
         >
