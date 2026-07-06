@@ -76,7 +76,7 @@ export default function Clock() {
         <TooltipContent
           side="top"
           align="end"
-          className={isMobile ? "text-sm max-w-[180px]" : ""}
+          className="bg-[#18181b] border border-white/10 text-white"
         >
           <span>This is my time. {message}</span>
         </TooltipContent>

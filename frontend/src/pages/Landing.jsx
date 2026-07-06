@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect, useCallback, useRef, Suspense } from "react";
 import { AnimatePresence } from "framer-motion";
 import Sidebar from "../components/Sidebar";
 import GithubGraph from "../components/GithubGraph";
@@ -10,36 +10,22 @@ import ContactSection from "../components/ContactSection";
 import TechMarquee from "../components/TechMarquee";
 import Footer from "../components/Footer";
 import DiagonalBackground from "../components/DiagonalBackground";
-
 import Clock from "../components/Clock";
 import ThemeToggle from "../components/ThemeToggle";
 import { Avatar, AvatarImage, AvatarFallback } from "../components/ui/avatar";
 import AnimatedLogo from "../components/AnimatedLogo";
 import Signature from "../components/Signature";
-// import ClashRoyaleStatus from "../components/ClashRoyaleStatus";
 import WorkExperience from "../components/WorkExperience";
+import { fetchGitHubContributions } from "../lib/github";
 
-import DissolveOverlay from "../components/DissolveOverlay";
+const DissolveOverlay = React.lazy(() => import("../components/DissolveOverlay"));
 
-// const PLAYER_TAG = "RJPRJ8LR0";
-
-// async function fetchClashRoyaleBattlelog(tag) {
-//   const response = await fetch(`https://y.theromeirofernandes.workers.dev/api/clash-royale/battlelog/${tag}`);
-//   if (!response.ok) return [];
-//   return await response.json();
-// }
-
-async function fetchGitHubContributions(username) {
-  const url = new URL(
-    `/v4/${username}`,
-    "https://github-contributions-api.jogruber.de"
-  );
-  const response = await fetch(url);
-  if (!response.ok) return null;
-  const data = await response.json();
-  const total = data.total[new Date().getFullYear()];
-  return { contributions: data.contributions, total };
-}
+const IMAGE_MAP = {
+  morning: "/morning.jpg",
+  afternoon: "/afternoon.png",
+  evening: "/evening.jpg",
+  night: "/night.png",
+};
 
 function getTimePeriod() {
   const hour = new Date().getHours();
@@ -50,11 +36,13 @@ function getTimePeriod() {
 }
 
 function detectPeriod() {
-  const saved = localStorage.getItem("timePeriod");
-  const manual = localStorage.getItem("timePeriodManual") === "true";
-  if (manual && saved && ["morning", "afternoon", "evening", "night"].includes(saved)) {
-    return saved;
-  }
+  try {
+    const saved = localStorage.getItem("timePeriod");
+    const manual = localStorage.getItem("timePeriodManual") === "true";
+    if (manual && saved && ["morning", "afternoon", "evening", "night"].includes(saved)) {
+      return saved;
+    }
+  } catch {}
   return getTimePeriod();
 }
 
@@ -66,26 +54,16 @@ export default function Landing() {
   const overlayRef = useRef(null);
   const nextPeriodRef = useRef(null);
   const periodRef = useRef(period);
-  const manualOverrideRef = useRef(localStorage.getItem("timePeriodManual") === "true");
+  const [manualOverride, setManualOverride] = useState(() => {
+    try { return localStorage.getItem("timePeriodManual") === "true"; } catch { return false; }
+  });
 
-  // Keep ref in sync
   periodRef.current = period;
 
-  // const [battlelog, setBattlelog] = useState([]);
   const [githubData, setGithubData] = useState(null);
 
-  // // Poll Clash Royale API every 10 seconds
-  // React.useEffect(() => {
-  //   let interval;
-  //   const fetchAndSetBattlelog = () => {
-  //     fetchClashRoyaleBattlelog(PLAYER_TAG).then(setBattlelog);
-  //   };
-  //   fetchAndSetBattlelog(); // initial fetch
-  //   interval = setInterval(fetchAndSetBattlelog, 20000);
-  //   return () => clearInterval(interval);
-  // }, []);
+  const [signatureSize, setSignatureSize] = useState(() => window.innerWidth < 768 ? 18 : 28);
 
-  // GitHub API only once
   React.useEffect(() => {
     fetchGitHubContributions("romeirofernandes").then(setGithubData);
   }, []);
@@ -99,40 +77,27 @@ export default function Landing() {
     };
   }, []);
 
-  const applyPeriod = useCallback((next) => {
-    const imageMap = {
-      morning: "/morning.jpg",
-      afternoon: "/afternoon.png",
-      evening: "/evening.jpg",
-      night: "/night.png",
-    };
-    const isLight = next === "morning" || next === "afternoon";
-
-    document.documentElement.classList.toggle("light", isLight);
-    document.documentElement.style.setProperty(
-      "--page-bg-image",
-      `url(${imageMap[next]})`
-    );
-    document.body.style.backgroundImage = `url(${imageMap[next]})`;
-    document.body.style.backgroundColor = isLight ? "#f5f5f7" : "#080808";
-    document.documentElement.setAttribute("data-period", next);
-    localStorage.setItem("timePeriod", next);
-    setPeriod(next);
+  React.useEffect(() => {
+    const onResize = () => setSignatureSize(window.innerWidth < 768 ? 18 : 28);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  const imageMap = {
-    morning: "/morning.jpg",
-    afternoon: "/afternoon.png",
-    evening: "/evening.jpg",
-    night: "/night.png",
-  };
+  const applyPeriod = useCallback((next) => {
+    const isLight = next === "morning" || next === "afternoon";
+    document.documentElement.classList.toggle("light", isLight);
+    document.documentElement.style.setProperty("--page-bg-image", `url(${IMAGE_MAP[next]})`);
+    document.documentElement.setAttribute("data-period", next);
+    try { localStorage.setItem("timePeriod", next); } catch {}
+    setPeriod(next);
+  }, []);
 
   const triggerOverlay = useCallback((next) => {
     if (overlayRef.current) return;
     nextPeriodRef.current = next;
     const newOverlay = {
-      imageFrom: imageMap[periodRef.current],
-      imageTo: imageMap[next],
+      imageFrom: IMAGE_MAP[periodRef.current],
+      imageTo: IMAGE_MAP[next],
     };
     overlayRef.current = newOverlay;
     setOverlay(newOverlay);
@@ -140,8 +105,8 @@ export default function Landing() {
 
   const handlePeriodChange = useCallback(
     (next) => {
-      manualOverrideRef.current = true;
-      localStorage.setItem("timePeriodManual", "true");
+      setManualOverride(true);
+      try { localStorage.setItem("timePeriodManual", "true"); } catch {}
       triggerOverlay(next);
     },
     [triggerOverlay],
@@ -154,10 +119,9 @@ export default function Landing() {
     setOverlay(null);
   }, [applyPeriod]);
 
-  // Auto-detect period transitions at time boundaries
   useEffect(() => {
     const check = () => {
-      if (manualOverrideRef.current) return;
+      if (manualOverride) return;
       const next = getTimePeriod();
       if (next !== periodRef.current) {
         triggerOverlay(next);
@@ -165,9 +129,8 @@ export default function Landing() {
     };
     const interval = setInterval(check, 60000);
     return () => clearInterval(interval);
-  }, [triggerOverlay]);
+  }, [triggerOverlay, manualOverride]);
 
-  // Set initial background on mount
   useEffect(() => {
     applyPeriod(period);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -193,18 +156,12 @@ export default function Landing() {
                     <AvatarFallback>RF</AvatarFallback>
                   </Avatar>
                   <div className="flex items-center gap-1.5 md:gap-3">
-                    <ThemeToggle
-                      period={period}
-                      onPeriodChange={handlePeriodChange}
-                    />
+                    <ThemeToggle period={period} onPeriodChange={handlePeriodChange} />
                     <Clock />
                   </div>
                 </div>
               </div>
-              <div
-                aria-hidden="true"
-                className="h-20 md:h-[4.5rem] w-full shrink-0"
-              />
+              <div aria-hidden="true" className="h-20 md:h-[4.5rem] w-full shrink-0" />
 
               <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
                 <ProfileCard />
@@ -212,40 +169,24 @@ export default function Landing() {
 
               <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
                 <section className="relative z-10 isolate mt-4 md:mt-12 mb-10 md:mb-20 w-full rounded-xl p-4 sm:p-6 md:p-7 border border-white/10 bg-black/15 backdrop-blur-xl shadow-xl">
-                  <p
-                    className="text-white font-extralight text-sm md:text-md leading-relaxed text-left"
-                    style={{ fontWeight: 200 }}
-                  >
-                    I'm a full-stack developer with MERN as my go to stack and a
-                    deep interest in AI/ML. Currently pursuing Computer
-                    Engineering at Fr. CRCE, Bandra.
+                  <p className="text-white font-extralight text-sm md:text-md leading-relaxed text-left" style={{ fontWeight: 200 }}>
+                    I'm a full-stack developer with MERN as my go to stack and a deep interest in AI/ML. Currently pursuing Computer Engineering at Fr. CRCE, Bandra.
                   </p>
-                  <p
-                    className="text-white mt-6 md:mt-10 font-extralight leading-relaxed text-left text-sm md:text-md"
-                    style={{ fontWeight: 200 }}
-                  >
-                    I love exploring new technologies and turning ideas into
-                    reality. Always striving to learn, grow, and collaborate with
-                    others.
+                  <p className="text-white mt-6 md:mt-10 font-extralight leading-relaxed text-left text-sm md:text-md" style={{ fontWeight: 200 }}>
+                    I love exploring new technologies and turning ideas into reality. Always striving to learn, grow, and collaborate with others.
                   </p>
                 </section>
               </div>
 
               <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 sm:px-4">
                 <section id="github" className="mb-10 md:mb-20">
-                  <GithubGraph
-                    username="romeirofernandes"
-                    data={githubData}
-                  />
+                  <GithubGraph username="romeirofernandes" data={githubData} />
                 </section>
               </div>
 
               <div className="relative z-10"><TechMarquee /></div>
-
               <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl"><WorkExperience /></div>
-
               <div className="relative z-10"><Projects /></div>
-
               <div className="relative z-10"><Achievements /></div>
 
               <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2">
@@ -253,19 +194,11 @@ export default function Landing() {
               </div>
 
               <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2">
-                <QuoteBox>
-                  "If people call you crazy for working hard, you're doing
-                  something right."
-                </QuoteBox>
+                <QuoteBox>"If people call you crazy for working hard, you're doing something right."</QuoteBox>
               </div>
 
               <div className="relative z-10 mt-8 mb-4 flex w-full max-w-[98vw] justify-center px-2 md:max-w-2xl">
-                <Signature
-                  text="Romeiro Fernandes"
-                  fontSize={window.innerWidth < 768 ? 18 : 28}
-                  color="rgba(255,255,255,0.92)"
-                  duration={1.8}
-                />
+                <Signature text="Romeiro Fernandes" fontSize={signatureSize} color="rgba(255,255,255,0.92)" duration={1.8} />
               </div>
 
               <div className="relative z-10"><Footer /></div>
@@ -274,13 +207,15 @@ export default function Landing() {
         </DiagonalBackground>
       )}
 
-      {overlay && (
-        <DissolveOverlay
-          imageFrom={overlay.imageFrom}
-          imageTo={overlay.imageTo}
-          onComplete={handleDissolveComplete}
-        />
-      )}
+      <Suspense fallback={null}>
+        {overlay && (
+          <DissolveOverlay
+            imageFrom={overlay.imageFrom}
+            imageTo={overlay.imageTo}
+            onComplete={handleDissolveComplete}
+          />
+        )}
+      </Suspense>
     </>
   );
 }

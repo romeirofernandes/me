@@ -199,6 +199,8 @@ export default function Achievements() {
                     src="/profile.jpg"
                     alt="Romeiro Fernandes"
                     className="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-3"
+                    width={48}
+                    height={48}
                   />
                   <div>
                     <span className="font-bold text-white text-sm sm:text-base md:text-lg">
@@ -222,6 +224,9 @@ export default function Achievements() {
                   alt={hack.name}
                   className="w-full rounded-lg mb-3 max-h-28 sm:max-h-40 md:max-h-64 object-cover cursor-zoom-in"
                   onClick={() => setOpenImg(hack.image)}
+                  width={672}
+                  height={256}
+                  loading="lazy"
                 />
               </div>
             </CarouselItem>

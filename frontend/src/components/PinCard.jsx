@@ -1,5 +1,4 @@
 import React from "react";
-import { FaGithub } from "react-icons/fa";
 import { MagicCard } from "./MagicCard";
 import {
   Tooltip,
@@ -7,105 +6,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-
-const techs = [
-  {
-    name: "React",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-  },
-  {
-    name: "JavaScript",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-  },
-  {
-    name: "Node.js",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-  },
-  {
-    name: "Express",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-  },
-  {
-    name: "Firebase",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
-  },
-  {
-    name: "TailwindCSS",
-    logo: "https://www.svgrepo.com/show/374118/tailwind.svg",
-  },
-  {
-    name: "HTML",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-  },
-  {
-    name: "CSS",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-  },
-  {
-    name: "Python",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-  },
-  {
-    name: "C++",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
-  },
-  {
-    name: "MongoDB",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-  },
-  {
-    name: "PostgreSQL",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
-  },
-  {
-    name: "Figma",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
-  },
-  {
-    name: "Flask",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg",
-  },
-  {
-    name: "Java",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
-  },
-  {
-    name: "Socket.io",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg",
-  },
-  {
-    name: "Git",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-  },
-  {
-    name: "Vite",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vite/vite-original.svg",
-  },
-  {
-    name: "C",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
-  },
-  {
-    name: "Spline",
-    logo: "/spline.png",
-  },
-  {
-    name: "Framer Motion",
-    logo: "/framer.svg",
-  },
-  {
-    name: "Next.js",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
-  },
-  {
-    name: "Supabase",
-    logo: "https://raw.githubusercontent.com/supabase/supabase/master/packages/common/assets/images/supabase-logo-icon.svg",
-  },
-  {
-    name: "Hono.js",
-    logo: "https://hono.dev/images/logo.svg",
-  },
-];
+import { techsMap } from "@/lib/techs";
 
 export function PinContainer({
   name,
@@ -114,19 +15,11 @@ export function PinContainer({
   image,
   href,
   preview,
-  className,
   containerClassName,
 }) {
   return (
     <MagicCard
-      className={`dark w-[92vw] md:w-full h-[340px] rounded-xl overflow-hidden flex flex-col gap-3 p-4 ${
-        containerClassName || ""
-      }`}
-      gradientFrom="#232323"
-      gradientTo="#18181b"
-      gradientColor="#f5f5f7"
-      gradientOpacity={0.15}
-      gradientSize={180}
+      className={`dark w-[92vw] md:w-full h-[340px] rounded-xl overflow-hidden flex flex-col gap-3 p-4 ${containerClassName || ""}`}
     >
       <div className="w-full flex items-center justify-center mb-1">
         <img
@@ -134,20 +27,18 @@ export function PinContainer({
           alt={name}
           className="object-cover w-full h-40 rounded-lg"
           loading="lazy"
+          width={320}
+          height={160}
           style={{ boxShadow: "0 2px 8px 0 rgba(0,0,0,0.10)" }}
         />
       </div>
       <div className="flex flex-col gap-1 px-1 py-1 w-full flex-1">
-        <span className="text-base font-semibold text-white truncate">
-          {name}
-        </span>
+        <span className="text-base font-semibold text-white truncate">{name}</span>
         <span className="text-white/60 text-xs truncate">{description}</span>
         <div className="flex flex-wrap gap-2 items-center mt-2">
           <TooltipProvider>
             {tech.map((t) => {
-              const found = techs.find(
-                (techObj) => techObj.name.toLowerCase() === t.toLowerCase()
-              );
+              const found = techsMap.get(t.toLowerCase());
               return (
                 found && (
                   <Tooltip key={t}>
@@ -158,6 +49,8 @@ export function PinContainer({
                           alt={t}
                           className="w-4 h-4 object-contain"
                           loading="lazy"
+                          width={16}
+                          height={16}
                         />
                       </span>
                     </TooltipTrigger>
@@ -179,9 +72,7 @@ export function PinContainer({
               rel="noopener noreferrer"
               className="flex-1 px-4 py-2 rounded-lg border border-white/10 bg-black/20 backdrop-blur-md text-sm text-white font-medium transition text-center shadow focus:outline-none focus:ring-2 focus:ring-[#f5f5f7] focus:ring-offset-2"
               onClick={(e) => e.stopPropagation()}
-              style={{
-                boxShadow: "0 2px 8px 0 rgba(0,0,0,0.10)",
-              }}
+              style={{ boxShadow: "0 2px 8px 0 rgba(0,0,0,0.10)" }}
             >
               Live Preview
             </a>
@@ -197,11 +88,9 @@ export function PinContainer({
               rel="noopener noreferrer"
               className="flex-1 px-4 py-2 rounded-lg border border-white/10 bg-black/20 backdrop-blur-md text-sm text-white font-medium transition text-center shadow flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#f5f5f7] focus:ring-offset-2"
               onClick={(e) => e.stopPropagation()}
-              style={{
-                boxShadow: "0 2px 8px 0 rgba(0,0,0,0.10)",
-              }}
+              style={{ boxShadow: "0 2px 8px 0 rgba(0,0,0,0.10)" }}
             >
-              <FaGithub className="inline-block" />
+              <svg viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 inline-block"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
               GitHub
             </a>
           ) : null}
