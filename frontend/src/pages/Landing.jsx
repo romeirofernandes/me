@@ -181,9 +181,9 @@ export default function Landing() {
       {!showLogo && (
         <DiagonalBackground className="min-h-screen">
           <div className="flex flex-col md:flex-row min-h-screen text-[#f5f5f7] overflow-x-hidden">
-            <Sidebar className="animate-in animate-delay-1" />
+            <Sidebar />
             <main className="relative z-10 flex-1 flex flex-col items-center px-0 pb-2 md:pb-4 mt-0 md:mt-0 w-full">
-              <div className="animate-in animate-delay-1 fixed top-0 left-0 right-0 z-50 flex justify-center">
+              <div className="fixed top-0 left-0 right-0 z-50 flex justify-center">
                 <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0 flex h-14 md:h-[4.5rem] justify-between items-center gap-1 md:gap-3">
                   <Avatar className="size-8 md:size-10">
                     <AvatarImage
@@ -206,11 +206,11 @@ export default function Landing() {
                 className="h-20 md:h-[4.5rem] w-full shrink-0"
               />
 
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0 animate-in animate-delay-2">
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
                 <ProfileCard />
               </div>
 
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0 animate-in animate-delay-3">
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
                 <section className="relative z-10 isolate mt-4 md:mt-12 mb-10 md:mb-20 w-full rounded-xl p-4 sm:p-6 md:p-7 border border-white/10 bg-black/15 backdrop-blur-xl shadow-xl">
                   <p
                     className="text-white font-extralight text-sm md:text-md leading-relaxed text-left"
@@ -231,7 +231,7 @@ export default function Landing() {
                 </section>
               </div>
 
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 sm:px-4 animate-in animate-delay-4">
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 sm:px-4">
                 <section id="github" className="mb-10 md:mb-20">
                   <GithubGraph
                     username="romeirofernandes"
@@ -240,26 +240,26 @@ export default function Landing() {
                 </section>
               </div>
 
-              <div className="relative z-10 animate-in animate-delay-5"><TechMarquee /></div>
+              <div className="relative z-10"><TechMarquee /></div>
 
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl animate-in animate-delay-6"><WorkExperience /></div>
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl"><WorkExperience /></div>
 
-              <div className="relative z-10 animate-in animate-delay-7"><Projects /></div>
+              <div className="relative z-10"><Projects /></div>
 
-              <div className="relative z-10 animate-in animate-delay-8"><Achievements /></div>
+              <div className="relative z-10"><Achievements /></div>
 
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 animate-in animate-delay-9">
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2">
                 <ContactSection />
               </div>
 
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 animate-in animate-delay-10">
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2">
                 <QuoteBox>
                   "If people call you crazy for working hard, you're doing
                   something right."
                 </QuoteBox>
               </div>
 
-              <div className="relative z-10 mt-8 mb-4 flex w-full max-w-[98vw] justify-center px-2 md:max-w-2xl animate-in animate-delay-11">
+              <div className="relative z-10 mt-8 mb-4 flex w-full max-w-[98vw] justify-center px-2 md:max-w-2xl">
                 <Signature
                   text="Romeiro Fernandes"
                   fontSize={window.innerWidth < 768 ? 18 : 28}
@@ -268,7 +268,7 @@ export default function Landing() {
                 />
               </div>
 
-              <div className="relative z-10 animate-in animate-delay-11"><Footer /></div>
+              <div className="relative z-10"><Footer /></div>
             </main>
           </div>
         </DiagonalBackground>
