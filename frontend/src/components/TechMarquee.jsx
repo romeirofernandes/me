@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import { memo, useState } from "react";
 import { techs } from "@/lib/techs";
 
-function MarqueeRow({ items, reverse, paused, setPaused, animationName }) {
+const MarqueeRow = memo(function MarqueeRow({ items, reverse, paused, setPaused, animationName }) {
   return (
     <div
-      className="relative flex items-center"
-      style={{ overflow: "hidden", width: "100%", height: "48px", cursor: "pointer" }}
+      className="relative flex items-center overflow-hidden w-full h-12 cursor-pointer"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -20,35 +19,25 @@ function MarqueeRow({ items, reverse, paused, setPaused, animationName }) {
         {items.map((tech, idx) => (
           <span
             key={`${tech.name}-orig-${idx}`}
-            className="flex items-center justify-center gap-2 bg-black/20 backdrop-blur-md border border-white/10 rounded-full text-sm font-medium text-white whitespace-nowrap"
-            style={{
-              padding: "8px 24px",
-              margin: "0 8px",
-              lineHeight: 1.5,
-            }}
+            className="flex items-center justify-center gap-2 bg-black/20 backdrop-blur-md border border-white/10 rounded-full text-sm font-medium text-white whitespace-nowrap px-6 py-2 mx-2 leading-relaxed"
           >
-            <img src={tech.logo} alt={tech.name} className="w-5 h-5" loading="lazy" style={{ flexShrink: 0 }} />
+            <img src={tech.logo} alt={tech.name} className="w-5 h-5 shrink-0" loading="lazy" />
             <span>{tech.name}</span>
           </span>
         ))}
         {items.map((tech, idx) => (
           <span
             key={`${tech.name}-dup-${idx}`}
-            className="flex items-center justify-center gap-2 bg-black/20 backdrop-blur-md border border-white/10 rounded-full text-sm font-medium text-white whitespace-nowrap"
-            style={{
-              padding: "8px 24px",
-              margin: "0 8px",
-              lineHeight: 1.5,
-            }}
+            className="flex items-center justify-center gap-2 bg-black/20 backdrop-blur-md border border-white/10 rounded-full text-sm font-medium text-white whitespace-nowrap px-6 py-2 mx-2 leading-relaxed"
           >
-            <img src={tech.logo} alt={tech.name} className="w-5 h-5" loading="lazy" style={{ flexShrink: 0 }} />
+            <img src={tech.logo} alt={tech.name} className="w-5 h-5 shrink-0" loading="lazy" />
             <span>{tech.name}</span>
           </span>
         ))}
       </div>
     </div>
   );
-}
+});
 
 export default function TechMarquee() {
   const half = Math.ceil(techs.length / 2);

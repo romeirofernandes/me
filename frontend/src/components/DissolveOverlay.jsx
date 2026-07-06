@@ -304,8 +304,10 @@ function Scene({ imageFrom, imageTo, center, onComplete }) {
   );
 }
 
+const DEFAULT_CENTER = { x: 0.5, y: 0.5 };
+
 export default function DissolveOverlay({ imageFrom, imageTo, center: centerProp, onComplete }) {
-  const center = centerProp ?? { x: 0.5, y: 0.5 };
+  const center = centerProp ?? DEFAULT_CENTER;
 
   const overlay = (
     <div

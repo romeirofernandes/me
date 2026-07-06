@@ -169,10 +169,10 @@ export default function Landing() {
 
               <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
                 <section className="relative z-10 isolate mt-4 md:mt-12 mb-10 md:mb-20 w-full rounded-xl p-4 sm:p-6 md:p-7 border border-white/10 bg-black/15 backdrop-blur-xl shadow-xl">
-                  <p className="text-white font-extralight text-sm md:text-md leading-relaxed text-left" style={{ fontWeight: 200 }}>
+                  <p className="text-white font-extralight text-sm md:text-md leading-relaxed text-left">
                     I'm a full-stack developer with MERN as my go to stack and a deep interest in AI/ML. Currently pursuing Computer Engineering at Fr. CRCE, Bandra.
                   </p>
-                  <p className="text-white mt-6 md:mt-10 font-extralight leading-relaxed text-left text-sm md:text-md" style={{ fontWeight: 200 }}>
+                  <p className="text-white mt-6 md:mt-10 font-extralight leading-relaxed text-left text-sm md:text-md">
                     I love exploring new technologies and turning ideas into reality. Always striving to learn, grow, and collaborate with others.
                   </p>
                 </section>

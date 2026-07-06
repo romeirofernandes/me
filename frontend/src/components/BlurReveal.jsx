@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 
+import { useMemo } from "react";
+
 export default function BlurReveal({
   children,
   className = "w-full",
@@ -9,7 +11,7 @@ export default function BlurReveal({
   as: Component = "div",
   style,
 }) {
-  const MotionComponent = motion.create(Component);
+  const MotionComponent = useMemo(() => motion.create(Component), [Component]);
 
   return (
     <MotionComponent

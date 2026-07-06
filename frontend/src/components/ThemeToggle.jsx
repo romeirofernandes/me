@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const PERIODS = [
@@ -11,7 +11,7 @@ const PERIODS = [
 
 const PANEL_SPRING = { type: "spring", duration: 0.46, bounce: 0.08 };
 
-export default function ThemeToggle({ period, onPeriodChange, className = "" }) {
+export default memo(function ThemeToggle({ period, onPeriodChange, className = "" }) {
   const [open, setOpen] = useState(false);
   const [hovered, setHovered] = useState(null);
   const rootRef = useRef(null);
@@ -36,6 +36,7 @@ export default function ThemeToggle({ period, onPeriodChange, className = "" }) 
     <div ref={rootRef} className={cn("relative size-8 md:size-9", className)}>
       <motion.button
         type="button"
+        aria-label="Toggle theme"
         onClick={() => setOpen((p) => !p)}
         className="size-8 md:size-9 rounded-full flex items-center justify-center text-white cursor-pointer"
       >
@@ -146,4 +147,4 @@ export default function ThemeToggle({ period, onPeriodChange, className = "" }) 
       </AnimatePresence>
     </div>
   );
-}
+});

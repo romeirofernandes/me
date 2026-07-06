@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const experiences = [
@@ -51,9 +51,9 @@ function BriefcaseIcon({ className }) {
 export default function WorkExperience() {
   const [expandedIds, setExpandedIds] = useState([]);
 
-  const toggleExpand = (id) => {
+  const toggleExpand = useCallback((id) => {
     setExpandedIds((prev) => prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]);
-  };
+  }, []);
 
   return (
     <section id="experience" className="w-full relative z-10 max-w-[98vw] mx-auto mb-16 mt-10 px-0 py-8 md:py-12">
@@ -99,7 +99,7 @@ export default function WorkExperience() {
                   </div>
                 </div>
                 <div className="ml-2 flex items-center">
-                  <motion.button className="text-white/60 hover:text-white transition-colors p-2" animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                  <motion.button aria-label={isExpanded ? "Collapse" : "Expand"} aria-expanded={isExpanded} className="text-white/60 hover:text-white transition-colors p-2" animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
                     <ChevronDownIcon className="w-4 h-4" />
                   </motion.button>
                 </div>

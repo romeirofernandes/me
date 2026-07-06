@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function Signature({
   text = "Signature",
@@ -19,9 +19,11 @@ export default function Signature({
     return () => window.clearInterval(interval);
   }, []);
 
-  const width = Math.max(text.length * fontSize * 0.82, 180);
-  const height = fontSize * 3.2;
-  const y = height * 0.68;
+  const { width, height, y } = useMemo(() => {
+    const w = Math.max(text.length * fontSize * 0.82, 180);
+    const h = fontSize * 3.2;
+    return { width: w, height: h, y: h * 0.68 };
+  }, [text, fontSize]);
 
   return (
     <div className={`flex w-full justify-center ${className}`}>

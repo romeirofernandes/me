@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import { PinContainer } from "./PinCard";
 import { motion, AnimatePresence } from "framer-motion";
 import { HugeiconsIcon } from "@hugeicons/react";
@@ -19,12 +19,12 @@ export default function Projects() {
   const [showAll, setShowAll] = useState(false);
   const sectionRef = useRef(null);
 
-  const handleToggle = () => {
+  const handleToggle = useCallback(() => {
     if (showAll) {
       sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
     setShowAll((prev) => !prev);
-  };
+  }, [showAll]);
 
   const visibleProjects = showAll ? projects : projects.slice(0, 4);
 
@@ -53,6 +53,7 @@ export default function Projects() {
         <div className="flex justify-center mt-10">
           <button
             className="group px-7 py-2.5 rounded-xl text-white/90 text-[15px] font-medium tracking-wide border border-white/[7%] bg-gradient-to-b from-white/[7%] to-white/[2%] shadow-[0_4px_16px_rgba(0,0,0,0.25)] backdrop-blur-lg hover:from-white/[10%] hover:to-white/[4%] hover:border-white/[12%] hover:text-white transition-all duration-200 active:scale-[0.97] focus:outline-none focus:ring-2 focus:ring-white/20 flex items-center gap-2.5"
+            aria-expanded={showAll}
             onClick={handleToggle}
           >
             {showAll ? "Show Less" : "Show More"}

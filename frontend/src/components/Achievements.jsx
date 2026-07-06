@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -116,20 +116,22 @@ export default function Achievements() {
   const [touchStartX, setTouchStartX] = useState(null);
 
   // Only for mobile arrow animation
-  const handleTouchStart = (e) => {
+  const handleTouchStart = useCallback((e) => {
     setTouchStartX(e.touches[0].clientX);
-  };
-  const handleTouchEnd = (e) => {
-    if (touchStartX !== null) {
-      const touchEndX = e.changedTouches[0].clientX;
-      if (touchStartX - touchEndX > 30) {
-        setHasSwiped(true);
-      } else if (touchEndX - touchStartX > 30) {
-        setHasSwiped(false);
+  }, []);
+  const handleTouchEnd = useCallback((e) => {
+    setTouchStartX((currentX) => {
+      if (currentX !== null) {
+        const touchEndX = e.changedTouches[0].clientX;
+        if (currentX - touchEndX > 30) {
+          setHasSwiped(true);
+        } else if (touchEndX - currentX > 30) {
+          setHasSwiped(false);
+        }
       }
-      setTouchStartX(null);
-    }
-  };
+      return null;
+    });
+  }, []);
 
   useEffect(() => {
     if (!openImg) return;
@@ -250,9 +252,8 @@ export default function Achievements() {
             >
               <motion.img
                 src={openImg}
-                alt="Zoomed"
-                className="max-h-[90vh] max-w-[90vw] rounded-xl shadow-2xl object-contain cursor-zoom-out"
-                style={{ touchAction: "pinch-zoom" }}
+                alt="Achievement zoomed"
+                className="touch-pinch-zoom max-h-[90vh] max-w-[90vw] rounded-xl shadow-2xl object-contain cursor-zoom-out"
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.95, opacity: 0 }}

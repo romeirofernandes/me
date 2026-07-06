@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "slot-text/style.css";
 import { SlotText } from "slot-text/react";
 import {
@@ -36,9 +36,18 @@ function getScheduleMessage(date) {
 export default function Clock() {
   const [time, setTime] = useState(() => new Date());
   const [open, setOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
 
   useEffect(() => {
-    const interval = setInterval(() => setTime(new Date()), 1000);
+    const onResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!document.hidden) setTime(new Date());
+    }, 1000);
     return () => clearInterval(interval);
   }, []);
 
@@ -48,9 +57,6 @@ export default function Clock() {
   const s = pad(time.getSeconds());
 
   const message = getScheduleMessage(time);
-
-  // Detect mobile device
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
   return (
     <TooltipProvider>

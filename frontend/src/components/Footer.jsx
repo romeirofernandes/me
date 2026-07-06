@@ -1,11 +1,11 @@
-import React from "react";
+const year = new Date().getFullYear();
 
 export default function Footer() {
   return (
     <footer className="w-full mt-8 mb-20 md:mb-0">
       <div className="relative w-full max-w-2xl mx-auto">
         <div className="text-center text-sm text-white py-6">
-          © {new Date().getFullYear()} Romeiro Fernandes. All rights reserved.
+          © {year} Romeiro Fernandes. All rights reserved.
         </div>
       </div>
     </footer>
