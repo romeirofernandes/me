@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HugeiconsIcon } from "@hugeicons/react";
+import { cn } from "@/lib/utils";
 import {
   Home01Icon,
   BriefcaseIcon,
@@ -41,7 +42,7 @@ function getActiveSection() {
   return navLinks[idx]?.href || "";
 }
 
-export default function Sidebar() {
+export default function Sidebar({ className = "" }) {
   const [hoveredIdx, setHoveredIdx] = useState(null);
   const [active, setActive] = useState("#home");
   const isManualRef = useRef(false);
@@ -83,7 +84,7 @@ export default function Sidebar() {
   return (
     <>
       {/* Desktop sidebar */}
-      <div className="hidden md:flex fixed inset-y-0 left-4 z-40 items-center">
+      <div className={cn("hidden md:flex fixed inset-y-0 left-4 z-40 items-center", className)}>
         <motion.aside
           className="flex flex-col items-center bg-black/15 rounded-2xl py-4 px-2 shadow-xl border border-white/10 backdrop-blur-xl"
           initial={{ opacity: 0, x: -20 }}
