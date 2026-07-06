@@ -242,7 +242,7 @@ export default function Landing() {
 
               <div className="relative z-10 animate-in animate-delay-5"><TechMarquee /></div>
 
-              <div className="relative z-10 animate-in animate-delay-6"><WorkExperience /></div>
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl animate-in animate-delay-6"><WorkExperience /></div>
 
               <div className="relative z-10 animate-in animate-delay-7"><Projects /></div>
 

@@ -11,7 +11,7 @@ const experiences = [
         type: "Internship",
         period: "Dec 2025 - Jun 2026",
         location: "Mumbai",
-        current: true,
+        current: false,
         description: [
             "Built a concurrent candidate ingestion pipeline that reduced manual talent addition time by 95% through automated resume parsing and batched processing.",
             "Integrated Gmail OAuth after independently securing Google's production approval, replacing shared-mailbox communication with recruiter-owned email workflows.",
@@ -19,7 +19,7 @@ const experiences = [
             "Introduced Slack-based candidate sharing, enabling real-time collaboration between talent partners and client hiring teams.",
         ],
         skills: ["Node.js", "Express", "MongoDB", "Gemini", "Gmail OAuth", "Slack API", "React"],
-        isExpanded: true,
+        isExpanded: false,
     },
     {
         id: "playtheory",
@@ -49,7 +49,7 @@ const experiences = [
 ];
 
 export default function WorkExperience() {
-    const [expandedIds, setExpandedIds] = useState(["qrata"]);
+    const [expandedIds, setExpandedIds] = useState([]);
 
     const toggleExpand = (id) => {
         setExpandedIds((prev) =>
@@ -60,15 +60,15 @@ export default function WorkExperience() {
     return (
         <section
             id="experience"
-            className="relative z-10 w-full max-w-[98vw] md:max-w-2xl mx-auto mb-16 mt-10 px-0 py-8 md:py-12"
+            className="w-full relative z-10 max-w-[98vw] mx-auto mb-16 mt-10 px-0 py-8 md:py-12"
         >
-            <div className="w-full flex justify-start px-6 md:px-0">
+            <div className="w-full flex justify-start px-4 md:px-0">
                 <motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight">
                     Places I've Worked At
                 </motion.h2>
             </div>
 
-            <div className="space-y-8 px-4 md:px-0">
+            <div className="w-full space-y-8 px-3 md:px-0">
                 {experiences.map((exp, idx) => {
                     const isExpanded = expandedIds.includes(exp.id);
                     return (
