@@ -12,18 +12,24 @@
 @custom-variant dark (&:is(.dark *));
 
 body {
-  --page-bg-image: url('/dark-bg.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-image: var(--page-bg-image);
   color: #f5f5f7;
   font-family: "Inter", sans-serif;
 }
 
-html.light body {
-  --page-bg-image: url('/light-bg.jpg');
+html[data-period="afternoon"] {
+  --glass-text-muted: #e0e0e0;
+}
+
+html[data-period="afternoon"] a {
+  color: #e0e0e0;
+}
+
+html[data-period="afternoon"] a:hover {
+  color: #ffffff;
 }
 
 h1,
@@ -88,6 +94,7 @@ html {
 }
 
 :root {
+  --page-bg-image: url('/night.png');
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
@@ -174,7 +181,7 @@ html:not(.light) {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
   }
 }
 

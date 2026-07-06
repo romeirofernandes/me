@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { AnimatePresence } from "framer-motion";
 import Sidebar from "../components/Sidebar";
 import GithubGraph from "../components/GithubGraph";
@@ -18,6 +18,8 @@ import AnimatedLogo from "../components/AnimatedLogo";
 import Signature from "../components/Signature";
 // import ClashRoyaleStatus from "../components/ClashRoyaleStatus";
 import WorkExperience from "../components/WorkExperience";
+
+import DissolveOverlay from "../components/DissolveOverlay";
 
 // const PLAYER_TAG = "RJPRJ8LR0";
 
@@ -39,9 +41,35 @@ async function fetchGitHubContributions(username) {
   return { contributions: data.contributions, total };
 }
 
+function getTimePeriod() {
+  const hour = new Date().getHours();
+  if (hour >= 6 && hour < 16) return "morning";
+  if (hour >= 16 && hour < 19) return "afternoon";
+  if (hour >= 19 && hour < 22) return "evening";
+  return "night";
+}
+
+function detectPeriod() {
+  const saved = localStorage.getItem("timePeriod");
+  const manual = localStorage.getItem("timePeriodManual") === "true";
+  if (manual && saved && ["morning", "afternoon", "evening", "night"].includes(saved)) {
+    return saved;
+  }
+  return getTimePeriod();
+}
+
 export default function Landing() {
   const [showLogo, setShowLogo] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
+  const [period, setPeriod] = useState(detectPeriod);
+  const [overlay, setOverlay] = useState(null);
+  const overlayRef = useRef(null);
+  const nextPeriodRef = useRef(null);
+  const periodRef = useRef(period);
+  const manualOverrideRef = useRef(localStorage.getItem("timePeriodManual") === "true");
+
+  // Keep ref in sync
+  periodRef.current = period;
 
   // const [battlelog, setBattlelog] = useState([]);
   const [githubData, setGithubData] = useState(null);
@@ -63,40 +91,120 @@ export default function Landing() {
   }, []);
 
   React.useEffect(() => {
-    const timer1 = setTimeout(() => setFadeOut(true), 2000); 
-    const timer2 = setTimeout(() => setShowLogo(false), 2800); 
+    const timer1 = setTimeout(() => setFadeOut(true), 2000);
+    const timer2 = setTimeout(() => setShowLogo(false), 2800);
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
     };
   }, []);
 
+  const applyPeriod = useCallback((next) => {
+    const imageMap = {
+      morning: "/morning.jpg",
+      afternoon: "/afternoon.png",
+      evening: "/evening.jpg",
+      night: "/night.png",
+    };
+    const isLight = next === "morning" || next === "afternoon";
+
+    document.documentElement.classList.toggle("light", isLight);
+    document.documentElement.style.setProperty(
+      "--page-bg-image",
+      `url(${imageMap[next]})`
+    );
+    document.body.style.backgroundImage = `url(${imageMap[next]})`;
+    document.body.style.backgroundColor = isLight ? "#f5f5f7" : "#080808";
+    document.documentElement.setAttribute("data-period", next);
+    localStorage.setItem("timePeriod", next);
+    setPeriod(next);
+  }, []);
+
+  const imageMap = {
+    morning: "/morning.jpg",
+    afternoon: "/afternoon.png",
+    evening: "/evening.jpg",
+    night: "/night.png",
+  };
+
+  const triggerOverlay = useCallback((next) => {
+    if (overlayRef.current) return;
+    nextPeriodRef.current = next;
+    const newOverlay = {
+      imageFrom: imageMap[periodRef.current],
+      imageTo: imageMap[next],
+    };
+    overlayRef.current = newOverlay;
+    setOverlay(newOverlay);
+  }, []);
+
+  const handlePeriodChange = useCallback(
+    (next) => {
+      manualOverrideRef.current = true;
+      localStorage.setItem("timePeriodManual", "true");
+      triggerOverlay(next);
+    },
+    [triggerOverlay],
+  );
+
+  const handleDissolveComplete = useCallback(() => {
+    const next = nextPeriodRef.current;
+    if (next) applyPeriod(next);
+    overlayRef.current = null;
+    setOverlay(null);
+  }, [applyPeriod]);
+
+  // Auto-detect period transitions at time boundaries
+  useEffect(() => {
+    const check = () => {
+      if (manualOverrideRef.current) return;
+      const next = getTimePeriod();
+      if (next !== periodRef.current) {
+        triggerOverlay(next);
+      }
+    };
+    const interval = setInterval(check, 60000);
+    return () => clearInterval(interval);
+  }, [triggerOverlay]);
+
+  // Set initial background on mount
+  useEffect(() => {
+    applyPeriod(period);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
       <AnimatePresence>
-        {showLogo && (
-          <AnimatedLogo fadeOut={fadeOut} />
-        )}
+        {showLogo && <AnimatedLogo fadeOut={fadeOut} />}
       </AnimatePresence>
       {!showLogo && (
         <DiagonalBackground className="min-h-screen">
-
           <div className="flex flex-col md:flex-row min-h-screen text-[#f5f5f7] overflow-x-hidden">
             <Sidebar />
             <main className="relative flex-1 flex flex-col items-center px-0 pb-2 md:pb-4 mt-0 md:mt-0 w-full">
               <div className="fixed top-0 left-0 right-0 z-50 flex justify-center">
                 <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0 flex h-14 md:h-[4.5rem] justify-between items-start gap-3 pt-2">
-                <Avatar>
-                  <AvatarImage src="https://github.com/romeirofernandes.png" alt="Romeiro Fernandes" />
-                  <AvatarFallback>RF</AvatarFallback>
-                </Avatar>
-                <div className="flex items-center gap-3">
-                  <ThemeToggle />
-                  <Clock />
+                  <Avatar>
+                    <AvatarImage
+                      src="https://github.com/romeirofernandes.png"
+                      alt="Romeiro Fernandes"
+                    />
+                    <AvatarFallback>RF</AvatarFallback>
+                  </Avatar>
+                  <div className="flex items-center gap-3">
+                    <ThemeToggle
+                      period={period}
+                      onPeriodChange={handlePeriodChange}
+                    />
+                    <Clock />
+                  </div>
                 </div>
               </div>
-              </div>
-              <div aria-hidden="true" className="h-14 md:h-[4.5rem] w-full shrink-0" />
+              <div
+                aria-hidden="true"
+                className="h-14 md:h-[4.5rem] w-full shrink-0"
+              />
 
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
                 <ProfileCard />
@@ -109,8 +217,8 @@ export default function Landing() {
                     style={{ fontWeight: 200 }}
                   >
                     I'm a full-stack developer with MERN as my go to stack and a
-                    deep interest in AI/ML. Currently pursuing Computer Engineering
-                    at Fr. CRCE, Bandra.
+                    deep interest in AI/ML. Currently pursuing Computer
+                    Engineering at Fr. CRCE, Bandra.
                   </p>
                   <p
                     className="text-white mt-6 md:mt-10 font-extralight leading-relaxed text-left text-sm md:text-md"
@@ -125,7 +233,10 @@ export default function Landing() {
 
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 sm:px-4">
                 <section id="github" className="mb-10 md:mb-20">
-                  <GithubGraph username="romeirofernandes" data={githubData} />
+                  <GithubGraph
+                    username="romeirofernandes"
+                    data={githubData}
+                  />
                 </section>
               </div>
 
@@ -143,7 +254,8 @@ export default function Landing() {
 
               <div className="w-full max-w-[98vw] md:max-w-2xl px-2 ">
                 <QuoteBox>
-                  "If people call you crazy for working hard, you're doing something right."
+                  "If people call you crazy for working hard, you're doing
+                  something right."
                 </QuoteBox>
               </div>
 
@@ -160,6 +272,14 @@ export default function Landing() {
             </main>
           </div>
         </DiagonalBackground>
+      )}
+
+      {overlay && (
+        <DissolveOverlay
+          imageFrom={overlay.imageFrom}
+          imageTo={overlay.imageTo}
+          onComplete={handleDissolveComplete}
+        />
       )}
     </>
   );

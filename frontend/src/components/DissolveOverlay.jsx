@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useEffect, useCallback } from "react";
+import React, { useRef, useMemo } from "react";
 import { createPortal } from "react-dom";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useTexture, OrthographicCamera } from "@react-three/drei";
@@ -209,11 +209,13 @@ const coverFragmentShaderReverse = `
   }
 `;
 
-function Scene({ imageFrom, imageTo, center, progressRef }) {
+function Scene({ imageFrom, imageTo, center, onComplete }) {
   const [texture1, texture2] = useTexture([imageFrom, imageTo]);
   const material1Ref = useRef(null);
   const material2Ref = useRef(null);
   const { size } = useThree();
+  const startTimeRef = useRef(null);
+  const completedRef = useRef(null);
 
   const uniforms1 = useMemo(() => ({
     uTexture: { value: texture1 },
@@ -241,22 +243,38 @@ function Scene({ imageFrom, imageTo, center, progressRef }) {
   }), [texture2, size, center.x, center.y]);
 
   useFrame((state) => {
-    const progress = progressRef.current;
+    if (completedRef.current) return;
+
+    const now = state.clock.getElapsedTime();
+    if (!startTimeRef.current) {
+      startTimeRef.current = now;
+    }
+
+    const elapsed = (now - startTimeRef.current) * 1000;
+    const duration = 1000;
+    const t = Math.min(elapsed / duration, 1);
+    const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+
     if (material1Ref.current) {
-      material1Ref.current.uniforms.uTime.value = state.clock.getElapsedTime();
+      material1Ref.current.uniforms.uTime.value = now;
       material1Ref.current.uniforms.uResolution.value.set(size.width, size.height);
-      material1Ref.current.uniforms.uDissolve.value = progress;
-      material1Ref.current.uniforms.uGrayscale.value = Math.min(1.0, progress / 0.4);
-      material1Ref.current.uniforms.uEdgeIntensity.value = progress * 0.5;
-      material1Ref.current.uniforms.uEdgeBrightness.value = 1.0 - progress;
+      material1Ref.current.uniforms.uDissolve.value = eased;
+      material1Ref.current.uniforms.uGrayscale.value = Math.min(1.0, eased / 0.4);
+      material1Ref.current.uniforms.uEdgeIntensity.value = eased * 0.5;
+      material1Ref.current.uniforms.uEdgeBrightness.value = 1.0 - eased;
     }
     if (material2Ref.current) {
-      material2Ref.current.uniforms.uTime.value = state.clock.getElapsedTime();
+      material2Ref.current.uniforms.uTime.value = now;
       material2Ref.current.uniforms.uResolution.value.set(size.width, size.height);
-      const acceleratedProgress = Math.min(1.0, progress * 1.1);
+      const acceleratedProgress = Math.min(1.0, eased * 1.1);
       material2Ref.current.uniforms.uEdgeIntensity.value = 0.6 * (1.0 - acceleratedProgress);
       material2Ref.current.uniforms.uDarkness.value = 1.0 - acceleratedProgress;
       material2Ref.current.uniforms.uGrayscale.value = 1.0 - acceleratedProgress;
+    }
+
+    if (t >= 1) {
+      completedRef.current = true;
+      onComplete?.();
     }
   });
 
@@ -288,31 +306,6 @@ function Scene({ imageFrom, imageTo, center, progressRef }) {
 
 export default function DissolveOverlay({ imageFrom, imageTo, center: centerProp, onComplete }) {
   const center = centerProp ?? { x: 0.5, y: 0.5 };
-  const progressRef = useRef(0);
-  const startTimeRef = useRef(null);
-  const rafRef = useRef(null);
-
-  const animate = useCallback((timestamp) => {
-    if (!startTimeRef.current) startTimeRef.current = timestamp;
-    const elapsed = timestamp - startTimeRef.current;
-    const duration = 1000;
-    const t = Math.min(elapsed / duration, 1);
-    const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-    progressRef.current = eased;
-    if (t < 1) {
-      rafRef.current = requestAnimationFrame(animate);
-    } else {
-      onComplete?.();
-    }
-  }, [onComplete]);
-
-  useEffect(() => {
-    startTimeRef.current = null;
-    rafRef.current = requestAnimationFrame(animate);
-    return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    };
-  }, [animate]);
 
   const overlay = (
     <div
@@ -336,7 +329,7 @@ export default function DissolveOverlay({ imageFrom, imageTo, center: centerProp
             imageFrom={imageFrom}
             imageTo={imageTo}
             center={center}
-            progressRef={progressRef}
+            onComplete={onComplete}
           />
         </React.Suspense>
       </Canvas>

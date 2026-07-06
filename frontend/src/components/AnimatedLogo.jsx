@@ -20,6 +20,7 @@ export default function AnimatedLogo({ fadeOut = false, onAnimationEnd }) {
         className="absolute inset-[-24px]"
         style={{
           backgroundImage: "var(--page-bg-image)",
+          backgroundColor: "#080808",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
