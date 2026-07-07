@@ -222,19 +222,19 @@ html {
 
 html.light {
   background-color: #f5f5f7;
-  --glass-bg: rgba(0, 0, 0, 0.35);
-  --glass-bg-20: rgba(0, 0, 0, 0.4);
-  --glass-bg-30: rgba(0, 0, 0, 0.5);
+  --glass-bg: rgba(0, 0, 0, 0.18);
+  --glass-bg-20: rgba(0, 0, 0, 0.24);
+  --glass-bg-30: rgba(0, 0, 0, 0.35);
   --btn-bg: rgba(0, 0, 0, 0.25);
   --btn-border: rgba(255, 255, 255, 0.12);
 }
 
 html[data-period="morning"] {
-  --glass-bg: rgba(0, 0, 0, 0.35);
-  --glass-bg-20: rgba(0, 0, 0, 0.4);
-  --glass-bg-30: rgba(0, 0, 0, 0.5);
+  --glass-bg: rgba(0, 0, 0, 0.18);
+  --glass-bg-20: rgba(0, 0, 0, 0.24);
+  --glass-bg-30: rgba(0, 0, 0, 0.35);
   --glass-text-muted: rgba(255, 255, 255, 0.7);
-  --heading-text: rgba(0, 0, 0, 0.65);
+  --heading-text: #f5f5f7;
 }
 
 ::-webkit-scrollbar {
