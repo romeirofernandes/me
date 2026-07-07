@@ -161,14 +161,14 @@ export default function Landing() {
                   </div>
                 </div>
               </div>
-              <div aria-hidden="true" className="h-20 md:h-[4.5rem] w-full shrink-0" />
+              <div aria-hidden="true" className="h-20 w-full shrink-0" />
 
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0 mb-10 md:mb-20">
                 <ProfileCard />
               </div>
 
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
-                <section className="relative z-10 isolate mt-4 md:mt-12 mb-10 md:mb-20 w-full rounded-xl p-4 sm:p-6 md:p-7 border border-white/10 bg-black/15 backdrop-blur-xl shadow-xl">
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0 mb-10 md:mb-20">
+                <section className="relative z-10 isolate w-full rounded-xl p-4 sm:p-6 md:p-7 border border-white/10 bg-black/15 backdrop-blur-xl shadow-xl">
                   <p className="text-white font-extralight text-sm md:text-md leading-relaxed text-left">
                     I'm a full-stack developer with MERN as my go to stack and a deep interest in AI/ML. Currently pursuing Computer Engineering at Fr. CRCE, Bandra.
                   </p>
@@ -178,30 +178,30 @@ export default function Landing() {
                 </section>
               </div>
 
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
-                <section id="github" className="mb-10 md:mb-20">
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0 mb-10 md:mb-20">
+                <section id="github">
                   <GithubGraph username="romeirofernandes" data={githubData} />
                 </section>
               </div>
 
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0"><TechMarquee /></div>
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl"><WorkExperience /></div>
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0"><Projects /></div>
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0"><Achievements /></div>
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0 mb-10 md:mb-20"><TechMarquee /></div>
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl mb-10 md:mb-20"><WorkExperience /></div>
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0 mb-10 md:mb-20"><Projects /></div>
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0 mb-10 md:mb-20"><Achievements /></div>
 
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2">
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 mb-10 md:mb-20">
                 <ContactSection />
               </div>
 
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2">
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 mb-10 md:mb-20">
                 <QuoteBox>"If people call you crazy for working hard, you're doing something right."</QuoteBox>
               </div>
 
-              <div className="relative z-10 mt-8 mb-4 flex w-full max-w-[98vw] justify-center px-2 md:max-w-2xl">
+              <div className="relative z-10 flex w-full max-w-[98vw] justify-center px-2 md:max-w-2xl mb-10 md:mb-20">
                 <Signature text="Romeiro Fernandes" fontSize={signatureSize} color="rgba(255,255,255,0.92)" duration={1.8} />
               </div>
 
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0"><Footer /></div>
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0 mb-16 md:mb-0"><Footer /></div>
             </main>
           </div>
         </DiagonalBackground>

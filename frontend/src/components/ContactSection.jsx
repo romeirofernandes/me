@@ -64,7 +64,7 @@ export default function ContactSection() {
   };
 
   return (
-    <div className="relative z-10 isolate flex flex-col items-center justify-center border border-white/10 bg-black/15 backdrop-blur-xl rounded-xl p-4 sm:p-6 md:p-8 mt-12 mb-4 w-full max-w-2xl mx-auto shadow-xl">
+    <div className="relative z-10 isolate flex flex-col items-center justify-center border border-white/10 bg-black/15 backdrop-blur-xl rounded-xl p-4 sm:p-6 md:p-8 w-full max-w-2xl mx-auto shadow-xl">
       <section id="contact" className="w-full flex flex-col md:flex-row items-start justify-between gap-8">
         <div className="flex-1 flex flex-col justify-center mb-6 md:mb-0 text-left">
           <h2 className="text-lg sm:text-xl font-semibold mb-2 text-white/90">Let's Connect</h2>

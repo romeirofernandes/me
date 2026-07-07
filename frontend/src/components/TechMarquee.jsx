@@ -48,7 +48,7 @@ export default function TechMarquee() {
   const [pausedRow2, setPausedRow2] = useState(false);
 
   return (
-    <div className="relative z-10 isolate w-full mx-auto my-8 space-y-3">
+    <div className="relative z-10 isolate w-full mx-auto space-y-3">
       <MarqueeRow
         items={row1Skills}
         reverse={false}

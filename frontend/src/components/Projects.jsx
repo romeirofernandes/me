@@ -29,7 +29,7 @@ export default function Projects() {
   const visibleProjects = showAll ? projects : projects.slice(0, 4);
 
   return (
-    <section ref={sectionRef} id="projects" className="relative z-10 w-full max-w-full sm:max-w-sm md:max-w-2xl mx-auto mb-16 px-0 py-8 md:py-12 justify-items-center">
+    <section ref={sectionRef} id="projects" className="relative z-10 w-full max-w-full sm:max-w-sm md:max-w-2xl mx-auto px-0 justify-items-center">
       <div className="w-full flex justify-start">
         <motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight">Projects I have worked on</motion.h2>
       </div>

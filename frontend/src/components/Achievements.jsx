@@ -147,7 +147,7 @@ export default function Achievements() {
   return (
     <section
       id="achievements"
-      className="relative z-10 w-full max-w-[98vw] md:max-w-2xl mx-auto mb-10"
+      className="relative z-10 w-full max-w-[98vw] md:max-w-2xl mx-auto"
     >
       <div className="w-full flex justify-start px-3 md:px-0">
         <motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight">
