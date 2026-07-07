@@ -147,7 +147,7 @@ export default function Achievements() {
   return (
     <section
       id="achievements"
-      className="relative z-10 w-full max-w-[98vw] md:max-w-2xl mx-auto"
+      className="relative z-10 w-full max-w-[98vw] md:max-w-2xl mx-auto scroll-mt-14 md:scroll-mt-[4.5rem]"
     >
       <div className="w-full flex justify-start px-3 md:px-0">
         <motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight">
@@ -163,39 +163,7 @@ export default function Achievements() {
                 onTouchStart={handleTouchStart}
                 onTouchEnd={handleTouchEnd}
               >
-                {/* Animated Arrow (mobile only, right side, only on first card and before swipe) */}
-                <AnimatePresence>
-                  {idx === 0 && !hasSwiped && (
-                    <motion.div
-                      className="absolute right-2 top-1/2 -translate-y-1/2 z-30 sm:hidden"
-                      initial={{ x: 0, opacity: 1 }}
-                      animate={{ x: 16, opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        duration: 0.7,
-                        ease: "easeInOut",
-                      }}
-                    >
-                      <svg
-                        width="28"
-                        height="28"
-                        viewBox="0 0 28 28"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M10 14H18M18 14L14 10M18 14L14 18"
-                          stroke="#fff"
-                          strokeWidth="2.2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+
                 <div className="flex items-center mb-3">
                   <img
                     src="/profile.jpg"

@@ -56,7 +56,7 @@ export default function WorkExperience() {
   }, []);
 
   return (
-    <section id="experience" className="w-full relative z-10 max-w-[98vw] mx-auto px-0">
+    <section id="experience" className="w-full relative z-10 max-w-[98vw] mx-auto px-0 scroll-mt-14 md:scroll-mt-[4.5rem]">
       <div className="w-full flex justify-start px-4 md:px-0">
         <motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight">Places I've Worked At</motion.h2>
       </div>

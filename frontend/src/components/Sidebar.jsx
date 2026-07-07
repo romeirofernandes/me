@@ -76,7 +76,7 @@ export default function Sidebar({ className = "" }) {
     }
     const el = document.querySelector(href);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
       scrollTimeoutRef.current = setTimeout(() => { isManualRef.current = false; }, 1200);
     }
   };
