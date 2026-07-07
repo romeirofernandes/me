@@ -21,10 +21,10 @@ import { fetchGitHubContributions } from "../lib/github";
 const DissolveOverlay = React.lazy(() => import("../components/DissolveOverlay"));
 
 const IMAGE_MAP = {
-  morning: "/morning.jpg",
-  afternoon: "/afternoon.png",
-  evening: "/evening.jpg",
-  night: "/night.png",
+  morning: "/morning.webp",
+  afternoon: "/afternoon.webp",
+  evening: "/evening.webp",
+  night: "/night.webp",
 };
 
 function getTimePeriod() {

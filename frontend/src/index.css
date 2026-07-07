@@ -94,7 +94,7 @@ html {
 }
 
 :root {
-  --page-bg-image: url('/night.png');
+  --page-bg-image: url('/night.webp');
   --radius: 0.625rem;
   --glass-bg: rgba(0, 0, 0, 0.15);
   --glass-bg-20: rgba(0, 0, 0, 0.2);
@@ -230,11 +230,7 @@ html.light {
 }
 
 html[data-period="morning"] {
-  --glass-bg: rgba(0, 0, 0, 0.18);
-  --glass-bg-20: rgba(0, 0, 0, 0.24);
-  --glass-bg-30: rgba(0, 0, 0, 0.35);
   --glass-text-muted: rgba(255, 255, 255, 0.7);
-  --heading-text: #f5f5f7;
 }
 
 ::-webkit-scrollbar {

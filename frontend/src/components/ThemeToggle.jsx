@@ -3,10 +3,10 @@ import { memo, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const PERIODS = [
-  { value: "morning", label: "Morning", img: "/morning.jpg" },
-  { value: "afternoon", label: "Afternoon", img: "/afternoon.png" },
-  { value: "evening", label: "Evening", img: "/evening.jpg" },
-  { value: "night", label: "Night", img: "/night.png" },
+  { value: "morning", label: "Morning", img: "/morning.webp" },
+  { value: "afternoon", label: "Afternoon", img: "/afternoon.webp" },
+  { value: "evening", label: "Evening", img: "/evening.webp" },
+  { value: "night", label: "Night", img: "/night.webp" },
 ];
 
 const PANEL_SPRING = { type: "spring", duration: 0.46, bounce: 0.08 };

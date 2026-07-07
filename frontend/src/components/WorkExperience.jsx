@@ -5,7 +5,7 @@ const experiences = [
   {
     id: "qrata",
     company: "Qrata",
-    logo: "/qrata-logo.jpg",
+    logo: "/qrata-logo.webp",
     position: "Backend Developer",
     type: "Internship",
     period: "Dec 2025 - Jun 2026",
@@ -23,7 +23,7 @@ const experiences = [
   {
     id: "playtheory",
     company: "PlayTheory Labs",
-    logo: "/playtheory-labs.jpg",
+    logo: "/playtheory-labs.webp",
     position: "Full Stack Developer",
     type: "Internship",
     period: "Jun 2025 - Oct 2025",

@@ -15,7 +15,7 @@ const hackathons = [
     name: "Google GenAI Exchange Hackathon 2025",
     place: "1st Runner Up",
     year: "Nov 30",
-    image: "/genai.jpg",
+    image: "/genai.webp",
     text: `1st Runner Up at Google GenAI Exchange Hackathon 2025 🏆
 
 Built MisIntel, a multimodal and multilingual platform that combats digital misinformation in all possible ways.
@@ -29,7 +29,7 @@ Out of 270,000+ participants nationwide, we were among the top 40 teams who won 
     name: "SUNHACKS International 2025",
     place: "Domain Winner",
     year: "Aug 25",
-    image: "/team_pony.jpeg",
+    image: "/team_pony.webp",
     text: `Domain Winner at SUNHACKS International 2025 🏆
 
 Built StudyAid, a full-stack AI-powered study platform using MERN and multiple LLM APIs.
@@ -43,7 +43,7 @@ SUNHACKS had 550+ teams on campus and was part of the Asia Book of Records.`,
     name: "Bucketstudy",
     place: "Winner",
     year: "Jul 15",
-    image: "/bucketstudy.png",
+    image: "/bucketstudy.webp",
     text: `1st Place at Bucketstudy 🏆
 
 Built vHack: Full-stack virtual hackathon platform for online competitions, team/project management, real-time judging, and AI analytics.
@@ -57,7 +57,7 @@ Hosted by: BucketStudy`,
     name: "HackMern.AI",
     place: "3rd Place",
     year: "Jun 7",
-    image: "/hackmern.png",
+    image: "/hackmern.webp",
     text: `3rd Place at HackMern.AI 🥉
 
 Built Trippeer: AI-powered travel planner for destinations & itineraries based on mood, budget, and time. Features reverse planner, AI itineraries, dashboard, and real-time data.
@@ -71,7 +71,7 @@ Hosted by: Certifiyo`,
     name: "HackHazards '25",
     place: "Top 100 / 17k",
     year: "Apr 27",
-    image: "/hackhazards.png",
+    image: "/hackhazards.webp",
     text: `Top 100 teams at HackHazards '25 ✨
 
 Built Habitz: Gamified, social, AI-powered habit tracker with 3D streaks, habit forest, AI coach, QR progress, analytics, and challenges.
@@ -85,7 +85,7 @@ Hosted by: The Namespace Community`,
     name: "Coherence Hackathon",
     place: "2nd Place",
     year: "Mar 29",
-    image: "/coherence.jpg",
+    image: "/coherence.webp",
     text: `2nd Place at Coherence Hackathon (AIML Track) 🥈
 
 Built ScreenSmart: An AI hiring assistant for resume screening, bias-free ranking, and predictive analytics.
@@ -99,7 +99,7 @@ Hosted by: VCET (24-hour offline)`,
     name: "Auraflix Hackathon",
     place: "Winner",
     year: "Mar 23",
-    image: "/auraflix.png",
+    image: "/auraflix.webp",
     text: `1st Place at Auraflix Hackathon 🏆
 
 Built InfluenceIQ: A data-driven platform for authentic influencer marketing, with a Credibility Score, LLM-based matching, and ML-powered trend prediction.
@@ -166,7 +166,7 @@ export default function Achievements() {
 
                 <div className="flex items-center mb-3">
                   <img
-                    src="/profile.jpg"
+                    src="/profile.webp"
                     alt="Romeiro Fernandes"
                     className="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-3"
                     width={48}

@@ -4,17 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="preload" as="image" href="/morning.jpg" />
-    <link rel="preload" as="image" href="/afternoon.png" />
-    <link rel="preload" as="image" href="/evening.jpg" />
-    <link rel="preload" as="image" href="/night.png" />
+    <link rel="preload" as="image" href="/morning.webp" />
+    <link rel="preload" as="image" href="/afternoon.webp" />
+    <link rel="preload" as="image" href="/evening.webp" />
+    <link rel="preload" as="image" href="/night.webp" />
     <script>
       (function() {
         var images = {
-          morning: '/morning.jpg',
-          afternoon: '/afternoon.png',
-          evening: '/evening.jpg',
-          night: '/night.png'
+          morning: '/morning.webp',
+          afternoon: '/afternoon.webp',
+          evening: '/evening.webp',
+          night: '/night.webp'
         };
         var period = localStorage.getItem('timePeriod');
         var manual = localStorage.getItem('timePeriodManual') === 'true';
@@ -101,7 +101,7 @@
         "sameAs": ["https://github.com/romeirofernandes"]
       }
     </script>
-    <link rel="icon" type="image/png" href="/pfp.jpeg" />
+    <link rel="icon" type="image/webp" href="/pfp.webp" />
   </head>
   <body>
     <div id="root"></div>
