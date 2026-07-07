@@ -159,7 +159,7 @@ export default function Achievements() {
           {hackathons.map((hack, idx) => (
             <CarouselItem key={hack.id}>
               <div
-                className="relative z-10 isolate flex flex-col gap-2 overflow-hidden rounded-xl border border-white/10 bg-black/15 backdrop-blur-xl p-4 sm:p-6 shadow-xl w-full max-w-[90vw] sm:max-w-md md:max-w-xl lg:max-w-2xl mx-auto text-left h-[470px] md:h-[620px]"
+                className="relative z-10 isolate flex flex-col gap-2 overflow-hidden rounded-xl border border-white/10 bg-black/15 backdrop-blur-xl p-4 sm:p-6 shadow-xl w-full sm:max-w-md md:max-w-xl lg:max-w-2xl mx-auto text-left h-[470px] md:h-[620px]"
                 onTouchStart={handleTouchStart}
                 onTouchEnd={handleTouchEnd}
               >

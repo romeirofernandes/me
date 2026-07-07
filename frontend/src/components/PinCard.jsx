@@ -19,7 +19,7 @@ export const PinContainer = memo(function PinContainer({
 }) {
   return (
     <MagicCard
-      className={`dark w-[92vw] md:w-full h-[340px] rounded-xl overflow-hidden flex flex-col gap-3 p-4 ${containerClassName || ""}`}
+      className={`dark w-full h-[340px] rounded-xl overflow-hidden flex flex-col gap-3 p-4 ${containerClassName || ""}`}
     >
       <div className="w-full flex items-center justify-center mb-1">
         <img

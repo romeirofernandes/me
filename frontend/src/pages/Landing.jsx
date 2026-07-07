@@ -178,16 +178,16 @@ export default function Landing() {
                 </section>
               </div>
 
-              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 sm:px-4">
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0">
                 <section id="github" className="mb-10 md:mb-20">
                   <GithubGraph username="romeirofernandes" data={githubData} />
                 </section>
               </div>
 
-              <div className="relative z-10"><TechMarquee /></div>
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0"><TechMarquee /></div>
               <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl"><WorkExperience /></div>
-              <div className="relative z-10"><Projects /></div>
-              <div className="relative z-10"><Achievements /></div>
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0"><Projects /></div>
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0"><Achievements /></div>
 
               <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2">
                 <ContactSection />
@@ -201,7 +201,7 @@ export default function Landing() {
                 <Signature text="Romeiro Fernandes" fontSize={signatureSize} color="rgba(255,255,255,0.92)" duration={1.8} />
               </div>
 
-              <div className="relative z-10"><Footer /></div>
+              <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0"><Footer /></div>
             </main>
           </div>
         </DiagonalBackground>

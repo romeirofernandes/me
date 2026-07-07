@@ -49,8 +49,8 @@ export default function GithubGraph({ username, data: propData }) {
   if (!data) {
     return (
       <div className="flex justify-center">
-        <div className="rounded-lg p-4 w-fit animate-pulse bg-black/15 backdrop-blur-xl border border-white/10">
-          <div className="h-[120px] w-[800px] bg-[#ffffff]/10 rounded"></div>
+        <div className="rounded-lg p-4 w-full animate-pulse bg-black/15 backdrop-blur-xl border border-white/10">
+          <div className="h-[120px] w-full bg-[#ffffff]/10 rounded"></div>
         </div>
       </div>
     );
@@ -61,7 +61,7 @@ export default function GithubGraph({ username, data: propData }) {
 
   return (
     <div className="flex justify-center">
-      <div className="relative z-10 isolate rounded-lg p-4 w-fit bg-black/15 backdrop-blur-xl border border-white/10 shadow-xl">
+      <div className="relative z-10 isolate rounded-lg p-4 w-full bg-black/15 backdrop-blur-xl border border-white/10 shadow-xl">
         <ContributionGraph data={recentContributions} blockSize={isMobile ? 9 : 12} blockMargin={isMobile ? 3 : 4} blockRadius={2} className="text-white">
           <ContributionGraphCalendar>
             {({ activity, dayIndex, weekIndex }) => (

@@ -60,7 +60,7 @@ export default function WorkExperience() {
       <div className="w-full flex justify-start px-4 md:px-0">
         <motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight">Places I've Worked At</motion.h2>
       </div>
-      <div className="w-full space-y-8 px-3 md:px-0">
+      <div className="w-full space-y-8 px-2 md:px-0">
         {experiences.map((exp, idx) => {
           const isExpanded = expandedIds.includes(exp.id);
           return (
