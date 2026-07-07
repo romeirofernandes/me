@@ -58,7 +58,9 @@ export default function Landing() {
     try { return localStorage.getItem("timePeriodManual") === "true"; } catch { return false; }
   });
 
-  periodRef.current = period;
+  useEffect(() => {
+    periodRef.current = period;
+  }, [period]);
 
   const [githubData, setGithubData] = useState(null);
 
