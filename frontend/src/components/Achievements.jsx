@@ -150,16 +150,16 @@ export default function Achievements() {
       className="relative z-10 w-full max-w-[98vw] md:max-w-2xl mx-auto scroll-mt-14 md:scroll-mt-[4.5rem]"
     >
       <div className="w-full flex justify-start px-3 md:px-0">
-        <motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight">
-          6x Hackathon Winner.
-        </motion.h2>
+<motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-[var(--heading-text)] tracking-tight">
+            6x Hackathon Winner.
+          </motion.h2>
       </div>
       <Carousel className="w-full [&_[data-slot=carousel-content]]:rounded-xl">
         <CarouselContent>
           {hackathons.map((hack, idx) => (
             <CarouselItem key={hack.id}>
               <div
-                className="relative z-10 isolate flex flex-col gap-2 rounded-xl border border-white/10 bg-black/15 backdrop-blur-xl p-4 sm:p-6 shadow-xl w-full sm:max-w-md md:max-w-xl lg:max-w-2xl mx-auto text-left h-[470px] md:h-[620px]"
+                className="relative z-10 isolate flex flex-col gap-2 rounded-xl border border-white/10 bg-[var(--glass-bg)] backdrop-blur-xl p-4 sm:p-6 shadow-xl w-full sm:max-w-md md:max-w-xl lg:max-w-2xl mx-auto text-left h-[470px] md:h-[620px]"
                 onTouchStart={handleTouchStart}
                 onTouchEnd={handleTouchEnd}
               >
@@ -202,8 +202,8 @@ export default function Achievements() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="-left-3 md:-left-4 bg-white/10 border-white/10 text-white hover:bg-white/20 hover:text-white shadow-lg backdrop-blur-md" />
-        <CarouselNext className="-right-3 md:-right-4 bg-white/10 border-white/10 text-white hover:bg-white/20 hover:text-white shadow-lg backdrop-blur-md" />
+        <CarouselPrevious className="-left-3 md:-left-4 bg-[var(--glass-bg-20)] border-white/10 text-white hover:bg-white/20 hover:text-white shadow-lg backdrop-blur-md" />
+        <CarouselNext className="-right-3 md:-right-4 bg-[var(--glass-bg-20)] border-white/10 text-white hover:bg-white/20 hover:text-white shadow-lg backdrop-blur-md" />
       </Carousel>
 
       {/* Animated Modal for zoomed image */}

@@ -64,7 +64,7 @@ export default function ContactSection() {
   };
 
   return (
-    <div className="relative z-10 isolate flex flex-col items-center justify-center border border-white/10 bg-black/15 backdrop-blur-xl rounded-xl p-4 sm:p-6 md:p-8 w-full max-w-2xl mx-auto shadow-xl">
+    <div className="relative z-10 isolate flex flex-col items-center justify-center border border-white/10 bg-[var(--glass-bg)] backdrop-blur-xl rounded-xl p-4 sm:p-6 md:p-8 w-full max-w-2xl mx-auto shadow-xl">
       <section id="contact" className="w-full flex flex-col md:flex-row items-start justify-between gap-8 scroll-mt-14 md:scroll-mt-[4.5rem]">
         <div className="flex-1 flex flex-col justify-center mb-6 md:mb-0 text-left">
           <h2 className="text-lg sm:text-xl font-semibold mb-2 text-white/90">Let's Connect</h2>
@@ -72,8 +72,8 @@ export default function ContactSection() {
         </div>
         <div className="flex-1 flex flex-col items-start md:items-end w-full">
           <form className="flex flex-col gap-3 w-full max-w-full sm:max-w-xs" onSubmit={handleSubmit}>
-            <input className="bg-black/20 backdrop-blur-md border border-white/10 rounded px-3 py-2 text-white focus:outline-none text-sm w-full placeholder:text-white/40" type="email" name="email" placeholder="Your email" value={form.email} onChange={handleChange} required />
-            <textarea className="bg-black/20 backdrop-blur-md border border-white/10 rounded px-3 py-2 text-white focus:outline-none text-sm w-full placeholder:text-white/40" name="message" placeholder="Your message" rows={4} value={form.message} onChange={handleChange} required />
+            <input className="bg-[var(--glass-bg-20)] backdrop-blur-md border border-white/10 rounded px-3 py-2 text-white focus:outline-none text-sm w-full placeholder:text-white/40" type="email" name="email" placeholder="Your email" value={form.email} onChange={handleChange} required />
+            <textarea className="bg-[var(--glass-bg-20)] backdrop-blur-md border border-white/10 rounded px-3 py-2 text-white focus:outline-none text-sm w-full placeholder:text-white/40" name="message" placeholder="Your message" rows={4} value={form.message} onChange={handleChange} required />
             <motion.button type="submit" className="bg-[#f5f5f7] text-[#080808] rounded px-4 py-2 font-semibold mt-2 text-sm" whileTap={{ scale: 0.97 }} whileHover={{ scale: 1.03 }} disabled={status === "loading"}>
               {status === "loading" ? "Sending..." : status === "error" ? "Error! Try again" : "Send"}
             </motion.button>

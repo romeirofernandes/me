@@ -86,7 +86,7 @@ export default function Sidebar({ className = "" }) {
       {/* Desktop sidebar */}
       <div className={cn("hidden md:flex fixed inset-y-0 left-4 z-40 items-center", className)}>
         <motion.aside
-          className="flex flex-col items-center bg-black/15 rounded-2xl py-4 px-2 shadow-xl border border-white/10 backdrop-blur-xl"
+          className="flex flex-col items-center bg-[var(--glass-bg)] rounded-2xl py-4 px-2 shadow-xl border border-white/10 backdrop-blur-xl"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
         >
@@ -138,7 +138,7 @@ export default function Sidebar({ className = "" }) {
       {/* Mobile dock */}
       <div className="md:hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[95vw] max-w-md">
         <motion.nav
-          className="flex flex-row items-center justify-between bg-black/20 rounded-2xl py-2 px-4 shadow-xl border border-white/10 backdrop-blur-xl"
+          className="flex flex-row items-center justify-between bg-[var(--glass-bg-20)] rounded-2xl py-2 px-4 shadow-xl border border-white/10 backdrop-blur-xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >

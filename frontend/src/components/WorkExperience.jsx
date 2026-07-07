@@ -58,7 +58,7 @@ export default function WorkExperience() {
   return (
     <section id="experience" className="w-full relative z-10 max-w-[98vw] mx-auto px-0 scroll-mt-14 md:scroll-mt-[4.5rem]">
       <div className="w-full flex justify-start px-4 md:px-0">
-        <motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight">Places I've Worked At</motion.h2>
+        <motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-[var(--heading-text)] tracking-tight">Places I've Worked At</motion.h2>
       </div>
       <div className="w-full space-y-8 px-2 md:px-0">
         {experiences.map((exp, idx) => {
@@ -69,7 +69,7 @@ export default function WorkExperience() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1 }}
-              className="relative z-10 isolate rounded-xl border border-white/10 bg-black/15 backdrop-blur-xl shadow-xl overflow-hidden"
+              className="relative z-10 isolate rounded-xl border border-white/10 bg-[var(--glass-bg)] backdrop-blur-xl shadow-xl overflow-hidden"
             >
               <div className="flex items-start justify-between p-4 sm:p-6 cursor-pointer" onClick={() => toggleExpand(exp.id)}>
                 <div className="flex-1">
@@ -118,7 +118,7 @@ export default function WorkExperience() {
                       </ul>
                       <div className="flex flex-wrap gap-2 mt-5">
                         {exp.skills.map((skill) => (
-                          <span key={skill} className="px-3 py-1 text-xs font-medium bg-black/20 backdrop-blur-md border border-white/10 text-white/80 rounded-full">{skill}</span>
+                          <span key={skill} className="px-3 py-1 text-xs font-medium bg-[var(--glass-bg-20)] backdrop-blur-md border border-white/10 text-white/80 rounded-full">{skill}</span>
                         ))}
                       </div>
                     </div>

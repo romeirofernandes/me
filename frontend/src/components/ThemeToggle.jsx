@@ -77,7 +77,7 @@ export default memo(function ThemeToggle({ period, onPeriodChange, className = "
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -6, scale: 0.98, transition: { duration: 0.08 } }}
             transition={PANEL_SPRING}
-            className="absolute right-0 top-full mt-2 z-30 w-48 rounded-xl border border-white/10 bg-black/15 backdrop-blur-xl shadow-xl overflow-hidden"
+            className="absolute right-0 top-full mt-2 z-30 w-48 rounded-xl border border-white/10 bg-[var(--glass-bg)] backdrop-blur-xl shadow-xl overflow-hidden"
           >
             <motion.div
               layoutRoot

@@ -31,7 +31,7 @@ export default function Projects() {
   return (
     <section ref={sectionRef} id="projects" className="relative z-10 w-full max-w-full sm:max-w-sm md:max-w-2xl mx-auto px-0 justify-items-center scroll-mt-14 md:scroll-mt-[4.5rem]">
       <div className="w-full flex justify-start">
-        <motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-white tracking-tight">Projects I have worked on</motion.h2>
+        <motion.h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-left text-[var(--heading-text)] tracking-tight">Projects I have worked on</motion.h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
         <AnimatePresence initial={false}>
@@ -52,7 +52,7 @@ export default function Projects() {
       {projects.length > 4 && (
         <div className="flex justify-center mt-10">
           <button
-            className="group px-7 py-2.5 rounded-xl text-white/90 text-[15px] font-medium tracking-wide border border-white/[7%] bg-gradient-to-b from-white/[7%] to-white/[2%] shadow-[0_4px_16px_rgba(0,0,0,0.25)] backdrop-blur-lg hover:from-white/[10%] hover:to-white/[4%] hover:border-white/[12%] hover:text-white transition-all duration-200 active:scale-[0.97] focus:outline-none focus:ring-2 focus:ring-white/20 flex items-center gap-2.5"
+            className="group px-7 py-2.5 rounded-xl text-white/90 text-[15px] font-medium tracking-wide border-[var(--btn-border)] bg-[var(--btn-bg)] backdrop-blur-lg shadow-[0_4px_16px_rgba(0,0,0,0.25)] hover:border-white/20 hover:bg-[var(--glass-bg-20)] hover:text-white transition-all duration-200 active:scale-[0.97] focus:outline-none focus:ring-2 focus:ring-white/20 flex items-center gap-2.5"
             aria-expanded={showAll}
             onClick={handleToggle}
           >

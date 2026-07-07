@@ -168,7 +168,7 @@ export default function Landing() {
               </div>
 
               <div className="relative z-10 w-full max-w-[98vw] md:max-w-2xl px-2 md:px-0 mb-10 md:mb-20">
-                <section className="relative z-10 isolate w-full rounded-xl p-4 sm:p-6 md:p-7 border border-white/10 bg-black/15 backdrop-blur-xl shadow-xl">
+                <section className="relative z-10 isolate w-full rounded-xl p-4 sm:p-6 md:p-7 border border-white/10 bg-[var(--glass-bg)] backdrop-blur-xl shadow-xl">
                   <p className="text-white font-extralight text-sm md:text-md leading-relaxed text-left">
                     I'm a full-stack developer with MERN as my go to stack and a deep interest in AI/ML. Currently pursuing Computer Engineering at Fr. CRCE, Bandra.
                   </p>

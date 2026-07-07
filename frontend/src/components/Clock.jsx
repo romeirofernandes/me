@@ -66,7 +66,7 @@ export default function Clock() {
       >
         <TooltipTrigger asChild>
           <div
-            className="text-white font-mono bg-black/20 backdrop-blur-md rounded-lg shadow-xl border border-white/10 select-none cursor-pointer px-3 py-1.5 md:px-4 md:py-2 text-base md:text-lg tracking-[0.05em] transition-all"
+            className="text-white font-mono bg-[var(--glass-bg-20)] backdrop-blur-md rounded-lg shadow-xl border border-white/10 select-none cursor-pointer px-3 py-1.5 md:px-4 md:py-2 text-base md:text-lg tracking-[0.05em] transition-all"
             onClick={isMobile ? () => setOpen((prev) => !prev) : undefined}
           >
             <SlotText text={h[0]} options={{ direction: "up" }} />

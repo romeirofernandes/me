@@ -19,7 +19,7 @@ const MarqueeRow = memo(function MarqueeRow({ items, reverse, paused, setPaused,
         {items.map((tech, idx) => (
           <span
             key={`${tech.name}-orig-${idx}`}
-            className="flex items-center justify-center gap-2 bg-black/20 backdrop-blur-md border border-white/10 rounded-full text-sm font-medium text-white whitespace-nowrap px-6 py-2 mx-2 leading-relaxed"
+            className="flex items-center justify-center gap-2 bg-[var(--glass-bg-20)] backdrop-blur-md border border-white/10 rounded-full text-sm font-medium text-white whitespace-nowrap px-6 py-2 mx-2 leading-relaxed"
           >
             <img src={tech.logo} alt={tech.name} className="w-5 h-5 shrink-0" loading="lazy" />
             <span>{tech.name}</span>
@@ -28,7 +28,7 @@ const MarqueeRow = memo(function MarqueeRow({ items, reverse, paused, setPaused,
         {items.map((tech, idx) => (
           <span
             key={`${tech.name}-dup-${idx}`}
-            className="flex items-center justify-center gap-2 bg-black/20 backdrop-blur-md border border-white/10 rounded-full text-sm font-medium text-white whitespace-nowrap px-6 py-2 mx-2 leading-relaxed"
+            className="flex items-center justify-center gap-2 bg-[var(--glass-bg-20)] backdrop-blur-md border border-white/10 rounded-full text-sm font-medium text-white whitespace-nowrap px-6 py-2 mx-2 leading-relaxed"
           >
             <img src={tech.logo} alt={tech.name} className="w-5 h-5 shrink-0" loading="lazy" />
             <span>{tech.name}</span>
