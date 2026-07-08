@@ -264,6 +264,36 @@ html.light ::-webkit-scrollbar-thumb:hover {
   background: #888;
 }
 
+.resume-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #555 #1a1a1a;
+}
+.resume-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.resume-scroll::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+.resume-scroll::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 3px;
+}
+.resume-scroll::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+html.light .resume-scroll {
+  scrollbar-color: #aaa #e8e8e8;
+}
+html.light .resume-scroll::-webkit-scrollbar-track {
+  background: #e8e8e8;
+}
+html.light .resume-scroll::-webkit-scrollbar-thumb {
+  background: #aaa;
+}
+html.light .resume-scroll::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
