@@ -111,7 +111,7 @@ export default function GoogleGenAIExchange() {
         <section className="mb-8">
           <TldrCard>
             <p className="text-neutral-300 light:text-neutral-600">
-              qualified for google genai exchange 2025 finals during end sems, somehow got exams postponed, fought my entire class gc, flew to bangalore half dead and won. still don&apos;t know how.
+              tldr; qualified for google genai exchange 2025 finals during end sems, somehow got exams postponed, fought my entire class gc, flew to bangalore half dead and won. still don&apos;t know how.
             </p>
           </TldrCard>
         </section>
