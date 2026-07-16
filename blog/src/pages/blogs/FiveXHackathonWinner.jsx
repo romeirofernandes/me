@@ -184,7 +184,7 @@ export default function FiveXHackathonWinner() {
           </p>
 
           <ImageModal
-            src="/fivex-hackathon-winner/sunhacks_ps.png"
+            src="/fivex-hackathon-winner/sunhacks_ps.webp"
             alt="SUNHACKS Problem Statement"
             caption="The problem statement we chose at SUNHACKS 2025"
           />
@@ -255,7 +255,7 @@ export default function FiveXHackathonWinner() {
           </ul>
 
           <ImageModal
-            src="/fivex-hackathon-winner/team_pony.jpeg"
+            src="/fivex-hackathon-winner/team_pony.webp"
             alt="Team PONY with award at SUNHACKS 2025"
             caption="Team PONY with our domain winner award at SUNHACKS 2025"
           />

@@ -82,23 +82,51 @@ function BouncyAccordionRow({
   const contentRef = useRef(null);
   const [contentHeight, setContentHeight] = useState(0);
 
+  const rafRef = useRef(null);
+  const observerRef = useRef(null);
+
   useLayoutEffect(() => {
     const node = contentRef.current;
     if (!node) return;
 
-    const updateHeight = () => {
+    const measure = () => {
       setContentHeight(node.offsetHeight);
     };
 
-    updateHeight();
+    measure();
 
-    const observer = new ResizeObserver(updateHeight);
-    observer.observe(node);
+    if (!observerRef.current) {
+      observerRef.current = new ResizeObserver(measure);
+      observerRef.current.observe(node);
+    }
+
+    if (!open) return;
+
+    const imgs = Array.from(node.querySelectorAll("img"));
+    const unloaded = imgs.filter(
+      (img) => !img.complete || img.naturalWidth === 0,
+    );
+    if (unloaded.length === 0) return;
+
+    Promise.all(
+      unloaded.map((img) => {
+        if (typeof img.decode === "function")
+          return img.decode().catch(() => {});
+        return new Promise((resolve) => {
+          img.addEventListener("load", resolve, { once: true });
+          img.addEventListener("error", resolve, { once: true });
+        });
+      }),
+    ).then(() => {
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = requestAnimationFrame(measure);
+      });
+    });
 
     return () => {
-      observer.disconnect();
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, []);
+  }, [open]);
 
   const hasContent = !!item.description || !!item.content;
 

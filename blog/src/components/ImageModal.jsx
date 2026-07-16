@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-export default function ImageModal({ src, alt, caption, className = "", containerClassName = "", gallery, galleryIndex }) {
+export default function ImageModal({ src, alt, caption, className = "", containerClassName = "", gallery, galleryIndex, loading = "lazy" }) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(galleryIndex ?? 0);
 
@@ -43,7 +43,7 @@ export default function ImageModal({ src, alt, caption, className = "", containe
             <img
               src={src}
               alt={alt}
-              loading="lazy"
+              loading={loading}
               className={`w-full cursor-zoom-in hover:opacity-90 transition-opacity ${className}`}
               onClick={() => {
                 if (hasGallery) setActiveIndex(galleryIndex);

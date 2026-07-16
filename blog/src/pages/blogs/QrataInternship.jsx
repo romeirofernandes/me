@@ -54,18 +54,88 @@ export default function QrataInternship() {
 
   const features = [
     { id: "1", title: "account ops dashboard", description: "a few tweaks to existing apis to send back the correct data faster.", icon: <Database className="h-4 w-4" /> },
-    { id: "2", title: "timeline", description: "the timeline of every talent, right from when they joined to getting hired/rejected.", icon: <GitBranch className="h-4 w-4" /> },
+    {
+      id: "2",
+      title: "timeline",
+      icon: <GitBranch className="h-4 w-4" />,
+      content: (
+        <div>
+          <ImageModal src="/qrata-internship/timeline.webp" alt="timeline feature" loading="eager" />
+          <p className="mt-4">the timeline of every talent, right from when they joined to getting hired/rejected.</p>
+        </div>
+      ),
+    },
     { id: "3", title: "gpt to gemini migration", description: "when i joined, the platform was still using gpt 3.5 turbo for ai powered features. personally, i wasn't a fan because it was already quite old and gemini 2.5 flash lite delivered better outputs while costing less. it was a no brainer to migrate. so every new feature i built, along with the older ai powered ones, eventually got migrated over to gemini.", icon: <Zap className="h-4 w-4" /> },
     { id: "4", title: "slack integration", description: "before this, users could only share profiles via email and whatsapp. i added slack as another sharing option so our talent partners could directly share candidates with our clients' recruitment team because it was the main communication channel between them.", icon: <MessageSquare className="h-4 w-4" /> },
     { id: "5", title: "encryption (resume url)", description: "this was a hotfix (highest priority bug) which i picked up to basically encrypt the resume url that was being shown in the api responses.", icon: <Lock className="h-4 w-4" /> },
-    { id: "6", title: "market intel", description: "these pages were used to get new clients or give a sample list of candidates showing what kind of market research qrata can offer. the entire page was being filled in with detailed prompts to generate accurate numbers and data.", icon: <BarChart3 className="h-4 w-4" /> },
-    { id: "7", title: "resume watermark", description: "adding our logo on every resume that is uploaded on our platform.", icon: <FileImage className="h-4 w-4" /> },
-    { id: "8", title: "bulk upload", description: "earlier, recruiters could only upload one candidate at a time by uploading a resume and letting the llm extract the information before prefilling the form. the entire flow took roughly a minute per candidate. to improve this, i built a concurrent bulk upload pipeline where recruiters could upload multiple resume pdfs together or simply upload a spreadsheet containing candidate details along with drive links to resumes. i benchmarked it afterwards and the new flow ended up being roughly 95% faster than the original process.", icon: <Upload className="h-4 w-4" /> },
-    { id: "9", title: "stage narrative", description: "", icon: <FileText className="h-4 w-4" /> },
+    {
+      id: "6",
+      title: "market intel",
+      icon: <BarChart3 className="h-4 w-4" />,
+      content: (
+        <div>
+          <ImageModal src="/qrata-internship/market-intel.webp" alt="market intel feature" loading="eager" />
+          <p className="mt-4">these pages were used to get new clients or give a sample list of candidates showing what kind of market research qrata can offer. the entire page was being filled in with detailed prompts to generate accurate numbers and data.</p>
+        </div>
+      ),
+    },
+    {
+      id: "7",
+      title: "resume watermark",
+      icon: <FileImage className="h-4 w-4" />,
+      content: (
+        <div>
+          <ImageModal src="/qrata-internship/watermark.webp" alt="resume watermark feature" containerClassName="max-w-sm" loading="eager" />
+          <p className="mt-4">adding our logo on every resume that is uploaded on our platform.</p>
+        </div>
+      ),
+    },
+    {
+      id: "8",
+      title: "bulk upload",
+      icon: <Upload className="h-4 w-4" />,
+      content: (
+        <div>
+          <ImageModal src="/qrata-internship/bulk-upload.webp" alt="bulk upload feature" loading="eager" />
+          <p className="mt-4">earlier, recruiters could only upload one candidate at a time by uploading a resume and letting the llm extract the information before prefilling the form. the entire flow took roughly a minute per candidate. to improve this, i built a concurrent bulk upload pipeline where recruiters could upload multiple resume pdfs together or simply upload a spreadsheet containing candidate details along with drive links to resumes. i benchmarked it afterwards and the new flow ended up being roughly 95% faster than the original process.</p>
+          <ImageModal src="/qrata-internship/bulk-upload.webp" alt="bulk upload feature" loading="eager" />
+        </div>
+      ),
+    },
+    {
+      id: "9",
+      title: "stage narrative",
+      icon: <FileText className="h-4 w-4" />,
+      content: (
+        <div>
+          <ImageModal src="/qrata-internship/stage-narratives.webp" alt="stage narrative feature" loading="eager" />
+        </div>
+      ),
+    },
     { id: "10", title: "embeddings", description: "created vector embeddings for candidates whenever they were created or updated, and matched them against job description embeddings to generate a fit score.", icon: <Cpu className="h-4 w-4" /> },
-    { id: "11", title: "submit profile", description: "added another ui for the email that is used to submit profiles of various candidates to the clients.", icon: <Send className="h-4 w-4" /> },
+    {
+      id: "11",
+      title: "submit profile",
+      icon: <Send className="h-4 w-4" />,
+      content: (
+        <div>
+          <ImageModal src="/qrata-internship/submit-profile.webp" alt="submit profile feature" loading="eager" />
+          <p className="mt-4">added another ui for the email that is used to submit profiles of various candidates to the clients.</p>
+        </div>
+      ),
+    },
     { id: "12", title: "copy sheet link", description: "a way to get all the activity and candidates in a job directly to a google spreadsheet to be shared with clients directly for cleaner access.", icon: <LinkIcon className="h-4 w-4" /> },
-    { id: "13", title: "awaiting feedback", description: "an option to send a reminder message via (email, whatsapp or slack) containing the candidates in a pending feedback stage in their job.", icon: <Bell className="h-4 w-4" /> },
+    {
+      id: "13",
+      title: "awaiting feedback",
+      icon: <Bell className="h-4 w-4" />,
+      content: (
+        <div>
+          <ImageModal src="/qrata-internship/awaiting-feedback.webp" alt="awaiting feedback feature" loading="eager" />
+          <p className="mt-4">an option to send a reminder message via (email, whatsapp or slack) containing the candidates in a pending feedback stage in their job.</p>
+        </div>
+      ),
+    },
     { id: "14", title: "weekly hiring report", description: "created account wise weekly reports for clients to show the progress made in each of their active jobs on our platform in the last week.", icon: <Calendar className="h-4 w-4" /> },
     { id: "15", title: "google email verification", description: "the platform already had an email sharing feature but every email across the platform was sent through a single account, which eventually started getting flagged as spam. to solve that, i built an oauth connector so every talent partner could connect their own gmail account and send emails through our platform. this also meant recording demo videos and communicating with google support to obtain approval for one of gmail's sensitive api scopes.", icon: <Mail className="h-4 w-4" /> },
     { id: "16", title: "user security", description: "created the schema, the middleware, the documentation for KT, so that different users on our platform have their respective permissions.", icon: <Shield className="h-4 w-4" /> },
@@ -281,7 +351,7 @@ export default function QrataInternship() {
             this was the only time the schedule looked healthy because when college started, the entire routine just went out of the window.
           </p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
-            the morning and evening calls were something new to me and i didn't really like them at the start but then later i realized its importance. in the morning call, we discussed tasks/issues that each member will be working on and in the evening call, we discussed what was completed/worked on during the day. the reason i didn't like it was it felt like being judged publicly but then as time went on i realized that its very easy to get tunnel visioned and go down the wrong rabbit hole when working so if i couldn't complete the work, i would be questioned on what went wrong and other approaches would be discussed so that it could be completed the next day or soon. this had two benefits - first, we would know who is working on what in the team and that everyone is contributing every day and second, prevented the tunnel vision problem. i later found out that it was sir who used to take the calls by gathering everyone on floor and discuss all the teams together (technical and non technical teams) but as the number grew it was broken down into teams and team leads.
+            the morning and evening calls were something new to me and i didn't really like them at the start but then later i realized its importance. in the morning call, we discussed tasks/issues that each member will be working on and in the evening call, we discussed what was completed/worked on during the day. the reason i didn't like it was it felt like being judged publicly but then as time went on i realized that its very easy to get tunnel visioned and go down the wrong rabbit hole when working so if i couldn't complete the work, i would be questioned on what went wrong and other approaches would be discussed so that it could be completed the next day or soon. this had two benefits - first, we would know who is working on what in the team and that everyone is contributing every day and second, prevented the tunnel vision problem. i later found out that it was monish sir (ceo) who used to take the calls by gathering everyone on floor and discuss all the teams together (technical and non technical teams) but as the number grew it was broken down into teams and team leads.
           </p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             we'll discuss work in the later sections. coming to the lunch break. if you didn't skip the above section, then you'll know what i normally did for the starting weeks. i then got forced by kaushik and vidhish to play games with them during the break. we used to play carrom and uno (boy did kaushik cheated in uno, man used to pull out ten draw 4's every game hahahaha which rattled most of them). it was then where my calls during lunch slowly reduced and i got more comfortable with the team.
@@ -303,7 +373,7 @@ export default function QrataInternship() {
             the first month was mostly about understanding the product and the codebase rather than building major features. i worked on bug fixes, api documentation, schema changes, endpoint optimisations, query improvements and prompt updates. the only sizeable thing i worked on during that period was designing the schema for a rbac system, but that eventually got put on hold because other features became more important. the branch just sat there for months and it's only recently that they're building on top of it.
           </p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
-            another thing worth mentioning here is the check ins with monish sir (ceo) who always did his best in helping us understand the real intent behind every feature that we were working on. he used to ask us for our inputs (even me as an intern) till we all had a shared understanding of what is supposed to be done and what exactly is feasible. another not so important fact is that sir used a vertical mouse (logitech mx vertical or a logitech lift vertical one of them, if i remember correctly) which distracted me (like, i can't understand how that is more comfortable than the normal ones) sometimes when i went for discussions with others.
+            another thing worth mentioning here is the check ins with monish sir who always did his best in helping us understand the real intent behind every feature that we were working on. he used to ask us for our inputs (even me as an intern) till we all had a shared understanding of what is supposed to be done and what exactly is feasible. another not so important fact is that sir used a vertical mouse (logitech mx vertical or a logitech lift vertical one of them, if i remember correctly) which distracted me (like, i can't understand how that is more comfortable than the normal ones) sometimes when i went for discussions with others.
           </p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             by the end of the first month, i finally felt like i knew my way around the codebase and was ready to start building actual features.
@@ -346,6 +416,12 @@ export default function QrataInternship() {
             <li>
               cycling with the tech team. before this, i didn't even know that you could rent cycles. it was a really fun day but god, the cycle seats don't go easy on your bum. we cycled for around 3 hours.
             </li>
+            <ImageModal
+              src="/qrata-internship/cycling.webp"
+              alt="cycling with the tech team"
+              caption="cycling with the tech team"
+              containerClassName="max-w-sm mx-auto"
+            />
             <li>
               evening walks. we used to go out for a 15 min walk every day and discuss the most random things while at it.
             </li>
@@ -355,6 +431,12 @@ export default function QrataInternship() {
             <li>
               getting the win of the week. i think the photo below is pretty self explanatory.
             </li>
+            <ImageModal
+              src="/qrata-internship/win-of-the-week.webp"
+              alt="win of the week award"
+              caption="win of the week"
+              containerClassName="max-w-sm mx-auto"
+            />
             <li>
               my last day. the best of them all. i got a bunch of gifts from them - a gojo caricature and a sword keychain from garv, a gym bag, deadlifting belt and wrist straps from everyone combined (i would've joined the gym but the july rains are moving mad, i will join soon). they also got a brownie ice cream tub instead of a cake, which was a banger. we later went out for dinner. got drenched while going back with kaushik on his bike, but this was hands down the best day.
             </li>
