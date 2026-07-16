@@ -423,8 +423,13 @@ export default function GoogleGenAIExchange() {
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             1st runner up:
           </p>
-          <div className="flex justify-start mt-10 mb-32 -ml-6">
-            <RainbowTextEffect fontSize={8} text="Team T-Rex" />
+          <div className="flex justify-start mt-10 mb-8 md:mb-32 md:-ml-6">
+            <div className="hidden md:block">
+              <RainbowTextEffect fontSize={8} text="team t-rex" />
+            </div>
+            <p className="block md:hidden text-[12vw] sm:text-[8vw] font-bold italic text-transparent bg-clip-text bg-gradient-to-b from-[#4FC3F7] via-[#0288D1] to-[#0D47A1] leading-[110%]">
+              team t-rex
+            </p>
           </div>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             i genuinely couldn&apos;t believe it. arshdeep was sitting on the aisle side and she had already started walking out before my brain even processed what happened. i just had my head in my hands for a few seconds and then got up and started walking towards the stage. i genuinely couldn&apos;t see anything properly.
