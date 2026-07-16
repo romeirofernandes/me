@@ -6,11 +6,9 @@ const app = new Hono();
 // CORS middleware
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://romeirofernandes.tech",
-  "https://www.romeirofernandes.tech",
+  "https://romeiro.dev",
   "https://romeirofernandes.vercel.app", 
-  "https://blog.romeirofernandes.tech",
-  "https://www.blog.romeirofernandes.tech"
+  "https://blog.romeiro.dev"
 ];
 
 app.use('*', async (c, next) => {
@@ -68,7 +66,7 @@ app.post('/api/mail-blog-update', async (c) => {
 
   let sent = 0, failed = 0;
   for (const to of emails) {
-    const unsubscribeUrl = `https://blog.romeirofernandes.tech/unsubscribe?email=${encodeURIComponent(to)}`;
+    const unsubscribeUrl = `https://blog.romeiro.dev/unsubscribe?email=${encodeURIComponent(to)}`;
     const html = `
       <div style="font-family:sans-serif;max-width:480px;margin:auto;">
         <h2 style="margin-bottom:0.5em;">${blog.title}</h2>

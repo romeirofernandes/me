@@ -99,7 +99,7 @@ export default function WhyStartBlog() {
             <p className="text-neutral-300 light:text-neutral-600">
               tldr; i'm{" "}
               <a
-                href="https://romeirofernandes.tech"
+                href="https://romeiro.dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#38bdf8] light:text-[#0369a1]"
@@ -118,7 +118,7 @@ export default function WhyStartBlog() {
           <p className="text-neutral-300 light:text-neutral-600">
               for anyone who is new here, hello! i'm{" "}
               <a
-                href="https://romeirofernandes.tech"
+                href="https://romeiro.dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#38bdf8] light:text-[#0369a1]"
@@ -277,12 +277,12 @@ export default function WhyStartBlog() {
             <li className="mb-2">
               portfolio:{" "}
               <a
-                href="https://romeirofernandes.tech"
+                href="https://romeiro.dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#38bdf8] light:text-[#0369a1] underline"
               >
-                romeirofernandes.tech
+                romeiro.dev
               </a>
             </li>
           </ul>

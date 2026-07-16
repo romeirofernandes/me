@@ -99,12 +99,12 @@ export default function MacbookExamsAndMore() {
               with decent marks, didn't qualify internal round of sih and my
               internship's ending in a week. added the hackathons page too at{" "}
               <a
-                href="https://blog.romeirofernandes.tech/hackathons"
+                href="https://blog.romeiro.dev/hackathons"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#38bdf8] light:text-[#0369a1] underline"
               >
-                blog.romeirofernandes.tech/hackathons
+                blog.romeiro.dev/hackathons
               </a>
             </p>
           </TldrCard>
@@ -398,12 +398,12 @@ export default function MacbookExamsAndMore() {
             <li className="mb-2">
               portfolio:{" "}
               <a
-                href="https://romeirofernandes.tech"
+                href="https://romeiro.dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#38bdf8] light:text-[#0369a1] underline"
               >
-                romeirofernandes.tech
+                romeiro.dev
               </a>
             </li>
           </ul>

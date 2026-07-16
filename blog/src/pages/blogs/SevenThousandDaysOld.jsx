@@ -305,12 +305,12 @@ export default function SevenThousandDaysOld() {
             <li className="mb-2">
               portfolio:{" "}
               <a
-                href="https://romeirofernandes.tech"
+                href="https://romeiro.dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#38bdf8] light:text-[#0369a1] underline"
               >
-                romeirofernandes.tech
+                romeiro.dev
               </a>
             </li>
           </ul>

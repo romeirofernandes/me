@@ -8,6 +8,7 @@ import FiveXHackathonWinner from "./pages/blogs/FiveXHackathonWinner";
 import MacbookExamsAndMore from "./pages/blogs/MacbookExamsAndMore";
 import SevenThousandDaysOld from "./pages/blogs/SevenThousandDaysOld";
 import GoogleGenAIExchange from "./pages/blogs/GoogleGenAIExchange";
+import QrataInternship from "./pages/blogs/QrataInternship";
 import ScrollToTop from "./components/ScrollToTop";
 import { Analytics } from "@vercel/analytics/react";
 import LiveCursors from "./components/LiveCursors";
@@ -37,6 +38,7 @@ export default function App() {
         <Route path="/blogs/macbook-exams-and-more" element={<MacbookExamsAndMore />} />
         <Route path="/blogs/7305-days-old-now" element={<SevenThousandDaysOld />} />
         <Route path="/blogs/genai-hackathon-25" element={<GoogleGenAIExchange />} />
+        <Route path="/blogs/qrata-internship" element={<QrataInternship />} />
         <Route path="/send-email" element={<AdminSendMail />} />
         <Route path="/unsubscribe" element={<Unsubscribe />} />
       </Routes>

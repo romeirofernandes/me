@@ -58,6 +58,14 @@ export const blogs = [
 		slug: "genai-hackathon-25",
 		read: 10,
 	},
+	{
+    title: "Backend Intern @Qrata",
+		description:
+			"Seven months, eighteen features and a lot of stories from my first onsite internship.",
+		date: "16-07-2026",
+		slug: "qrata-internship",
+		read: 14,
+	},
 ];
 
 export default function BlogList({ search }) {

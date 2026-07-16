@@ -63,7 +63,7 @@ export default function AdminSendMail() {
       setFormData({
         title: blog.title,
         excerpt: blog.description,
-        url: `https://blog.romeirofernandes.tech/blogs/${blog.slug}`,
+        url: `https://blog.romeiro.dev/blogs/${blog.slug}`,
       });
     }
   };
@@ -101,7 +101,7 @@ export default function AdminSendMail() {
 
   const togglePreview = () => setShowPreview(!showPreview);
 
-  const unsubscribePreviewUrl = "https://blog.romeirofernandes.tech/unsubscribe?email=example@email.com";
+  const unsubscribePreviewUrl = "https://blog.romeiro.dev/unsubscribe?email=example@email.com";
 
   if (!authenticated) {
     return (
@@ -208,7 +208,7 @@ export default function AdminSendMail() {
                       type="url"
                       value={formData.url}
                       onChange={(e) => handleInputChange("url", e.target.value)}
-                      placeholder="https://blog.romeirofernandes.tech/blogs/slug"
+                      placeholder="https://blog.romeiro.dev/blogs/slug"
                       className="w-full rounded-none border-[#232323] light:border-zinc-300 bg-transparent text-white light:text-zinc-900 placeholder:text-zinc-500 light:placeholder:text-zinc-400 focus-visible:ring-0"
                     />
                   </div>
