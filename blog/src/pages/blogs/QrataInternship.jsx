@@ -34,6 +34,7 @@ import { db } from "../../firebase";
 import { blogs } from "../../components/BlogList";
 import ScrollProgress from "../../components/ScrollProgress";
 import { SmoothScroll } from "../../components/motion/smooth-scroll";
+import { Popover, PopoverContent, PopoverTrigger } from "../../components/motion/popover";
 
 const BLOG_ID = "qrata-internship";
 
@@ -362,7 +363,7 @@ export default function QrataInternship() {
             one thing i can say for sure is that working at qrata hardly felt like working. most of the tech team had only recently graduated from college, so the environment genuinely felt like an extension of college itself. another thing i'll never forget is that they asked me what they should call me because apparently "romeiro" was too difficult to pronounce. i told them people sometimes call me rom, and from that day onwards i was simply "rom" around the office.
           </p>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
-            the first month, however, was excruciating for a completely different reason. i always thought the worst part about having a job would be overworking, micromanagement or something similar, but i found a much stronger contender, travelling. my daily commute took almost three hours in total. initially i travelled by bus because it was more comfortable, but later switched to trains and realised it was simply a tradeoff. slower but comfortable, or faster but significantly less comfortable. i eventually chose the latter. kaushik bhai also helped a lot with this because he left me at santacruz on his bike almost every time i came in for work.
+            the first month, however, was excruciating for a completely different reason. i always thought the worst part about having a job would be overworking, micromanagement or something similar, but i found a much stronger contender, travelling. my daily commute took almost three hours in total. initially i travelled by bus because it was more comfortable, but later switched to trains and realised it was simply a tradeoff. slower but comfortable, or faster but significantly less comfortable. i eventually chose the latter. kaushik <Popover trigger="hover"><PopoverTrigger><span className="underline decoration-wavy decoration-1 underline-offset-2">bhai</span></PopoverTrigger><PopoverContent>translates to brother, but elder brother in this case because i was the youngest one in the office so i addressed others as [name] bhai.</PopoverContent></Popover> also helped a lot with this because he left me at santacruz on his bike almost every time i came in for work.
           </p>
         </section>
 
@@ -415,6 +416,11 @@ export default function QrataInternship() {
             <li>
               one of the nicest moments during my internship happened around christmas. it was secret santa season and i had absolutely no idea because i had joined recently. instead of leaving me out, everyone pooled in together and got me a gift, a pair of boat headphones. i genuinely loved those.
             </li>
+            <ImageModal
+              src="/qrata-internship/christmas.webp"
+              alt="christmas secret santa gift"
+              caption="christmas celebration @qrata"
+            />
             <li>
               cycling with the tech team. before this, i didn't even know that you could rent cycles. it was a really fun day but god, the cycle seats don't go easy on your bum. we cycled for around 3 hours.
             </li>
@@ -440,7 +446,7 @@ export default function QrataInternship() {
               containerClassName="max-w-sm mx-auto"
             />
             <li>
-              my last day. the best of them all. i got a bunch of gifts from them - a gojo caricature and a sword keychain from garv, a gym bag, deadlifting belt and wrist straps from everyone combined (i would've joined the gym but the july rains are moving mad, i will join soon). they also got a brownie ice cream tub instead of a cake, which was a banger. we later went out for dinner. got drenched while going back with kaushik on his bike, but this was hands down the best day.
+              my last day. the best of them all. i got a bunch of gifts from them - a gojo caricature and a sword keychain from garv (probably not the best to carry around given the <Popover trigger="hover"><PopoverTrigger><span className="underline decoration-wavy decoration-1 underline-offset-2">current situation</span></PopoverTrigger><PopoverContent>recently, a guy was stabbed to death in the local train over a small dispute</PopoverContent></Popover>), a gym bag, deadlifting belt and wrist straps from everyone combined (i would've joined the gym but the july rains are moving mad, i will join soon). they also got a brownie ice cream tub instead of a cake, which was a banger. we later went out for dinner. got drenched while going back with kaushik on his bike, but this was hands down the best day.
             </li>
           </ol>
         </section>
@@ -473,7 +479,7 @@ export default function QrataInternship() {
               <br />github copilot was the only ai agent i used for 2 years because my friend (yeah russel again) introduced me to the free education plan. it was neat because of its request based pricing model, but it all went downhill when they changed it recently. i switched to opencode with free models and picked up on new ways to generate better code with them. it might sound like i simply switched tools, but i had to read a lot more code now than before because i was always skeptical of what these new free models generated.
             </li>
             <li>
-              <strong>behzinga is not the way.</strong>
+              <strong><Popover trigger="hover"><PopoverTrigger><span className="underline decoration-wavy decoration-1 underline-offset-2">behzinga</span></PopoverTrigger><PopoverContent>ethan payne (behz) from sidemen called the rest of the members (friends) his colleagues in a side+ podcast.</PopoverContent></Popover> is not the way.</strong>
               <br />maybe it's too early for me to say this, but i don't think i can ever just be colleagues with the people i spend most of my day with. i've always blurred that line a little. i end up considering them friends or elder brothers instead, and i genuinely think that's one of the reasons i enjoyed working. obviously this depends on the people and the environment, but i'm glad qrata turned out to be that kind of place for me.
             </li>
           </ol>

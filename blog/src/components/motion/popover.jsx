@@ -343,6 +343,8 @@ export function PopoverContent({ children, className }) {
             width: geo.layerW,
             height: geo.layerH,
             filter: reduce ? undefined : `url(#${gooId})`,
+            opacity: open ? 1 : 0,
+            transition: "opacity 0.18s ease-out",
           }}
         >
           <div
@@ -369,6 +371,8 @@ export function PopoverContent({ children, className }) {
           style={{
             clipPath: insetForProgress(geo, progress.get()),
             pointerEvents: open ? "auto" : "none",
+            opacity: open ? 1 : 0,
+            transition: "opacity 0.18s ease-out",
           }}
         >
           <div
@@ -383,7 +387,7 @@ export function PopoverContent({ children, className }) {
               transformOrigin: `${ALIGN_ORIGIN[align]} ${side === "bottom" ? "top" : "bottom"}`,
             }}
             className={cn(
-              "w-max max-w-[min(92vw,20rem)] p-4 text-neutral-200 outline-none",
+              "w-max max-w-[min(92vw,20rem)] p-3 text-sm font-light text-neutral-200 outline-none bg-neutral-800 rounded-xl",
               className,
             )}
           >
