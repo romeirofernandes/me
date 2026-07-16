@@ -100,7 +100,6 @@ export default function QrataInternship() {
         <div>
           <ImageModal src="/qrata-internship/bulk-upload.webp" alt="bulk upload feature" loading="eager" />
           <p className="mt-4">earlier, recruiters could only upload one candidate at a time by uploading a resume and letting the llm extract the information before prefilling the form. the entire flow took roughly a minute per candidate. to improve this, i built a concurrent bulk upload pipeline where recruiters could upload multiple resume pdfs together or simply upload a spreadsheet containing candidate details along with drive links to resumes. i benchmarked it afterwards and the new flow ended up being roughly 95% faster than the original process.</p>
-          <ImageModal src="/qrata-internship/bulk-upload.webp" alt="bulk upload feature" loading="eager" />
         </div>
       ),
     },
