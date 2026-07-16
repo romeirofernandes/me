@@ -309,3 +309,12 @@ html.light ::-webkit-scrollbar-thumb:hover {
   background: #888;
 }
 
+.blog-scroll-area {
+  scrollbar-width: thin;
+  scrollbar-color: #555 #1a1a1a;
+}
+
+html.light .blog-scroll-area {
+  scrollbar-color: #aaa #e8e8e8;
+}
+

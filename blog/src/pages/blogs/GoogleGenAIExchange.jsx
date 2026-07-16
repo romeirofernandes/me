@@ -13,6 +13,7 @@ import { blogs } from "../../components/BlogList";
 import { RainbowTextEffect } from "../../components/ui/rainbow-text-effect";
 import VideoPlayer from "../../components/VideoPlayer";
 import ScrollProgress from "../../components/ScrollProgress";
+import { SmoothScroll } from "../../components/motion/smooth-scroll";
 
 const BLOG_ID = "genai-hackathon-25";
 
@@ -84,6 +85,7 @@ export default function GoogleGenAIExchange() {
   };
 
   return (
+  <SmoothScroll root={false} className="h-dvh w-full overflow-y-auto blog-scroll-area">
     <Background>
       <ScrollProgress sections={sections} />
       <div className="blog-article relative mx-auto w-full max-w-3xl px-4 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
@@ -554,5 +556,6 @@ export default function GoogleGenAIExchange() {
         </section>
       </div>
     </Background>
+  </SmoothScroll>
   );
 }

@@ -33,6 +33,7 @@ import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase";
 import { blogs } from "../../components/BlogList";
 import ScrollProgress from "../../components/ScrollProgress";
+import { SmoothScroll } from "../../components/motion/smooth-scroll";
 
 const BLOG_ID = "qrata-internship";
 
@@ -85,7 +86,7 @@ export default function QrataInternship() {
       icon: <FileImage className="h-4 w-4" />,
       content: (
         <div>
-          <ImageModal src="/qrata-internship/watermark.webp" alt="resume watermark feature" containerClassName="max-w-sm" loading="eager" />
+          <ImageModal src="/qrata-internship/watermark.webp" alt="resume watermark feature" containerClassName="max-w-sm mx-auto" loading="eager" />
           <p className="mt-4">adding our logo on every resume that is uploaded on our platform.</p>
         </div>
       ),
@@ -202,6 +203,7 @@ export default function QrataInternship() {
   };
 
   return (
+  <SmoothScroll root={false} className="h-dvh w-full overflow-y-auto blog-scroll-area">
     <Background>
       <ScrollProgress sections={sections} />
       <div className="blog-article relative mx-auto w-full max-w-3xl px-4 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
@@ -552,5 +554,6 @@ export default function QrataInternship() {
         </section>
       </div>
     </Background>
+  </SmoothScroll>
   );
 }

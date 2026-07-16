@@ -4,7 +4,7 @@ const ProgressiveBlur = ({
   className = "",
   backgroundColor = "var(--progressive-blur-bg)",
   position = "top",
-  height = "150px",
+  height = "80px",
   blurAmount = "4px",
   offset,
 }) => {

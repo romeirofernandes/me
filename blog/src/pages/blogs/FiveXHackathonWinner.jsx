@@ -11,6 +11,7 @@ import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase";
 import { blogs } from "../../components/BlogList";
 import ScrollProgress from "../../components/ScrollProgress";
+import { SmoothScroll } from "../../components/motion/smooth-scroll";
 
 const BLOG_ID = "5x-hackathon-winner";
 
@@ -65,6 +66,7 @@ export default function FiveXHackathonWinner() {
   ];
 
   return (
+  <SmoothScroll root={false} className="h-dvh w-full overflow-y-auto blog-scroll-area">
     <Background>
       <ScrollProgress sections={sections} />
       <div className="blog-article relative mx-auto w-full max-w-3xl px-4 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
@@ -394,5 +396,6 @@ export default function FiveXHackathonWinner() {
 
       </div>
     </Background>
+  </SmoothScroll>
   );
 }

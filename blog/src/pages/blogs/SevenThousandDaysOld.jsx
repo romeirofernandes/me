@@ -11,6 +11,7 @@ import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase";
 import { blogs } from "../../components/BlogList";
 import ScrollProgress from "../../components/ScrollProgress";
+import { SmoothScroll } from "../../components/motion/smooth-scroll";
 
 function getNextBlog(slug) {
   const idx = blogs.findIndex((b) => b.slug === slug);
@@ -65,6 +66,7 @@ export default function SevenThousandDaysOld() {
   ];
 
   return (
+  <SmoothScroll root={false} className="h-dvh w-full overflow-y-auto blog-scroll-area">
     <Background>
       <ScrollProgress sections={sections} />
       <div className="blog-article relative mx-auto w-full max-w-3xl px-4 sm:px-4 py-8 font-sans flex flex-col min-h-screen">
@@ -109,8 +111,8 @@ export default function SevenThousandDaysOld() {
           </h2>
 
           <p className="text-neutral-300 light:text-neutral-600">
-            i’ll start with the only bad thing about bnb - the internal rounds.
-            it’s a hackathon to get into the final hackathon. it was pretty
+            i'll start with the only bad thing about bnb - the internal rounds.
+            it's a hackathon to get into the final hackathon. it was pretty
             tiring, but it was all worth it when i saw that 3 teams (team cotton -
             us, team pony, and team allstar xi) qualified for the finals together
             because, coincidentally, the finals were on my birthday.
@@ -124,9 +126,9 @@ export default function SevenThousandDaysOld() {
 
           <p className="text-neutral-300 light:text-neutral-600">
             the problem statements of bnb 2025 were arguably the hardest and
-            weirdest ones i’ve seen in a hackathon so far. only one problem
+            weirdest ones i've seen in a hackathon so far. only one problem
             statement was readable and doable from the web and aiml domain
-            (blockchain idk, i’m just dumb - maybe the ps were readable).
+            (blockchain idk, i'm just dumb - maybe the ps were readable).
           </p>
 
           <ImageModal
@@ -136,7 +138,7 @@ export default function SevenThousandDaysOld() {
           />
 
           <p className="text-neutral-300 light:text-neutral-600">
-            we honestly went with this one because we knew that there wouldn’t be
+            we honestly went with this one because we knew that there wouldn't be
             many who would go for it (there was no prize ps-wise, but we figured
             that everyone would take the same ps - i.e., the web/app one - and
             the judges would be tired of seeing the same thing).
@@ -149,9 +151,9 @@ export default function SevenThousandDaysOld() {
           />
 
           <p className="text-neutral-300 light:text-neutral-600">
-            the hackathon started at 16:00 sharp, and let’s just say we didn’t
+            the hackathon started at 16:00 sharp, and let's just say we didn't
             have the best start. i still thank god for no early judging rounds;
-            otherwise, we would’ve been cooked. i was writing the entire idea down
+            otherwise, we would've been cooked. i was writing the entire idea down
             till 17:30, and my teammates were working on the landing page and
             auth.
           </p>
@@ -159,15 +161,15 @@ export default function SevenThousandDaysOld() {
           <p className="text-neutral-300 light:text-neutral-600">
             we were very confused about what exactly the ps meant for a while. we
             tried searching for multiple libraries and tools we could use but
-            didn’t find anything decent. i still remember, i tried locking in for
+            didn't find anything decent. i still remember, i tried locking in for
             an hour straight, and nothing was working. we almost gave up.
           </p>
 
           <p className="text-neutral-300 light:text-neutral-600">
             we were fooling around with our seniors (team bluecore - who won 3rd
             place overall and 1st in college) who were sitting behind us. they
-            chose aiml ps 1, which had something to do with recognizing parkinson’s
-            from an audio clip (yeah, i still don’t know what sorcery they did
+            chose aiml ps 1, which had something to do with recognizing parkinson's
+            from an audio clip (yeah, i still don't know what sorcery they did
             considering russel was part of the training data).
           </p>
 
@@ -187,7 +189,7 @@ export default function SevenThousandDaysOld() {
             for round 2, we just added more features, and i made a smart contract
             (fully ai-generated) for both users taking part in the experiments and
             the researchers. basically, it was an incentive for users and a system
-            to show the researchers’ experiments on top if they paid a certain
+            to show the researchers' experiments on top if they paid a certain
             amount.
           </p>
 
@@ -223,8 +225,8 @@ export default function SevenThousandDaysOld() {
           </p>
 
           <p className="text-neutral-300 light:text-neutral-600">
-            i’m exploring web3 a bit because why not - there are 4 days left for
-            my diwali vacation to end. let’s just hope i learn/build something
+            i'm exploring web3 a bit because why not - there are 4 days left for
+            my diwali vacation to end. let's just hope i learn/build something
             decent during that time.
           </p>
 
@@ -235,7 +237,7 @@ export default function SevenThousandDaysOld() {
           <p className="text-neutral-300 light:text-neutral-600">at a 35% win rate now lol.</p>
 
           <p className="text-neutral-300 light:text-neutral-600">
-            that’s it for this one - a very happy diwali to each one of you :)
+            that's it for this one - a very happy diwali to each one of you :)
           </p>
         </section>
 
@@ -317,5 +319,6 @@ export default function SevenThousandDaysOld() {
         </section>
       </div>
     </Background>
+  </SmoothScroll>
   );
 }
