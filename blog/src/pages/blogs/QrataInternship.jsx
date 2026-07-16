@@ -2,10 +2,33 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@hugeicons/core-free-icons";
+import {
+  Database,
+  GitBranch,
+  Zap,
+  MessageSquare,
+  Lock,
+  BarChart3,
+  FileImage,
+  Upload,
+  FileText,
+  Cpu,
+  Send,
+  Link as LinkIcon,
+  Bell,
+  Calendar,
+  Mail,
+  Shield,
+  Search,
+  FileEdit,
+} from "lucide-react";
 import Background from "../../components/Background";
 import GradualBlur from "../../components/GradualBlur";
 import ProgressiveBlur from "../../components/ProgressiveBlur";
 import TldrCard from "../../components/TldrCard";
+import ImageModal from "../../components/ImageModal";
+import { BouncyAccordion } from "../../components/motion/bouncy-accordion";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/motion/tabs";
 import { doc, getDoc, updateDoc, setDoc, increment } from "firebase/firestore";
 import { db } from "../../firebase";
 import { blogs } from "../../components/BlogList";
@@ -28,6 +51,44 @@ export default function QrataInternship() {
   const navigate = useNavigate();
   const currentSlug = "qrata-internship";
   const nextBlog = getNextBlog(currentSlug);
+
+  const features = [
+    { id: "1", title: "account ops dashboard", description: "a few tweaks to existing apis to send back the correct data faster.", icon: <Database className="h-4 w-4" /> },
+    { id: "2", title: "timeline", description: "the timeline of every talent, right from when they joined to getting hired/rejected.", icon: <GitBranch className="h-4 w-4" /> },
+    { id: "3", title: "gpt to gemini migration", description: "when i joined, the platform was still using gpt 3.5 turbo for ai powered features. personally, i wasn't a fan because it was already quite old and gemini 2.5 flash lite delivered better outputs while costing less. it was a no brainer to migrate. so every new feature i built, along with the older ai powered ones, eventually got migrated over to gemini.", icon: <Zap className="h-4 w-4" /> },
+    { id: "4", title: "slack integration", description: "before this, users could only share profiles via email and whatsapp. i added slack as another sharing option so our talent partners could directly share candidates with our clients' recruitment team because it was the main communication channel between them.", icon: <MessageSquare className="h-4 w-4" /> },
+    { id: "5", title: "encryption (resume url)", description: "this was a hotfix (highest priority bug) which i picked up to basically encrypt the resume url that was being shown in the api responses.", icon: <Lock className="h-4 w-4" /> },
+    { id: "6", title: "market intel", description: "these pages were used to get new clients or give a sample list of candidates showing what kind of market research qrata can offer. the entire page was being filled in with detailed prompts to generate accurate numbers and data.", icon: <BarChart3 className="h-4 w-4" /> },
+    { id: "7", title: "resume watermark", description: "adding our logo on every resume that is uploaded on our platform.", icon: <FileImage className="h-4 w-4" /> },
+    { id: "8", title: "bulk upload", description: "earlier, recruiters could only upload one candidate at a time by uploading a resume and letting the llm extract the information before prefilling the form. the entire flow took roughly a minute per candidate. to improve this, i built a concurrent bulk upload pipeline where recruiters could upload multiple resume pdfs together or simply upload a spreadsheet containing candidate details along with drive links to resumes. i benchmarked it afterwards and the new flow ended up being roughly 95% faster than the original process.", icon: <Upload className="h-4 w-4" /> },
+    { id: "9", title: "stage narrative", description: "", icon: <FileText className="h-4 w-4" /> },
+    { id: "10", title: "embeddings", description: "created vector embeddings for candidates whenever they were created or updated, and matched them against job description embeddings to generate a fit score.", icon: <Cpu className="h-4 w-4" /> },
+    { id: "11", title: "submit profile", description: "added another ui for the email that is used to submit profiles of various candidates to the clients.", icon: <Send className="h-4 w-4" /> },
+    { id: "12", title: "copy sheet link", description: "a way to get all the activity and candidates in a job directly to a google spreadsheet to be shared with clients directly for cleaner access.", icon: <LinkIcon className="h-4 w-4" /> },
+    { id: "13", title: "awaiting feedback", description: "an option to send a reminder message via (email, whatsapp or slack) containing the candidates in a pending feedback stage in their job.", icon: <Bell className="h-4 w-4" /> },
+    { id: "14", title: "weekly hiring report", description: "created account wise weekly reports for clients to show the progress made in each of their active jobs on our platform in the last week.", icon: <Calendar className="h-4 w-4" /> },
+    { id: "15", title: "google email verification", description: "the platform already had an email sharing feature but every email across the platform was sent through a single account, which eventually started getting flagged as spam. to solve that, i built an oauth connector so every talent partner could connect their own gmail account and send emails through our platform. this also meant recording demo videos and communicating with google support to obtain approval for one of gmail's sensitive api scopes.", icon: <Mail className="h-4 w-4" /> },
+    { id: "16", title: "user security", description: "created the schema, the middleware, the documentation for KT, so that different users on our platform have their respective permissions.", icon: <Shield className="h-4 w-4" /> },
+    {
+      id: "17",
+      title: "talent pool search",
+      icon: <Search className="h-4 w-4" />,
+      content: (
+        <div>
+          <p className="mb-2">
+            we at qrata had a decently sized talent pool of around 66k candidates (at the time i was working there). to query it, we already had filters and other search options in place, but we needed something faster. i updated the existing search bar to perform a hybrid query by combining direct mongodb filters with semantic similarity matching using talent embeddings. this allowed recruiters to search for candidates in natural language.
+          </p>
+          <div className="text-neutral-400 light:text-neutral-500 italic text-sm">
+            for example: "find me product managers from bangalore with 8 years of experience"
+          </div>
+        </div>
+      ),
+    },
+    { id: "18", title: "role brief", description: "this feature went through four different iterations and was probably one of the heavier ones from both a backend and frontend perspective. the idea was to create a page where clients could interact with us and guide us in defining the job requirements more accurately.", icon: <FileEdit className="h-4 w-4" /> },
+  ];
+
+  const favoriteIds = ["3", "4", "8", "15"];
+  const favoriteFeatures = features.filter((f) => favoriteIds.includes(f.id));
   const previousBlog = getPreviousBlog(currentSlug);
 
   useEffect(() => {
@@ -240,65 +301,20 @@ export default function QrataInternship() {
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             from the second month onwards, i had become comfortable with the codebase and was finally ready to contribute actual features. over the next few months i worked on the following:
           </p>
-          <ol className="text-neutral-300 light:text-neutral-600 list-decimal pl-6 mb-4 space-y-4">
-            <li>
-              <strong>account ops dashboard</strong> - a few tweaks to existing apis to send back the correct data faster.
-            </li>
-            <li>
-              <strong>timeline</strong> - the timeline of every talent, right from when they joined to getting hired/rejected.
-            </li>
-            <li>
-              <strong>gpt to gemini migration</strong> - when i joined, the platform was still using gpt 3.5 turbo for ai powered features. personally, i wasn't a fan because it was already quite old and gemini 2.5 flash lite delivered better outputs while costing less. it was a no brainer to migrate. so every new feature i built, along with the older ai powered ones, eventually got migrated over to gemini.
-            </li>
-            <li>
-              <strong>slack integration</strong> - before this, users could only share profiles via email and whatsapp. i added slack as another sharing option so our talent partners could directly share candidates with our clients' recruitment team because it was the main communication channel between them.
-            </li>
-            <li>
-              <strong>encryption (resume url)</strong> - this was a hotfix (highest priority bug) which i picked up to basically encrypt the resume url that was being shown in the api responses.
-            </li>
-            <li>
-              <strong>market intel</strong> - these pages were used to get new clients or give a sample list of candidates showing what kind of market research qrata can offer. the entire page was being filled in with detailed prompts to generate accurate numbers and data.
-            </li>
-            <li>
-              <strong>resume watermark</strong> - adding our logo on every resume that is uploaded on our platform.
-            </li>
-            <li>
-              <strong>bulk upload</strong> - earlier, recruiters could only upload one candidate at a time by uploading a resume and letting the llm extract the information before prefilling the form. the entire flow took roughly a minute per candidate. to improve this, i built a concurrent bulk upload pipeline where recruiters could upload multiple resume pdfs together or simply upload a spreadsheet containing candidate details along with drive links to resumes. i benchmarked it afterwards and the new flow ended up being roughly 95% faster than the original process.
-            </li>
-            <li>
-              <strong>stage narrative</strong>
-            </li>
-            <li>
-              <strong>embeddings</strong> - created vector embeddings for candidates whenever they were created or updated, and matched them against job description embeddings to generate a fit score.
-            </li>
-            <li>
-              <strong>submit profile</strong> - added another ui for the email that is used to submit profiles of various candidates to the clients.
-            </li>
-            <li>
-              <strong>copy sheet link</strong> - a way to get all the activity and candidates in a job directly to a google spreadsheet to be shared with clients directly for cleaner access.
-            </li>
-            <li>
-              <strong>awaiting feedback</strong> - an option to send a reminder message via (email, whatsapp or slack) containing the candidates in a pending feedback stage in their job.
-            </li>
-            <li>
-              <strong>weekly hiring report</strong> - created account wise weekly reports for clients to show the progress made in each of their active jobs on our platform in the last week.
-            </li>
-            <li>
-              <strong>google email verification</strong> - the platform already had an email sharing feature but every email across the platform was sent through a single account, which eventually started getting flagged as spam. to solve that, i built an oauth connector so every talent partner could connect their own gmail account and send emails through our platform. this also meant recording demo videos and communicating with google support to obtain approval for one of gmail's sensitive api scopes.
-            </li>
-            <li>
-              <strong>user security</strong> - created the schema, the middleware, the documentation for KT, so that different users on our platform have their respective permissions.
-            </li>
-            <li>
-              <strong>talent pool search</strong> - we at qrata had a decently sized talent pool of around 66k candidates (at the time i was working there). to query it, we already had filters and other search options in place, but we needed something faster. i updated the existing search bar to perform a hybrid query by combining direct mongodb filters with semantic similarity matching using talent embeddings. this allowed recruiters to search for candidates in natural language.
-              <div className="text-neutral-400 light:text-neutral-500 italic mt-2 text-sm">
-                for example: "find me product managers from bangalore with 8 years of experience"
-              </div>
-            </li>
-            <li>
-              <strong>role brief</strong> - this feature went through four different iterations and was probably one of the heavier ones from both a backend and frontend perspective. the idea was to create a page where clients could interact with us and guide us in defining the job requirements more accurately.
-            </li>
-          </ol>
+          <Tabs defaultValue="all" variant="pill" className="mb-8">
+            <div className="flex justify-center">
+              <TabsList>
+                <TabsTrigger value="all">all</TabsTrigger>
+                <TabsTrigger value="favorites">favorites</TabsTrigger>
+              </TabsList>
+            </div>
+            <TabsContent value="all">
+              <BouncyAccordion items={features} />
+            </TabsContent>
+            <TabsContent value="favorites">
+              <BouncyAccordion items={favoriteFeatures} />
+            </TabsContent>
+          </Tabs>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             i genuinely enjoyed working on all of these because i could actually see people using what i was building and give feedback on it. i also ended up learning a lot about ux because not everyone using the platform was tech savvy.
           </p>

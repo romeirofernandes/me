@@ -19,6 +19,8 @@ body {
   text-align: justify;
   letter-spacing: 0.01em;
   font-size: 0.875rem;
+  scrollbar-width: thin;
+  scrollbar-color: #555 #1a1a1a;
 }
 
 p, span, div, article, section, li, td, th {
@@ -276,5 +278,34 @@ html.light [data-radix-popper-content-wrapper] polygon {
 
 ::view-transition-new(root) {
   animation: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #e8e8e8;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #aaa;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #888;
 }
 
