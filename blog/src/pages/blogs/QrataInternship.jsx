@@ -122,7 +122,7 @@ export default function QrataInternship() {
     { id: "learning-the-codebase", label: "learning the codebase" },
     { id: "building-features", label: "building features" },
     { id: "the-things-thatll-stick-with-me", label: "the things that'll stick" },
-    { id: "what-seven-months-taught-me", label: "what seven months taught me" },
+    { id: "what-seven-months-taught-me", label: "what i learnt" },
     { id: "why-i-left", label: "why i left" },
     { id: "looking-back", label: "looking back" },
   ];
