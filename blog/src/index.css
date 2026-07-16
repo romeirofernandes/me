@@ -236,6 +236,16 @@ html.light {
   --progressive-blur-bg: #f5f5f7;
 }
 
+html.light ::selection {
+  background: #B3E5FC;
+  color: #080808;
+}
+
+html.light ::-moz-selection {
+  background: #B3E5FC;
+  color: #080808;
+}
+
 html.light body {
   background-color: #f5f5f7;
   color: #080808;
