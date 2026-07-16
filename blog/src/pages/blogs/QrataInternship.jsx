@@ -247,21 +247,35 @@ export default function QrataInternship() {
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             my routine during the fully onsite time at qrata looked something like this -
           </p>
-          <div className="text-neutral-300 light:text-neutral-600 mb-4 font-mono text-sm leading-relaxed whitespace-pre-line">
-            8:00 AM - waking up
-            9:00 AM - leaving the house
-            10:15 AM - reach the office
-            10:30 AM - the morning call
-            10:45 AM - work work work
-            2:00 PM - lunch break
-            3:00 PM - work work work
-            5:30 PM - evening stroll (this varied from like 4 to 6:30)
-            6:50 PM - the evening call
-            7:00 PM - leaving the office
-            8:30 PM - reaching home
-            9:00 PM - dinner
-            10:00 PM - chilling
-            12:00 AM - sleep
+          <div className="overflow-x-auto mb-8">
+            <table className="w-full text-left border-collapse text-xs sm:text-sm border border-[#232323] light:border-zinc-300">
+              <thead>
+                <tr className="bg-[#18181b] light:bg-zinc-200">
+                  <th className="py-2 px-3 font-bold text-zinc-300 light:text-zinc-700 border border-[#232323] light:border-zinc-300 w-[45%] text-center">
+                    Time
+                  </th>
+                  <th className="py-2 px-3 font-bold text-zinc-300 light:text-zinc-700 border border-[#232323] light:border-zinc-300 text-center">
+                    Activity
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300 font-mono text-center">8:00 AM</td><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300">waking up</td></tr>
+                <tr><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300 font-mono text-center">9:00 AM</td><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300">leaving the house</td></tr>
+                <tr><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300 font-mono text-center">10:15 AM</td><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300">reach the office</td></tr>
+                <tr><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300 font-mono text-center">10:30 AM</td><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300">the morning call</td></tr>
+                <tr><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300 font-mono text-center">10:45 AM</td><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300">work work work</td></tr>
+                <tr><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300 font-mono text-center">2:00 PM</td><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300">lunch break</td></tr>
+                <tr><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300 font-mono text-center">3:00 PM</td><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300">work work work</td></tr>
+                <tr><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300 font-mono text-center">5:30 PM</td><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300">evening stroll (this varied from like 4 to 6:30)</td></tr>
+                <tr><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300 font-mono text-center">6:50 PM</td><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300">the evening call</td></tr>
+                <tr><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300 font-mono text-center">7:00 PM</td><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300">leaving the office</td></tr>
+                <tr><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300 font-mono text-center">8:30 PM</td><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300">reaching home</td></tr>
+                <tr><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300 font-mono text-center">9:00 PM</td><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300">dinner</td></tr>
+                <tr><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300 font-mono text-center">10:00 PM</td><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300">chilling</td></tr>
+                <tr><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300 font-mono text-center">12:00 AM</td><td className="py-2 px-3 text-zinc-400 light:text-zinc-600 border border-[#232323] light:border-zinc-300">sleep</td></tr>
+              </tbody>
+            </table>
           </div>
           <p className="text-neutral-300 light:text-neutral-600 mb-4">
             this was the only time the schedule looked healthy because when college started, the entire routine just went out of the window.
