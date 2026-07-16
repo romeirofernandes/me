@@ -2,22 +2,18 @@ import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Popover, PopoverContent, PopoverTrigger } from "./motion/popover"
 import { SharedLayoutBg } from "./motion/shared-layout-bg"
+import { useSmoothScroll } from "./motion/smooth-scroll"
 
 export default function ScrollProgress({ sections = [] }) {
+  const { progress: progressVal, scrollTo } = useSmoothScroll()
   const [progress, setProgress] = useState(0)
   const [currentLabel, setCurrentLabel] = useState(sections[0]?.label ?? "")
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight
-      setProgress(docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0)
-    }
-    handleScroll()
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    const unsubscribe = progressVal.on("change", setProgress)
+    return () => unsubscribe()
+  }, [progressVal])
 
   useEffect(() => {
     if (!sections.length) return
@@ -41,7 +37,7 @@ export default function ScrollProgress({ sections = [] }) {
   }, [sections])
 
   const handleSectionClick = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
+    scrollTo(document.getElementById(id), { offset: -80 })
     setOpen(false)
   }
 
@@ -69,13 +65,6 @@ export default function ScrollProgress({ sections = [] }) {
             </div>
 
             <svg width="32" height="32" className="-rotate-90 shrink-0">
-              <defs>
-                <linearGradient id="blueProgress" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#B3E5FC" />
-                  <stop offset="50%" stopColor="#64B5F6" />
-                  <stop offset="100%" stopColor="#1E88E5" />
-                </linearGradient>
-              </defs>
               <circle
                 cx="16"
                 cy="16"
@@ -89,12 +78,12 @@ export default function ScrollProgress({ sections = [] }) {
                 cy="16"
                 r="13"
                 fill="none"
-                stroke="url(#blueProgress)"
+                stroke="#64B5F6"
                 strokeWidth="3"
                 strokeLinecap="round"
                 strokeDasharray={circumference}
                 strokeDashoffset={offset}
-                className="transition-[stroke-dashoffset] duration-150 ease-linear"
+                className="transition-none"
               />
             </svg>
           </button>
