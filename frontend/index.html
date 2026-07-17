@@ -28,6 +28,7 @@
         var isLight = period === 'morning' || period === 'afternoon';
         if (images[period]) {
           document.documentElement.style.setProperty('--page-bg-image', 'url(' + images[period] + ')');
+          fetch(images[period]);
         }
         document.documentElement.style.backgroundColor = isLight ? '#f5f5f7' : '#080808';
         document.documentElement.style.colorScheme = isLight ? 'light' : 'dark';

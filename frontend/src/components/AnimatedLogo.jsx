@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import '@fontsource-variable/playwrite-sk';
 import { useMediaQuery } from 'react-responsive';
 
 export default function AnimatedLogo({ fadeOut = false, onAnimationEnd }) {
