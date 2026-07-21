@@ -11,7 +11,7 @@ export default function ThemeToggle() {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const isDragging = useRef(false);
-  const containerRef = useRef(null);
+  const bulbRef = useRef(null);
 
   useEffect(() => {
     const saved = localStorage.getItem("theme");
@@ -33,37 +33,85 @@ export default function ThemeToggle() {
     });
   }, []);
 
-  const handleToggle = useCallback((e) => {
-    const el = e?.currentTarget || containerRef.current;
-    if (el && document.startViewTransition) {
-      const rect = el.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      const endRadius = Math.hypot(Math.max(cx, innerWidth - cx), Math.max(cy, innerHeight - cy));
-
-      document.startViewTransition(() => {
-        const next = !document.documentElement.classList.contains("light");
-        document.documentElement.classList.toggle("light", next);
-        localStorage.setItem("theme", next ? "light" : "dark");
-        setIsOn(next);
-      }).ready.then(() => {
-        document.documentElement.animate(
-          {
-            clipPath: [
-              `circle(0px at ${cx}px ${cy}px)`,
-              `circle(${endRadius}px at ${cx}px ${cy}px)`,
-            ],
-          },
-          {
-            duration: 1200,
-            easing: "linear",
-            pseudoElement: "::view-transition-new(root)",
-          }
-        );
-      });
-    } else {
-      toggle();
+  const handleToggle = useCallback(() => {
+    let cx = 50, cy = 50;
+    if (bulbRef.current) {
+      const r = bulbRef.current.getBoundingClientRect();
+      cx = ((r.left + r.width / 2) / window.innerWidth) * 100;
+      cy = ((r.top + r.height / 2) / window.innerHeight) * 100;
     }
+    const css = `
+      ::view-transition-group(root) {
+        animation-duration: 1.2s;
+        animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      ::view-transition-new(root) {
+        animation-name: reveal-light;
+        animation-duration: 1.2s;
+        animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+        filter: blur(2px);
+      }
+      ::view-transition-old(root),
+      .dark::view-transition-old(root) {
+        animation: none;
+        z-index: -1;
+      }
+      .dark::view-transition-new(root) {
+        animation-name: reveal-dark;
+        animation-duration: 1.2s;
+        animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+        filter: blur(2px);
+      }
+      ::view-transition-image-pair(theme-toggle) {
+        mix-blend-mode: normal;
+        isolation: isolate;
+      }
+      ::view-transition-group(theme-toggle) {
+        animation-name: theme-toggle-reveal;
+        animation-duration: 1.2s;
+        animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+        animation-fill-mode: both;
+      }
+      ::view-transition-old(theme-toggle) {
+        animation: none;
+        opacity: 0;
+      }
+      ::view-transition-new(theme-toggle) {
+        animation: none;
+      }
+      @keyframes theme-toggle-reveal {
+        from { clip-path: circle(0% at ${cx}% ${cy}%); }
+        to { clip-path: circle(150.0% at ${cx}% ${cy}%); }
+      }
+      @keyframes reveal-dark {
+        from { clip-path: circle(0% at ${cx}% ${cy}%); filter: blur(8px); }
+        50% { filter: blur(4px); }
+        to { clip-path: circle(150.0% at ${cx}% ${cy}%); filter: blur(0px); }
+      }
+      @keyframes reveal-light {
+        from { clip-path: circle(0% at ${cx}% ${cy}%); filter: blur(8px); }
+        50% { filter: blur(4px); }
+        to { clip-path: circle(150.0% at ${cx}% ${cy}%); filter: blur(0px); }
+      }
+    `;
+    let styleEl = document.getElementById("theme-transition-styles");
+    if (!styleEl) {
+      styleEl = document.createElement("style");
+      styleEl.id = "theme-transition-styles";
+      document.head.appendChild(styleEl);
+    }
+    styleEl.textContent = css;
+
+    if (!document.startViewTransition) {
+      toggle();
+      return;
+    }
+    document.startViewTransition(() => {
+      const next = !document.documentElement.classList.contains("light");
+      document.documentElement.classList.toggle("light", next);
+      localStorage.setItem("theme", next ? "light" : "dark");
+      setIsOn(next);
+    });
   }, [toggle]);
 
   const cordStroke = isOn ? "stroke-zinc-900" : "stroke-zinc-400";
@@ -92,7 +140,7 @@ export default function ThemeToggle() {
   };
 
   return (
-    <div ref={containerRef} className="fixed top-6 right-8 z-50" style={{ width: "2rem", touchAction: "none" }}>
+    <div className="fixed top-6 right-8 z-50" style={{ width: "2rem", touchAction: "none", viewTransitionName: "theme-toggle" }}>
       <svg
         viewBox="0 0 197.451 481.081"
         className="md:h-28 h-24 w-auto overflow-visible"
@@ -111,38 +159,39 @@ export default function ThemeToggle() {
 
         <g transform="translate(844.069, -645.213)">
           <path
-            className={`${capFill} transition-all duration-300`}
+            className={`${capFill}`}
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="4.677"
             d="M-774.546 827.629s12.917-13.473 29.203-13.412c16.53.062 29.203 13.412 29.203 13.412v53.6s-8.825 16-29.203 16c-21.674 0-29.203-16-29.203-16z"
           />
           <path
-            className={`${capShine} transition-all duration-300`}
+            className={`${capShine}`}
             d="M-778.379 802.873h25.512v118.409h-25.512z"
             clipPath="url(#g)"
             transform="matrix(.52452 0 0 .90177 -368.282 82.976)"
           />
           <path
-            className={`${capFill} transition-all duration-300`}
+            className={`${capFill}`}
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="4"
             d="M-774.546 827.629s12.917-13.473 29.203-13.412c16.53.062 29.203 13.412 29.203 13.412v0s-8.439 10.115-28.817 10.115c-21.673 0-29.59-10.115-29.59-10.115z"
           />
           <path
-            className={`${capOutline} fill-none transition-all duration-300`}
+            className={`${capOutline} fill-none`}
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="4.677"
             d="M-774.546 827.629s12.917-13.473 29.203-13.412c16.53.062 29.203 13.412 29.203 13.412v53.6s-8.825 16-29.203 16c-21.674 0-29.203-16-29.203-16z"
           />
-          <g className={`${filament} fill-none transition-all duration-300`} strokeLinecap="round" strokeWidth="5">
+          <g className={`${filament} fill-none`} strokeLinecap="round" strokeWidth="5">
             <path d="M-752.914 823.875l-8.858-33.06" />
             <path d="M-737.772 823.875l8.858-33.06" />
           </g>
           <path
-            className={`${bulbStroke} ${bulbFill} transition-all duration-300`}
+            ref={bulbRef}
+            className={`${bulbStroke} ${bulbFill}`}
             strokeLinecap="round"
             strokeWidth="5"
             d="M-783.192 803.855c5.251 8.815 5.295 21.32 13.272 27.774 12.299 8.045 36.46 8.115 49.127 0 7.976-6.454 8.022-18.96 13.273-27.774 3.992-6.7 14.408-19.811 14.408-19.811 8.276-11.539 12.769-24.594 12.769-38.699 0-35.898-29.102-65-65-65-35.899 0-65 29.102-65 65 0 13.667 4.217 26.348 12.405 38.2 0 0 10.754 13.61 14.746 20.31z"
@@ -150,7 +199,7 @@ export default function ThemeToggle() {
             style={{ cursor: "pointer" }}
           />
           <path
-            className={`${shine} fill-none transition-all duration-300`}
+            className={`${shine} fill-none`}
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="12"

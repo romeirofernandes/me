@@ -276,10 +276,6 @@ html.light [data-radix-popper-content-wrapper] polygon {
   animation: none;
 }
 
-::view-transition-new(root) {
-  animation: none;
-}
-
 ::-webkit-scrollbar {
   width: 6px;
 }
