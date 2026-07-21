@@ -202,8 +202,8 @@ export default function Achievements() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="-left-3 md:-left-4 bg-[var(--glass-bg-20)] border-white/10 text-white hover:bg-white/20 hover:text-white shadow-lg backdrop-blur-md" />
-        <CarouselNext className="-right-3 md:-right-4 bg-[var(--glass-bg-20)] border-white/10 text-white hover:bg-white/20 hover:text-white shadow-lg backdrop-blur-md" />
+        <CarouselPrevious className="-left-3 md:-left-4 bg-[var(--glass-bg-20)] border-white/10 text-white hover:bg-white/20 hover:text-white shadow-lg backdrop-blur-md" data-cuelume-press data-cuelume-release />
+        <CarouselNext className="-right-3 md:-right-4 bg-[var(--glass-bg-20)] border-white/10 text-white hover:bg-white/20 hover:text-white shadow-lg backdrop-blur-md" data-cuelume-press data-cuelume-release />
       </Carousel>
 
       {/* Animated Modal for zoomed image */}

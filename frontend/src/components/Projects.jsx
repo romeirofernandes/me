@@ -55,6 +55,8 @@ export default function Projects() {
             className="group px-7 py-2.5 rounded-xl text-white/90 text-[15px] font-medium tracking-wide border-[var(--btn-border)] bg-[var(--btn-bg)] backdrop-blur-lg shadow-[0_4px_16px_rgba(0,0,0,0.25)] hover:border-white/20 hover:bg-[var(--glass-bg-20)] hover:text-white transition-all duration-200 active:scale-[0.97] focus:outline-none focus:ring-2 focus:ring-white/20 flex items-center gap-2.5"
             aria-expanded={showAll}
             onClick={handleToggle}
+            data-cuelume-press
+            data-cuelume-release
           >
             {showAll ? "Show Less" : "Show More"}
             <span className={`transition-transform duration-300 ${showAll ? "-rotate-180" : ""}`}>

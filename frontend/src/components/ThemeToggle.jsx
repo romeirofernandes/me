@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { memo, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { play } from "@/lib/cuelume";
 
 const PERIODS = [
   { value: "morning", label: "Morning", img: "/morning.webp" },
@@ -39,6 +40,8 @@ export default memo(function ThemeToggle({ period, onPeriodChange, className = "
         aria-label="Toggle theme"
         onClick={() => setOpen((p) => !p)}
         className="size-8 md:size-9 rounded-full flex items-center justify-center text-white cursor-pointer"
+        data-cuelume-press
+        data-cuelume-release
       >
         <motion.svg
           viewBox="0 0 240 240"
@@ -92,6 +95,7 @@ export default memo(function ThemeToggle({ period, onPeriodChange, className = "
                   layout="position"
                   aria-selected={period === p.value}
                   onClick={() => {
+                    play("release");
                     onPeriodChange(p.value);
                     setOpen(false);
                   }}
@@ -101,8 +105,7 @@ export default memo(function ThemeToggle({ period, onPeriodChange, className = "
                     period === p.value
                       ? "text-white"
                       : "text-white/60 hover:text-white/90",
-                  )}
-                >
+                  )}>
                   {period === p.value && (
                     <motion.div
                       layoutId="period-pill"

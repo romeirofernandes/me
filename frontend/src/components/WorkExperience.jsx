@@ -71,7 +71,7 @@ export default function WorkExperience() {
               transition={{ delay: idx * 0.1 }}
               className="relative z-10 isolate rounded-xl border border-white/10 bg-[var(--glass-bg)] backdrop-blur-xl shadow-xl overflow-hidden"
             >
-              <div className="flex items-start justify-between p-4 sm:p-6 cursor-pointer" onClick={() => toggleExpand(exp.id)}>
+              <div className="flex items-start justify-between p-4 sm:p-6 cursor-pointer" onClick={() => toggleExpand(exp.id)} data-cuelume-press data-cuelume-release>
                 <div className="flex-1">
                   <div className="flex items-center gap-3 sm:gap-4">
                     <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-md flex items-center justify-center shadow-lg overflow-hidden flex-shrink-0">

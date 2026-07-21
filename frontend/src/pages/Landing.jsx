@@ -17,6 +17,7 @@ import AnimatedLogo from "../components/AnimatedLogo";
 import Signature from "../components/Signature";
 import WorkExperience from "../components/WorkExperience";
 import { fetchGitHubContributions } from "../lib/github";
+import { prewarm } from "@/lib/cuelume";
 
 const DissolveOverlay = React.lazy(() => import("../components/DissolveOverlay"));
 
@@ -141,7 +142,7 @@ export default function Landing() {
   return (
     <>
       <AnimatePresence>
-        {showLogo && <AnimatedLogo fadeOut={fadeOut} />}
+        {showLogo && <AnimatedLogo fadeOut={fadeOut} onAnimationEnd={prewarm} />}
       </AnimatePresence>
       {!showLogo && (
         <DiagonalBackground className="min-h-screen">

@@ -102,6 +102,8 @@ export default function Sidebar({ className = "" }) {
                     onMouseLeave={() => setHoveredIdx(null)}
                     onClick={(e) => handleNavClick(e, link.href)}
                     aria-label={link.label}
+                    data-cuelume-press
+                    data-cuelume-release
                   >
                     {isActive && (
                       <motion.div
@@ -146,13 +148,15 @@ export default function Sidebar({ className = "" }) {
             .map((link, idx) => {
              const isActive = active === link.href;
              return (
-               <a
-                 key={link.href}
-                 href={link.href}
-                 className="flex flex-col items-center justify-center w-10 h-10 rounded-lg group transition-colors"
-                 onClick={(e) => handleNavClick(e, link.href)}
-                 aria-label={link.label}
-               >
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="flex flex-col items-center justify-center w-10 h-10 rounded-lg group transition-colors"
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  aria-label={link.label}
+                  data-cuelume-press
+                  data-cuelume-release
+                >
                   <HugeiconsIcon
                     icon={link.icon}
                     size={20}

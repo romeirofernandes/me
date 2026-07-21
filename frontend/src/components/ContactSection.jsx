@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import { play } from "@/lib/cuelume";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -46,6 +47,7 @@ export default function ContactSection() {
       );
       setStatus("sent");
       setForm({ email: "", message: "" });
+      play("success");
     } catch {
       try {
         const { collection, addDoc, serverTimestamp } = await import("firebase/firestore");
@@ -57,8 +59,10 @@ export default function ContactSection() {
         });
         setStatus("sent");
         setForm({ email: "", message: "" });
+        play("success");
       } catch {
         setStatus("error");
+        play("error");
       }
     }
   };
@@ -74,7 +78,7 @@ export default function ContactSection() {
           <form className="flex flex-col gap-3 w-full max-w-full sm:max-w-xs" onSubmit={handleSubmit}>
             <input className="bg-[var(--glass-bg-20)] backdrop-blur-md border border-white/10 rounded px-3 py-2 text-white focus:outline-none text-sm w-full placeholder:text-white/40" type="email" name="email" placeholder="Your email" value={form.email} onChange={handleChange} required />
             <textarea className="bg-[var(--glass-bg-20)] backdrop-blur-md border border-white/10 rounded px-3 py-2 text-white focus:outline-none text-sm w-full placeholder:text-white/40" name="message" placeholder="Your message" rows={4} value={form.message} onChange={handleChange} required />
-            <motion.button type="submit" className="bg-[#f5f5f7] text-[#080808] rounded px-4 py-2 font-semibold mt-2 text-sm" whileTap={{ scale: 0.97 }} whileHover={{ scale: 1.03 }} disabled={status === "loading"}>
+            <motion.button type="submit" className="bg-[#f5f5f7] text-[#080808] rounded px-4 py-2 font-semibold mt-2 text-sm" whileTap={{ scale: 0.97 }} whileHover={{ scale: 1.03 }} disabled={status === "loading"} data-cuelume-press data-cuelume-release>
               {status === "loading" ? "Sending..." : status === "error" ? "Error! Try again" : "Send"}
             </motion.button>
             {status === "sent" && <span className="text-green-400 text-xs mt-1">Message sent!</span>}

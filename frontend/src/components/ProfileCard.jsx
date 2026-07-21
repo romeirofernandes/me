@@ -48,13 +48,16 @@ export default function ProfileCard() {
             <div className="text-lg sm:text-xl md:text-2xl font-bold text-white">Romeiro Fernandes</div>
             <div id="about" className="text-xs md:text-sm text-[var(--glass-text-muted)]">20, Computer Engineer</div>
             <div className="flex gap-3 md:gap-6 absolute right-0 top-0">
-              <button onClick={() => setResumeOpen(true)} aria-label="View Resume" className="cursor-pointer">
+              <button onClick={() => setResumeOpen(true)} aria-label="View Resume" className="cursor-pointer" data-cuelume-press
+data-cuelume-release>
                 <HugeiconsIcon icon={FileText} size={20} className="text-[var(--glass-text-muted)] hover:text-white transition" />
               </button>
-              <a href="https://github.com/romeirofernandes" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <a href="https://github.com/romeirofernandes" target="_blank" rel="noopener noreferrer" aria-label="GitHub" data-cuelume-press
+data-cuelume-release>
                 <HugeiconsIcon icon={GithubIcon} size={20} className="text-[var(--glass-text-muted)] hover:text-white transition" />
               </a>
-              <a href="https://x.com/whotookromeiro" target="_blank" rel="noopener noreferrer" aria-label="X">
+              <a href="https://x.com/whotookromeiro" target="_blank" rel="noopener noreferrer" aria-label="X" data-cuelume-press
+data-cuelume-release>
                 <HugeiconsIcon icon={NewTwitterIcon} size={20} className="text-[var(--glass-text-muted)] hover:text-white transition" />
               </a>
             </div>
@@ -63,13 +66,16 @@ export default function ProfileCard() {
             <div className="flex items-center gap-1 md:gap-2 text-xs md:text-sm text-[var(--glass-text-muted)]">
               <HugeiconsIcon icon={Location01Icon} size={16} /> Bombay, India
             </div>
-            <a href="mailto:theromeirofernandes@gmail.com" className="flex items-center gap-1 md:gap-2 text-xs md:text-sm text-[var(--glass-text-muted)] hover:text-white transition">
+            <a href="mailto:theromeirofernandes@gmail.com" className="flex items-center gap-1 md:gap-2 text-xs md:text-sm text-[var(--glass-text-muted)] hover:text-white transition" data-cuelume-press
+data-cuelume-release>
               <HugeiconsIcon icon={Mail01Icon} size={16} /> theromeirofernandes@gmail.com
             </a>
-            <a href="https://linkedin.com/in/romeirofernandes" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 md:gap-2 text-xs md:text-sm text-[var(--glass-text-muted)] hover:text-white transition">
+            <a href="https://linkedin.com/in/romeirofernandes" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 md:gap-2 text-xs md:text-sm text-[var(--glass-text-muted)] hover:text-white transition" data-cuelume-press
+data-cuelume-release>
               <HugeiconsIcon icon={LinkedinIcon} size={16} /> romeirofernandes
             </a>
-            <a href="https://blog.romeiro.dev" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 md:gap-2 text-xs md:text-sm text-[var(--glass-text-muted)] hover:text-white transition">
+            <a href="https://blog.romeiro.dev" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 md:gap-2 text-xs md:text-sm text-[var(--glass-text-muted)] hover:text-white transition" data-cuelume-press
+data-cuelume-release>
               <HugeiconsIcon icon={GlobeIcon} size={16} /> blog.romeiro.dev
             </a>
           </div>
@@ -81,7 +87,7 @@ export default function ProfileCard() {
         <AnimatePresence>
           {resumeOpen && (
             <motion.div
-              className="fixed inset-0 z-[60] overflow-y-auto bg-black/80 backdrop-blur-sm resume-scroll"
+              className="fixed inset-0 z-[60] overflow-y-auto bg-black/80 resume-scroll"
               style={{ scrollbarWidth: "thin", scrollbarColor: "#555 #1a1a1a" }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -103,6 +109,8 @@ export default function ProfileCard() {
                       onClick={handleDownload}
                       aria-label="Download Resume"
                       className="cursor-pointer size-8 flex items-center justify-center rounded-lg bg-white/10 hover:bg-white/20 transition text-white/70 hover:text-white"
+                      data-cuelume-press
+data-cuelume-release
                     >
                       <HugeiconsIcon icon={Download01Icon} size={16} />
                     </button>
@@ -110,6 +118,8 @@ export default function ProfileCard() {
                       onClick={() => setResumeOpen(false)}
                       aria-label="Close"
                       className="cursor-pointer size-8 flex items-center justify-center rounded-lg bg-white/10 hover:bg-white/20 transition text-white/70 hover:text-white"
+                      data-cuelume-press
+data-cuelume-release
                     >
                       <HugeiconsIcon icon={Cancel01Icon} size={16} />
                     </button>

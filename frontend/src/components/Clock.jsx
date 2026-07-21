@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import "slot-text/style.css";
 import { SlotText } from "slot-text/react";
+import { play } from "@/lib/cuelume";
 import {
   Tooltip,
   TooltipContent,
@@ -37,6 +38,13 @@ export default function Clock() {
   const [time, setTime] = useState(() => new Date());
   const [open, setOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
+  const hovering = useRef(false);
+
+  useEffect(() => {
+    if (hovering.current) {
+      play("tick");
+    }
+  }, [time]);
 
   useEffect(() => {
     const onResize = () => setIsMobile(window.innerWidth < 768);
@@ -68,6 +76,8 @@ export default function Clock() {
           <div
             className="text-white font-mono bg-[var(--glass-bg-20)] backdrop-blur-md rounded-lg shadow-xl border border-white/10 select-none cursor-pointer px-3 py-1.5 md:px-4 md:py-2 text-base md:text-lg tracking-[0.05em] transition-all"
             onClick={isMobile ? () => setOpen((prev) => !prev) : undefined}
+            onMouseEnter={() => { hovering.current = true; play("tick"); }}
+            onMouseLeave={() => { hovering.current = false; }}
           >
             <SlotText text={h[0]} options={{ direction: "up" }} />
             <SlotText text={h[1]} options={{ direction: "up" }} />
