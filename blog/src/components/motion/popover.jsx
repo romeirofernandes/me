@@ -349,7 +349,7 @@ export function PopoverContent({ children, className }) {
         >
           <div
             ref={blobRef}
-            className="absolute inset-0 bg-neutral-800"
+            className="absolute inset-0 bg-[#18181b] light:bg-white"
             style={{ clipPath: insetForProgress(geo, progress.get()) }}
           />
         </div>
@@ -387,7 +387,7 @@ export function PopoverContent({ children, className }) {
               transformOrigin: `${ALIGN_ORIGIN[align]} ${side === "bottom" ? "top" : "bottom"}`,
             }}
             className={cn(
-              "w-max max-w-[min(92vw,20rem)] p-3 text-sm font-light text-neutral-200 outline-none bg-neutral-800 rounded-xl",
+              "w-max max-w-[min(92vw,20rem)] p-3 text-sm font-light text-zinc-300 light:text-zinc-900 outline-none bg-[#18181b] light:bg-white rounded-xl",
               className,
             )}
           >

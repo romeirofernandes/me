@@ -19,8 +19,6 @@ body {
   text-align: justify;
   letter-spacing: 0.01em;
   font-size: 0.875rem;
-  scrollbar-width: thin;
-  scrollbar-color: #555 #1a1a1a;
 }
 
 p, span, div, article, section, li, td, th {
@@ -76,6 +74,8 @@ button {
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #555 #1a1a1a;
 }
 
 @theme inline {

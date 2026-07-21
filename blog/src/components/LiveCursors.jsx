@@ -215,8 +215,8 @@ export default function LiveCursors({ isEnabled, onToggle }) {
         <TooltipTrigger asChild>
           <button
             onClick={onToggle}
-            className="fixed bottom-6 right-6 z-[9999] bg-[#18181b] light:bg-white border border-[#232323] light:border-zinc-200 rounded-full p-0 shadow-lg hover:bg-[#232323] light:hover:bg-zinc-100 transition-all duration-200"
-            style={{ width: "56px", height: "56px", minWidth: "56px", minHeight: "56px", display: "flex", alignItems: "center", justifyContent: "center" }}
+            className="fixed bottom-6 right-6 z-[9999] bg-[#18181b] light:bg-white border border-[#232323] light:border-zinc-200 rounded-full shadow-lg hover:bg-[#232323] light:hover:bg-zinc-100 transition-all duration-200 flex items-center justify-center"
+            style={{ width: "clamp(48px, 9vw, 56px)", height: "clamp(48px, 9vw, 56px)", minWidth: "48px", minHeight: "48px" }}
             aria-label={isEnabled ? "Hide cursors" : "Show cursors"}
           >
             <span className="relative inline-block w-5 h-5">

@@ -92,10 +92,10 @@ export default function ThemeToggle() {
   };
 
   return (
-    <div ref={containerRef} className="fixed top-6 right-8 z-50" style={{ width: "2.5rem", touchAction: "none" }}>
+    <div ref={containerRef} className="fixed top-6 right-8 z-50" style={{ width: "2rem", touchAction: "none" }}>
       <svg
         viewBox="0 0 197.451 481.081"
-        className="h-28 w-auto overflow-visible"
+        className="md:h-28 h-24 w-auto overflow-visible"
         style={{ touchAction: "none" }}
       >
         <defs>
